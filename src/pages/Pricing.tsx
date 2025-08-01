@@ -139,15 +139,15 @@ const PricingPage = () => {
               <motion.div
                 key={plan.name}
                 ref={ref}
-                className={`relative gradient-card rounded-3xl p-4 md:p-6 lg:p-8 hover-lift cursor-pointer h-full flex flex-col ${
-                  selectedPlan === plan.name ? 'ring-4 ring-primary/80 scale-110' : ''
+                className={`relative gradient-card rounded-3xl p-4 md:p-6 lg:p-8 hover-lift cursor-pointer h-full flex flex-col transition-all duration-300 ${
+                  selectedPlan === plan.name ? 'ring-4 ring-primary shadow-2xl shadow-primary/20 scale-105' : 'hover:scale-102'
                 }`}
                 initial={{ opacity: 0, y: 50 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: index * 0.2, duration: 0.8 }}
                 onClick={() => handlePlanClick(plan.name)}
-                whileHover={{ scale: plan.popular ? 1.02 : 1.05 }}
-                whileTap={{ scale: plan.popular ? 0.98 : 1.02 }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
                 {/* Popular Badge */}
                 {plan.popular && (
