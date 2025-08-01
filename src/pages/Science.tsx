@@ -79,7 +79,7 @@ const SciencePage = () => {
               
               <p className="text-lg text-muted-foreground mb-6">
                 For decades, weight management advice was simple: <strong>calories in, calories out</strong>. 
-                But groundbreaking research over the past decade has revealed a crucial missing piece—
+                But groundbreaking research over the past decade has revealed a crucial missing piece
                 your body's hormonal response to food.
               </p>
 
