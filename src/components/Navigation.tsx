@@ -44,15 +44,15 @@ const Navigation = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
-              <span className="text-xl font-bold">SugarTrap</span>
-              <div className="w-8 h-8 relative">
+              <span className="text-2xl md:text-3xl font-bold">SugarTrap</span>
+              <div className="w-10 h-10 md:w-12 md:h-12 relative">
                 <motion.div
                   className="w-full h-full border-2 border-foreground rounded-sm"
                   animate={{ rotate: [0, 360] }}
                   transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-xs font-bold">AI</span>
+                  <span className="text-sm md:text-base font-bold">AI</span>
                 </div>
               </div>
             </motion.div>
