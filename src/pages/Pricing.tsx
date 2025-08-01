@@ -12,8 +12,6 @@ const PricingPage = () => {
 
   const handlePlanClick = (planName: string) => {
     setSelectedPlan(planName);
-    // Reset after animation
-    setTimeout(() => setSelectedPlan(null), 1000);
   };
 
   const plans = [
