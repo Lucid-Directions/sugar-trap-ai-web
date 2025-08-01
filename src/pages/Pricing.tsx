@@ -1,5 +1,5 @@
 import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Check, Star, Zap, BarChart3, Brain, Heart, TrendingUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
@@ -8,6 +8,13 @@ import Navigation from '@/components/Navigation';
 const PricingPage = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+  const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+
+  const handlePlanClick = (planName: string) => {
+    setSelectedPlan(planName);
+    // Reset after animation
+    setTimeout(() => setSelectedPlan(null), 600);
+  };
 
   const plans = [
     {
@@ -127,12 +134,15 @@ const PricingPage = () => {
               <motion.div
                 key={plan.name}
                 ref={ref}
-                className={`relative gradient-card rounded-3xl p-8 hover-lift ${
+                className={`relative gradient-card rounded-3xl p-8 hover-lift cursor-pointer ${
                   plan.popular ? 'ring-2 ring-primary scale-105 lg:scale-110' : ''
                 }`}
                 initial={{ opacity: 0, y: 50 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: index * 0.2, duration: 0.8 }}
+                onClick={() => handlePlanClick(plan.name)}
+                whileHover={{ scale: plan.popular ? 1.02 : 1.05 }}
+                whileTap={{ scale: plan.popular ? 0.98 : 1.02 }}
               >
                 {/* Popular Badge */}
                 {plan.popular && (
@@ -152,8 +162,15 @@ const PricingPage = () => {
                 <div className="text-center mb-8">
                   <motion.div
                     className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${plan.color} flex items-center justify-center mx-auto mb-4`}
+                    animate={selectedPlan === plan.name ? {
+                      rotate: [0, -10, 10, -10, 10, 0],
+                      scale: [1, 1.1, 1.2, 1.1, 1]
+                    } : {}}
+                    transition={{ 
+                      duration: 0.6,
+                      ease: "easeInOut"
+                    }}
                     whileHover={{ scale: 1.1, rotate: 5 }}
-                    transition={{ duration: 0.2 }}
                   >
                     <plan.icon className="w-8 h-8 text-white" />
                   </motion.div>
