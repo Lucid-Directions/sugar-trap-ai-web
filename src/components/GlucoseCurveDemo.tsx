@@ -84,155 +84,192 @@ const GlucoseCurveDemo = () => {
 
         <div className="max-w-6xl mx-auto">
           <motion.div
-            className="gradient-card rounded-3xl p-8 md:p-12"
+            className="gradient-card rounded-3xl p-4 md:p-12"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.2, duration: 0.4 }}
           >
-            {/* Glucose Chart */}
-            <div className="bg-white rounded-2xl p-8 mb-8 shadow-inner">
-              <div className="flex justify-between items-center mb-6">
-                <h3 className="text-2xl font-bold">Your Predicted Glucose Response</h3>
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <div className="w-3 h-3 bg-gray-300 rounded-full"></div>
-                  Normal Range: 80-120 mg/dL
-                </div>
-              </div>
-
-              <div className="relative">
-                {/* SVG Chart */}
-                <svg 
-                  viewBox="0 0 180 120" 
-                  className="w-full h-64 md:h-80"
-                  style={{ background: 'linear-gradient(to bottom, #f8fafc 0%, #ffffff 100%)' }}
-                >
-                  {/* Grid Lines */}
-                  <defs>
-                    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
-                      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#e2e8f0" strokeWidth="0.5"/>
-                    </pattern>
-                  </defs>
-                  <rect width="100%" height="100%" fill="url(#grid)" />
-
-                  {/* Normal Range Zone */}
-                  <rect x="10" y="60" width="150" height="20" fill="#10b981" fillOpacity="0.1" />
-                  
-                  {/* Y-axis labels */}
-                  <text x="5" y="25" fontSize="10" fill="#64748b">200</text>
-                  <text x="5" y="45" fontSize="10" fill="#64748b">150</text>
-                  <text x="5" y="65" fontSize="10" fill="#64748b">120</text>
-                  <text x="5" y="85" fontSize="10" fill="#64748b">80</text>
-                  
-                  {/* X-axis labels */}
-                  <text x="10" y="115" fontSize="10" fill="#64748b">0</text>
-                  <text x="50" y="115" fontSize="10" fill="#64748b">1hr</text>
-                  <text x="90" y="115" fontSize="10" fill="#64748b">2hr</text>
-                  <text x="130" y="115" fontSize="10" fill="#64748b">3hr</text>
-
-                  {/* Animated Glucose Curve */}
-                  <AnimatePresence mode="wait">
-                    <motion.path
-                      key={selectedMeal}
-                      d={currentMeal.path}
-                      fill="none"
-                      stroke={currentMeal.color}
-                      strokeWidth="4"
-                      strokeLinecap="round"
-                      initial={{ pathLength: 0, opacity: 0 }}
-                      animate={{ pathLength: 1, opacity: 1 }}
-                      exit={{ pathLength: 0, opacity: 0 }}
-                      transition={{ duration: 2, ease: "easeInOut" }}
-                      style={{
-                        filter: `drop-shadow(0 0 8px ${currentMeal.color}40)`
-                      }}
-                    />
-                  </AnimatePresence>
-
-                  {/* Peak Indicator */}
-                  <motion.g
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 1.5, duration: 0.5, type: "spring" }}
-                  >
-                    <circle 
-                      cx={selectedMeal === 'sugary' ? '80' : selectedMeal === 'normal' ? '80' : selectedMeal === 'balanced' ? '80' : selectedMeal === 'oatmeal' ? '80' : '80'} 
-                      cy={selectedMeal === 'sugary' ? '25' : selectedMeal === 'normal' ? '30' : selectedMeal === 'balanced' ? '70' : selectedMeal === 'oatmeal' ? '55' : '79'} 
-                      r="4" 
-                      fill={currentMeal.color}
-                    />
-                    <motion.circle 
-                      cx={selectedMeal === 'sugary' ? '80' : selectedMeal === 'normal' ? '80' : selectedMeal === 'balanced' ? '80' : selectedMeal === 'oatmeal' ? '80' : '80'} 
-                      cy={selectedMeal === 'sugary' ? '25' : selectedMeal === 'normal' ? '30' : selectedMeal === 'balanced' ? '70' : selectedMeal === 'oatmeal' ? '55' : '79'}
-                      r="8" 
-                      fill="none"
-                      stroke={currentMeal.color}
-                      strokeWidth="2"
-                      animate={{ scale: [1, 1.5, 1] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    />
-                  </motion.g>
-                </svg>
-              </div>
-
-              {/* Meal Stats */}
-              <motion.div 
-                className="grid grid-cols-3 gap-4 mt-6 p-4 bg-gray-50 rounded-lg"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8, duration: 0.6 }}
-              >
-                <div className="text-center">
-                  <div className="text-sm text-muted-foreground">Peak Glucose</div>
-                  <div className={`text-xl font-bold text-${currentMeal.color}`}>
-                    {currentMeal.peak}
-                  </div>
-                </div>
-                <div className="text-center">
-                  <div className="text-sm text-muted-foreground">Time to Peak</div>
-                  <div className="text-xl font-bold">{currentMeal.time}</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-sm text-muted-foreground">Energy Pattern</div>
-                  <div className="text-sm font-medium">{currentMeal.description}</div>
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Meal Selection */}
-            <div className="text-center">
-              <p className="text-lg mb-6 text-muted-foreground">
-                Compare breakfast options (same calories, different responses):
+            {/* Mobile: Meal Selection First */}
+            <div className="block md:hidden mb-6">
+              <p className="text-base mb-4 text-muted-foreground text-center">
+                Compare breakfast options:
               </p>
               
-              <div className="flex flex-wrap justify-center gap-4">
+              <div className="grid grid-cols-2 gap-2">
                 {Object.entries(mealData).map(([key, meal]) => (
                   <motion.button
                     key={key}
-                    className={`flex items-center gap-3 px-6 py-4 rounded-xl font-medium transition-all duration-300 ${
+                    className={`flex items-center gap-2 px-3 py-3 rounded-lg font-medium text-sm transition-all duration-300 ${
                       selectedMeal === key 
                         ? `bg-gradient-to-r ${meal.gradient} text-white shadow-lg` 
-                        : 'bg-white text-foreground hover:bg-gray-50 border-2 border-gray-200'
+                        : 'bg-white text-foreground hover:bg-gray-50 border border-gray-200'
                     }`}
                     whileTap={{ scale: 0.95 }}
-                    whileHover={{ scale: 1.02 }}
                     onClick={() => setSelectedMeal(key)}
                   >
-                    <span className="text-2xl">{meal.emoji}</span>
-                    <span className="text-lg">{meal.name}</span>
+                    <span className="text-lg">{meal.emoji}</span>
+                    <span className="text-xs leading-tight">{meal.name}</span>
                   </motion.button>
                 ))}
               </div>
-
-              <motion.p
-                className="mt-8 text-muted-foreground max-w-2xl mx-auto"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1, duration: 0.6 }}
-              >
-                SugarTrap AI predicts your personal glucose response to any meal using advanced AI,
-                giving you insights previously only available through medical testing.
-              </motion.p>
             </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+              {/* Glucose Chart */}
+              <div className="lg:col-span-3">
+                <div className="bg-white rounded-2xl p-4 md:p-8 shadow-inner">
+                  <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-4 md:mb-6">
+                    <h3 className="text-lg md:text-2xl font-bold mb-2 md:mb-0">Your Predicted Glucose Response</h3>
+                    <div className="flex items-center gap-2 text-xs md:text-sm text-muted-foreground">
+                      <div className="w-2 h-2 md:w-3 md:h-3 bg-gray-300 rounded-full"></div>
+                      Normal Range: 80-120 mg/dL
+                    </div>
+                  </div>
+
+                  <div className="relative">
+                    {/* SVG Chart */}
+                    <svg 
+                      viewBox="0 0 180 120" 
+                      className="w-full h-48 md:h-64 lg:h-80"
+                      style={{ background: 'linear-gradient(to bottom, #f8fafc 0%, #ffffff 100%)' }}
+                    >
+                      {/* Grid Lines */}
+                      <defs>
+                        <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#e2e8f0" strokeWidth="0.5"/>
+                        </pattern>
+                      </defs>
+                      <rect width="100%" height="100%" fill="url(#grid)" />
+
+                      {/* Normal Range Zone */}
+                      <rect x="10" y="60" width="150" height="20" fill="#10b981" fillOpacity="0.1" />
+                      
+                      {/* Y-axis labels */}
+                      <text x="5" y="25" fontSize="10" fill="#64748b">200</text>
+                      <text x="5" y="45" fontSize="10" fill="#64748b">150</text>
+                      <text x="5" y="65" fontSize="10" fill="#64748b">120</text>
+                      <text x="5" y="85" fontSize="10" fill="#64748b">80</text>
+                      
+                      {/* X-axis labels */}
+                      <text x="10" y="115" fontSize="10" fill="#64748b">0</text>
+                      <text x="50" y="115" fontSize="10" fill="#64748b">1hr</text>
+                      <text x="90" y="115" fontSize="10" fill="#64748b">2hr</text>
+                      <text x="130" y="115" fontSize="10" fill="#64748b">3hr</text>
+
+                      {/* Animated Glucose Curve */}
+                      <AnimatePresence mode="wait">
+                        <motion.path
+                          key={selectedMeal}
+                          d={currentMeal.path}
+                          fill="none"
+                          stroke={currentMeal.color}
+                          strokeWidth="4"
+                          strokeLinecap="round"
+                          initial={{ pathLength: 0, opacity: 0 }}
+                          animate={{ pathLength: 1, opacity: 1 }}
+                          exit={{ pathLength: 0, opacity: 0 }}
+                          transition={{ duration: 2, ease: "easeInOut" }}
+                          style={{
+                            filter: `drop-shadow(0 0 8px ${currentMeal.color}40)`
+                          }}
+                        />
+                      </AnimatePresence>
+
+                      {/* Peak Indicator */}
+                      <motion.g
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ delay: 1.5, duration: 0.5, type: "spring" }}
+                      >
+                        <circle 
+                          cx={selectedMeal === 'sugary' ? '80' : selectedMeal === 'normal' ? '80' : selectedMeal === 'balanced' ? '80' : selectedMeal === 'oatmeal' ? '80' : '80'} 
+                          cy={selectedMeal === 'sugary' ? '25' : selectedMeal === 'normal' ? '30' : selectedMeal === 'balanced' ? '70' : selectedMeal === 'oatmeal' ? '55' : '79'} 
+                          r="4" 
+                          fill={currentMeal.color}
+                        />
+                        <motion.circle 
+                          cx={selectedMeal === 'sugary' ? '80' : selectedMeal === 'normal' ? '80' : selectedMeal === 'balanced' ? '80' : selectedMeal === 'oatmeal' ? '80' : '80'} 
+                          cy={selectedMeal === 'sugary' ? '25' : selectedMeal === 'normal' ? '30' : selectedMeal === 'balanced' ? '70' : selectedMeal === 'oatmeal' ? '55' : '79'}
+                          r="8" 
+                          fill="none"
+                          stroke={currentMeal.color}
+                          strokeWidth="2"
+                          animate={{ scale: [1, 1.5, 1] }}
+                          transition={{ duration: 2, repeat: Infinity }}
+                        />
+                      </motion.g>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              {/* Stats and Desktop Meal Selection */}
+              <div className="lg:col-span-2 space-y-6">
+                {/* Meal Stats */}
+                <motion.div 
+                  className="bg-white rounded-2xl p-4 md:p-6 shadow-inner"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.8, duration: 0.6 }}
+                >
+                  <h4 className="text-lg font-semibold mb-4 text-center">
+                    {currentMeal.emoji} {currentMeal.name}
+                  </h4>
+                  <div className="space-y-4">
+                    <div className="text-center">
+                      <div className="text-sm text-muted-foreground">Peak Glucose</div>
+                      <div className={`text-xl font-bold`} style={{ color: currentMeal.color }}>
+                        {currentMeal.peak}
+                      </div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-sm text-muted-foreground">Time to Peak</div>
+                      <div className="text-xl font-bold">{currentMeal.time}</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-sm text-muted-foreground">Energy Pattern</div>
+                      <div className="text-sm font-medium">{currentMeal.description}</div>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Desktop Meal Selection */}
+                <div className="hidden md:block">
+                  <p className="text-lg mb-4 text-muted-foreground text-center">
+                    Compare options:
+                  </p>
+                  
+                  <div className="space-y-3">
+                    {Object.entries(mealData).map(([key, meal]) => (
+                      <motion.button
+                        key={key}
+                        className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all duration-300 ${
+                          selectedMeal === key 
+                            ? `bg-gradient-to-r ${meal.gradient} text-white shadow-lg` 
+                            : 'bg-white text-foreground hover:bg-gray-50 border border-gray-200'
+                        }`}
+                        whileTap={{ scale: 0.95 }}
+                        whileHover={{ scale: 1.02 }}
+                        onClick={() => setSelectedMeal(key)}
+                      >
+                        <span className="text-xl">{meal.emoji}</span>
+                        <span className="text-sm">{meal.name}</span>
+                      </motion.button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <motion.p
+              className="mt-8 text-center text-muted-foreground max-w-2xl mx-auto text-sm md:text-base"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1, duration: 0.6 }}
+            >
+              SugarTrap AI predicts your personal glucose response to any meal using advanced AI,
+              giving you insights previously only available through medical testing.
+            </motion.p>
           </motion.div>
         </div>
       </div>
