@@ -17,26 +17,43 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 160 84% 39%;
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 160 100% 70%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 160 60% 96%;
+    --secondary-foreground: 160 84% 20%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 160 60% 96%;
+    --accent-foreground: 160 84% 20%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 160 84% 39%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* SugarTrap AI Design System */
+    --gradient-primary: linear-gradient(135deg, hsl(160, 84%, 39%), hsl(160, 100%, 70%));
+    --gradient-hero: linear-gradient(135deg, hsl(160, 60%, 96%) 0%, hsl(0, 0%, 100%) 50%, hsl(160, 40%, 98%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0, 0%, 100%) 0%, hsl(160, 20%, 98%) 100%);
+    
+    --shadow-glow: 0 0 40px hsl(160, 100%, 70%, 0.3);
+    --shadow-card: 0 10px 30px -10px hsl(160, 84%, 39%, 0.1);
+    --shadow-lifted: 0 20px 60px -10px hsl(160, 84%, 39%, 0.2);
+    
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    /* Animation Variables */
+    --animate-duration: 0.3s;
+    --animate-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 
     --sidebar-background: 0 0% 98%;
 
@@ -65,24 +82,34 @@ All colors MUST be HSL.
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
+    --primary: 160 100% 70%;
     --primary-foreground: 222.2 47.4% 11.2%;
+    --primary-glow: 160 100% 80%;
 
     --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary-foreground: 160 100% 70%;
 
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
     --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent-foreground: 160 100% 70%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --ring: 160 100% 70%;
+
+    /* Dark mode gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(160, 100%, 70%), hsl(160, 100%, 80%));
+    --gradient-hero: linear-gradient(135deg, hsl(222, 84%, 4%) 0%, hsl(217, 33%, 17%) 50%, hsl(222, 84%, 4%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(217, 33%, 17%) 0%, hsl(222, 84%, 4%) 100%);
+    
+    --shadow-glow: 0 0 40px hsl(160, 100%, 70%, 0.4);
+    --shadow-card: 0 10px 30px -10px hsl(160, 100%, 70%, 0.2);
+    --shadow-lifted: 0 20px 60px -10px hsl(160, 100%, 70%, 0.3);
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -100,6 +127,98 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Animation classes */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 15s ease infinite;
+  }
+
+  .hover-scale {
+    @apply transition-transform duration-300 hover:scale-105;
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300 hover:shadow-lifted hover:-translate-y-2;
+  }
+
+  .magnetic-button {
+    @apply relative overflow-hidden transition-all duration-300;
+  }
+
+  .magnetic-button::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-primary to-primary-glow opacity-0 transition-opacity duration-300;
+  }
+
+  .magnetic-button:hover::before {
+    @apply opacity-100;
+  }
+
+  .magnetic-button > * {
+    @apply relative z-10;
+  }
+
+  /* Text animations */
+  .text-reveal {
+    @apply opacity-0 translate-y-4;
+    animation: text-reveal 0.8s ease-out forwards;
+  }
+
+  .text-reveal-delay-1 {
+    animation-delay: 0.2s;
+  }
+
+  .text-reveal-delay-2 {
+    animation-delay: 0.4s;
+  }
+
+  .text-reveal-delay-3 {
+    animation-delay: 0.6s;
+  }
+
+  /* Card effects */
+  .glass-card {
+    @apply backdrop-blur-sm bg-white/10 border border-white/20;
+  }
+
+  .gradient-card {
+    background: var(--gradient-card);
+    @apply shadow-card;
+  }
+
+  /* Interactive elements */
+  .story-link {
+    @apply relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent;
+  }
+
+  .bg-hero {
+    background: var(--gradient-hero);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
   }
 }
