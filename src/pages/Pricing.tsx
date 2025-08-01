@@ -140,8 +140,8 @@ const PricingPage = () => {
                 key={plan.name}
                 ref={ref}
                 className={`relative gradient-card rounded-3xl p-4 md:p-6 lg:p-8 hover-lift cursor-pointer h-full flex flex-col ${
-                  plan.popular ? 'ring-2 ring-primary scale-105 lg:scale-110' : ''
-                } ${selectedPlan === plan.name ? 'ring-4 ring-primary/80 scale-110' : ''}`}
+                  selectedPlan === plan.name ? 'ring-4 ring-primary/80 scale-110' : ''
+                }`}
                 initial={{ opacity: 0, y: 50 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: index * 0.2, duration: 0.8 }}
