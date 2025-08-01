@@ -221,4 +221,12 @@ All colors MUST be HSL.
   .shadow-glow {
     box-shadow: var(--shadow-glow);
   }
+
+  .shadow-lifted {
+    box-shadow: var(--shadow-lifted);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
 }
