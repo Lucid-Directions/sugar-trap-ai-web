@@ -18,6 +18,16 @@ const GlucoseCurveDemo = () => {
       description: "Extreme spike, dramatic crash",
       emoji: "🥣"
     },
+    normal: {
+      name: "Corn Flakes",
+      path: "M 10,80 Q 40,25 80,30 Q 120,35 160,85",
+      color: "#f97316",
+      gradient: "from-orange-500 to-orange-600",
+      peak: "165mg/dL",
+      time: "35 min",
+      description: "High spike, surprising for 'healthy' cereal",
+      emoji: "🌽"
+    },
     balanced: {
       name: "Eggs & Avocado",
       path: "M 10,80 Q 40,75 80,77 Q 120,79 160,82",
@@ -145,14 +155,14 @@ const GlucoseCurveDemo = () => {
                     transition={{ delay: 1.5, duration: 0.5, type: "spring" }}
                   >
                     <circle 
-                      cx={selectedMeal === 'sugary' ? '80' : selectedMeal === 'balanced' ? '80' : '80'} 
-                      cy={selectedMeal === 'sugary' ? '25' : selectedMeal === 'balanced' ? '70' : '55'} 
+                      cx={selectedMeal === 'sugary' ? '80' : selectedMeal === 'normal' ? '80' : selectedMeal === 'balanced' ? '80' : selectedMeal === 'oatmeal' ? '80' : '80'} 
+                      cy={selectedMeal === 'sugary' ? '25' : selectedMeal === 'normal' ? '30' : selectedMeal === 'balanced' ? '70' : selectedMeal === 'oatmeal' ? '55' : '79'} 
                       r="4" 
                       fill={currentMeal.color}
                     />
                     <motion.circle 
-                      cx={selectedMeal === 'sugary' ? '80' : selectedMeal === 'balanced' ? '80' : '80'} 
-                      cy={selectedMeal === 'sugary' ? '25' : selectedMeal === 'balanced' ? '70' : '55'} 
+                      cx={selectedMeal === 'sugary' ? '80' : selectedMeal === 'normal' ? '80' : selectedMeal === 'balanced' ? '80' : selectedMeal === 'oatmeal' ? '80' : '80'} 
+                      cy={selectedMeal === 'sugary' ? '25' : selectedMeal === 'normal' ? '30' : selectedMeal === 'balanced' ? '70' : selectedMeal === 'oatmeal' ? '55' : '79'}
                       r="8" 
                       fill="none"
                       stroke={currentMeal.color}
