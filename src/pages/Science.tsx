@@ -60,7 +60,7 @@ const SciencePage = () => {
       </section>
 
       {/* The Outdated Model - moved higher up */}
-      <section className="py-8 bg-gradient-to-b from-secondary/10 to-background">
+      <section className="py-4 bg-gradient-to-b from-secondary/10 to-background">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.div

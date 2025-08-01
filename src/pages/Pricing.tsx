@@ -106,7 +106,7 @@ const PricingPage = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       {/* Hero Section */}
-      <section className="py-8 bg-gradient-to-b from-background to-secondary/20">
+      <section className="py-12 bg-gradient-to-b from-background to-secondary/20">
         <div className="container mx-auto px-4">
           <motion.div
             className="text-center mb-8"
@@ -140,7 +140,8 @@ const PricingPage = () => {
                 key={plan.name}
                 ref={ref}
                 className={`relative gradient-card rounded-3xl p-4 md:p-6 lg:p-8 hover-lift cursor-pointer h-full flex flex-col ${
-                  (selectedPlan && selectedPlan === plan.name) || (!selectedPlan && plan.popular) ? 'ring-2 ring-primary scale-105 lg:scale-110' : ''
+                  selectedPlan === plan.name ? 'ring-2 ring-primary scale-105 lg:scale-110' : 
+                  (!selectedPlan && plan.popular) ? 'ring-2 ring-primary scale-105 lg:scale-110' : ''
                 }`}
                 initial={{ opacity: 0, y: 50 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
