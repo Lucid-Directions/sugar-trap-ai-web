@@ -15,7 +15,7 @@ const SciencePage = () => {
       icon: TrendingUp,
       title: "Glucose Variability Study",
       journal: "Nature Metabolism, 2023",
-      finding: "40% reduction in glucose spikes with optimized food combinations",
+      finding: "40% reduction in glucose spikes with optimised food combinations",
       color: "text-green-600"
     },
     {
@@ -258,7 +258,7 @@ const SciencePage = () => {
                     <div className="grid md:grid-cols-2 gap-6 text-sm">
                       <div>
                         <p className="font-medium text-blue-700 mb-2">Nature Metabolism (2023)</p>
-                        <p className="text-muted-foreground">"40% reduction in glucose spikes with optimized food combinations"</p>
+                        <p className="text-muted-foreground">"40% reduction in glucose spikes with optimised food combinations"</p>
                       </div>
                       <div>
                         <p className="font-medium text-purple-700 mb-2">Diabetes Care (2022)</p>
@@ -435,7 +435,7 @@ const SciencePage = () => {
                 </div>
 
                 <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
-                  We use advanced AI to analyze food composition, combinations, portion sizes, and individual patterns 
+                  We use advanced AI to analyse food composition, combinations, portion sizes, and individual patterns 
                   over time. This allows us to predict your personal glucose response to any meal—information previously 
                   only available through expensive continuous glucose monitors or clinical testing.
                 </p>
@@ -448,12 +448,12 @@ const SciencePage = () => {
                   </div>
                   <div className="bg-white rounded-xl p-6 shadow-sm">
                     <Brain className="w-8 h-8 text-primary mx-auto mb-3" />
-                    <h3 className="font-semibold mb-2">Personalized Predictions</h3>
+                    <h3 className="font-semibold mb-2">Personalised Predictions</h3>
                     <p className="text-sm text-muted-foreground">Learn your unique patterns and responses over time</p>
                   </div>
                   <div className="bg-white rounded-xl p-6 shadow-sm">
                     <Activity className="w-8 h-8 text-primary mx-auto mb-3" />
-                    <h3 className="font-semibold mb-2">Real-time Optimization</h3>
+                    <h3 className="font-semibold mb-2">Real-time Optimisation</h3>
                     <p className="text-sm text-muted-foreground">Get instant suggestions to improve any meal</p>
                   </div>
                 </div>
