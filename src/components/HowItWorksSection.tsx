@@ -39,7 +39,7 @@ const HowItWorksSection = () => {
   ];
 
   return (
-    <section id="how-it-works" className="py-16 bg-gradient-to-b from-background to-secondary/20">
+    <section id="how-it-works-section" className="py-16 bg-gradient-to-b from-background to-secondary/20">
       <div className="container mx-auto px-4">
         <motion.div
           ref={ref}

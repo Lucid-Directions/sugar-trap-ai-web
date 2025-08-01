@@ -123,9 +123,13 @@ const HeroSection = () => {
             variant="outline"
             size="lg"
             className="px-8 py-4 text-lg font-semibold border-2 hover:bg-primary/5 hover:border-primary transition-all duration-300"
-            asChild
+            onClick={() => {
+              document.getElementById('how-it-works-section')?.scrollIntoView({ 
+                behavior: 'smooth' 
+              });
+            }}
           >
-            <Link to="/science">See How It Works</Link>
+            See How It Works
           </Button>
         </motion.div>
 
