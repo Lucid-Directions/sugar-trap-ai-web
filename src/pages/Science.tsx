@@ -65,7 +65,7 @@ const SciencePage = () => {
           <div className="max-w-4xl mx-auto">
             <motion.div
               ref={ref}
-              className="gradient-card rounded-3xl p-8 md:p-12 mb-16"
+              className="gradient-card rounded-3xl p-8 md:p-12 mb-8"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.8 }}
@@ -94,7 +94,181 @@ const SciencePage = () => {
               </div>
             </motion.div>
 
-            {/* Understanding Glucose and Insulin */}
+            {/* Comprehensive Glucose & Insulin Research */}
+            <motion.div
+              className="mb-16"
+              initial={{ opacity: 0, y: 50 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.3, duration: 0.8 }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">
+                <span className="text-gradient">Evidence-Based</span> Glucose Science
+              </h2>
+              
+              <div className="space-y-8">
+                {/* Population Differences */}
+                <div className="gradient-card rounded-3xl p-8">
+                  <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                    <div className="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center">
+                      <span className="text-xl">👥</span>
+                    </div>
+                    Individual Differences Matter
+                  </h3>
+                  
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="bg-white rounded-xl p-6 shadow-sm">
+                      <h4 className="font-semibold mb-3 text-green-700">Healthy Adults</h4>
+                      <ul className="text-sm space-y-2 text-muted-foreground">
+                        <li>• Fasting glucose: 70-99 mg/dL</li>
+                        <li>• Low fasting insulin (2-10 μU/mL)</li>
+                        <li>• Post-meal peak: &lt;140 mg/dL</li>
+                        <li>• High insulin sensitivity</li>
+                      </ul>
+                    </div>
+                    
+                    <div className="bg-white rounded-xl p-6 shadow-sm">
+                      <h4 className="font-semibold mb-3 text-yellow-700">Prediabetic</h4>
+                      <ul className="text-sm space-y-2 text-muted-foreground">
+                        <li>• Fasting glucose: 100-125 mg/dL</li>
+                        <li>• Elevated insulin (&gt;15 μU/mL)</li>
+                        <li>• 1-hour post-meal: &gt;160 mg/dL</li>
+                        <li>• Compensatory hyperinsulinemia</li>
+                      </ul>
+                    </div>
+                    
+                    <div className="bg-white rounded-xl p-6 shadow-sm">
+                      <h4 className="font-semibold mb-3 text-purple-700">Athletes</h4>
+                      <ul className="text-sm space-y-2 text-muted-foreground">
+                        <li>• 50% lower fasting insulin</li>
+                        <li>• 22% higher insulin sensitivity</li>
+                        <li>• Blunted glucose response</li>
+                        <li>• Enhanced muscle uptake</li>
+                      </ul>
+                    </div>
+                  </div>
+                  
+                  <div className="mt-6 bg-blue-50 rounded-xl p-6">
+                    <h4 className="font-semibold text-blue-800 mb-2">Key Research Finding</h4>
+                    <p className="text-blue-700 text-sm">
+                      Studies show ~30% of young adults have hyperinsulinemia despite normal glucose tolerance, 
+                      indicating early metabolic dysfunction years before diabetes diagnosis.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Conditions & Context */}
+                <div className="gradient-card rounded-3xl p-8">
+                  <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                    <div className="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center">
+                      <span className="text-xl">🔄</span>
+                    </div>
+                    How Context Changes Everything
+                  </h3>
+                  
+                  <div className="grid md:grid-cols-2 gap-8">
+                    <div>
+                      <h4 className="font-semibold mb-4 text-green-700">Exercise Effects</h4>
+                      <div className="space-y-3">
+                        <div className="bg-green-50 rounded-lg p-4">
+                          <p className="text-sm font-medium text-green-800 mb-1">During Exercise</p>
+                          <p className="text-sm text-green-700">Insulin drops, glucose uptake becomes insulin-independent</p>
+                        </div>
+                        <div className="bg-green-50 rounded-lg p-4">
+                          <p className="text-sm font-medium text-green-800 mb-1">Post-Exercise</p>
+                          <p className="text-sm text-green-700">Insulin sensitivity increased for 24-48 hours</p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-semibold mb-4 text-red-700">Stress Impact</h4>
+                      <div className="space-y-3">
+                        <div className="bg-red-50 rounded-lg p-4">
+                          <p className="text-sm font-medium text-red-800 mb-1">Acute Stress</p>
+                          <p className="text-sm text-red-700">Glucose spikes 20-35 mg/dL in healthy people, 50-100 mg/dL in diabetics</p>
+                        </div>
+                        <div className="bg-red-50 rounded-lg p-4">
+                          <p className="text-sm font-medium text-red-800 mb-1">Chronic Stress</p>
+                          <p className="text-sm text-red-700">Cortisol increases insulin resistance long-term</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="mt-6 grid md:grid-cols-2 gap-6">
+                    <div className="bg-indigo-50 rounded-xl p-6">
+                      <h4 className="font-semibold text-indigo-800 mb-2">Sleep & Circadian</h4>
+                      <p className="text-indigo-700 text-sm">
+                        Even one night of poor sleep reduces insulin sensitivity the next day. 
+                        Dawn phenomenon causes morning glucose rise due to cortisol/growth hormone.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-orange-50 rounded-xl p-6">
+                      <h4 className="font-semibold text-orange-800 mb-2">Pregnancy Changes</h4>
+                      <p className="text-orange-700 text-sm">
+                        Late pregnancy: 50-60% decrease in insulin sensitivity. 
+                        Insulin requirements can double by third trimester.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Meal Timing & Combinations */}
+                <div className="gradient-card rounded-3xl p-8">
+                  <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                    <div className="w-10 h-10 bg-amber-100 rounded-xl flex items-center justify-center">
+                      <span className="text-xl">⏰</span>
+                    </div>
+                    Revolutionary Insights: Timing & Order
+                  </h3>
+                  
+                  <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl p-8 mb-6">
+                    <h4 className="text-xl font-bold mb-4 text-center">Research-Proven Strategies</h4>
+                    
+                    <div className="grid md:grid-cols-3 gap-6">
+                      <div className="text-center">
+                        <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                          <span className="text-2xl">🥗➜🍞</span>
+                        </div>
+                        <h5 className="font-semibold mb-2">Eat Fiber First</h5>
+                        <p className="text-sm text-muted-foreground">Vegetables before carbs reduces glucose spike by 40-70%</p>
+                      </div>
+                      
+                      <div className="text-center">
+                        <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                          <span className="text-2xl">🌅</span>
+                        </div>
+                        <h5 className="font-semibold mb-2">Morning Advantage</h5>
+                        <p className="text-sm text-muted-foreground">Same meal causes lower glucose rise in AM vs PM</p>
+                      </div>
+                      
+                      <div className="text-center">
+                        <div className="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                          <span className="text-2xl">🚶‍♀️</span>
+                        </div>
+                        <h5 className="font-semibold mb-2">Post-Meal Walk</h5>
+                        <p className="text-sm text-muted-foreground">10-minute walk reduces glucose peaks significantly</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-white rounded-2xl p-6 shadow-inner">
+                    <h4 className="font-semibold mb-4 text-center">Clinical Evidence</h4>
+                    <div className="grid md:grid-cols-2 gap-6 text-sm">
+                      <div>
+                        <p className="font-medium text-blue-700 mb-2">Nature Metabolism (2023)</p>
+                        <p className="text-muted-foreground">"40% reduction in glucose spikes with optimized food combinations"</p>
+                      </div>
+                      <div>
+                        <p className="font-medium text-purple-700 mb-2">Diabetes Care (2022)</p>
+                        <p className="text-muted-foreground">"Food order affects glucose response by up to 70%"</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
             <motion.div
               className="mb-16"
               initial={{ opacity: 0, y: 50 }}
