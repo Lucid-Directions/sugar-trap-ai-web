@@ -13,7 +13,7 @@ const PricingPage = () => {
   const handlePlanClick = (planName: string) => {
     setSelectedPlan(planName);
     // Reset after animation
-    setTimeout(() => setSelectedPlan(null), 600);
+    setTimeout(() => setSelectedPlan(null), 1000);
   };
 
   const plans = [
@@ -106,7 +106,7 @@ const PricingPage = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       {/* Hero Section */}
-      <section className="py-24 bg-gradient-to-b from-background to-secondary/20">
+      <section className="py-16 bg-gradient-to-b from-background to-secondary/20">
         <div className="container mx-auto px-4">
           <motion.div
             className="text-center mb-16"
@@ -127,7 +127,7 @@ const PricingPage = () => {
       </section>
 
       {/* Pricing Cards */}
-      <section className="py-24">
+      <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {plans.map((plan, index) => (
@@ -135,8 +135,7 @@ const PricingPage = () => {
                 key={plan.name}
                 ref={ref}
                 className={`relative gradient-card rounded-3xl p-8 hover-lift cursor-pointer ${
-                  selectedPlan === plan.name ? 'ring-2 ring-primary scale-105 lg:scale-110' : 
-                  selectedPlan === null && plan.popular ? 'ring-2 ring-primary scale-105 lg:scale-110' : ''
+                  selectedPlan === plan.name || (selectedPlan === null && plan.popular) ? 'ring-2 ring-primary scale-105 lg:scale-110' : ''
                 }`}
                 initial={{ opacity: 0, y: 50 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -220,7 +219,7 @@ const PricingPage = () => {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-24 bg-gradient-to-b from-secondary/20 to-background">
+      <section className="py-16 bg-gradient-to-b from-secondary/20 to-background">
         <div className="container mx-auto px-4">
           <motion.div
             className="text-center mb-16"
@@ -258,7 +257,7 @@ const PricingPage = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24">
+      <section className="py-16">
         <div className="container mx-auto px-4">
           <motion.div
             className="max-w-4xl mx-auto"
@@ -306,7 +305,7 @@ const PricingPage = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-24 bg-gradient-to-b from-background to-secondary/20">
+      <section className="py-16 bg-gradient-to-b from-background to-secondary/20">
         <div className="container mx-auto px-4">
           <motion.div
             className="gradient-card rounded-3xl p-8 md:p-12 text-center max-w-4xl mx-auto"

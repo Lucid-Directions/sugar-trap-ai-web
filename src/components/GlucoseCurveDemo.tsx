@@ -53,7 +53,7 @@ const GlucoseCurveDemo = () => {
   const currentMeal = mealData[selectedMeal];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-secondary/20 to-background">
+    <section className="py-16 bg-gradient-to-b from-secondary/20 to-background">
       <div className="container mx-auto px-4">
         <motion.div
           ref={ref}

@@ -38,7 +38,7 @@ const SciencePage = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       {/* Hero Section */}
-      <section className="py-24 bg-gradient-to-b from-background to-secondary/20">
+      <section className="py-16 bg-gradient-to-b from-background to-secondary/20">
         <div className="container mx-auto px-4">
           <motion.div
             className="text-center mb-16"
@@ -60,7 +60,7 @@ const SciencePage = () => {
       </section>
 
       {/* The Outdated Model - moved higher up */}
-      <section className="py-24 bg-gradient-to-b from-secondary/10 to-background">
+      <section className="py-16 bg-gradient-to-b from-secondary/10 to-background">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.div
