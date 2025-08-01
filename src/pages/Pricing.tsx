@@ -135,6 +135,7 @@ const PricingPage = () => {
                 key={plan.name}
                 ref={ref}
                 className={`relative gradient-card rounded-3xl p-8 hover-lift cursor-pointer ${
+                  selectedPlan === plan.name ? 'ring-2 ring-primary scale-105 lg:scale-110' : 
                   plan.popular ? 'ring-2 ring-primary scale-105 lg:scale-110' : ''
                 }`}
                 initial={{ opacity: 0, y: 50 }}
