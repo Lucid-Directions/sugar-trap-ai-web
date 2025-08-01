@@ -44,6 +44,7 @@ const Navigation = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
+              <span className="text-xl font-bold">SugarTrap</span>
               <div className="w-8 h-8 relative">
                 <motion.div
                   className="w-full h-full border-2 border-foreground rounded-sm"
@@ -54,9 +55,6 @@ const Navigation = () => {
                   <span className="text-xs font-bold">AI</span>
                 </div>
               </div>
-              <span className="text-xl font-bold">
-                SugarTrap<span className="text-muted-foreground"> AI</span>
-              </span>
             </motion.div>
           </Link>
 
