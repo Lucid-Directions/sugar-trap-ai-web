@@ -106,19 +106,19 @@ const PricingPage = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       {/* Hero Section */}
-      <section className="py-16 bg-gradient-to-b from-background to-secondary/20">
+      <section className="py-8 bg-gradient-to-b from-background to-secondary/20">
         <div className="container mx-auto px-4">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-8"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl font-bold mb-6">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4">
               Simple, Transparent 
               <span className="text-gradient block">Pricing</span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               Start with familiar tracking, then unlock revolutionary glucose insights when you're ready.
               <strong className="text-foreground"> Every journey begins somewhere.</strong>
             </p>
@@ -127,15 +127,20 @@ const PricingPage = () => {
       </section>
 
       {/* Pricing Cards */}
-      <section className="py-16">
+      <section className="py-8">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-3 gap-4 md:gap-6 max-w-6xl mx-auto"
+            style={{ 
+              gridTemplateRows: 'auto',
+              alignItems: 'stretch'
+            }}
+          >
             {plans.map((plan, index) => (
               <motion.div
                 key={plan.name}
                 ref={ref}
-                className={`relative gradient-card rounded-3xl p-8 hover-lift cursor-pointer ${
-                  selectedPlan === plan.name || (selectedPlan === null && plan.popular) ? 'ring-2 ring-primary scale-105 lg:scale-110' : ''
+                className={`relative gradient-card rounded-3xl p-4 md:p-6 lg:p-8 hover-lift cursor-pointer h-full flex flex-col ${
+                  (selectedPlan && selectedPlan === plan.name) || (!selectedPlan && plan.popular) ? 'ring-2 ring-primary scale-105 lg:scale-110' : ''
                 }`}
                 initial={{ opacity: 0, y: 50 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -159,7 +164,7 @@ const PricingPage = () => {
                 )}
 
                 {/* Plan Header */}
-                <div className="text-center mb-8">
+                <div className="text-center mb-6 md:mb-8">
                   <motion.div
                     className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${plan.color} flex items-center justify-center mx-auto mb-4`}
                     animate={selectedPlan === plan.name ? {
@@ -184,7 +189,7 @@ const PricingPage = () => {
                 </div>
 
                 {/* Features List */}
-                <div className="space-y-4 mb-8">
+                <div className="space-y-3 md:space-y-4 mb-6 md:mb-8 flex-grow">
                   {plan.features.map((feature, featureIndex) => (
                     <motion.div
                       key={feature}
