@@ -10,33 +10,43 @@ const GlucoseCurveDemo = () => {
   const mealData = {
     sugary: {
       name: "Sugary Cereal",
-      path: "M 10,80 Q 40,15 80,25 Q 120,40 160,95",
+      path: "M 10,80 Q 40,10 80,15 Q 120,25 160,100",
       color: "#ef4444",
       gradient: "from-red-500 to-red-600",
-      peak: "180mg/dL",
-      time: "30 min",
-      description: "Rapid spike, then crash",
+      peak: "195mg/dL",
+      time: "25 min",
+      description: "Extreme spike, dramatic crash",
       emoji: "🥣"
     },
     balanced: {
       name: "Eggs & Avocado",
-      path: "M 10,80 Q 40,65 80,70 Q 120,75 160,80",
+      path: "M 10,80 Q 40,75 80,77 Q 120,79 160,82",
       color: "#10b981",
       gradient: "from-emerald-500 to-emerald-600",
-      peak: "110mg/dL",
-      time: "60 min",
-      description: "Steady, sustained energy",
+      peak: "88mg/dL",
+      time: "90 min",
+      description: "Minimal rise, very stable",
       emoji: "🥑"
     },
     oatmeal: {
       name: "Steel-Cut Oats",
-      path: "M 10,80 Q 40,50 80,55 Q 120,65 160,75",
+      path: "M 10,80 Q 40,50 80,52 Q 120,60 160,70",
       color: "#f59e0b",
       gradient: "from-amber-500 to-amber-600",
-      peak: "135mg/dL",
-      time: "45 min",
-      description: "Moderate, gentle rise",
+      peak: "125mg/dL",
+      time: "60 min",
+      description: "Moderate rise, sustained energy",
       emoji: "🥣"
+    },
+    carnivore: {
+      name: "Carnivore (Steak)",
+      path: "M 10,80 Q 40,78 80,79 Q 120,80 160,81",
+      color: "#8b5cf6",
+      gradient: "from-purple-500 to-purple-600",
+      peak: "82mg/dL",
+      time: "120 min",
+      description: "Virtually flat, maximum stability",
+      emoji: "🥩"
     }
   };
 

@@ -48,21 +48,22 @@ const HeroSection = () => {
       <div className="text-center px-4 max-w-6xl mx-auto">
         {/* Animated Title */}
         <motion.div className="mb-8">
-          {titleWords.map((line, index) => (
-            <motion.h1
-              key={index}
-              className="text-5xl md:text-7xl lg:text-8xl font-bold text-foreground block"
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ 
-                delay: index * 0.3, 
-                duration: 0.8,
-                ease: [0.25, 0.46, 0.45, 0.94]
-              }}
-            >
-              {line}
-            </motion.h1>
-          ))}
+          <motion.h1
+            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            See Beyond <span className="text-gradient">Calories</span>
+          </motion.h1>
+          <motion.h2
+            className="text-xl md:text-2xl lg:text-3xl text-muted-foreground"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+          >
+            Understand Your Body's True Response to Food
+          </motion.h2>
         </motion.div>
 
         {/* Subtitle */}
