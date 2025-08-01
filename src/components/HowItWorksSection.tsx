@@ -46,7 +46,7 @@ const HowItWorksSection = () => {
           className="text-center mb-20"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.4 }}
         >
           <h2 className="text-4xl md:text-6xl font-bold mb-6">
             Your Complete 
@@ -66,7 +66,7 @@ const HowItWorksSection = () => {
               className="relative"
               initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ delay: index * 0.2, duration: 0.8 }}
+              transition={{ delay: index * 0.1, duration: 0.4 }}
             >
               <div className="gradient-card rounded-3xl p-8 hover-lift">
                 {/* Step Number */}
@@ -130,7 +130,7 @@ const HowItWorksSection = () => {
           className="max-w-5xl mx-auto"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 1, duration: 0.8 }}
+          transition={{ delay: 0.5, duration: 0.4 }}
         >
           <div className="gradient-card rounded-3xl p-8 md:p-12">
             <div className="grid lg:grid-cols-2 gap-12 items-center">

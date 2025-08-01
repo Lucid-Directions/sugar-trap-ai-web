@@ -41,7 +41,7 @@ const ProblemSection = () => {
           className="text-center mb-16"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.4 }}
         >
           <h2 className="text-4xl md:text-6xl font-bold mb-6">
             Why Traditional Nutrition 
@@ -85,7 +85,7 @@ const ProblemSection = () => {
           className="max-w-4xl mx-auto text-center"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={isInView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ delay: 1, duration: 0.8 }}
+          transition={{ delay: 0.5, duration: 0.4 }}
         >
           <div className="gradient-card rounded-3xl p-8 md:p-12">
             <motion.h3

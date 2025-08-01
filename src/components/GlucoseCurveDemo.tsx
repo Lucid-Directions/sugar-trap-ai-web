@@ -70,7 +70,7 @@ const GlucoseCurveDemo = () => {
           className="text-center mb-16"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.4 }}
         >
           <h2 className="text-4xl md:text-6xl font-bold mb-6">
             See The 
@@ -87,7 +87,7 @@ const GlucoseCurveDemo = () => {
             className="gradient-card rounded-3xl p-8 md:p-12"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ delay: 0.4, duration: 0.8 }}
+            transition={{ delay: 0.2, duration: 0.4 }}
           >
             {/* Glucose Chart */}
             <div className="bg-white rounded-2xl p-8 mb-8 shadow-inner">

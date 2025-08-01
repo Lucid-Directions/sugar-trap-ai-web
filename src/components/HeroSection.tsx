@@ -52,7 +52,7 @@ const HeroSection = () => {
             className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.4 }}
           >
             See Beyond <span className="text-gradient">Calories</span>
           </motion.h1>
@@ -60,7 +60,7 @@ const HeroSection = () => {
             className="text-xl md:text-2xl lg:text-3xl text-muted-foreground"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
+            transition={{ delay: 0.2, duration: 0.4 }}
           >
             Understand Your Body's True Response to Food
           </motion.h2>
@@ -71,7 +71,7 @@ const HeroSection = () => {
           className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-4xl mx-auto leading-relaxed"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2, duration: 0.8 }}
+          transition={{ delay: 0.6, duration: 0.4 }}
         >
           The revolutionary app that shows you what's really happening when you eat.
           <br />
@@ -85,7 +85,7 @@ const HeroSection = () => {
           className="flex flex-wrap justify-center gap-6 mb-12"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.6, duration: 0.8 }}
+          transition={{ delay: 0.8, duration: 0.4 }}
         >
           <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-md">
             <BarChart3 className="w-5 h-5 text-primary" />
@@ -102,7 +102,7 @@ const HeroSection = () => {
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 2, duration: 0.8 }}
+          transition={{ delay: 1.0, duration: 0.4 }}
         >
           <Button
             size="lg"
@@ -134,7 +134,7 @@ const HeroSection = () => {
           className="mt-16 text-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 2.4, duration: 0.8 }}
+          transition={{ delay: 1.2, duration: 0.4 }}
         >
           <p className="text-sm text-muted-foreground mb-4">
             Join 10,000+ early adopters revolutionizing their nutrition
