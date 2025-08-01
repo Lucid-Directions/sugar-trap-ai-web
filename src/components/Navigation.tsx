@@ -35,7 +35,7 @@ const Navigation = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 pt-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/">
