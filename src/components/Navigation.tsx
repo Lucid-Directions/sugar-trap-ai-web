@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,10 +18,10 @@ const Navigation = () => {
   }, []);
 
   const navItems = [
-    { label: 'How It Works', href: '#how-it-works' },
-    { label: 'Science', href: '#science' },
-    { label: 'Pricing', href: '#pricing' },
-    { label: 'About', href: '#about' }
+    { label: 'How It Works', href: '/#how-it-works' },
+    { label: 'Science', href: '/science' },
+    { label: 'Pricing', href: '/pricing' },
+    { label: 'Waitlist', href: '/waitlist' }
   ];
 
   return (
@@ -37,39 +38,54 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <motion.div
-            className="flex items-center gap-3"
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.2 }}
-          >
-            <div className="w-8 h-8 relative">
-              <motion.div
-                className="w-full h-full border-2 border-foreground rounded-sm"
-                animate={{ rotate: [0, 360] }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-xs font-bold">AI</span>
+          <Link to="/">
+            <motion.div
+              className="flex items-center gap-3"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
+            >
+              <div className="w-8 h-8 relative">
+                <motion.div
+                  className="w-full h-full border-2 border-foreground rounded-sm"
+                  animate={{ rotate: [0, 360] }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="text-xs font-bold">AI</span>
+                </div>
               </div>
-            </div>
-            <span className="text-xl font-bold">
-              Sugar<span className="text-muted-foreground">Trap</span>
-            </span>
-          </motion.div>
+              <span className="text-xl font-bold">
+                SugarTrap<span className="text-muted-foreground"> AI</span>
+              </span>
+            </motion.div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navItems.map((item, index) => (
-              <motion.a
-                key={item.label}
-                href={item.href}
-                className="story-link text-foreground hover:text-primary transition-colors font-medium"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.4 }}
-              >
-                {item.label}
-              </motion.a>
+              item.href.startsWith('/#') ? (
+                <motion.a
+                  key={item.label}
+                  href={item.href}
+                  className="story-link text-foreground hover:text-primary transition-colors font-medium"
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.4 }}
+                >
+                  {item.label}
+                </motion.a>
+              ) : (
+                <Link key={item.label} to={item.href}>
+                  <motion.span
+                    className="story-link text-foreground hover:text-primary transition-colors font-medium"
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1, duration: 0.4 }}
+                  >
+                    {item.label}
+                  </motion.span>
+                </Link>
+              )
             ))}
           </div>
 
@@ -78,8 +94,9 @@ const Navigation = () => {
             <Button
               className="magnetic-button shadow-md hover:shadow-lg"
               size="sm"
+              asChild
             >
-              Join Waitlist
+              <Link to="/waitlist">Join Waitlist</Link>
             </Button>
           </div>
 
@@ -127,20 +144,33 @@ const Navigation = () => {
             >
               <div className="p-4 space-y-4">
                 {navItems.map((item, index) => (
-                  <motion.a
-                    key={item.label}
-                    href={item.href}
-                    className="block text-foreground hover:text-primary transition-colors font-medium py-2"
-                    initial={{ x: -20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: index * 0.1 }}
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {item.label}
-                  </motion.a>
+                  item.href.startsWith('/#') ? (
+                    <motion.a
+                      key={item.label}
+                      href={item.href}
+                      className="block text-foreground hover:text-primary transition-colors font-medium py-2"
+                      initial={{ x: -20, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ delay: index * 0.1 }}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {item.label}
+                    </motion.a>
+                  ) : (
+                    <Link key={item.label} to={item.href} onClick={() => setIsOpen(false)}>
+                      <motion.span
+                        className="block text-foreground hover:text-primary transition-colors font-medium py-2"
+                        initial={{ x: -20, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: index * 0.1 }}
+                      >
+                        {item.label}
+                      </motion.span>
+                    </Link>
+                  )
                 ))}
-                <Button className="w-full mt-4">
-                  Join Waitlist
+                <Button className="w-full mt-4" asChild>
+                  <Link to="/waitlist">Join Waitlist</Link>
                 </Button>
               </div>
             </motion.div>

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowDown, Zap, BarChart3 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
   const titleWords = [
@@ -105,21 +106,25 @@ const HeroSection = () => {
           <Button
             size="lg"
             className="magnetic-button group relative px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-glow transform transition-all duration-300 hover:scale-105"
+            asChild
           >
-            <span className="relative z-10">Join the Waitlist</span>
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-primary to-primary-glow opacity-0 rounded-lg"
-              whileHover={{ opacity: 1 }}
-              transition={{ duration: 0.3 }}
-            />
+            <Link to="/waitlist">
+              <span className="relative z-10">Join the Waitlist</span>
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-primary to-primary-glow opacity-0 rounded-lg"
+                whileHover={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+              />
+            </Link>
           </Button>
           
           <Button
             variant="outline"
             size="lg"
             className="px-8 py-4 text-lg font-semibold border-2 hover:bg-primary/5 hover:border-primary transition-all duration-300"
+            asChild
           >
-            See How It Works
+            <Link to="/science">See How It Works</Link>
           </Button>
         </motion.div>
 
