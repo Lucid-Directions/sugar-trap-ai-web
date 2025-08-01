@@ -4,7 +4,7 @@ import { TrendingUp, Brain, Microscope, Activity, BarChart, Clock } from 'lucide
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
-import glucoseIllustration from '@/assets/glucose-response-illustration.jpg';
+
 
 const SciencePage = () => {
   const ref = useRef(null);
@@ -56,24 +56,6 @@ const SciencePage = () => {
             </p>
           </motion.div>
 
-          {/* Visual illustration */}
-          <motion.div
-            className="max-w-4xl mx-auto mb-8"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-          >
-            <div className="gradient-card rounded-2xl p-8 text-center">
-              <img 
-                src={glucoseIllustration} 
-                alt="Glucose response curves for different food types"
-                className="w-full h-auto rounded-xl shadow-lg"
-              />
-              <p className="text-sm text-muted-foreground mt-4">
-                Visual representation of how different foods affect blood glucose levels over time
-              </p>
-            </div>
-          </motion.div>
         </div>
       </section>
 
