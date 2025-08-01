@@ -1,6 +1,6 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Camera, BarChart3, Brain, Lightbulb, Zap, Smartphone } from 'lucide-react';
+import { Camera, BarChart3, Brain, Lightbulb, Zap, Smartphone, Activity } from 'lucide-react';
 
 const HowItWorksSection = () => {
   const ref = useRef(null);
@@ -25,7 +25,7 @@ const HowItWorksSection = () => {
       icon: Brain,
       title: "AI Glucose Prediction",
       description: "See your predicted blood sugar response curve and understand exactly how this meal will affect your energy.",
-      features: ["Glucose prediction", "Energy forecasting", "Personalized insights", "CGM integration (Max plan)"],
+      features: ["Glucose prediction", "Energy forecasting", "Personalized insights"],
       color: "from-purple-500 to-purple-600",
       premium: true
     },
@@ -35,6 +35,15 @@ const HowItWorksSection = () => {
       description: "Get science-backed suggestions to optimize any meal for stable, lasting energy and better health outcomes.",
       features: ["Meal optimization", "Personalized tips", "Long-term patterns"],
       color: "from-amber-500 to-amber-600"
+    },
+    {
+      icon: Activity,
+      title: "CGM Integration & Validation",
+      description: "Connect your continuous glucose monitor to validate predictions against real data and unlock advanced analytics.",
+      features: ["Connect your own CGM device", "Compare predictions to actual data", "Advanced analytics dashboard", "Healthcare provider reports", "Meal timing recommendations"],
+      color: "from-indigo-600 to-purple-700",
+      premium: true,
+      isMax: true
     }
   ];
 
@@ -81,8 +90,12 @@ const HowItWorksSection = () => {
                       {index + 1}
                     </div>
                     {step.premium && (
-                      <div className="absolute -bottom-2 -right-2 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black text-xs px-2 py-1 rounded-full font-bold">
-                        PRO
+                      <div className={`absolute -bottom-2 -right-2 bg-gradient-to-r text-xs px-2 py-1 rounded-full font-bold ${
+                        step.isMax 
+                          ? 'from-indigo-500 to-purple-600 text-white'
+                          : 'from-yellow-400 to-yellow-500 text-black'
+                      }`}>
+                        {step.isMax ? 'MAX' : 'PRO'}
                       </div>
                     )}
                   </motion.div>
