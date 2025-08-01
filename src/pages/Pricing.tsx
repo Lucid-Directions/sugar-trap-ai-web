@@ -48,7 +48,7 @@ const PricingPage = () => {
         "Everything in Free, plus:",
         "Unlimited meal logging",
         "AI Glucose Predictions for every meal",
-        "Personalized meal optimization tips",
+        "Personalised meal optimisation tips",
         "Weekly trends and patterns",
         "Detailed progress tracking",
         "Export your data",
@@ -86,7 +86,7 @@ const PricingPage = () => {
     {
       icon: Heart,
       title: "Better Health Outcomes",
-      description: "Understand your body's response to optimize long-term wellness"
+      description: "Understand your body's response to optimise long-term wellness"
     },
     {
       icon: TrendingUp,

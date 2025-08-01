@@ -76,7 +76,7 @@ const HeroSection = () => {
           The revolutionary app that shows you what's really happening when you eat.
           <br />
           <span className="text-gradient font-semibold">
-            Track calories, predict glucose, optimize energy.
+            Track calories, predict glucose, optimise energy.
           </span>
         </motion.p>
 

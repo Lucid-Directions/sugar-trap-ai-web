@@ -25,15 +25,15 @@ const HowItWorksSection = () => {
       icon: Brain,
       title: "AI Glucose Prediction",
       description: "See your predicted blood sugar response curve and understand exactly how this meal will affect your energy.",
-      features: ["Glucose prediction", "Energy forecasting", "Personalized insights"],
+      features: ["Glucose prediction", "Energy forecasting", "Personalised insights"],
       color: "from-purple-500 to-purple-600",
       premium: true
     },
     {
       icon: Lightbulb,
-      title: "Optimize & Learn",
-      description: "Get science-backed suggestions to optimize any meal for stable, lasting energy and better health outcomes.",
-      features: ["Meal optimization", "Personalized tips", "Long-term patterns"],
+      title: "Optimise & Learn",
+      description: "Get science-backed suggestions to optimise any meal for stable, lasting energy and better health outcomes.",
+      features: ["Meal optimisation", "Personalised tips", "Long-term patterns"],
       color: "from-amber-500 to-amber-600"
     },
     {
@@ -63,7 +63,7 @@ const HowItWorksSection = () => {
           </h2>
           <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
             Start with familiar calorie tracking, then unlock revolutionary glucose insights 
-            when you're ready to optimize your health.
+            when you're ready to optimise your health.
           </p>
         </motion.div>
 
@@ -170,7 +170,7 @@ const HowItWorksSection = () => {
                     </div>
                     <div>
                       <h4 className="font-semibold mb-2">For Athletes</h4>
-                      <p className="text-muted-foreground text-sm">Optimize energy without the crash</p>
+                      <p className="text-muted-foreground text-sm">Optimise energy without the crash</p>
                     </div>
                   </div>
 

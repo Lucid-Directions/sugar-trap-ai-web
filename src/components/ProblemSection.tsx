@@ -128,7 +128,7 @@ const ProblemSection = () => {
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-primary">70%</div>
-                <div className="text-sm text-muted-foreground">Reduction in energy crashes with optimized meals</div>
+                <div className="text-sm text-muted-foreground">Reduction in energy crashes with optimised meals</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-primary">10x</div>
