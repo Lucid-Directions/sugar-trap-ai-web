@@ -25,7 +25,7 @@ const HowItWorksSection = () => {
       icon: Brain,
       title: "AI Glucose Prediction",
       description: "See your predicted blood sugar response curve and understand exactly how this meal will affect your energy.",
-      features: ["Glucose prediction", "Energy forecasting", "Personalized insights"],
+      features: ["Glucose prediction", "Energy forecasting", "Personalized insights", "CGM integration (Max plan)"],
       color: "from-purple-500 to-purple-600",
       premium: true
     },
