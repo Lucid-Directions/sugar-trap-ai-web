@@ -146,7 +146,7 @@ const HeroSection = () => {
     <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-background via-background to-secondary/10">
       
 
-      <div className="relative z-10 container mx-auto px-4 py-20 lg:py-32">
+      <div className="relative z-10 container mx-auto px-4 py-16 sm:py-20 lg:py-32">
         <div className="grid lg:grid-cols-[1fr,0.6fr] gap-8 lg:gap-16 items-center">
           {/* Left Side - Content */}
           <div className="space-y-6 lg:space-y-8">

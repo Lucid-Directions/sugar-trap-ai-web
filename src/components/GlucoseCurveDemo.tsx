@@ -63,11 +63,11 @@ const GlucoseCurveDemo = () => {
   const currentMeal = mealData[selectedMeal];
 
   return (
-    <section id="glucose-demo" className="py-16 bg-gradient-to-b from-secondary/20 to-background">
+    <section id="glucose-demo" className="py-12 md:py-16 bg-gradient-to-b from-secondary/20 to-background scroll-mt-4">
       <div className="container mx-auto px-4">
         <motion.div
           ref={ref}
-          className="text-center mb-16"
+          className="text-center mb-8 md:mb-12"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.4 }}
