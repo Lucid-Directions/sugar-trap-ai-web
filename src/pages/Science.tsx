@@ -490,20 +490,93 @@ const SciencePage = () => {
               <div className="lg:hidden">
                 <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-lg">
                   <div className="grid grid-cols-2 gap-4 mb-6">
-                    <div className="text-center">
-                      <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mb-2 mx-auto">
-                        <Target className="w-6 h-6 text-red-600" />
-                      </div>
-                      <div className="text-sm font-medium text-red-700">Old Paradigm</div>
-                      <div className="text-xs text-red-600">One-size-fits-all</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-2 mx-auto">
-                        <Zap className="w-6 h-6 text-green-600" />
-                      </div>
-                      <div className="text-sm font-medium text-green-700">New Science</div>
-                      <div className="text-xs text-green-600">Personalized glucose</div>
-                    </div>
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <button className="text-center p-2 rounded-xl hover:bg-white/40 transition-colors">
+                          <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mb-2 mx-auto">
+                            <Target className="w-6 h-6 text-red-600" />
+                          </div>
+                          <div className="text-sm font-medium text-red-700">Old Paradigm</div>
+                          <div className="text-xs text-red-600">One-size-fits-all</div>
+                          <Info className="w-3 h-3 mx-auto mt-1 opacity-60" />
+                        </button>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-md">
+                        <DialogHeader>
+                          <DialogTitle className="flex items-center gap-2">
+                            <Target className="w-5 h-5 text-red-600" />
+                            The Old Paradigm
+                          </DialogTitle>
+                        </DialogHeader>
+                        <div className="space-y-4">
+                          <p className="text-sm text-muted-foreground leading-relaxed">
+                            For decades, nutrition advice followed a one-size-fits-all model that ignored individual metabolic differences, genetic variations, and hormonal responses to food.
+                          </p>
+                          <div className="space-y-3">
+                            <div className="bg-red-50 p-3 rounded-lg">
+                              <p className="text-sm font-medium text-red-800 mb-2">Problems with Traditional Approach:</p>
+                              <ul className="text-sm text-red-700 space-y-1">
+                                <li>• 95% of diets fail long-term</li>
+                                <li>• Ignored insulin response variability</li>
+                                <li>• Treated all calories as equal</li>
+                                <li>• Created restriction-rebound cycles</li>
+                                <li>• Overlooked food timing and sequence</li>
+                              </ul>
+                            </div>
+                            <div className="bg-gray-50 p-3 rounded-lg">
+                              <p className="text-sm font-medium text-gray-700">The Missing Piece</p>
+                              <p className="text-sm text-gray-600 mt-1">
+                                Research shows insulin response to identical foods can vary 10-fold between individuals, explaining why universal dietary advice fails.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
+                    
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <button className="text-center p-2 rounded-xl hover:bg-white/40 transition-colors">
+                          <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-2 mx-auto">
+                            <Zap className="w-6 h-6 text-green-600" />
+                          </div>
+                          <div className="text-sm font-medium text-green-700">New Science</div>
+                          <div className="text-xs text-green-600">Personalized glucose</div>
+                          <Info className="w-3 h-3 mx-auto mt-1 opacity-60" />
+                        </button>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-md">
+                        <DialogHeader>
+                          <DialogTitle className="flex items-center gap-2">
+                            <Zap className="w-5 h-5 text-green-600" />
+                            The New Science
+                          </DialogTitle>
+                        </DialogHeader>
+                        <div className="space-y-4">
+                          <p className="text-sm text-muted-foreground leading-relaxed">
+                            Modern precision nutrition uses continuous glucose monitoring and AI to understand individual metabolic responses, creating personalized strategies that work with your unique physiology.
+                          </p>
+                          <div className="space-y-3">
+                            <div className="bg-green-50 p-3 rounded-lg">
+                              <p className="text-sm font-medium text-green-800 mb-2">Breakthrough Discoveries:</p>
+                              <ul className="text-sm text-green-700 space-y-1">
+                                <li>• 70% variation in glucose response to identical foods</li>
+                                <li>• Food order can reduce spikes by 40-70%</li>
+                                <li>• Protein first lowers peak glucose by 30%</li>
+                                <li>• 85% adherence with personalized protocols</li>
+                                <li>• Real-time optimization possible</li>
+                              </ul>
+                            </div>
+                            <div className="bg-green-50 p-3 rounded-lg">
+                              <p className="text-sm font-medium text-green-700">The Game Changer</p>
+                              <p className="text-sm text-green-600 mt-1">
+                                CGM technology reveals your metabolic fingerprint, enabling AI to predict and optimize your glucose response to any meal.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
                   </div>
                   
                   <div className="space-y-3">
@@ -650,13 +723,47 @@ const SciencePage = () => {
               >
                 <div className="text-center">
                   <div className="inline-flex items-center gap-4 p-6 rounded-2xl bg-gradient-to-r from-gray-50 to-gray-100 border border-gray-200">
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-2 mx-auto">
-                        <BarChart className="w-8 h-8 text-red-600" />
-                      </div>
-                      <div className="text-sm font-semibold text-red-700">Traditional</div>
-                      <div className="text-xs text-red-600">Calories Only</div>
-                    </div>
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <button className="text-center hover:bg-red-50 p-2 rounded-xl transition-colors group">
+                          <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-2 mx-auto group-hover:bg-red-200 transition-colors">
+                            <BarChart className="w-8 h-8 text-red-600" />
+                          </div>
+                          <div className="text-sm font-semibold text-red-700">Traditional</div>
+                          <div className="text-xs text-red-600">Calories Only</div>
+                          <Info className="w-3 h-3 mx-auto mt-1 opacity-60" />
+                        </button>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-md">
+                        <DialogHeader>
+                          <DialogTitle className="flex items-center gap-2">
+                            <BarChart className="w-5 h-5 text-red-600" />
+                            Traditional Calorie-Only Model
+                          </DialogTitle>
+                        </DialogHeader>
+                        <div className="space-y-4">
+                          <p className="text-sm text-muted-foreground leading-relaxed">
+                            The traditional "calories in, calories out" model assumes all calories are metabolically equivalent, ignoring the complex hormonal responses that determine how food affects your body.
+                          </p>
+                          <div className="bg-red-50 p-3 rounded-lg">
+                            <p className="text-sm font-medium text-red-800 mb-2">Fundamental Flaws:</p>
+                            <ul className="text-sm text-red-700 space-y-1">
+                              <li>• 200 calories of soda ≠ 200 calories of almonds</li>
+                              <li>• Ignores insulin response differences</li>
+                              <li>• Same food = different metabolic impact per person</li>
+                              <li>• No consideration of food timing or sequence</li>
+                              <li>• Leads to yo-yo dieting and metabolic damage</li>
+                            </ul>
+                          </div>
+                          <div className="bg-red-50 p-3 rounded-lg">
+                            <p className="text-sm font-medium text-red-700">Why It Fails</p>
+                            <p className="text-sm text-red-600 mt-1">
+                              Metabolism can drop up to 40% during caloric restriction, and 95% of traditional diets fail within 5 years due to this oversimplified approach.
+                            </p>
+                          </div>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
                     
                     <div className="flex items-center gap-2">
                       <div className="w-8 h-0.5 bg-gray-300"></div>
@@ -664,13 +771,47 @@ const SciencePage = () => {
                       <div className="w-8 h-0.5 bg-gray-300"></div>
                     </div>
                     
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-2 mx-auto">
-                        <LineChart className="w-8 h-8 text-green-600" />
-                      </div>
-                      <div className="text-sm font-semibold text-green-700">Personalized</div>
-                      <div className="text-xs text-green-600">Glucose-Centric</div>
-                    </div>
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <button className="text-center hover:bg-green-50 p-2 rounded-xl transition-colors group">
+                          <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-2 mx-auto group-hover:bg-green-200 transition-colors">
+                            <LineChart className="w-8 h-8 text-green-600" />
+                          </div>
+                          <div className="text-sm font-semibold text-green-700">Personalized</div>
+                          <div className="text-xs text-green-600">Glucose-Centric</div>
+                          <Info className="w-3 h-3 mx-auto mt-1 opacity-60" />
+                        </button>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-md">
+                        <DialogHeader>
+                          <DialogTitle className="flex items-center gap-2">
+                            <LineChart className="w-5 h-5 text-green-600" />
+                            Personalized Glucose-Centric Approach
+                          </DialogTitle>
+                        </DialogHeader>
+                        <div className="space-y-4">
+                          <p className="text-sm text-muted-foreground leading-relaxed">
+                            The glucose-centric model recognizes that your metabolic response to food is as unique as your fingerprint, using real-time data to optimize your individual glucose patterns.
+                          </p>
+                          <div className="bg-green-50 p-3 rounded-lg">
+                            <p className="text-sm font-medium text-green-800 mb-2">Revolutionary Insights:</p>
+                            <ul className="text-sm text-green-700 space-y-1">
+                              <li>• Your glucose response is your metabolic fingerprint</li>
+                              <li>• Food combinations create synergistic effects</li>
+                              <li>• Timing and sequence matter more than calories</li>
+                              <li>• Real-time optimization prevents glucose spikes</li>
+                              <li>• Sustainable because it works with your biology</li>
+                            </ul>
+                          </div>
+                          <div className="bg-green-50 p-3 rounded-lg">
+                            <p className="text-sm font-medium text-green-700">The Science</p>
+                            <p className="text-sm text-green-600 mt-1">
+                              Research shows 70% variation in glucose response to identical foods between individuals. AI analyzes your patterns to predict and optimize every meal.
+                            </p>
+                          </div>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
                   </div>
                 </div>
               </motion.div>
@@ -705,16 +846,64 @@ const SciencePage = () => {
                       <h3 className="text-lg font-bold mb-4 text-center">Century of Breakthroughs</h3>
                       <div className="grid grid-cols-2 gap-3">
                         {[
-                          { year: "1889", title: "Pancreas Link", icon: "🔬" },
-                          { year: "1921", title: "Insulin Isolated", icon: "💉" },
-                          { year: "1978", title: "Synthetic Era", icon: "🧬" },
-                          { year: "2020s", title: "AI Precision", icon: "🤖" }
+                          { 
+                            year: "1889", 
+                            title: "Pancreas Link", 
+                            icon: "🔬",
+                            details: "von Mering and Minkowski discovered the link between the pancreas and diabetes by surgically removing it from dogs, proving the organ's critical role in glucose regulation.",
+                            significance: "First definitive proof that diabetes was caused by pancreatic dysfunction, not kidney disease as previously thought."
+                          },
+                          { 
+                            year: "1921", 
+                            title: "Insulin Isolated", 
+                            icon: "💉",
+                            details: "Banting, Best, Macleod, and Collip successfully isolated and purified insulin at the University of Toronto, transforming diabetes from a fatal diagnosis to a manageable condition.",
+                            significance: "First successful treatment for type 1 diabetes, saving millions of lives and earning the 1923 Nobel Prize."
+                          },
+                          { 
+                            year: "1978", 
+                            title: "Synthetic Era", 
+                            icon: "🧬",
+                            details: "Genentech created the first synthetic human insulin using recombinant DNA technology, eliminating reliance on animal sources and allergic reactions.",
+                            significance: "Unlimited production of pure human insulin, making treatment accessible worldwide and paving the way for modern biotech."
+                          },
+                          { 
+                            year: "2020s", 
+                            title: "AI Precision", 
+                            icon: "🤖",
+                            details: "Machine learning algorithms analyze CGM data to predict individual glucose responses, enabling personalized nutrition recommendations without expensive clinical testing.",
+                            significance: "Democratizes precision medicine, making personalized metabolic insights accessible to everyone through consumer technology."
+                          }
                         ].map((milestone, index) => (
-                          <div key={index} className="text-center p-2 bg-white/40 rounded-lg">
-                            <div className="text-lg mb-1">{milestone.icon}</div>
-                            <div className="text-xs font-bold text-primary">{milestone.year}</div>
-                            <div className="text-xs font-medium">{milestone.title}</div>
-                          </div>
+                          <Dialog key={index}>
+                            <DialogTrigger asChild>
+                              <button className="text-center p-2 bg-white/40 rounded-lg hover:bg-white/60 transition-colors">
+                                <div className="text-lg mb-1">{milestone.icon}</div>
+                                <div className="text-xs font-bold text-primary">{milestone.year}</div>
+                                <div className="text-xs font-medium">{milestone.title}</div>
+                                <Info className="w-3 h-3 mx-auto mt-1 opacity-60" />
+                              </button>
+                            </DialogTrigger>
+                            <DialogContent className="max-w-md">
+                              <DialogHeader>
+                                <DialogTitle className="flex items-center gap-2">
+                                  <span className="text-xl">{milestone.icon}</span>
+                                  {milestone.year}: {milestone.title}
+                                </DialogTitle>
+                              </DialogHeader>
+                              <div className="space-y-4">
+                                <p className="text-sm text-muted-foreground leading-relaxed">
+                                  {milestone.details}
+                                </p>
+                                <div className="bg-blue-50 p-3 rounded-lg">
+                                  <p className="text-sm font-medium text-blue-800 mb-1">Historical Significance</p>
+                                  <p className="text-sm text-blue-700">
+                                    {milestone.significance}
+                                  </p>
+                                </div>
+                              </div>
+                            </DialogContent>
+                          </Dialog>
                         ))}
                       </div>
                     </div>
@@ -1545,44 +1734,152 @@ const SciencePage = () => {
                   <h4 className="text-xl font-bold mb-6 text-center">Clinical Example: Bread Response Modification</h4>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
-                    <div className="text-center">
-                      <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl overflow-hidden mx-auto mb-3 md:mb-4 border border-gray-200">
-                        <img 
-                          src={breadAlonePhoto} 
-                          alt="Bread alone" 
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <h5 className="font-semibold mb-2 text-sm md:text-base">Bread Alone</h5>
-                      <div className="text-lg md:text-2xl font-bold text-red-600 mb-2">Baseline Spike</div>
-                      <p className="text-xs md:text-sm text-muted-foreground">Rapid glucose rise, energy crash in 2 hours</p>
-                    </div>
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <button className="text-center hover:bg-gray-50 p-3 rounded-xl transition-colors group">
+                          <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl overflow-hidden mx-auto mb-3 md:mb-4 border border-gray-200 group-hover:shadow-md transition-shadow">
+                            <img 
+                              src={breadAlonePhoto} 
+                              alt="Bread alone" 
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          <h5 className="font-semibold mb-2 text-sm md:text-base">Bread Alone</h5>
+                          <div className="text-lg md:text-2xl font-bold text-red-600 mb-2">Baseline Spike</div>
+                          <p className="text-xs md:text-sm text-muted-foreground">Rapid glucose rise, energy crash in 2 hours</p>
+                          <Info className="w-3 h-3 mx-auto mt-2 opacity-60" />
+                        </button>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-md">
+                        <DialogHeader>
+                          <DialogTitle>Bread Alone: The Glucose Roller Coaster</DialogTitle>
+                        </DialogHeader>
+                        <div className="space-y-4">
+                          <img 
+                            src={breadAlonePhoto} 
+                            alt="Bread alone" 
+                            className="w-full h-40 object-cover rounded-lg"
+                          />
+                          <p className="text-sm text-muted-foreground leading-relaxed">
+                            Consuming refined carbohydrates alone creates the most dramatic glucose response pattern, leading to rapid spikes followed by energy crashes.
+                          </p>
+                          <div className="bg-red-50 p-3 rounded-lg">
+                            <p className="text-sm font-medium text-red-800 mb-2">What Happens:</p>
+                            <ul className="text-sm text-red-700 space-y-1">
+                              <li>• Glucose peaks within 30-60 minutes</li>
+                              <li>• Insulin spikes to dangerous levels</li>
+                              <li>• Energy crash occurs 2-3 hours later</li>
+                              <li>• Triggers hunger and cravings</li>
+                              <li>• Promotes fat storage and inflammation</li>
+                            </ul>
+                          </div>
+                          <div className="bg-red-50 p-3 rounded-lg">
+                            <p className="text-sm font-medium text-red-700">The Science</p>
+                            <p className="text-sm text-red-600 mt-1">
+                              Simple carbohydrates are rapidly broken down to glucose, overwhelming cellular uptake capacity and forcing the pancreas to produce massive amounts of insulin.
+                            </p>
+                          </div>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
 
-                    <div className="text-center">
-                      <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl overflow-hidden mx-auto mb-3 md:mb-4 border border-gray-200">
-                        <img 
-                          src={breadAvocadoPhoto} 
-                          alt="Bread with avocado" 
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <h5 className="font-semibold mb-2 text-sm md:text-base">Bread + Avocado</h5>
-                      <div className="text-lg md:text-2xl font-bold text-yellow-600 mb-2">40% Reduction</div>
-                      <p className="text-xs md:text-sm text-muted-foreground">Fats slow glucose absorption</p>
-                    </div>
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <button className="text-center hover:bg-gray-50 p-3 rounded-xl transition-colors group">
+                          <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl overflow-hidden mx-auto mb-3 md:mb-4 border border-gray-200 group-hover:shadow-md transition-shadow">
+                            <img 
+                              src={breadAvocadoPhoto} 
+                              alt="Bread with avocado" 
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          <h5 className="font-semibold mb-2 text-sm md:text-base">Bread + Avocado</h5>
+                          <div className="text-lg md:text-2xl font-bold text-yellow-600 mb-2">40% Reduction</div>
+                          <p className="text-xs md:text-sm text-muted-foreground">Fats slow glucose absorption</p>
+                          <Info className="w-3 h-3 mx-auto mt-2 opacity-60" />
+                        </button>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-md">
+                        <DialogHeader>
+                          <DialogTitle>Bread + Avocado: The Buffering Effect</DialogTitle>
+                        </DialogHeader>
+                        <div className="space-y-4">
+                          <img 
+                            src={breadAvocadoPhoto} 
+                            alt="Bread with avocado" 
+                            className="w-full h-40 object-cover rounded-lg"
+                          />
+                          <p className="text-sm text-muted-foreground leading-relaxed">
+                            Adding healthy fats like avocado to carbohydrates significantly moderates the glucose response by slowing digestion and absorption.
+                          </p>
+                          <div className="bg-yellow-50 p-3 rounded-lg">
+                            <p className="text-sm font-medium text-yellow-800 mb-2">Metabolic Benefits:</p>
+                            <ul className="text-sm text-yellow-700 space-y-1">
+                              <li>• 40% reduction in peak glucose levels</li>
+                              <li>• Slower, more sustained energy release</li>
+                              <li>• Reduced insulin demand on pancreas</li>
+                              <li>• Extended satiety from healthy fats</li>
+                              <li>• Better micronutrient absorption</li>
+                            </ul>
+                          </div>
+                          <div className="bg-yellow-50 p-3 rounded-lg">
+                            <p className="text-sm font-medium text-yellow-700">The Mechanism</p>
+                            <p className="text-sm text-yellow-600 mt-1">
+                              Monounsaturated fats slow gastric emptying and enhance incretin hormone release, creating a natural buffer against glucose spikes.
+                            </p>
+                          </div>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
 
-                    <div className="text-center">
-                      <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl overflow-hidden mx-auto mb-3 md:mb-4 border border-gray-200">
-                        <img 
-                          src={avocadoBreadSequencePhoto} 
-                          alt="Avocado first, then bread sequence" 
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <h5 className="font-semibold mb-2 text-sm md:text-base">Avocado First, Then Bread</h5>
-                      <div className="text-lg md:text-2xl font-bold text-green-600 mb-2">70% Reduction</div>
-                      <p className="text-xs md:text-sm text-muted-foreground">Optimal sequence for stable glucose</p>
-                    </div>
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <button className="text-center hover:bg-gray-50 p-3 rounded-xl transition-colors group">
+                          <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl overflow-hidden mx-auto mb-3 md:mb-4 border border-gray-200 group-hover:shadow-md transition-shadow">
+                            <img 
+                              src={avocadoBreadSequencePhoto} 
+                              alt="Avocado first, then bread sequence" 
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          <h5 className="font-semibold mb-2 text-sm md:text-base">Avocado First, Then Bread</h5>
+                          <div className="text-lg md:text-2xl font-bold text-green-600 mb-2">70% Reduction</div>
+                          <p className="text-xs md:text-sm text-muted-foreground">Optimal sequence for stable glucose</p>
+                          <Info className="w-3 h-3 mx-auto mt-2 opacity-60" />
+                        </button>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-md">
+                        <DialogHeader>
+                          <DialogTitle>Avocado First: The Sequence Revolution</DialogTitle>
+                        </DialogHeader>
+                        <div className="space-y-4">
+                          <img 
+                            src={avocadoBreadSequencePhoto} 
+                            alt="Avocado first, then bread sequence" 
+                            className="w-full h-40 object-cover rounded-lg"
+                          />
+                          <p className="text-sm text-muted-foreground leading-relaxed">
+                            Eating protein and fats before carbohydrates creates the most dramatic glucose-lowering effect through the powerful "incretin effect."
+                          </p>
+                          <div className="bg-green-50 p-3 rounded-lg">
+                            <p className="text-sm font-medium text-green-800 mb-2">Optimal Results:</p>
+                            <ul className="text-sm text-green-700 space-y-1">
+                              <li>• 70% reduction in peak glucose response</li>
+                              <li>• Enhanced GLP-1 hormone release</li>
+                              <li>• Delayed gastric emptying</li>
+                              <li>• Improved insulin sensitivity</li>
+                              <li>• Sustained energy without crashes</li>
+                            </ul>
+                          </div>
+                          <div className="bg-green-50 p-3 rounded-lg">
+                            <p className="text-sm font-medium text-green-700">The Science Behind Sequence</p>
+                            <p className="text-sm text-green-600 mt-1">
+                              The incretin effect: eating fat and protein first triggers GLP-1 release from L-cells in the gut, which then prepares the pancreas and slows carbohydrate absorption, creating a "protective buffer."
+                            </p>
+                          </div>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
                   </div>
                   
                   <div className="mt-8 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6">
@@ -1610,21 +1907,73 @@ const SciencePage = () => {
 
               <div className="grid md:grid-cols-3 gap-6 md:gap-8">
                 {studies.map((study, index) => (
-                  <motion.div
-                    key={study.title}
-                    className="gradient-card rounded-2xl p-6 hover-lift"
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ delay: index * 0.2 + 1, duration: 0.6 }}
-                  >
-                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br from-white to-gray-100 flex items-center justify-center mb-4 ${study.color}`}>
-                      <study.icon className="w-6 h-6" />
-                    </div>
-                    
-                    <h3 className="font-bold mb-2">{study.title}</h3>
-                    <p className="text-sm text-muted-foreground mb-3">{study.journal}</p>
-                    <p className="text-sm font-medium">{study.finding}</p>
-                  </motion.div>
+                  <Dialog key={study.title}>
+                    <DialogTrigger asChild>
+                      <motion.div
+                        className="gradient-card rounded-2xl p-6 hover-lift cursor-pointer group"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={isInView ? { opacity: 1, y: 0 } : {}}
+                        transition={{ delay: index * 0.2 + 1, duration: 0.6 }}
+                      >
+                        <div className={`w-12 h-12 rounded-xl bg-gradient-to-br from-white to-gray-100 flex items-center justify-center mb-4 ${study.color} group-hover:scale-110 transition-transform`}>
+                          <study.icon className="w-6 h-6" />
+                        </div>
+                        
+                        <h3 className="font-bold mb-2">{study.title}</h3>
+                        <p className="text-sm text-muted-foreground mb-3">{study.journal}</p>
+                        <p className="text-sm font-medium mb-2">{study.finding}</p>
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs text-primary font-medium">Tap to read details</span>
+                          <Info className="w-4 h-4 text-primary" />
+                        </div>
+                      </motion.div>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-md">
+                      <DialogHeader>
+                        <DialogTitle className="flex items-center gap-2">
+                          <study.icon className={`w-5 h-5 ${study.color}`} />
+                          {study.title}
+                        </DialogTitle>
+                      </DialogHeader>
+                      <div className="space-y-4">
+                        <div className="bg-gray-50 p-3 rounded-lg">
+                          <p className="text-sm font-medium text-gray-800">Publication</p>
+                          <p className="text-sm text-gray-600">{study.journal}</p>
+                        </div>
+                        <div className="bg-blue-50 p-3 rounded-lg">
+                          <p className="text-sm font-medium text-blue-800 mb-1">Key Finding</p>
+                          <p className="text-sm text-blue-700">{study.finding}</p>
+                        </div>
+                        {study.title === "Glucose Variability Study" && (
+                          <div className="space-y-2">
+                            <p className="text-sm text-muted-foreground">This landmark study demonstrated that strategic food combinations can dramatically reduce postprandial glucose excursions.</p>
+                            <div className="bg-green-50 p-2 rounded">
+                              <p className="text-xs text-green-700 font-medium">Clinical Impact:</p>
+                              <p className="text-xs text-green-600">Proves that "what you eat with what" matters more than total carbohydrate content</p>
+                            </div>
+                          </div>
+                        )}
+                        {study.title === "Cognitive Performance Research" && (
+                          <div className="space-y-2">
+                            <p className="text-sm text-muted-foreground">Research linking glucose stability to cognitive performance, demonstrating the brain's dependence on steady energy supply.</p>
+                            <div className="bg-blue-50 p-2 rounded">
+                              <p className="text-xs text-blue-700 font-medium">Mechanism:</p>
+                              <p className="text-xs text-blue-600">Stable glucose prevents brain energy fluctuations that impair focus, memory, and decision-making</p>
+                            </div>
+                          </div>
+                        )}
+                        {study.title === "Metabolic Health Analysis" && (
+                          <div className="space-y-2">
+                            <p className="text-sm text-muted-foreground">Analysis showing that meal sequencing can dramatically alter glucose response patterns without changing food content.</p>
+                            <div className="bg-purple-50 p-2 rounded">
+                              <p className="text-xs text-purple-700 font-medium">Revolutionary Discovery:</p>
+                              <p className="text-xs text-purple-600">Food order activates incretin hormones that pre-condition the body for optimal glucose handling</p>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </DialogContent>
+                  </Dialog>
                 ))}
               </div>
 
@@ -1675,21 +2024,135 @@ const SciencePage = () => {
                 </p>
 
                 <div className="grid md:grid-cols-3 gap-4 md:gap-6 mb-8">
-                  <div className="bg-white rounded-xl p-4 md:p-6 shadow-sm">
-                    <BarChart className="w-8 h-8 text-primary mx-auto mb-3" />
-                    <h3 className="font-semibold mb-2">Multi-Factor Analysis</h3>
-                    <p className="text-sm text-muted-foreground">Integrates food composition, sequence, timing, and your unique metabolic profile</p>
-                  </div>
-                  <div className="bg-white rounded-xl p-4 md:p-6 shadow-sm">
-                    <Brain className="w-8 h-8 text-primary mx-auto mb-3" />
-                    <h3 className="font-semibold mb-2">Personalized Predictions</h3>
-                    <p className="text-sm text-muted-foreground">Learns your individual patterns across different physiological states</p>
-                  </div>
-                  <div className="bg-white rounded-xl p-4 md:p-6 shadow-sm">
-                    <Activity className="w-8 h-8 text-primary mx-auto mb-3" />
-                    <h3 className="font-semibold mb-2">Context-Aware Recommendations</h3>
-                    <p className="text-sm text-muted-foreground">Adapts to exercise, stress, sleep, and circadian factors</p>
-                  </div>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <button className="bg-white rounded-xl p-4 md:p-6 shadow-sm hover:shadow-md transition-shadow text-center group">
+                        <BarChart className="w-8 h-8 text-primary mx-auto mb-3 group-hover:scale-110 transition-transform" />
+                        <h3 className="font-semibold mb-2">Multi-Factor Analysis</h3>
+                        <p className="text-sm text-muted-foreground mb-2">Integrates food composition, sequence, timing, and your unique metabolic profile</p>
+                        <Info className="w-4 h-4 text-primary mx-auto" />
+                      </button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-md">
+                      <DialogHeader>
+                        <DialogTitle className="flex items-center gap-2">
+                          <BarChart className="w-5 h-5 text-primary" />
+                          Multi-Factor Analysis
+                        </DialogTitle>
+                      </DialogHeader>
+                      <div className="space-y-4">
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          Our AI analyzes dozens of variables simultaneously to predict your personal glucose response with unprecedented accuracy.
+                        </p>
+                        <div className="space-y-3">
+                          <div className="bg-blue-50 p-3 rounded-lg">
+                            <p className="text-sm font-medium text-blue-800 mb-2">Food Factors:</p>
+                            <ul className="text-sm text-blue-700 space-y-1">
+                              <li>• Macronutrient composition (carbs, protein, fat)</li>
+                              <li>• Glycemic index and load</li>
+                              <li>• Fiber content and type</li>
+                              <li>• Processing level and food matrix</li>
+                              <li>• Micronutrient profile</li>
+                            </ul>
+                          </div>
+                          <div className="bg-green-50 p-3 rounded-lg">
+                            <p className="text-sm font-medium text-green-800 mb-2">Contextual Factors:</p>
+                            <ul className="text-sm text-green-700 space-y-1">
+                              <li>• Meal timing and circadian rhythm</li>
+                              <li>• Food sequence and combination effects</li>
+                              <li>• Your sleep quality and stress levels</li>
+                              <li>• Recent exercise and activity patterns</li>
+                              <li>• Your unique metabolic baseline</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+                  
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <button className="bg-white rounded-xl p-4 md:p-6 shadow-sm hover:shadow-md transition-shadow text-center group">
+                        <Brain className="w-8 h-8 text-primary mx-auto mb-3 group-hover:scale-110 transition-transform" />
+                        <h3 className="font-semibold mb-2">Personalized Predictions</h3>
+                        <p className="text-sm text-muted-foreground mb-2">Learns your individual patterns across different physiological states</p>
+                        <Info className="w-4 h-4 text-primary mx-auto" />
+                      </button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-md">
+                      <DialogHeader>
+                        <DialogTitle className="flex items-center gap-2">
+                          <Brain className="w-5 h-5 text-primary" />
+                          Personalized Predictions
+                        </DialogTitle>
+                      </DialogHeader>
+                      <div className="space-y-4">
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          Machine learning algorithms create your unique metabolic fingerprint, learning how your body responds to different foods and conditions.
+                        </p>
+                        <div className="space-y-3">
+                          <div className="bg-purple-50 p-3 rounded-lg">
+                            <p className="text-sm font-medium text-purple-800 mb-2">Individual Learning:</p>
+                            <ul className="text-sm text-purple-700 space-y-1">
+                              <li>• Your glucose response patterns</li>
+                              <li>• Genetic predispositions (when available)</li>
+                              <li>• Lifestyle factor interactions</li>
+                              <li>• Seasonal and hormonal variations</li>
+                              <li>• Medication and supplement effects</li>
+                            </ul>
+                          </div>
+                          <div className="bg-purple-50 p-3 rounded-lg">
+                            <p className="text-sm font-medium text-purple-700">Adaptive Intelligence</p>
+                            <p className="text-sm text-purple-600 mt-1">
+                              The more you use SugarTrap, the more accurate it becomes at predicting your response to any meal combination, even foods you've never eaten before.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+                  
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <button className="bg-white rounded-xl p-4 md:p-6 shadow-sm hover:shadow-md transition-shadow text-center group">
+                        <Activity className="w-8 h-8 text-primary mx-auto mb-3 group-hover:scale-110 transition-transform" />
+                        <h3 className="font-semibold mb-2">Context-Aware Recommendations</h3>
+                        <p className="text-sm text-muted-foreground mb-2">Adapts to exercise, stress, sleep, and circadian factors</p>
+                        <Info className="w-4 h-4 text-primary mx-auto" />
+                      </button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-md">
+                      <DialogHeader>
+                        <DialogTitle className="flex items-center gap-2">
+                          <Activity className="w-5 h-5 text-primary" />
+                          Context-Aware Recommendations
+                        </DialogTitle>
+                      </DialogHeader>
+                      <div className="space-y-4">
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          Real-time adaptation to your current physiological state ensures recommendations are always optimized for your body's current needs.
+                        </p>
+                        <div className="space-y-3">
+                          <div className="bg-orange-50 p-3 rounded-lg">
+                            <p className="text-sm font-medium text-orange-800 mb-2">Dynamic Adjustments:</p>
+                            <ul className="text-sm text-orange-700 space-y-1">
+                              <li>• Post-exercise enhanced insulin sensitivity</li>
+                              <li>• Sleep deprivation insulin resistance</li>
+                              <li>• Stress-induced cortisol effects</li>
+                              <li>• Circadian rhythm optimization</li>
+                              <li>• Hormonal cycle considerations</li>
+                            </ul>
+                          </div>
+                          <div className="bg-orange-50 p-3 rounded-lg">
+                            <p className="text-sm font-medium text-orange-700">Smart Timing</p>
+                            <p className="text-sm text-orange-600 mt-1">
+                              Recommendations consider when you slept, when you exercised, your stress levels, and even the time of day to optimize every meal's metabolic impact.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
                 </div>
 
                 <Button asChild size="lg" className="rounded-full px-8 py-6 text-lg font-semibold">
