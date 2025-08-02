@@ -157,23 +157,23 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-background via-background to-secondary/10">
-      {/* Animated Background Elements - Much More Subtle */}
+      {/* Animated Background Elements - Subtle and Moving */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Floating Particles - Very Subtle */}
+        {/* Floating Particles - Gentle Movement, Very Subtle */}
         <div className="absolute inset-0">
           {[...Array(3)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-24 h-24 bg-primary/[0.015] rounded-full blur-2xl"
+              className="absolute w-40 h-40 bg-gray-200/20 rounded-full blur-3xl"
               animate={{
-                x: [0, 50, -50, 0],
-                y: [0, -50, 50, 0],
+                x: [0, 120, -80, 0],
+                y: [0, -90, 110, 0],
               }}
               transition={{
-                duration: 25 + i * 5,
+                duration: 18 + i * 4,
                 repeat: Infinity,
                 ease: "linear",
-                delay: i * 3,
+                delay: i * 2,
               }}
               style={{
                 left: `${i * 30}%`,
@@ -183,18 +183,18 @@ const HeroSection = () => {
           ))}
         </div>
         
-        {/* Very Subtle Gradient Mesh Animation */}
+        {/* Very Gentle Gradient Animation - Neutral Colors */}
         <motion.div
-          className="absolute inset-0 opacity-[0.03]"
+          className="absolute inset-0 opacity-[0.08]"
           animate={{
             background: [
-              "radial-gradient(circle at 20% 30%, hsl(var(--primary)) 0%, transparent 40%)",
-              "radial-gradient(circle at 80% 70%, hsl(var(--primary)) 0%, transparent 40%)",
-              "radial-gradient(circle at 30% 80%, hsl(var(--primary)) 0%, transparent 40%)",
-              "radial-gradient(circle at 70% 20%, hsl(var(--primary)) 0%, transparent 40%)",
+              "radial-gradient(circle at 15% 25%, #e5e7eb 0%, transparent 45%)",
+              "radial-gradient(circle at 85% 75%, #f3f4f6 0%, transparent 45%)",
+              "radial-gradient(circle at 25% 85%, #e5e7eb 0%, transparent 45%)",
+              "radial-gradient(circle at 75% 15%, #f3f4f6 0%, transparent 45%)",
             ],
           }}
-          transition={{ duration: 15, repeat: Infinity }}
+          transition={{ duration: 12, repeat: Infinity }}
         />
       </div>
       
