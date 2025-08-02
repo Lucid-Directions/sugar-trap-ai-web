@@ -121,7 +121,7 @@ const GlucoseCurveDemo = () => {
                   <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-6">
                     <div>
                       <h3 className="text-xl md:text-2xl font-bold mb-1">Glucose Response Prediction</h3>
-                      <p className="text-sm text-muted-foreground">Real-time metabolic impact analysis</p>
+                      <p className="text-sm text-muted-foreground">Realtime metabolic impact analysis</p>
                     </div>
                     <div className="flex items-center gap-2 text-xs text-muted-foreground mt-2 md:mt-0">
                       <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>

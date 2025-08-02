@@ -47,12 +47,11 @@ const SciencePage = () => {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold mb-6">
-              The New Science of 
-              <span className="text-gradient block">Nutrition</span>
+              The Science of 
+              <span className="text-gradient block">Personal Nutrition</span>
             </h1>
             <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed px-4">
-              It's not just about calories anymore. Groundbreaking research reveals the crucial missing piece—
-              <strong className="text-foreground"> your body's hormonal response to food.</strong>
+              Everyone's glucose response is as unique as their fingerprint.
             </p>
           </motion.div>
 
@@ -453,7 +452,7 @@ const SciencePage = () => {
                   </div>
                   <div className="bg-white rounded-xl p-6 shadow-sm">
                     <Activity className="w-8 h-8 text-primary mx-auto mb-3" />
-                    <h3 className="font-semibold mb-2">Real-time Optimisation</h3>
+                    <h3 className="font-semibold mb-2">Realtime Optimisation</h3>
                     <p className="text-sm text-muted-foreground">Get instant suggestions to improve any meal</p>
                   </div>
                 </div>
