@@ -23,9 +23,30 @@ const SciencePage = () => {
   const studies = [
     {
       icon: TrendingUp,
-      title: "Glucose Variability Study",
-      journal: "Nature Metabolism, 2023",
-      finding: "40% reduction in glucose spikes with optimised food combinations",
+      title: "The Glucose Paradox",
+      journal: "Frontiers in Cardiovascular Medicine, 2020",
+      finding: "27% increased CVD risk from glucose spikes, even in non-diabetics",
+      color: "text-red-600"
+    },
+    {
+      icon: Dna,
+      title: "Gut Microbiome Carbohydrate Metabolism",
+      journal: "Nature, 2023",
+      finding: "Microbiome contributes up to 10% of host energy extraction",
+      color: "text-emerald-600"
+    },
+    {
+      icon: Clock,
+      title: "Circadian Metabolic Disruption",
+      journal: "Diabetologia, 2020",
+      finding: "69% of population experiences social jet lag affecting metabolism",
+      color: "text-blue-600"
+    },
+    {
+      icon: TrendingUp,
+      title: "SCFA Meta-Analysis",
+      journal: "Nutrition Reviews, 2023",
+      finding: "Short-chain fatty acids significantly improve insulin sensitivity",
       color: "text-green-600"
     },
     {
@@ -1944,21 +1965,64 @@ const SciencePage = () => {
                           <p className="text-sm font-medium text-blue-800 mb-1">Key Finding</p>
                           <p className="text-sm text-blue-700">{study.finding}</p>
                         </div>
-                        {study.title === "Glucose Variability Study" && (
+                        {study.title === "The Glucose Paradox" && (
                           <div className="space-y-2">
-                            <p className="text-sm text-muted-foreground">This landmark study demonstrated that strategic food combinations can dramatically reduce postprandial glucose excursions.</p>
+                            <p className="text-sm text-muted-foreground">A landmark review revealing that postprandial glucose spikes may be more harmful than average glucose levels for cardiovascular health.</p>
+                            <div className="bg-red-50 p-2 rounded">
+                              <p className="text-xs text-red-700 font-medium">Critical Finding:</p>
+                              <p className="text-xs text-red-600">Glucose spikes more predictive of heart disease than HbA1c levels</p>
+                            </div>
+                            <div className="bg-red-50 p-2 rounded">
+                              <p className="text-xs text-red-700 font-medium">Mechanism:</p>
+                              <p className="text-xs text-red-600">Endothelial cells can't restrict glucose uptake, leading to inflammatory damage</p>
+                            </div>
+                          </div>
+                        )}
+                        {study.title === "Gut Microbiome Carbohydrate Metabolism" && (
+                          <div className="space-y-2">
+                            <p className="text-sm text-muted-foreground">Multi-omics study of 306 individuals revealing how gut bacteria contribute to insulin resistance through carbohydrate metabolism.</p>
+                            <div className="bg-emerald-50 p-2 rounded">
+                              <p className="text-xs text-emerald-700 font-medium">Key Discovery:</p>
+                              <p className="text-xs text-emerald-600">Faecal carbohydrates more predictive of insulin resistance than genetic factors</p>
+                            </div>
+                            <div className="bg-emerald-50 p-2 rounded">
+                              <p className="text-xs text-emerald-700 font-medium">Clinical Impact:</p>
+                              <p className="text-xs text-emerald-600">Up to 10% of host energy extraction comes from microbial metabolism</p>
+                            </div>
+                          </div>
+                        )}
+                        {study.title === "Circadian Metabolic Disruption" && (
+                          <div className="space-y-2">
+                            <p className="text-sm text-muted-foreground">Comprehensive framework showing how circadian disruption impacts glucose metabolism and diabetes risk across populations.</p>
+                            <div className="bg-blue-50 p-2 rounded">
+                              <p className="text-xs text-blue-700 font-medium">Alarming Statistics:</p>
+                              <p className="text-xs text-blue-600">69% of people experience "social jet lag" affecting their metabolism</p>
+                            </div>
+                            <div className="bg-blue-50 p-2 rounded">
+                              <p className="text-xs text-blue-700 font-medium">Health Impact:</p>
+                              <p className="text-xs text-blue-600">10-40% increased diabetes risk from shift work and irregular sleep</p>
+                            </div>
+                          </div>
+                        )}
+                        {study.title === "SCFA Meta-Analysis" && (
+                          <div className="space-y-2">
+                            <p className="text-sm text-muted-foreground">Systematic review of 23 studies examining short-chain fatty acid interventions and their effects on insulin sensitivity.</p>
                             <div className="bg-green-50 p-2 rounded">
-                              <p className="text-xs text-green-700 font-medium">Clinical Impact:</p>
-                              <p className="text-xs text-green-600">Proves that "what you eat with what" matters more than total carbohydrate content</p>
+                              <p className="text-xs text-green-700 font-medium">Proven Benefits:</p>
+                              <p className="text-xs text-green-600">Significant reduction in fasting insulin and HOMA-IR scores</p>
+                            </div>
+                            <div className="bg-green-50 p-2 rounded">
+                              <p className="text-xs text-green-700 font-medium">Mechanism:</p>
+                              <p className="text-xs text-green-600">SCFAs activate GPR41/43 receptors, enhancing incretin hormone release</p>
                             </div>
                           </div>
                         )}
                         {study.title === "Cognitive Performance Research" && (
                           <div className="space-y-2">
                             <p className="text-sm text-muted-foreground">Research linking glucose stability to cognitive performance, demonstrating the brain's dependence on steady energy supply.</p>
-                            <div className="bg-blue-50 p-2 rounded">
-                              <p className="text-xs text-blue-700 font-medium">Mechanism:</p>
-                              <p className="text-xs text-blue-600">Stable glucose prevents brain energy fluctuations that impair focus, memory, and decision-making</p>
+                            <div className="bg-violet-50 p-2 rounded">
+                              <p className="text-xs text-violet-700 font-medium">Mechanism:</p>
+                              <p className="text-xs text-violet-600">Stable glucose prevents brain energy fluctuations that impair focus, memory, and decision-making</p>
                             </div>
                           </div>
                         )}
@@ -1977,25 +2041,53 @@ const SciencePage = () => {
                 ))}
               </div>
 
-              {/* Additional Research Citations */}
+              {/* Additional Research Citations - Enhanced */}
               <div className="mt-12 bg-gradient-to-r from-slate-50 to-gray-50 rounded-2xl p-8">
-                <h3 className="text-xl font-bold mb-6 text-center">Supporting Research</h3>
-                <div className="grid md:grid-cols-2 gap-6 text-sm">
+                <h3 className="text-xl font-bold mb-6 text-center">Comprehensive Research Foundation</h3>
+                <div className="grid md:grid-cols-3 gap-6 text-sm">
                   <div>
-                    <h4 className="font-semibold mb-3">Population Studies</h4>
+                    <h4 className="font-semibold mb-3 text-red-700">Glucose Toxicity Research</h4>
                     <ul className="space-y-2 text-muted-foreground">
-                      <li>• Battalwar et al., <em>Front Endocrinol</em> (2023): Hyperinsulinemia in young adults</li>
-                      <li>• Peplies et al., <em>Int J Obes</em> (2014): Pediatric insulin/glucose reference values</li>
-                      <li>• Jensen et al., <em>J Diabetes Res</em> (2019): Pregnancy insulin resistance</li>
+                      <li>• Hanssen et al., <em>Front Cardiovasc Med</em> (2020): Postprandial glucose and CVD risk</li>
+                      <li>• Advanced Glycation End Products (AGEs) accumulation studies</li>
+                      <li>• Endothelial vulnerability to glucose fluctuations</li>
+                      <li>• Time in range vs HbA1c comparative studies</li>
                     </ul>
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-3">Physiological Research</h4>
+                    <h4 className="font-semibold mb-3 text-emerald-700">Microbiome Metabolism</h4>
                     <ul className="space-y-2 text-muted-foreground">
-                      <li>• Colberg et al., <em>ADA Position Statement</em> (2016): Exercise and diabetes</li>
-                      <li>• Nguyen et al., <em>Diabetes</em> (2019): Circadian misalignment effects</li>
-                      <li>• Leproult et al., <em>JCSM</em> (2015): Sleep extension and insulin sensitivity</li>
+                      <li>• Takeuchi et al., <em>Nature</em> (2023): Multi-omics insulin resistance study</li>
+                      <li>• Pham et al., <em>Nutrition Reviews</em> (2023): SCFA meta-analysis</li>
+                      <li>• GPR41/43 receptor activation pathways</li>
+                      <li>• Incretin hormone modulation by gut bacteria</li>
                     </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-3 text-blue-700">Circadian Metabolism</h4>
+                    <ul className="space-y-2 text-muted-foreground">
+                      <li>• Mason et al., <em>Diabetologia</em> (2020): Circadian disruption framework</li>
+                      <li>• Shift work epidemiological studies (10-40% diabetes risk increase)</li>
+                      <li>• Social jet lag population research (69% affected)</li>
+                      <li>• Clock gene regulation of metabolic pathways</li>
+                    </ul>
+                  </div>
+                </div>
+                
+                {/* Key Mechanistic Insights */}
+                <div className="mt-8 bg-white rounded-xl p-6">
+                  <h4 className="font-semibold mb-4 text-center">Critical Mechanistic Insights</h4>
+                  <div className="grid md:grid-cols-2 gap-4 text-sm">
+                    <div className="bg-red-50 p-4 rounded-lg">
+                      <h5 className="font-medium text-red-800 mb-2">Incretin System Dysfunction</h5>
+                      <p className="text-red-700">Normal: 50-70% of insulin release mediated by incretins (GLP-1, GIP)</p>
+                      <p className="text-red-600">Type 2 Diabetes: Drops to ~20%, explaining postprandial control challenges</p>
+                    </div>
+                    <div className="bg-emerald-50 p-4 rounded-lg">
+                      <h5 className="font-medium text-emerald-800 mb-2">SCFA Therapeutic Mechanisms</h5>
+                      <p className="text-emerald-700">Free fatty acid receptor activation enhances insulin sensitivity</p>
+                      <p className="text-emerald-600">Significant fasting insulin reduction (P = 0.04) in intervention studies</p>
+                    </div>
                   </div>
                 </div>
               </div>

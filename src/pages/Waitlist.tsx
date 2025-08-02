@@ -35,10 +35,12 @@ const WaitlistPage = () => {
   ];
 
   const discoveries = [
-    "Why your glucose response is as unique as your fingerprint and what that means for your health",
-    "How food sequence can reduce glucose spikes by 70% using the same ingredients",
-    "The hidden metabolic cost of stress, sleep, and exercise on your daily energy",
-    "Why stable blood sugar is the key to sustained energy, better mood, and long-term wellness"
+    "Why glucose spikes predict heart disease better than cholesterol levels (even in healthy people)",
+    "How your gut microbiome contributes up to 10% of your daily energy extraction from food",
+    "The shocking truth: 69% of people have 'social jet lag' destroying their metabolism without knowing it",
+    "Why your endothelial cells can't protect themselves from glucose damage, making spikes extra harmful",
+    "How short-chain fatty acids from fiber act like natural insulin sensitizers in your body",
+    "The incretin system collapse: why Type 2 diabetics lose 70% of their natural glucose control mechanism"
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
