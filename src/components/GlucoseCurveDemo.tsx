@@ -30,7 +30,7 @@ const GlucoseCurveDemo = () => {
   const mealData = {
     sugary: {
       name: "Sugary Cereal",
-      path: "M 60,170 Q 110,45 160,55 Q 210,65 260,110 Q 310,150 360,165",
+      path: "M 60,170 Q 110,35 160,45 Q 210,55 260,100 Q 310,140 360,165",
       color: "#ef4444",
       gradient: "from-red-500 to-red-600",
       peak: "195mg/dL",
@@ -38,11 +38,11 @@ const GlucoseCurveDemo = () => {
       description: "Extreme spike, dramatic crash",
       emoji: "🥣",
       peakX: 110,
-      peakY: 45
+      peakY: 35
     },
     normal: {
       name: "Corn Flakes",
-      path: "M 60,170 Q 110,75 160,85 Q 210,95 260,125 Q 310,145 360,160",
+      path: "M 60,170 Q 110,60 160,70 Q 210,80 260,110 Q 310,135 360,155",
       color: "#f97316",
       gradient: "from-orange-500 to-orange-600",
       peak: "165mg/dL",
@@ -50,11 +50,11 @@ const GlucoseCurveDemo = () => {
       description: "High spike, surprising for 'healthy' cereal",
       emoji: "🌽",
       peakX: 110,
-      peakY: 75
+      peakY: 60
     },
     orangeJuice: {
       name: "Fresh Orange Juice",
-      path: "M 60,170 Q 110,50 160,60 Q 210,70 260,115 Q 310,155 360,165",
+      path: "M 60,170 Q 110,55 160,65 Q 210,75 260,105 Q 310,145 360,160",
       color: "#ff8c00",
       gradient: "from-orange-400 to-orange-500",
       peak: "180mg/dL",
@@ -62,7 +62,7 @@ const GlucoseCurveDemo = () => {
       description: "Sharp spike, liquid sugars hit fast",
       emoji: "🍊",
       peakX: 110,
-      peakY: 50
+      peakY: 55
     },
     coffee: {
       name: "Black Coffee",
@@ -90,7 +90,7 @@ const GlucoseCurveDemo = () => {
     },
     oatmeal: {
       name: "Steel-Cut Oats",
-      path: "M 60,170 Q 110,120 160,125 Q 210,130 260,140 Q 310,150 360,155",
+      path: "M 60,170 Q 110,105 160,110 Q 210,115 260,125 Q 310,140 360,150",
       color: "#f59e0b",
       gradient: "from-amber-500 to-amber-600",
       peak: "125mg/dL",
@@ -98,7 +98,7 @@ const GlucoseCurveDemo = () => {
       description: "Moderate rise, sustained energy",
       emoji: "🥣",
       peakX: 210,
-      peakY: 130
+      peakY: 115
     },
     carnivore: {
       name: "Carnivore (Steak)",
