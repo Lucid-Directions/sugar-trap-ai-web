@@ -2,14 +2,12 @@ import { motion } from 'framer-motion';
 
 const OrbitingSugarCube = () => {
   return (
-    <div className="w-10 h-10 md:w-12 md:h-12 relative flex items-center justify-center">
-      {/* Orbiting container */}
+    <div className="absolute inset-0 pointer-events-none">
+      {/* Orbiting cube */}
       <motion.div
-        className="absolute"
+        className="absolute w-3 h-3 md:w-4 md:h-4"
         style={{
-          width: '12px',
-          height: '12px',
-          transformOrigin: '20px 20px', // Orbit around center
+          transformOrigin: '24px 24px', // Center of the 48px container
         }}
         animate={{
           rotate: [0, 360],
@@ -20,68 +18,63 @@ const OrbitingSugarCube = () => {
           ease: "linear"
         }}
       >
-        {/* 3D Sugar Cube with proper depth */}
+        {/* 3D Sugar Cube */}
         <div 
-          className="relative w-3 h-3"
+          className="relative w-full h-full"
           style={{
             transformStyle: 'preserve-3d',
-            transform: 'rotateX(-25deg) rotateY(35deg)'
+            transform: 'rotateX(-20deg) rotateY(25deg)'
           }}
         >
           {/* Front face */}
           <div 
-            className="absolute w-3 h-3 bg-white border border-gray-900"
+            className="absolute w-full h-full bg-white/60 border border-foreground/40"
             style={{
-              transform: 'translateZ(12px)'
+              transform: 'translateZ(6px)'
             }}
           />
           
           {/* Back face */}
           <div 
-            className="absolute w-3 h-3 bg-gray-200 border border-gray-900"
+            className="absolute w-full h-full bg-white/40 border border-foreground/30"
             style={{
-              transform: 'translateZ(-12px)'
+              transform: 'translateZ(-6px) rotateY(180deg)'
             }}
           />
           
           {/* Right face */}
           <div 
-            className="absolute w-3 h-3 bg-gray-150 border border-gray-900"
+            className="absolute w-full h-full bg-white/50 border border-foreground/35"
             style={{
-              transform: 'rotateY(90deg) translateZ(12px)'
+              transform: 'rotateY(90deg) translateZ(6px)'
             }}
           />
           
           {/* Left face */}
           <div 
-            className="absolute w-3 h-3 bg-gray-150 border border-gray-900"
+            className="absolute w-full h-full bg-white/50 border border-foreground/35"
             style={{
-              transform: 'rotateY(-90deg) translateZ(12px)'
+              transform: 'rotateY(-90deg) translateZ(6px)'
             }}
           />
           
           {/* Top face */}
           <div 
-            className="absolute w-3 h-3 bg-gray-50 border border-gray-900"
+            className="absolute w-full h-full bg-white/70 border border-foreground/40"
             style={{
-              transform: 'rotateX(90deg) translateZ(12px)'
+              transform: 'rotateX(90deg) translateZ(6px)'
             }}
           />
           
           {/* Bottom face */}
           <div 
-            className="absolute w-3 h-3 bg-gray-300 border border-gray-900"
+            className="absolute w-full h-full bg-white/30 border border-foreground/25"
             style={{
-              transform: 'rotateX(-90deg) translateZ(12px)'
+              transform: 'rotateX(-90deg) translateZ(6px)'
             }}
           />
         </div>
       </motion.div>
-      
-      {/* AI Text - Always centered */}
-      <div className="absolute inset-0 flex items-center justify-center z-10">
-        <span className="text-sm md:text-base font-bold text-foreground">AI</span>
-      </div>
     </div>
   );
 };
