@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { ArrowRight, Play, Users, Star, ArrowDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import SugarCube3D from './SugarCube3D';
 
 // Phone Mockup Component
 const PhoneDemo = ({ currentMeal }) => {
@@ -240,11 +241,17 @@ const HeroSection = () => {
           
           {/* Right Side - Visual Demo */}
           <motion.div
-            className="relative order-first lg:order-last"
+            className="relative order-first lg:order-last space-y-8"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
+            {/* 3D Sugar Cube */}
+            <div className="flex justify-center lg:justify-end">
+              <SugarCube3D />
+            </div>
+            
+            {/* Phone Demo */}
             <PhoneDemo currentMeal={meals[currentMeal]} />
           </motion.div>
         </div>
