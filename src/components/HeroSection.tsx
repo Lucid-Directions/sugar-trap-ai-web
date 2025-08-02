@@ -157,46 +157,6 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-background via-background to-secondary/10">
-      {/* Animated Background Elements - Left Side Only */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Floating Particles - Confined to Left Side */}
-        <div className="absolute inset-0">
-          {[...Array(3)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-32 h-32 bg-gray-200/15 rounded-full blur-3xl"
-              animate={{
-                x: [0, 60, -40, 0],
-                y: [0, -80, 90, 0],
-              }}
-              transition={{
-                duration: 15 + i * 3,
-                repeat: Infinity,
-                ease: "linear",
-                delay: i * 2,
-              }}
-              style={{
-                left: `${i * 15}%`,  // Keep on left side (0%, 15%, 30%)
-                top: `${20 + i * 20}%`,
-              }}
-            />
-          ))}
-        </div>
-        
-        {/* Gentle Gradient - Left Side Focused */}
-        <motion.div
-          className="absolute inset-0 opacity-[0.06]"
-          animate={{
-            background: [
-              "radial-gradient(circle at 10% 30%, #e5e7eb 0%, transparent 35%)",
-              "radial-gradient(circle at 25% 70%, #f3f4f6 0%, transparent 35%)",
-              "radial-gradient(circle at 15% 80%, #e5e7eb 0%, transparent 35%)",
-              "radial-gradient(circle at 20% 20%, #f3f4f6 0%, transparent 35%)",
-            ],
-          }}
-          transition={{ duration: 12, repeat: Infinity }}
-        />
-      </div>
       
       <div className="relative z-10 container mx-auto px-4 py-20 lg:py-32">
         <div className="grid lg:grid-cols-[1fr,0.6fr] gap-8 lg:gap-16 items-center">
