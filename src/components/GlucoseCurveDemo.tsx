@@ -129,64 +129,72 @@ const GlucoseCurveDemo = () => {
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.2, duration: 0.4 }}
           >
-            {/* Mobile: Compact Layout with Chart and Controls Together */}
+            {/* Mobile: Enhanced Layout with Taller Chart */}
             <div className="block lg:hidden">
-              {/* Mobile Chart - Compact Version */}
-              <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 mb-4">
-                <div className="flex justify-between items-start mb-3">
+              {/* Mobile Chart - Enhanced Version */}
+              <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 mb-4">
+                <div className="flex justify-between items-start mb-4">
                   <div>
-                    <h3 className="text-lg font-bold mb-1">Glucose Response</h3>
-                    <p className="text-xs text-muted-foreground">Compare breakfast options</p>
+                    <h3 className="text-xl font-bold mb-1">Glucose Response</h3>
+                    <p className="text-sm text-muted-foreground">Real-time metabolic impact</p>
                   </div>
                   <div className="text-right">
-                    <div className="text-sm font-bold" style={{ color: currentMeal.color }}>
+                    <div className="text-lg font-bold" style={{ color: currentMeal.color }}>
                       {currentMeal.peak}
                     </div>
-                    <div className="text-xs text-muted-foreground">Peak</div>
+                    <div className="text-xs text-muted-foreground">Peak Level</div>
                   </div>
                 </div>
 
-                {/* Compact Mobile Chart */}
-                <div className="relative mb-4">
+                {/* Enhanced Mobile Chart - Taller with More Detail */}
+                <div className="relative mb-6">
                   <svg 
-                    viewBox="0 0 320 120" 
-                    className="w-full h-24"
+                    viewBox="0 0 360 180" 
+                    className="w-full h-40"
                     style={{ background: 'linear-gradient(to bottom, #fafbfc 0%, #ffffff 100%)' }}
                   >
-                    {/* Grid */}
+                    {/* Enhanced Grid */}
                     <defs>
-                      <pattern id="mobile-grid" width="32" height="12" patternUnits="userSpaceOnUse">
-                        <path d="M 32 0 L 0 0 0 12" fill="none" stroke="#f1f5f9" strokeWidth="0.5"/>
+                      <pattern id="mobile-grid" width="36" height="18" patternUnits="userSpaceOnUse">
+                        <path d="M 36 0 L 0 0 0 18" fill="none" stroke="#f1f5f9" strokeWidth="0.5"/>
                       </pattern>
                       <linearGradient id="mobileAreaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stopColor={currentMeal.color} stopOpacity="0.15"/>
-                        <stop offset="100%" stopColor={currentMeal.color} stopOpacity="0.02"/>
+                        <stop offset="0%" stopColor={currentMeal.color} stopOpacity="0.2"/>
+                        <stop offset="100%" stopColor={currentMeal.color} stopOpacity="0.03"/>
                       </linearGradient>
                     </defs>
                     <rect width="100%" height="100%" fill="url(#mobile-grid)" />
 
-                    {/* Axes */}
-                    <line x1="40" y1="20" x2="40" y2="100" stroke="#e2e8f0" strokeWidth="1"/>
-                    <line x1="40" y1="100" x2="280" y2="100" stroke="#e2e8f0" strokeWidth="1"/>
+                    {/* Enhanced Axes */}
+                    <line x1="50" y1="30" x2="50" y2="150" stroke="#e2e8f0" strokeWidth="1.5"/>
+                    <line x1="50" y1="150" x2="320" y2="150" stroke="#e2e8f0" strokeWidth="1.5"/>
 
-                    {/* Target Range */}
-                    <rect x="40" y="60" width="240" height="24" fill="#10b981" fillOpacity="0.1" stroke="#10b981" strokeOpacity="0.3" strokeWidth="0.5" strokeDasharray="2,2"/>
+                    {/* Enhanced Target Range */}
+                    <rect x="50" y="90" width="270" height="36" fill="#10b981" fillOpacity="0.12" stroke="#10b981" strokeOpacity="0.4" strokeWidth="1" strokeDasharray="3,3"/>
+                    <text x="55" y="105" fontSize="10" fill="#059669" fontWeight="600">Target Range</text>
                     
-                    {/* Y-axis labels - simplified for mobile */}
-                    <text x="35" y="25" fontSize="10" fill="#64748b" textAnchor="end">200</text>
-                    <text x="35" y="65" fontSize="10" fill="#10b981" textAnchor="end" fontWeight="600">120</text>
-                    <text x="35" y="85" fontSize="10" fill="#10b981" textAnchor="end" fontWeight="600">80</text>
+                    {/* Enhanced Y-axis labels */}
+                    <text x="45" y="35" fontSize="11" fill="#64748b" textAnchor="end" fontWeight="500">200</text>
+                    <text x="45" y="57" fontSize="11" fill="#64748b" textAnchor="end" fontWeight="500">160</text>
+                    <text x="45" y="94" fontSize="11" fill="#10b981" textAnchor="end" fontWeight="600">120</text>
+                    <text x="45" y="114" fontSize="11" fill="#64748b" textAnchor="end" fontWeight="500">100</text>
+                    <text x="45" y="132" fontSize="11" fill="#10b981" textAnchor="end" fontWeight="600">80</text>
                     
-                    {/* X-axis labels - simplified */}
-                    <text x="40" y="115" fontSize="9" fill="#64748b" textAnchor="middle">0</text>
-                    <text x="160" y="115" fontSize="9" fill="#64748b" textAnchor="middle">1h</text>
-                    <text x="280" y="115" fontSize="9" fill="#64748b" textAnchor="middle">3h</text>
+                    {/* Enhanced X-axis labels */}
+                    <text x="50" y="167" fontSize="10" fill="#64748b" textAnchor="middle" fontWeight="500">0</text>
+                    <text x="117" y="167" fontSize="10" fill="#64748b" textAnchor="middle" fontWeight="500">30m</text>
+                    <text x="185" y="167" fontSize="10" fill="#64748b" textAnchor="middle" fontWeight="500">1h</text>
+                    <text x="252" y="167" fontSize="10" fill="#64748b" textAnchor="middle" fontWeight="500">2h</text>
+                    <text x="320" y="167" fontSize="10" fill="#64748b" textAnchor="middle" fontWeight="500">3h</text>
 
-                    {/* Mobile-adjusted curve paths */}
+                    {/* Mobile-adjusted curve paths with proper scaling */}
                     <AnimatePresence mode="wait">
                       <motion.path
                         key={`mobile-area-${selectedMeal}`}
-                        d={`${currentMeal.path.replace(/(\d+)/g, (match) => String(Math.round(parseInt(match) * 0.8 + (parseInt(match) > 200 ? -40 : 0))))} L 280,100 L 40,100 Z`}
+                        d={`${currentMeal.path.replace(/M (\d+),(\d+)/, 'M 50,$2').replace(/Q (\d+),(\d+) (\d+),(\d+) Q (\d+),(\d+) (\d+),(\d+) Q (\d+),(\d+) (\d+),(\d+)/, (match, x1, y1, x2, y2, x3, y3, x4, y4, x5, y5, x6, y6) => {
+                          const scale = 270 / 300;
+                          return `Q ${50 + (parseInt(x1) - 60) * scale},${y1} ${50 + (parseInt(x2) - 60) * scale},${y2} Q ${50 + (parseInt(x3) - 60) * scale},${y3} ${50 + (parseInt(x4) - 60) * scale},${y4} Q ${50 + (parseInt(x5) - 60) * scale},${y5} ${50 + (parseInt(x6) - 60) * scale},${y6}`;
+                        })} L 320,150 L 50,150 Z`}
                         fill="url(#mobileAreaGradient)"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -198,17 +206,54 @@ const GlucoseCurveDemo = () => {
                     <AnimatePresence mode="wait">
                       <motion.path
                         key={`mobile-${selectedMeal}`}
-                        d={currentMeal.path.replace(/(\d+)/g, (match) => String(Math.round(parseInt(match) * 0.8 + (parseInt(match) > 200 ? -40 : 0))))}
+                        d={currentMeal.path.replace(/M (\d+),(\d+)/, 'M 50,$2').replace(/Q (\d+),(\d+) (\d+),(\d+) Q (\d+),(\d+) (\d+),(\d+) Q (\d+),(\d+) (\d+),(\d+)/, (match, x1, y1, x2, y2, x3, y3, x4, y4, x5, y5, x6, y6) => {
+                          const scale = 270 / 300;
+                          return `Q ${50 + (parseInt(x1) - 60) * scale},${y1} ${50 + (parseInt(x2) - 60) * scale},${y2} Q ${50 + (parseInt(x3) - 60) * scale},${y3} ${50 + (parseInt(x4) - 60) * scale},${y4} Q ${50 + (parseInt(x5) - 60) * scale},${y5} ${50 + (parseInt(x6) - 60) * scale},${y6}`;
+                        })}
                         fill="none"
                         stroke={currentMeal.color}
-                        strokeWidth="2"
+                        strokeWidth="2.5"
                         strokeLinecap="round"
+                        strokeLinejoin="round"
                         initial={{ pathLength: 0, opacity: 0 }}
                         animate={{ pathLength: 1, opacity: 1 }}
                         exit={{ pathLength: 0, opacity: 0 }}
                         transition={{ duration: 1, ease: "easeOut" }}
+                        style={{
+                          filter: `drop-shadow(0 1px 4px ${currentMeal.color}40)`
+                        }}
                       />
                     </AnimatePresence>
+
+                    {/* Peak indicator for mobile */}
+                    <motion.g
+                      initial={{ scale: 0, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ delay: 0.8, duration: 0.4 }}
+                    >
+                      {selectedMeal !== 'coffee' && selectedMeal !== 'balanced' && selectedMeal !== 'carnivore' && (
+                        <>
+                          <circle 
+                            cx={selectedMeal === 'sugary' ? "117" : selectedMeal === 'normal' ? "131" : selectedMeal === 'orangeJuice' ? "124" : "158"} 
+                            cy={selectedMeal === 'sugary' ? "56" : selectedMeal === 'normal' ? "66" : selectedMeal === 'orangeJuice' ? "60" : "84"}
+                            r="4" 
+                            fill={currentMeal.color} 
+                            stroke="white" 
+                            strokeWidth="2"
+                          />
+                          <text 
+                            x={selectedMeal === 'sugary' ? "117" : selectedMeal === 'normal' ? "131" : selectedMeal === 'orangeJuice' ? "124" : "158"} 
+                            y={selectedMeal === 'sugary' ? "48" : selectedMeal === 'normal' ? "58" : selectedMeal === 'orangeJuice' ? "52" : "76"} 
+                            fontSize="10" 
+                            fill={currentMeal.color} 
+                            textAnchor="middle" 
+                            fontWeight="600"
+                          >
+                            {currentMeal.peak}
+                          </text>
+                        </>
+                      )}
+                    </motion.g>
                   </svg>
                 </div>
 
