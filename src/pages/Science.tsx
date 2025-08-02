@@ -80,16 +80,13 @@ const SciencePage = () => {
             </motion.p>
             
             <motion.div
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4 sm:mt-6 lg:mt-8"
+              className="flex justify-center items-center mt-4 sm:mt-6 lg:mt-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
             >
               <Button asChild size="lg" className="rounded-full px-8 py-6 text-lg font-semibold bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary shadow-xl hover:shadow-2xl transition-all duration-300">
                 <Link to="/waitlist">Start Your Journey</Link>
-              </Button>
-              <Button variant="outline" size="lg" className="rounded-full px-8 py-6 text-lg font-semibold border-2 hover:bg-primary/5 transition-all duration-300">
-                <Link to="/science#research">Explore Research</Link>
               </Button>
             </motion.div>
             
