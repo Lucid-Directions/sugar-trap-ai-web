@@ -20,27 +20,43 @@ const OrbitingSugarCube = () => {
           ease: "linear"
         }}
       >
-        {/* 3D Sugar Cube */}
+        {/* 3D Sugar Cube with proper depth */}
         <div 
           className="relative w-3 h-3"
           style={{
             transformStyle: 'preserve-3d',
-            transform: 'rotateX(-30deg) rotateY(30deg)'
+            transform: 'rotateX(-25deg) rotateY(35deg)'
           }}
         >
           {/* Front face */}
           <div 
             className="absolute w-3 h-3 bg-white border border-gray-900"
             style={{
-              transform: 'translateZ(6px)'
+              transform: 'translateZ(12px)'
+            }}
+          />
+          
+          {/* Back face */}
+          <div 
+            className="absolute w-3 h-3 bg-gray-200 border border-gray-900"
+            style={{
+              transform: 'translateZ(-12px)'
             }}
           />
           
           {/* Right face */}
           <div 
-            className="absolute w-3 h-3 bg-gray-100 border border-gray-900"
+            className="absolute w-3 h-3 bg-gray-150 border border-gray-900"
             style={{
-              transform: 'rotateY(90deg) translateZ(6px)'
+              transform: 'rotateY(90deg) translateZ(12px)'
+            }}
+          />
+          
+          {/* Left face */}
+          <div 
+            className="absolute w-3 h-3 bg-gray-150 border border-gray-900"
+            style={{
+              transform: 'rotateY(-90deg) translateZ(12px)'
             }}
           />
           
@@ -48,7 +64,15 @@ const OrbitingSugarCube = () => {
           <div 
             className="absolute w-3 h-3 bg-gray-50 border border-gray-900"
             style={{
-              transform: 'rotateX(90deg) translateZ(6px)'
+              transform: 'rotateX(90deg) translateZ(12px)'
+            }}
+          />
+          
+          {/* Bottom face */}
+          <div 
+            className="absolute w-3 h-3 bg-gray-300 border border-gray-900"
+            style={{
+              transform: 'rotateX(-90deg) translateZ(12px)'
             }}
           />
         </div>
