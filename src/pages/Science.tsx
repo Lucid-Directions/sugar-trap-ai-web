@@ -81,34 +81,82 @@ const SciencePage = () => {
 
             {/* Key Research Insights */}
             <motion.div
-              className="grid md:grid-cols-3 gap-6 mb-12"
+              className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
             >
-              {studies.map((study, index) => (
-                <motion.div
-                  key={index}
-                  className="relative group"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 + index * 0.1, duration: 0.6 }}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-br from-background to-secondary/5 rounded-3xl transform rotate-1 group-hover:rotate-2 transition-transform"></div>
-                  <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300">
-                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 bg-gradient-to-br ${
-                      index === 0 ? 'from-green-100 to-green-200' : 
-                      index === 1 ? 'from-blue-100 to-blue-200' : 
-                      'from-purple-100 to-purple-200'
-                    }`}>
-                      <study.icon className={`w-7 h-7 ${study.color}`} />
-                    </div>
-                    <h3 className="text-lg font-bold mb-3 text-foreground">{study.title}</h3>
-                    <p className="text-sm text-muted-foreground mb-4 font-medium">{study.journal}</p>
-                    <p className="text-sm font-semibold text-foreground leading-relaxed">{study.finding}</p>
+              <motion.div
+                className="relative group"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6, duration: 0.6 }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-background to-secondary/5 rounded-3xl transform rotate-1 group-hover:rotate-2 transition-transform"></div>
+                <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl p-6 border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300">
+                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 bg-gradient-to-br from-green-100 to-green-200">
+                    <TrendingUp className="w-6 h-6 text-green-600" />
                   </div>
-                </motion.div>
-              ))}
+                  <h4 className="font-bold mb-3 text-sm">Healthy Regulation</h4>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    Healthy individuals maintain tightly regulated glucose with low insulin due to high sensitivity.
+                  </p>
+                </div>
+              </motion.div>
+
+              <motion.div
+                className="relative group"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7, duration: 0.6 }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-background to-secondary/5 rounded-3xl transform rotate-1 group-hover:rotate-2 transition-transform"></div>
+                <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl p-6 border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300">
+                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 bg-gradient-to-br from-yellow-100 to-yellow-200">
+                    <BarChart className="w-6 h-6 text-yellow-600" />
+                  </div>
+                  <h4 className="font-bold mb-3 text-sm">Insulin Resistance</h4>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    Insulin-resistant states show elevated insulin levels and impaired glucose tolerance, progressing to beta-cell failure if unchecked.
+                  </p>
+                </div>
+              </motion.div>
+
+              <motion.div
+                className="relative group"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8, duration: 0.6 }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-background to-secondary/5 rounded-3xl transform rotate-1 group-hover:rotate-2 transition-transform"></div>
+                <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl p-6 border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300">
+                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 bg-gradient-to-br from-purple-100 to-purple-200">
+                    <Users className="w-6 h-6 text-purple-600" />
+                  </div>
+                  <h4 className="font-bold mb-3 text-sm">Special Populations</h4>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    Children, athletes, and pregnant women each have unique profiles – puberty and pregnancy induce transient resistance, while athletes show enhanced action.
+                  </p>
+                </div>
+              </motion.div>
+
+              <motion.div
+                className="relative group"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.9, duration: 0.6 }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-background to-secondary/5 rounded-3xl transform rotate-1 group-hover:rotate-2 transition-transform"></div>
+                <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl p-6 border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300">
+                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 bg-gradient-to-br from-blue-100 to-blue-200">
+                    <Activity className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <h4 className="font-bold mb-3 text-sm">Dynamic Conditions</h4>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    Exercise and fasting generally lower glucose/insulin requirements, whereas stress and circadian hormone surges raise glucose demands.
+                  </p>
+                </div>
+              </motion.div>
             </motion.div>
             
             <motion.div
