@@ -1,6 +1,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { TrendingUp, Brain, Microscope, Activity, BarChart, Clock, Zap, Target, Heart, Moon, Coffee, Timer, Users, Dna, FlaskConical, LineChart, Calendar, Dumbbell, Baby } from 'lucide-react';
+import { TrendingUp, Brain, Microscope, Activity, BarChart, Clock, Zap, Target, Heart, Moon, Coffee, Timer, Users, Dna, FlaskConical, LineChart, Calendar, Dumbbell, Baby, Info } from 'lucide-react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
@@ -789,20 +790,139 @@ const SciencePage = () => {
                   <span className="md:hidden">Physiological Context</span>
                 </h3>
                 
-                {/* Mobile: Compact grid */}
+                {/* Mobile: Clickable expandable cards */}
                 <div className="md:hidden grid grid-cols-2 gap-3">
-                  {[
-                    { title: "Exercise", icon: "🏃", effect: "Enhanced uptake", color: "green" },
-                    { title: "Stress", icon: "😰", effect: "Elevated glucose", color: "red" },
-                    { title: "Sleep", icon: "😴", effect: "Circadian rhythm", color: "indigo" },
-                    { title: "Fasting", icon: "⏰", effect: "Stable glucose", color: "amber" }
-                  ].map((context, index) => (
-                    <div key={index} className="text-center p-3 bg-white/40 rounded-lg">
-                      <div className="text-lg mb-1">{context.icon}</div>
-                      <div className="text-xs font-bold mb-1">{context.title}</div>
-                      <div className="text-xs text-muted-foreground">{context.effect}</div>
-                    </div>
-                  ))}
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <button className="text-center p-3 bg-white/40 rounded-lg hover:bg-white/60 transition-colors">
+                        <div className="text-lg mb-1">🏃</div>
+                        <div className="text-xs font-bold mb-1">Exercise</div>
+                        <div className="text-xs text-muted-foreground">Enhanced uptake</div>
+                        <Info className="w-3 h-3 mx-auto mt-1 opacity-60" />
+                      </button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-sm mx-4">
+                      <DialogHeader>
+                        <DialogTitle className="flex items-center gap-2">
+                          <Activity className="w-5 h-5 text-green-600" />
+                          Exercise Physiology
+                        </DialogTitle>
+                      </DialogHeader>
+                      <div className="space-y-3">
+                        <div className="bg-green-50 rounded-lg p-3">
+                          <p className="text-sm font-medium text-green-800 mb-1">During Moderate Exercise</p>
+                          <p className="text-sm text-green-700">
+                            Insulin levels drop while glucose uptake increases via insulin-independent GLUT4 translocation
+                          </p>
+                        </div>
+                        <div className="bg-green-50 rounded-lg p-3">
+                          <p className="text-sm font-medium text-green-800 mb-1">Post-Exercise (24-48h)</p>
+                          <p className="text-sm text-green-700">
+                            Enhanced insulin sensitivity persists, prioritizing muscle glycogen restoration
+                          </p>
+                        </div>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <button className="text-center p-3 bg-white/40 rounded-lg hover:bg-white/60 transition-colors">
+                        <div className="text-lg mb-1">😰</div>
+                        <div className="text-xs font-bold mb-1">Stress</div>
+                        <div className="text-xs text-muted-foreground">Elevated glucose</div>
+                        <Info className="w-3 h-3 mx-auto mt-1 opacity-60" />
+                      </button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-sm mx-4">
+                      <DialogHeader>
+                        <DialogTitle className="flex items-center gap-2">
+                          <Heart className="w-5 h-5 text-red-600" />
+                          Stress Response
+                        </DialogTitle>
+                      </DialogHeader>
+                      <div className="space-y-3">
+                        <div className="bg-red-50 rounded-lg p-3">
+                          <p className="text-sm font-medium text-red-800 mb-1">Acute Stress</p>
+                          <p className="text-sm text-red-700">
+                            Epinephrine raises glucose by 20-35 mg/dL in healthy adults, 50-100 mg/dL in diabetics
+                          </p>
+                        </div>
+                        <div className="bg-red-50 rounded-lg p-3">
+                          <p className="text-sm font-medium text-red-800 mb-1">Chronic Stress</p>
+                          <p className="text-sm text-red-700">
+                            Elevated cortisol induces sustained insulin resistance and promotes visceral fat accumulation
+                          </p>
+                        </div>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <button className="text-center p-3 bg-white/40 rounded-lg hover:bg-white/60 transition-colors">
+                        <div className="text-lg mb-1">😴</div>
+                        <div className="text-xs font-bold mb-1">Sleep</div>
+                        <div className="text-xs text-muted-foreground">Circadian rhythm</div>
+                        <Info className="w-3 h-3 mx-auto mt-1 opacity-60" />
+                      </button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-sm mx-4">
+                      <DialogHeader>
+                        <DialogTitle className="flex items-center gap-2">
+                          <Moon className="w-5 h-5 text-indigo-600" />
+                          Sleep & Circadian Rhythms
+                        </DialogTitle>
+                      </DialogHeader>
+                      <div className="space-y-3">
+                        <div className="bg-indigo-50 rounded-lg p-3">
+                          <p className="text-sm font-medium text-indigo-800 mb-1">Dawn Phenomenon</p>
+                          <p className="text-sm text-indigo-700">
+                            Morning cortisol and growth hormone surge increases glucose 4-8 AM
+                          </p>
+                        </div>
+                        <div className="bg-indigo-50 rounded-lg p-3">
+                          <p className="text-sm font-medium text-indigo-800 mb-1">Sleep Deprivation</p>
+                          <p className="text-sm text-indigo-700">
+                            Single night of poor sleep reduces insulin sensitivity the next day
+                          </p>
+                        </div>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <button className="text-center p-3 bg-white/40 rounded-lg hover:bg-white/60 transition-colors">
+                        <div className="text-lg mb-1">⏰</div>
+                        <div className="text-xs font-bold mb-1">Fasting</div>
+                        <div className="text-xs text-muted-foreground">Stable glucose</div>
+                        <Info className="w-3 h-3 mx-auto mt-1 opacity-60" />
+                      </button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-sm mx-4">
+                      <DialogHeader>
+                        <DialogTitle className="flex items-center gap-2">
+                          <Timer className="w-5 h-5 text-amber-600" />
+                          Fasting vs. Fed States
+                        </DialogTitle>
+                      </DialogHeader>
+                      <div className="space-y-3">
+                        <div className="bg-amber-50 rounded-lg p-3">
+                          <p className="text-sm font-medium text-amber-800 mb-1">Fasting State (8-12h)</p>
+                          <p className="text-sm text-amber-700">
+                            Low insulin (2-10 μU/mL), stable glucose via hepatic glucose production
+                          </p>
+                        </div>
+                        <div className="bg-amber-50 rounded-lg p-3">
+                          <p className="text-sm font-medium text-amber-800 mb-1">Postprandial State</p>
+                          <p className="text-sm text-amber-700">
+                            Insulin surge (30-50+ μU/mL), facilitates glucose uptake and storage
+                          </p>
+                        </div>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
                 </div>
                 
                 {/* Desktop: Full detailed grid */}
@@ -921,7 +1041,128 @@ const SciencePage = () => {
                   The Era of Precision Nutrition
                 </h3>
                 
-                <div className="grid md:grid-cols-3 gap-4 md:gap-6 mb-8">
+                {/* Mobile: Compact clickable technology cards */}
+                <div className="md:hidden grid grid-cols-1 gap-3 mb-8">
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <button className="bg-white rounded-xl p-4 shadow-sm text-left hover:shadow-md transition-shadow">
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <h4 className="font-semibold text-cyan-700 mb-1">Continuous Glucose Monitoring</h4>
+                            <p className="text-xs text-muted-foreground">Real-time glucose insights</p>
+                          </div>
+                          <Info className="w-4 h-4 text-cyan-600" />
+                        </div>
+                      </button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-sm mx-4">
+                      <DialogHeader>
+                        <DialogTitle className="flex items-center gap-2">
+                          <LineChart className="w-5 h-5 text-cyan-600" />
+                          Continuous Glucose Monitoring
+                        </DialogTitle>
+                      </DialogHeader>
+                      <div className="space-y-3">
+                        <p className="text-sm text-muted-foreground">
+                          Real-time glucose data every few minutes reveals individual patterns previously invisible to traditional testing.
+                        </p>
+                        <div className="bg-cyan-50 rounded-lg p-3">
+                          <p className="text-sm font-medium text-cyan-800 mb-1">Key Discovery</p>
+                          <p className="text-sm text-cyan-700">
+                            10-fold variation in glucose response to identical foods between individuals
+                          </p>
+                        </div>
+                        <div className="bg-cyan-50 rounded-lg p-3">
+                          <p className="text-sm font-medium text-cyan-800 mb-1">Clinical Impact</p>
+                          <p className="text-sm text-cyan-700">
+                            Traditional fingerstick testing misses 95% of glucose fluctuations
+                          </p>
+                        </div>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <button className="bg-white rounded-xl p-4 shadow-sm text-left hover:shadow-md transition-shadow">
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <h4 className="font-semibold text-emerald-700 mb-1">Multi-Omics Analysis</h4>
+                            <p className="text-xs text-muted-foreground">Comprehensive metabolic profiles</p>
+                          </div>
+                          <Info className="w-4 h-4 text-emerald-600" />
+                        </div>
+                      </button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-sm mx-4">
+                      <DialogHeader>
+                        <DialogTitle className="flex items-center gap-2">
+                          <Dna className="w-5 h-5 text-emerald-600" />
+                          Multi-Omics Analysis
+                        </DialogTitle>
+                      </DialogHeader>
+                      <div className="space-y-3">
+                        <p className="text-sm text-muted-foreground">
+                          Integration of genomics, microbiomics, metabolomics creates comprehensive metabolic profiles.
+                        </p>
+                        <div className="bg-emerald-50 rounded-lg p-3">
+                          <p className="text-sm font-medium text-emerald-800 mb-1">Current Applications</p>
+                          <p className="text-sm text-emerald-700">
+                            Genetic variants explain 20-30% of glucose response variability
+                          </p>
+                        </div>
+                        <div className="bg-emerald-50 rounded-lg p-3">
+                          <p className="text-sm font-medium text-emerald-800 mb-1">Future Vision</p>
+                          <p className="text-sm text-emerald-700">
+                            Digital twins for personalized nutrition prediction before eating
+                          </p>
+                        </div>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <button className="bg-white rounded-xl p-4 shadow-sm text-left hover:shadow-md transition-shadow">
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <h4 className="font-semibold text-violet-700 mb-1">AI-Driven Predictions</h4>
+                            <p className="text-xs text-muted-foreground">Machine learning insights</p>
+                          </div>
+                          <Info className="w-4 h-4 text-violet-600" />
+                        </div>
+                      </button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-sm mx-4">
+                      <DialogHeader>
+                        <DialogTitle className="flex items-center gap-2">
+                          <Brain className="w-5 h-5 text-violet-600" />
+                          AI-Driven Predictions
+                        </DialogTitle>
+                      </DialogHeader>
+                      <div className="space-y-3">
+                        <p className="text-sm text-muted-foreground">
+                          Machine learning algorithms identify complex patterns in food composition, timing, and individual response.
+                        </p>
+                        <div className="bg-violet-50 rounded-lg p-3">
+                          <p className="text-sm font-medium text-violet-800 mb-1">Current Capability</p>
+                          <p className="text-sm text-violet-700">
+                            Predict glucose response before eating with 85% accuracy
+                          </p>
+                        </div>
+                        <div className="bg-violet-50 rounded-lg p-3">
+                          <p className="text-sm font-medium text-violet-800 mb-1">Beyond Glucose</p>
+                          <p className="text-sm text-violet-700">
+                            Analyzes food timing, sleep, stress, and exercise interactions
+                          </p>
+                        </div>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+                </div>
+
+                {/* Desktop: Full technology grid */}
+                <div className="hidden md:grid md:grid-cols-3 gap-4 md:gap-6 mb-8">
                   <div className="bg-white rounded-xl p-4 md:p-6 shadow-sm">
                     <h4 className="font-semibold mb-3 text-cyan-700">Continuous Glucose Monitoring</h4>
                     <p className="text-sm text-muted-foreground mb-3">
