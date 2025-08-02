@@ -250,19 +250,23 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator - Fixed and Centered */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer z-20"
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
         onClick={() => {
-          document.getElementById('problem-section')?.scrollIntoView({ 
-            behavior: 'smooth' 
-          });
+          const problemSection = document.getElementById('problem-section');
+          if (problemSection) {
+            problemSection.scrollIntoView({ 
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
         }}
       >
-        <div className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
-          <span className="text-sm">Discover More</span>
+        <div className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors duration-300 p-4">
+          <span className="text-sm font-medium">Discover More</span>
           <ArrowDown className="w-5 h-5" />
         </div>
       </motion.div>
