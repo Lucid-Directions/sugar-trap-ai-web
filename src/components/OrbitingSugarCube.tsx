@@ -10,19 +10,25 @@ const RotatingSugarCube = () => {
           transformStyle: 'preserve-3d',
         }}
         animate={{
+          rotateX: [0, 360],
           rotateY: [0, 360],
-          rotateX: [0, 15, 0, -15, 0],
+          rotateZ: [0, 360],
         }}
         transition={{
-          rotateY: {
-            duration: 8,
+          rotateX: {
+            duration: 7,
             repeat: Infinity,
             ease: "linear"
           },
-          rotateX: {
-            duration: 6,
+          rotateY: {
+            duration: 5,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "linear"
+          },
+          rotateZ: {
+            duration: 11,
+            repeat: Infinity,
+            ease: "linear"
           }
         }}
       >
@@ -30,7 +36,7 @@ const RotatingSugarCube = () => {
         <div 
           className="absolute inset-0 bg-white/20 border border-foreground/30 backdrop-blur-sm"
           style={{
-            transform: 'translateZ(20px)'
+            transform: 'translateZ(12px)'
           }}
         />
         
@@ -38,7 +44,7 @@ const RotatingSugarCube = () => {
         <div 
           className="absolute inset-0 bg-white/15 border border-foreground/25 backdrop-blur-sm"
           style={{
-            transform: 'translateZ(-20px) rotateY(180deg)'
+            transform: 'translateZ(-12px) rotateY(180deg)'
           }}
         />
         
@@ -46,7 +52,7 @@ const RotatingSugarCube = () => {
         <div 
           className="absolute inset-0 bg-white/25 border border-foreground/35 backdrop-blur-sm"
           style={{
-            transform: 'rotateY(90deg) translateZ(20px)'
+            transform: 'rotateY(90deg) translateZ(12px)'
           }}
         />
         
@@ -54,7 +60,7 @@ const RotatingSugarCube = () => {
         <div 
           className="absolute inset-0 bg-white/25 border border-foreground/35 backdrop-blur-sm"
           style={{
-            transform: 'rotateY(-90deg) translateZ(20px)'
+            transform: 'rotateY(-90deg) translateZ(12px)'
           }}
         />
         
@@ -62,7 +68,7 @@ const RotatingSugarCube = () => {
         <div 
           className="absolute inset-0 bg-white/30 border border-foreground/40 backdrop-blur-sm"
           style={{
-            transform: 'rotateX(90deg) translateZ(20px)'
+            transform: 'rotateX(90deg) translateZ(12px)'
           }}
         />
         
@@ -70,7 +76,7 @@ const RotatingSugarCube = () => {
         <div 
           className="absolute inset-0 bg-white/20 border border-foreground/30 backdrop-blur-sm"
           style={{
-            transform: 'rotateX(-90deg) translateZ(20px)'
+            transform: 'rotateX(-90deg) translateZ(12px)'
           }}
         />
       </motion.div>
