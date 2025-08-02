@@ -96,101 +96,341 @@ const SciencePage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
             >
-              <motion.div
-                className="relative group"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6, duration: 0.6 }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-background to-secondary/5 rounded-3xl transform rotate-1 group-hover:rotate-2 transition-transform"></div>
-                <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300 overflow-hidden">
-                  <div className="h-32 md:h-48 overflow-hidden">
-                    <img 
-                      src={glucoseResponseIllustration}
-                      alt="Glucose level chart showing healthy regulation"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="p-3 md:p-4 lg:p-6">
-                    <h4 className="font-bold mb-2 md:mb-3 text-xs md:text-sm">Optimal Insulin Sensitivity</h4>
-                    <p className="text-xs text-muted-foreground leading-relaxed">
-                      Healthy pancreatic β-cells produce minimal insulin to maintain glucose 70-100 mg/dL. Muscle and liver tissues respond efficiently, clearing glucose rapidly post-meal.
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
+              {/* Mobile: Clickable expandable cards */}
+              <div className="md:hidden space-y-4">
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <motion.div
+                      className="relative group cursor-pointer"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.6, duration: 0.6 }}
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-br from-background to-secondary/5 rounded-3xl transform rotate-1 group-hover:rotate-2 transition-transform"></div>
+                      <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300 overflow-hidden">
+                        <div className="h-32 overflow-hidden">
+                          <img 
+                            src={glucoseResponseIllustration}
+                            alt="Glucose level chart showing healthy regulation"
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        <div className="p-4">
+                          <div className="flex items-center justify-between mb-2">
+                            <h4 className="font-bold text-sm">Optimal Insulin Sensitivity</h4>
+                            <Info className="w-4 h-4 text-primary" />
+                          </div>
+                          <p className="text-xs text-muted-foreground leading-relaxed">
+                            Healthy pancreatic β-cells produce minimal insulin...
+                          </p>
+                          <p className="text-xs text-primary mt-2 font-medium">Tap to learn more</p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-md">
+                    <DialogHeader>
+                      <DialogTitle>Optimal Insulin Sensitivity</DialogTitle>
+                    </DialogHeader>
+                    <div className="space-y-4">
+                      <img 
+                        src={glucoseResponseIllustration}
+                        alt="Glucose level chart showing healthy regulation"
+                        className="w-full h-40 object-cover rounded-lg"
+                      />
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        Healthy pancreatic β-cells produce minimal insulin to maintain glucose 70-100 mg/dL. Muscle and liver tissues respond efficiently, clearing glucose rapidly post-meal. This represents the gold standard of metabolic health where minimal hormonal intervention is required to maintain stable blood sugar levels.
+                      </p>
+                      <div className="bg-green-50 p-3 rounded-lg">
+                        <p className="text-xs text-green-700 font-medium">Key Benefits:</p>
+                        <ul className="text-xs text-green-600 mt-1 space-y-1">
+                          <li>• Stable energy throughout the day</li>
+                          <li>• Reduced cravings and hunger</li>
+                          <li>• Better cognitive function</li>
+                          <li>• Lower inflammation markers</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </DialogContent>
+                </Dialog>
 
-              <motion.div
-                className="relative group"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7, duration: 0.6 }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-background to-secondary/5 rounded-3xl transform rotate-1 group-hover:rotate-2 transition-transform"></div>
-                <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300 overflow-hidden">
-                  <div className="h-32 md:h-48 overflow-hidden">
-                    <img 
-                      src={medicalDataChart}
-                      alt="Medical data chart"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="p-3 md:p-4 lg:p-6">
-                    <h4 className="font-bold mb-2 md:mb-3 text-xs md:text-sm">Compensatory Hyperinsulinemia</h4>
-                    <p className="text-xs text-muted-foreground leading-relaxed">
-                      Pancreas overproduces insulin (2-10x normal) to overcome cellular resistance. Eventually β-cells exhaust, leading to type 2 diabetes progression.
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <motion.div
+                      className="relative group cursor-pointer"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.7, duration: 0.6 }}
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-br from-background to-secondary/5 rounded-3xl transform rotate-1 group-hover:rotate-2 transition-transform"></div>
+                      <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300 overflow-hidden">
+                        <div className="h-32 overflow-hidden">
+                          <img 
+                            src={medicalDataChart}
+                            alt="Medical data chart"
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        <div className="p-4">
+                          <div className="flex items-center justify-between mb-2">
+                            <h4 className="font-bold text-sm">Compensatory Hyperinsulinemia</h4>
+                            <Info className="w-4 h-4 text-primary" />
+                          </div>
+                          <p className="text-xs text-muted-foreground leading-relaxed">
+                            Pancreas overproduces insulin to overcome resistance...
+                          </p>
+                          <p className="text-xs text-primary mt-2 font-medium">Tap to learn more</p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-md">
+                    <DialogHeader>
+                      <DialogTitle>Compensatory Hyperinsulinemia</DialogTitle>
+                    </DialogHeader>
+                    <div className="space-y-4">
+                      <img 
+                        src={medicalDataChart}
+                        alt="Medical data chart"
+                        className="w-full h-40 object-cover rounded-lg"
+                      />
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        Pancreas overproduces insulin (2-10x normal) to overcome cellular resistance. Eventually β-cells exhaust, leading to type 2 diabetes progression. This compensatory phase can last years before symptoms appear, making early detection crucial.
+                      </p>
+                      <div className="bg-orange-50 p-3 rounded-lg">
+                        <p className="text-xs text-orange-700 font-medium">Warning Signs:</p>
+                        <ul className="text-xs text-orange-600 mt-1 space-y-1">
+                          <li>• Post-meal energy crashes</li>
+                          <li>• Increased cravings for carbs</li>
+                          <li>• Difficulty losing weight</li>
+                          <li>• Dark patches on skin (acanthosis nigricans)</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </DialogContent>
+                </Dialog>
 
-              <motion.div
-                className="relative group"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8, duration: 0.6 }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-background to-secondary/5 rounded-3xl transform rotate-1 group-hover:rotate-2 transition-transform"></div>
-                <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300 overflow-hidden">
-                  <div className="h-32 md:h-48 overflow-hidden">
-                     <img 
-                      src={diverseWellnessGroup}
-                      alt="Diverse group of people"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="p-3 md:p-4 lg:p-6">
-                    <h4 className="font-bold mb-2 md:mb-3 text-xs md:text-sm">Physiological Adaptations</h4>
-                    <p className="text-xs text-muted-foreground leading-relaxed">
-                      Puberty causes 25-50% insulin resistance to support growth. Pregnancy develops 40-60% resistance for fetal glucose supply. Athletes achieve 30-50% higher sensitivity.
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <motion.div
+                      className="relative group cursor-pointer"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.8, duration: 0.6 }}
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-br from-background to-secondary/5 rounded-3xl transform rotate-1 group-hover:rotate-2 transition-transform"></div>
+                      <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300 overflow-hidden">
+                        <div className="h-32 overflow-hidden">
+                          <img 
+                            src={diverseWellnessGroup}
+                            alt="Diverse group of people"
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        <div className="p-4">
+                          <div className="flex items-center justify-between mb-2">
+                            <h4 className="font-bold text-sm">Physiological Adaptations</h4>
+                            <Info className="w-4 h-4 text-primary" />
+                          </div>
+                          <p className="text-xs text-muted-foreground leading-relaxed">
+                            Different life stages require metabolic adaptations...
+                          </p>
+                          <p className="text-xs text-primary mt-2 font-medium">Tap to learn more</p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-md">
+                    <DialogHeader>
+                      <DialogTitle>Physiological Adaptations</DialogTitle>
+                    </DialogHeader>
+                    <div className="space-y-4">
+                      <img 
+                        src={diverseWellnessGroup}
+                        alt="Diverse group of people"
+                        className="w-full h-40 object-cover rounded-lg"
+                      />
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        Puberty causes 25-50% insulin resistance to support growth. Pregnancy develops 40-60% resistance for fetal glucose supply. Athletes achieve 30-50% higher sensitivity through training adaptations.
+                      </p>
+                      <div className="space-y-2">
+                        <div className="bg-blue-50 p-2 rounded">
+                          <p className="text-xs text-blue-700 font-medium">Puberty (Age 10-16)</p>
+                          <p className="text-xs text-blue-600">Natural insulin resistance supports rapid growth and development</p>
+                        </div>
+                        <div className="bg-pink-50 p-2 rounded">
+                          <p className="text-xs text-pink-700 font-medium">Pregnancy</p>
+                          <p className="text-xs text-pink-600">Maternal glucose prioritized for fetal brain development</p>
+                        </div>
+                        <div className="bg-green-50 p-2 rounded">
+                          <p className="text-xs text-green-700 font-medium">Athletic Training</p>
+                          <p className="text-xs text-green-600">Enhanced muscle glucose uptake and mitochondrial function</p>
+                        </div>
+                      </div>
+                    </div>
+                  </DialogContent>
+                </Dialog>
 
-              <motion.div
-                className="relative group"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.9, duration: 0.6 }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-background to-secondary/5 rounded-3xl transform rotate-1 group-hover:rotate-2 transition-transform"></div>
-                <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300 overflow-hidden">
-                  <div className="h-32 md:h-48 overflow-hidden">
-                    <img 
-                      src={peacefulSleep}
-                      alt="Person sleeping peacefully"
-                      className="w-full h-full object-cover"
-                    />
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <motion.div
+                      className="relative group cursor-pointer"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.9, duration: 0.6 }}
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-br from-background to-secondary/5 rounded-3xl transform rotate-1 group-hover:rotate-2 transition-transform"></div>
+                      <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300 overflow-hidden">
+                        <div className="h-32 overflow-hidden">
+                          <img 
+                            src={peacefulSleep}
+                            alt="Person sleeping peacefully"
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        <div className="p-4">
+                          <div className="flex items-center justify-between mb-2">
+                            <h4 className="font-bold text-sm">Environmental Modulation</h4>
+                            <Info className="w-4 h-4 text-primary" />
+                          </div>
+                          <p className="text-xs text-muted-foreground leading-relaxed">
+                            Sleep, stress, and exercise affect insulin sensitivity...
+                          </p>
+                          <p className="text-xs text-primary mt-2 font-medium">Tap to learn more</p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-md">
+                    <DialogHeader>
+                      <DialogTitle>Environmental Modulation</DialogTitle>
+                    </DialogHeader>
+                    <div className="space-y-4">
+                      <img 
+                        src={peacefulSleep}
+                        alt="Person sleeping peacefully"
+                        className="w-full h-40 object-cover rounded-lg"
+                      />
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        Sleep deprivation causes 20-30% insulin resistance. Stress hormones (cortisol) increase hepatic glucose output. Exercise acutely improves sensitivity for 24-48 hours.
+                      </p>
+                      <div className="space-y-2">
+                        <div className="bg-purple-50 p-2 rounded">
+                          <p className="text-xs text-purple-700 font-medium">Sleep Quality</p>
+                          <p className="text-xs text-purple-600">7-9 hours optimal for glucose regulation</p>
+                        </div>
+                        <div className="bg-red-50 p-2 rounded">
+                          <p className="text-xs text-red-700 font-medium">Stress Response</p>
+                          <p className="text-xs text-red-600">Chronic stress elevates cortisol and blood sugar</p>
+                        </div>
+                        <div className="bg-green-50 p-2 rounded">
+                          <p className="text-xs text-green-700 font-medium">Exercise Benefits</p>
+                          <p className="text-xs text-green-600">Immediate and lasting improvements in insulin action</p>
+                        </div>
+                      </div>
+                    </div>
+                  </DialogContent>
+                </Dialog>
+              </div>
+
+              {/* Desktop: Original static cards */}
+              <div className="hidden md:contents">
+                <motion.div
+                  className="relative group"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6, duration: 0.6 }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-background to-secondary/5 rounded-3xl transform rotate-1 group-hover:rotate-2 transition-transform"></div>
+                  <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300 overflow-hidden">
+                    <div className="h-32 md:h-48 overflow-hidden">
+                      <img 
+                        src={glucoseResponseIllustration}
+                        alt="Glucose level chart showing healthy regulation"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="p-3 md:p-4 lg:p-6">
+                      <h4 className="font-bold mb-2 md:mb-3 text-xs md:text-sm">Optimal Insulin Sensitivity</h4>
+                      <p className="text-xs text-muted-foreground leading-relaxed">
+                        Healthy pancreatic β-cells produce minimal insulin to maintain glucose 70-100 mg/dL. Muscle and liver tissues respond efficiently, clearing glucose rapidly post-meal.
+                      </p>
+                    </div>
                   </div>
-                  <div className="p-3 md:p-4 lg:p-6">
-                    <h4 className="font-bold mb-2 md:mb-3 text-xs md:text-sm">Environmental Modulation</h4>
-                    <p className="text-xs text-muted-foreground leading-relaxed">
-                      Sleep deprivation causes 20-30% insulin resistance. Stress hormones (cortisol) increase hepatic glucose output. Exercise acutely improves sensitivity for 24-48 hours.
-                    </p>
+                </motion.div>
+
+                <motion.div
+                  className="relative group"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.7, duration: 0.6 }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-background to-secondary/5 rounded-3xl transform rotate-1 group-hover:rotate-2 transition-transform"></div>
+                  <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300 overflow-hidden">
+                    <div className="h-32 md:h-48 overflow-hidden">
+                      <img 
+                        src={medicalDataChart}
+                        alt="Medical data chart"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="p-3 md:p-4 lg:p-6">
+                      <h4 className="font-bold mb-2 md:mb-3 text-xs md:text-sm">Compensatory Hyperinsulinemia</h4>
+                      <p className="text-xs text-muted-foreground leading-relaxed">
+                        Pancreas overproduces insulin (2-10x normal) to overcome cellular resistance. Eventually β-cells exhaust, leading to type 2 diabetes progression.
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
+                </motion.div>
+
+                <motion.div
+                  className="relative group"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.8, duration: 0.6 }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-background to-secondary/5 rounded-3xl transform rotate-1 group-hover:rotate-2 transition-transform"></div>
+                  <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300 overflow-hidden">
+                    <div className="h-32 md:h-48 overflow-hidden">
+                       <img 
+                        src={diverseWellnessGroup}
+                        alt="Diverse group of people"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="p-3 md:p-4 lg:p-6">
+                      <h4 className="font-bold mb-2 md:mb-3 text-xs md:text-sm">Physiological Adaptations</h4>
+                      <p className="text-xs text-muted-foreground leading-relaxed">
+                        Puberty causes 25-50% insulin resistance to support growth. Pregnancy develops 40-60% resistance for fetal glucose supply. Athletes achieve 30-50% higher sensitivity.
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  className="relative group"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.9, duration: 0.6 }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-background to-secondary/5 rounded-3xl transform rotate-1 group-hover:rotate-2 transition-transform"></div>
+                  <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300 overflow-hidden">
+                    <div className="h-32 md:h-48 overflow-hidden">
+                      <img 
+                        src={peacefulSleep}
+                        alt="Person sleeping peacefully"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="p-3 md:p-4 lg:p-6">
+                      <h4 className="font-bold mb-2 md:mb-3 text-xs md:text-sm">Environmental Modulation</h4>
+                      <p className="text-xs text-muted-foreground leading-relaxed">
+                        Sleep deprivation causes 20-30% insulin resistance. Stress hormones (cortisol) increase hepatic glucose output. Exercise acutely improves sensitivity for 24-48 hours.
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
             </motion.div>
             
             <motion.div
@@ -569,7 +809,7 @@ const SciencePage = () => {
                     </p>
                   </div>
                   
-                  {/* Mobile: Detailed compact metabolic fingerprints */}
+                  {/* Mobile: Clickable expandable metabolic fingerprints */}
                   <div className="md:hidden">
                     <div className="space-y-3">
                       {[
@@ -578,6 +818,14 @@ const SciencePage = () => {
                           glucose: "70-99 mg/dL", 
                           insulin: "2-10 μU/mL",
                           details: "β-cells produce minimal insulin; muscle/liver respond efficiently. Tight glucose control maintained effortlessly.",
+                          fullDetails: "In healthy individuals, pancreatic β-cells secrete just enough insulin to maintain blood glucose between 70-99 mg/dL. Skeletal muscle and liver tissues exhibit high insulin sensitivity, efficiently clearing glucose from the bloodstream. This represents optimal metabolic health with minimal hormonal intervention required.",
+                          characteristics: [
+                            "• Stable energy levels throughout the day",
+                            "• Minimal post-meal glucose spikes (<40 mg/dL)",
+                            "• Quick return to baseline (within 2 hours)",
+                            "• Low inflammatory markers",
+                            "• Efficient fat oxidation during fasting"
+                          ],
                           population: "~60% of adults",
                           color: "emerald",
                           icon: "💚" 
@@ -587,6 +835,14 @@ const SciencePage = () => {
                           glucose: "100-125 mg/dL", 
                           insulin: ">15 μU/mL",
                           details: "β-cells compensate for insulin resistance by producing 2-3x normal insulin. Early warning of metabolic dysfunction.",
+                          fullDetails: "Prediabetes represents a critical transition phase where pancreatic β-cells work overtime to overcome increasing insulin resistance. Fasting glucose rises to 100-125 mg/dL, and insulin levels often exceed 15 μU/mL as the body attempts to maintain glucose control.",
+                          characteristics: [
+                            "• Energy crashes after meals",
+                            "• Increased carbohydrate cravings",
+                            "• Difficulty losing weight",
+                            "• Elevated triglycerides",
+                            "• Dark skin patches (acanthosis nigricans)"
+                          ],
                           population: "~35% of adults",
                           color: "amber",
                           icon: "⚠️" 
@@ -596,6 +852,14 @@ const SciencePage = () => {
                           glucose: "Variable", 
                           insulin: "External only",
                           details: "Autoimmune destruction of β-cells. Requires precise exogenous insulin replacement for survival.",
+                          fullDetails: "Type 1 diabetes results from autoimmune destruction of pancreatic β-cells, leading to absolute insulin deficiency. Without external insulin, blood glucose becomes dangerously elevated, leading to diabetic ketoacidosis and potentially death.",
+                          characteristics: [
+                            "• Rapid onset of symptoms",
+                            "• Extreme glucose variability",
+                            "• Requires multiple daily insulin injections",
+                            "• Risk of hypoglycemia and ketoacidosis",
+                            "• Usually diagnosed in childhood/young adults"
+                          ],
                           population: "~5% of diabetics",
                           color: "red",
                           icon: "💉" 
@@ -605,6 +869,14 @@ const SciencePage = () => {
                           glucose: "≥126 mg/dL", 
                           insulin: "Declining",
                           details: "Progressive β-cell failure combined with severe insulin resistance. Often requires multiple medications.",
+                          fullDetails: "Type 2 diabetes represents the end stage of progressive insulin resistance combined with β-cell failure. Despite initially high insulin production, cells become increasingly unresponsive, and eventually β-cells burn out from overwork.",
+                          characteristics: [
+                            "• Gradual onset over years",
+                            "• Persistent high blood glucose (≥126 mg/dL)",
+                            "• Complications in eyes, kidneys, nerves",
+                            "• Often requires combination therapy",
+                            "• Strong genetic and lifestyle components"
+                          ],
                           population: "~95% of diabetics",
                           color: "blue",
                           icon: "📈" 
@@ -614,6 +886,14 @@ const SciencePage = () => {
                           glucose: "65-85 mg/dL", 
                           insulin: "50% lower",
                           details: "Enhanced GLUT4 density and mitochondrial function. Can maintain low glucose with minimal insulin.",
+                          fullDetails: "Elite athletes represent the pinnacle of metabolic efficiency. Through training adaptations, they develop enhanced insulin sensitivity, increased GLUT4 transporters, and superior mitochondrial function, allowing them to maintain stable glucose with remarkably low insulin levels.",
+                          characteristics: [
+                            "• Exceptional insulin sensitivity",
+                            "• Higher muscle glucose uptake",
+                            "• Enhanced fat oxidation capacity",
+                            "• Lower baseline glucose (65-85 mg/dL)",
+                            "• Rapid post-exercise glucose clearance"
+                          ],
                           population: "Peak performers",
                           color: "purple",
                           icon: "💪" 
@@ -623,31 +903,83 @@ const SciencePage = () => {
                           glucose: "60-105 mg/dL", 
                           insulin: "2.5x normal",
                           details: "Placental hormones induce 40-60% insulin resistance to prioritize fetal glucose supply.",
+                          fullDetails: "During pregnancy, placental hormones deliberately induce insulin resistance to ensure adequate glucose supply to the developing fetus. This physiological adaptation requires a 2-3 fold increase in insulin production to maintain maternal glucose control.",
+                          characteristics: [
+                            "• Progressive insulin resistance (weeks 20-36)",
+                            "• Increased insulin production up to 250%",
+                            "• Risk of gestational diabetes (6-7%)",
+                            "• Returns to normal post-delivery",
+                            "• Future diabetes risk if GDM develops"
+                          ],
                           population: "Temporary adaptation",
                           color: "pink",
                           icon: "🤱" 
                         }
                       ].map((phenotype, index) => (
-                        <div key={index} className="p-4 bg-white/60 backdrop-blur-sm rounded-xl border border-white/20">
-                          <div className="flex items-start justify-between mb-2">
-                            <div className="flex items-center gap-2">
-                              <span className="text-base">{phenotype.icon}</span>
-                              <h4 className="text-sm font-bold">{phenotype.title}</h4>
+                        <Dialog key={index}>
+                          <DialogTrigger asChild>
+                            <div className="p-4 bg-white/60 backdrop-blur-sm rounded-xl border border-white/20 cursor-pointer hover:bg-white/80 transition-all duration-200">
+                              <div className="flex items-start justify-between mb-2">
+                                <div className="flex items-center gap-2">
+                                  <span className="text-base">{phenotype.icon}</span>
+                                  <h4 className="text-sm font-bold">{phenotype.title}</h4>
+                                  <Info className="w-3 h-3 text-primary" />
+                                </div>
+                                <span className="text-xs text-muted-foreground font-medium px-2 py-1 bg-white/40 rounded-full">{phenotype.population}</span>
+                              </div>
+                              <div className="grid grid-cols-2 gap-2 mb-3">
+                                <div className="text-xs">
+                                  <span className="text-muted-foreground block">Glucose Range:</span>
+                                  <div className="font-medium text-gray-800">{phenotype.glucose}</div>
+                                </div>
+                                <div className="text-xs">
+                                  <span className="text-muted-foreground block">Insulin Level:</span>
+                                  <div className="font-medium text-gray-800">{phenotype.insulin}</div>
+                                </div>
+                              </div>
+                              <p className="text-xs text-muted-foreground leading-relaxed">{phenotype.details}</p>
+                              <p className="text-xs text-primary mt-2 font-medium">Tap to learn more</p>
                             </div>
-                            <span className="text-xs text-muted-foreground font-medium px-2 py-1 bg-white/40 rounded-full">{phenotype.population}</span>
-                          </div>
-                          <div className="grid grid-cols-2 gap-2 mb-3">
-                            <div className="text-xs">
-                              <span className="text-muted-foreground block">Glucose Range:</span>
-                              <div className="font-medium text-gray-800">{phenotype.glucose}</div>
+                          </DialogTrigger>
+                          <DialogContent className="max-w-md max-h-[90vh] overflow-y-auto">
+                            <DialogHeader>
+                              <DialogTitle className="flex items-center gap-2">
+                                <span className="text-lg">{phenotype.icon}</span>
+                                {phenotype.title}
+                              </DialogTitle>
+                            </DialogHeader>
+                            <div className="space-y-4">
+                              <div className="grid grid-cols-2 gap-3">
+                                <div className="text-sm">
+                                  <span className="text-muted-foreground block">Glucose Range:</span>
+                                  <div className="font-medium text-foreground">{phenotype.glucose}</div>
+                                </div>
+                                <div className="text-sm">
+                                  <span className="text-muted-foreground block">Insulin Level:</span>
+                                  <div className="font-medium text-foreground">{phenotype.insulin}</div>
+                                </div>
+                              </div>
+                              
+                              <p className="text-sm text-muted-foreground leading-relaxed">
+                                {phenotype.fullDetails}
+                              </p>
+                              
+                              <div className={`bg-${phenotype.color}-50 p-3 rounded-lg`}>
+                                <p className={`text-xs text-${phenotype.color}-700 font-medium mb-2`}>Key Characteristics:</p>
+                                <div className="space-y-1">
+                                  {phenotype.characteristics.map((char, i) => (
+                                    <p key={i} className={`text-xs text-${phenotype.color}-600`}>{char}</p>
+                                  ))}
+                                </div>
+                              </div>
+                              
+                              <div className="bg-gray-50 p-3 rounded-lg">
+                                <p className="text-xs text-gray-700 font-medium">Population Prevalence</p>
+                                <p className="text-xs text-gray-600 mt-1">{phenotype.population}</p>
+                              </div>
                             </div>
-                            <div className="text-xs">
-                              <span className="text-muted-foreground block">Insulin Level:</span>
-                              <div className="font-medium text-gray-800">{phenotype.insulin}</div>
-                            </div>
-                          </div>
-                          <p className="text-xs text-muted-foreground leading-relaxed">{phenotype.details}</p>
-                        </div>
+                          </DialogContent>
+                        </Dialog>
                       ))}
                     </div>
                   </div>
