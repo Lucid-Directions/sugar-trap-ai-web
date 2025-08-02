@@ -111,9 +111,9 @@ const SciencePage = () => {
                     />
                   </div>
                   <div className="p-3 md:p-4 lg:p-6">
-                    <h4 className="font-bold mb-2 md:mb-3 text-xs md:text-sm">Healthy Regulation</h4>
+                    <h4 className="font-bold mb-2 md:mb-3 text-xs md:text-sm">Optimal Insulin Sensitivity</h4>
                     <p className="text-xs text-muted-foreground leading-relaxed">
-                      Healthy individuals maintain tightly regulated glucose with low insulin due to high sensitivity.
+                      Healthy pancreatic β-cells produce minimal insulin to maintain glucose 70-100 mg/dL. Muscle and liver tissues respond efficiently, clearing glucose rapidly post-meal.
                     </p>
                   </div>
                 </div>
@@ -135,9 +135,9 @@ const SciencePage = () => {
                     />
                   </div>
                   <div className="p-3 md:p-4 lg:p-6">
-                    <h4 className="font-bold mb-2 md:mb-3 text-xs md:text-sm">Insulin Resistance</h4>
+                    <h4 className="font-bold mb-2 md:mb-3 text-xs md:text-sm">Compensatory Hyperinsulinemia</h4>
                     <p className="text-xs text-muted-foreground leading-relaxed">
-                      Insulin-resistant states show elevated insulin levels and impaired glucose tolerance, progressing to beta-cell failure if unchecked.
+                      Pancreas overproduces insulin (2-10x normal) to overcome cellular resistance. Eventually β-cells exhaust, leading to type 2 diabetes progression.
                     </p>
                   </div>
                 </div>
@@ -159,9 +159,9 @@ const SciencePage = () => {
                     />
                   </div>
                   <div className="p-3 md:p-4 lg:p-6">
-                    <h4 className="font-bold mb-2 md:mb-3 text-xs md:text-sm">Special Populations</h4>
+                    <h4 className="font-bold mb-2 md:mb-3 text-xs md:text-sm">Physiological Adaptations</h4>
                     <p className="text-xs text-muted-foreground leading-relaxed">
-                      Children, athletes, and pregnant women each have unique profiles. Puberty and pregnancy induce transient resistance, while athletes show enhanced action.
+                      Puberty causes 25-50% insulin resistance to support growth. Pregnancy develops 40-60% resistance for fetal glucose supply. Athletes achieve 30-50% higher sensitivity.
                     </p>
                   </div>
                 </div>
@@ -183,9 +183,9 @@ const SciencePage = () => {
                     />
                   </div>
                   <div className="p-3 md:p-4 lg:p-6">
-                    <h4 className="font-bold mb-2 md:mb-3 text-xs md:text-sm">Dynamic Conditions</h4>
+                    <h4 className="font-bold mb-2 md:mb-3 text-xs md:text-sm">Environmental Modulation</h4>
                     <p className="text-xs text-muted-foreground leading-relaxed">
-                      Exercise and fasting generally lower glucose and insulin requirements, whereas stress and circadian hormone surges raise glucose demands.
+                      Sleep deprivation causes 20-30% insulin resistance. Stress hormones (cortisol) increase hepatic glucose output. Exercise acutely improves sensitivity for 24-48 hours.
                     </p>
                   </div>
                 </div>
@@ -568,27 +568,86 @@ const SciencePage = () => {
                     </p>
                   </div>
                   
-                  {/* Mobile: Compact metabolic fingerprints */}
+                  {/* Mobile: Detailed compact metabolic fingerprints */}
                   <div className="md:hidden">
-                    <div className="bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-white/20">
-                      <div className="grid grid-cols-2 gap-3">
-                        {[
-                          { title: "Healthy", color: "emerald", response: "Optimal", icon: "💚" },
-                          { title: "Prediabetic", color: "amber", response: "Compensating", icon: "⚠️" },
-                          { title: "Type 1", color: "red", response: "External insulin", icon: "💉" },
-                          { title: "Type 2", color: "blue", response: "Impaired", icon: "📈" },
-                          { title: "Athletes", color: "purple", response: "Enhanced", icon: "💪" },
-                          { title: "Youth", color: "indigo", response: "Developing", icon: "👶" },
-                          { title: "Pregnancy", color: "pink", response: "Adaptive", icon: "🤱" },
-                          { title: "Aging", color: "slate", response: "Progressive", icon: "👴" }
-                        ].map((phenotype, index) => (
-                          <div key={index} className="text-center p-3 bg-white/40 rounded-lg">
-                            <div className="text-lg mb-1">{phenotype.icon}</div>
-                            <div className="text-xs font-bold mb-1">{phenotype.title}</div>
-                            <div className="text-xs text-muted-foreground">{phenotype.response}</div>
+                    <div className="space-y-3">
+                      {[
+                        { 
+                          title: "Healthy Adults", 
+                          glucose: "70-99 mg/dL", 
+                          insulin: "2-10 μU/mL",
+                          details: "β-cells produce minimal insulin; muscle/liver respond efficiently. Tight glucose control maintained effortlessly.",
+                          population: "~60% of adults",
+                          color: "emerald",
+                          icon: "💚" 
+                        },
+                        { 
+                          title: "Prediabetes", 
+                          glucose: "100-125 mg/dL", 
+                          insulin: ">15 μU/mL",
+                          details: "β-cells compensate for insulin resistance by producing 2-3x normal insulin. Early warning of metabolic dysfunction.",
+                          population: "~35% of adults",
+                          color: "amber",
+                          icon: "⚠️" 
+                        },
+                        { 
+                          title: "Type 1 Diabetes", 
+                          glucose: "Variable", 
+                          insulin: "External only",
+                          details: "Autoimmune destruction of β-cells. Requires precise exogenous insulin replacement for survival.",
+                          population: "~5% of diabetics",
+                          color: "red",
+                          icon: "💉" 
+                        },
+                        { 
+                          title: "Type 2 Diabetes", 
+                          glucose: "≥126 mg/dL", 
+                          insulin: "Declining",
+                          details: "Progressive β-cell failure combined with severe insulin resistance. Often requires multiple medications.",
+                          population: "~95% of diabetics",
+                          color: "blue",
+                          icon: "📈" 
+                        },
+                        { 
+                          title: "Elite Athletes", 
+                          glucose: "65-85 mg/dL", 
+                          insulin: "50% lower",
+                          details: "Enhanced GLUT4 density and mitochondrial function. Can maintain low glucose with minimal insulin.",
+                          population: "Peak performers",
+                          color: "purple",
+                          icon: "💪" 
+                        },
+                        { 
+                          title: "Pregnancy (2nd/3rd)", 
+                          glucose: "60-105 mg/dL", 
+                          insulin: "2.5x normal",
+                          details: "Placental hormones induce 40-60% insulin resistance to prioritize fetal glucose supply.",
+                          population: "Temporary adaptation",
+                          color: "pink",
+                          icon: "🤱" 
+                        }
+                      ].map((phenotype, index) => (
+                        <div key={index} className="p-4 bg-white/60 backdrop-blur-sm rounded-xl border border-white/20">
+                          <div className="flex items-start justify-between mb-2">
+                            <div className="flex items-center gap-2">
+                              <span className="text-base">{phenotype.icon}</span>
+                              <h4 className="text-sm font-bold">{phenotype.title}</h4>
+                            </div>
+                            <span className="text-xs text-muted-foreground font-medium px-2 py-1 bg-white/40 rounded-full">{phenotype.population}</span>
                           </div>
-                        ))}
-                      </div>
+                          <div className="grid grid-cols-2 gap-2 mb-3">
+                            <div className="text-xs">
+                              <span className="text-muted-foreground block">Glucose Range:</span>
+                              <div className="font-medium text-gray-800">{phenotype.glucose}</div>
+                            </div>
+                            <div className="text-xs">
+                              <span className="text-muted-foreground block">Insulin Level:</span>
+                              <div className="font-medium text-gray-800">{phenotype.insulin}</div>
+                            </div>
+                          </div>
+                          <p className="text-xs text-muted-foreground leading-relaxed">{phenotype.details}</p>
+                        </div>
+                      ))}
                     </div>
                   </div>
                   
