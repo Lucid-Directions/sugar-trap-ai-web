@@ -121,19 +121,6 @@ const PhoneDemo = ({ currentMeal }) => {
           </div>
         </div>
       </div>
-      
-      {/* Glow Effect */}
-      <motion.div
-        className="absolute -inset-3 bg-gradient-to-r from-primary/20 to-primary-glow/20 rounded-[2.5rem] blur-xl opacity-60"
-        animate={{
-          opacity: [0.4, 0.8, 0.4],
-        }}
-        transition={{
-          duration: 3,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
     </div>
   );
 };
