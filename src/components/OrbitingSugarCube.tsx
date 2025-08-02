@@ -28,11 +28,13 @@ const OrbitingSugarCube = () => {
         >
           {/* Front face */}
           <div 
-            className="absolute w-full h-full bg-white/60 border border-foreground/40"
+            className="absolute w-full h-full bg-white/60 border border-foreground/40 flex items-center justify-center"
             style={{
               transform: 'translateZ(6px)'
             }}
-          />
+          >
+            <span className="text-xs font-bold text-foreground">AI</span>
+          </div>
           
           {/* Back face */}
           <div 
