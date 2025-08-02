@@ -224,7 +224,7 @@ const HeroSection = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               Your "healthy" breakfast might be the culprit. See the hidden glucose spikes 
-              behind every meal—before you feel the crash.
+              behind every meal before you feel the crash.
             </motion.p>
             
             {/* Social Proof */}
