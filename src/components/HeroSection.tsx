@@ -45,7 +45,7 @@ const PhoneDemo = ({ currentMeal }) => {
                     transition={{ duration: 2, repeat: Infinity }}
                   >
                     {currentMeal.name === "Sugary Cereal" && "🥣"}
-                    {currentMeal.name === "Smoothie Bowl" && "🥤"}
+                    {currentMeal.name === "Smoothie" && "🥤"}
                     {currentMeal.name === "Eggs & Avocado" && "🍳"}
                   </motion.div>
                 </div>
@@ -130,7 +130,7 @@ const HeroSection = () => {
   
   const meals = [
     { name: "Sugary Cereal", spike: "high", color: "red" },
-    { name: "Smoothie Bowl", spike: "high", color: "orange" },
+    { name: "Smoothie", spike: "high", color: "orange" },
     { name: "Eggs & Avocado", spike: "low", color: "green" }
   ];
   
