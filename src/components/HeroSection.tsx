@@ -146,13 +146,13 @@ const HeroSection = () => {
     <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-background via-background to-secondary/10">
       
 
-      <div className="relative z-10 container mx-auto px-4 py-20 sm:py-24 lg:py-32">
-        <div className="grid lg:grid-cols-[1fr,0.6fr] gap-8 lg:gap-16 items-center">
+      <div className="relative z-10 container mx-auto px-4 py-16 sm:py-20 lg:py-32">
+        <div className="grid lg:grid-cols-[1fr,0.6fr] gap-6 lg:gap-16 items-center">
           {/* Left Side - Content */}
-          <div className="space-y-6 lg:space-y-8">
+          <div className="space-y-4 sm:space-y-6 lg:space-y-8">
             {/* Headline with Animation */}
             <motion.h1
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight"
+              className="text-3xl sm:text-4xl lg:text-6xl font-bold leading-tight"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
@@ -166,7 +166,7 @@ const HeroSection = () => {
             
             {/* Subheadline */}
             <motion.p
-              className="text-lg sm:text-xl text-muted-foreground leading-relaxed"
+              className="text-base sm:text-lg lg:text-xl text-muted-foreground leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -206,7 +206,7 @@ const HeroSection = () => {
             
             {/* Trust Indicators */}
             <motion.div
-              className="flex flex-wrap gap-4 pt-2"
+              className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4 pt-2"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8 }}

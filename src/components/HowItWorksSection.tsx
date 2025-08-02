@@ -48,40 +48,40 @@ const HowItWorksSection = () => {
   ];
 
   return (
-    <section id="how-it-works-section" className="py-16 bg-gradient-to-b from-background to-secondary/20">
+    <section id="how-it-works-section" className="py-12 sm:py-16 bg-gradient-to-b from-background to-secondary/20">
       <div className="container mx-auto px-4">
         <motion.div
           ref={ref}
-          className="text-center mb-20"
+          className="text-center mb-12 sm:mb-16 lg:mb-20"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.4 }}
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-4 sm:mb-6">
             Your Complete 
             <span className="text-gradient"> Nutrition Companion</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-4xl mx-auto">
             Start with familiar calorie tracking, then unlock revolutionary glucose insights 
             when you're ready to optimise your health.
           </p>
         </motion.div>
 
         {/* Steps Grid */}
-        <div className="grid lg:grid-cols-2 gap-12 mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 mb-12 sm:mb-16 lg:mb-20">
           {steps.map((step, index) => (
             <motion.div
               key={step.title}
               className="relative"
-              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: index * 0.1, duration: 0.4 }}
             >
-              <div className="gradient-card rounded-3xl p-8 hover-lift">
+              <div className="gradient-card rounded-3xl p-6 sm:p-8 hover-lift">
                 {/* Step Number */}
-                <div className="flex items-start gap-6">
+                <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
                   <motion.div
-                    className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${step.color} flex items-center justify-center text-white font-bold text-xl relative`}
+                    className={`w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br ${step.color} flex items-center justify-center text-white font-bold text-lg sm:text-xl relative flex-shrink-0`}
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     transition={{ duration: 0.2 }}
                   >
@@ -100,9 +100,9 @@ const HowItWorksSection = () => {
                     )}
                   </motion.div>
 
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold mb-3">{step.title}</h3>
-                    <p className="text-muted-foreground mb-6 leading-relaxed">
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-3">{step.title}</h3>
+                    <p className="text-muted-foreground mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
                       {step.description}
                     </p>
 
@@ -128,7 +128,7 @@ const HowItWorksSection = () => {
               {/* Connection Line */}
               {index < steps.length - 1 && (
                 <motion.div
-                  className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-0.5 h-12 bg-gradient-to-b from-primary to-transparent lg:hidden"
+                  className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-0.5 h-6 bg-gradient-to-b from-primary to-transparent lg:hidden"
                   initial={{ scaleY: 0 }}
                   animate={isInView ? { scaleY: 1 } : {}}
                   transition={{ delay: index * 0.2 + 0.8, duration: 0.6 }}
@@ -145,15 +145,15 @@ const HowItWorksSection = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.5, duration: 0.4 }}
         >
-          <div className="gradient-card rounded-3xl p-8 md:p-12">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h3 className="text-3xl md:text-4xl font-bold mb-6">
+          <div className="gradient-card rounded-3xl p-6 sm:p-8 lg:p-12">
+            <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+              <div className="order-2 lg:order-1">
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6">
                   One App,
                   <span className="text-gradient block">Every Health Journey</span>
                 </h3>
                 
-                <div className="space-y-6">
+                <div className="space-y-4 sm:space-y-6">
                   <div className="flex items-start gap-4">
                     <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
                       <Smartphone className="w-4 h-4 text-green-600" />
@@ -187,15 +187,15 @@ const HowItWorksSection = () => {
               </div>
 
               {/* Phone Mockup */}
-              <div className="relative">
+              <div className="relative order-1 lg:order-2">
                 <motion.div
-                  className="relative mx-auto w-64 h-[500px] bg-gradient-to-b from-gray-800 to-gray-900 rounded-[3rem] p-2 shadow-2xl"
+                  className="relative mx-auto w-48 h-96 sm:w-64 sm:h-[500px] bg-gradient-to-b from-gray-800 to-gray-900 rounded-[2.5rem] sm:rounded-[3rem] p-1.5 sm:p-2 shadow-2xl"
                   animate={{ y: [0, -10, 0] }}
                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                 >
-                  <div className="w-full h-full bg-white rounded-[2.5rem] overflow-hidden relative">
+                  <div className="w-full h-full bg-white rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden relative">
                     {/* Phone Screen Content */}
-                    <div className="p-6 space-y-4">
+                    <div className="p-4 sm:p-6 space-y-3 sm:space-y-4">
                       <div className="text-center">
                         <div className="text-sm font-semibold text-gray-600">SugarTrap AI</div>
                       </div>
