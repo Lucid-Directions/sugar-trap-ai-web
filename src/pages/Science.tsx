@@ -7,7 +7,7 @@ import Navigation from '@/components/Navigation';
 import breadAlonePhoto from '@/assets/bread-alone-photo.jpg';
 import breadAvocadoPhoto from '@/assets/bread-avocado-photo.jpg';
 import avocadoBreadSequencePhoto from '@/assets/avocado-bread-sequence-photo.jpg';
-import glucoseMonitorDevice from '@/assets/glucose-monitor-device.jpg';
+import glucoseResponseIllustration from '@/assets/glucose-response-illustration.jpg';
 import laboratoryEquipment from '@/assets/laboratory-equipment.jpg';
 import healthAppPhone from '@/assets/health-app-phone.jpg';
 import medicalDataChart from '@/assets/medical-data-chart.jpg';
@@ -105,8 +105,8 @@ const SciencePage = () => {
                 <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300 overflow-hidden">
                   <div className="h-48 overflow-hidden">
                     <img 
-                      src={glucoseMonitorDevice}
-                      alt="Glucose monitoring device"
+                      src={glucoseResponseIllustration}
+                      alt="Glucose level chart showing healthy regulation"
                       className="w-full h-full object-cover"
                     />
                   </div>
