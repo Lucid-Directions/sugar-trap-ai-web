@@ -149,8 +149,8 @@ const GlucoseCurveDemo = () => {
                 {/* Enhanced Mobile Chart - Taller with More Detail */}
                 <div className="relative mb-6">
                   <svg 
-                    viewBox="0 0 360 180" 
-                    className="w-full h-40"
+                    viewBox="0 0 360 200" 
+                    className="w-full h-64"
                     style={{ background: 'linear-gradient(to bottom, #fafbfc 0%, #ffffff 100%)' }}
                   >
                     {/* Enhanced Grid */}
