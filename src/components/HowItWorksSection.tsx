@@ -1,6 +1,6 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Camera, BarChart3, Brain, Lightbulb, Zap, Smartphone, Activity } from 'lucide-react';
+import { Camera, BarChart3, Brain, Lightbulb, Zap, Smartphone, Activity, Star, Trophy, Target, TrendingUp, Users, Crown, MessageCircle, Heart } from 'lucide-react';
 
 const HowItWorksSection = () => {
   const ref = useRef(null);
@@ -260,6 +260,197 @@ const HowItWorksSection = () => {
                   animate={{ scale: [1, 1.3, 1], y: [0, -10, 0] }}
                   transition={{ duration: 4, repeat: Infinity, delay: 1 }}
                 />
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Engagement Features Section */}
+        <motion.div
+          className="max-w-6xl mx-auto mt-16 sm:mt-20 lg:mt-24"
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.7, duration: 0.4 }}
+        >
+          <div className="text-center mb-12 sm:mb-16">
+            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
+              <span className="text-gradient">Engagement Features</span>
+            </h3>
+            <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto">
+              Stay motivated with gamification and connect with a community that shares your health goals
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12">
+            {/* Gamification Elements */}
+            <div className="space-y-6">
+              <div className="flex items-center gap-3 mb-6">
+                <Star className="w-6 h-6 text-primary" />
+                <h4 className="text-xl sm:text-2xl font-bold">Gamification Elements</h4>
+              </div>
+
+              <div className="space-y-4">
+                <motion.div
+                  className="gradient-card rounded-2xl p-6"
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ delay: 0.9, duration: 0.4 }}
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-xl flex items-center justify-center">
+                      <Star className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h5 className="text-lg font-semibold mb-2">XP Points System</h5>
+                      <p className="text-muted-foreground text-sm">
+                        Earn experience points for healthy food choices and consistent tracking
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  className="gradient-card rounded-2xl p-6"
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ delay: 1.0, duration: 0.4 }}
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-purple-600 rounded-xl flex items-center justify-center">
+                      <Trophy className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h5 className="text-lg font-semibold mb-2">Achievement Badges</h5>
+                      <p className="text-muted-foreground text-sm">
+                        Milestone rewards for consistency, improvement, and community engagement
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  className="gradient-card rounded-2xl p-6"
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ delay: 1.1, duration: 0.4 }}
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl flex items-center justify-center">
+                      <Target className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h5 className="text-lg font-semibold mb-2">Daily Challenges</h5>
+                      <p className="text-muted-foreground text-sm">
+                        Nutrition goals, step counts, and glucose stability targets
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  className="gradient-card rounded-2xl p-6"
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ delay: 1.2, duration: 0.4 }}
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-green-600 rounded-xl flex items-center justify-center">
+                      <TrendingUp className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h5 className="text-lg font-semibold mb-2">Level Progression</h5>
+                      <p className="text-muted-foreground text-sm">
+                        Unlock new features and content as you advance through levels
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+
+            {/* Community Features */}
+            <div className="space-y-6">
+              <div className="flex items-center gap-3 mb-6">
+                <Users className="w-6 h-6 text-primary" />
+                <h4 className="text-xl sm:text-2xl font-bold">Community Features</h4>
+              </div>
+
+              <div className="space-y-4">
+                <motion.div
+                  className="gradient-card rounded-2xl p-6"
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ delay: 0.9, duration: 0.4 }}
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-xl flex items-center justify-center">
+                      <Users className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h5 className="text-lg font-semibold mb-2">User Profiles</h5>
+                      <p className="text-muted-foreground text-sm">
+                        Customizable profiles showcasing achievements and progress
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  className="gradient-card rounded-2xl p-6"
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ delay: 1.0, duration: 0.4 }}
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl flex items-center justify-center">
+                      <Crown className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h5 className="text-lg font-semibold mb-2">Leaderboards</h5>
+                      <p className="text-muted-foreground text-sm">
+                        Weekly and monthly rankings for health metrics and challenges
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  className="gradient-card rounded-2xl p-6"
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ delay: 1.1, duration: 0.4 }}
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-pink-400 to-pink-600 rounded-xl flex items-center justify-center">
+                      <MessageCircle className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h5 className="text-lg font-semibold mb-2">In-App Messaging</h5>
+                      <p className="text-muted-foreground text-sm">
+                        Direct messages, group chats, and mentor connections
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  className="gradient-card rounded-2xl p-6"
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ delay: 1.2, duration: 0.4 }}
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-red-400 to-red-600 rounded-xl flex items-center justify-center">
+                      <Heart className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h5 className="text-lg font-semibold mb-2">Success Stories</h5>
+                      <p className="text-muted-foreground text-sm">
+                        Share progress and inspire others in the community
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
               </div>
             </div>
           </div>
