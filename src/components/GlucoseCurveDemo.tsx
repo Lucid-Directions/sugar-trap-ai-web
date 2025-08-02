@@ -129,259 +129,357 @@ const GlucoseCurveDemo = () => {
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.2, duration: 0.4 }}
           >
-            {/* Mobile: Meal Selection First */}
-            <div className="block lg:hidden mb-6">
-              <p className="text-base mb-4 text-muted-foreground text-center">
-                Compare breakfast options:
-              </p>
-              
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                {Object.entries(mealData).map(([key, meal]) => (
-                  <motion.button
-                    key={key}
-                    className={`flex flex-col items-center gap-1 px-2 py-3 rounded-lg font-medium text-xs transition-all duration-300 ${
-                      selectedMeal === key 
-                        ? `bg-gradient-to-r ${meal.gradient} text-white shadow-lg` 
-                        : 'bg-white text-foreground hover:bg-gray-50 border border-gray-200'
-                    }`}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => setSelectedMeal(key)}
-                  >
-                    <div className="w-8 h-8 rounded overflow-hidden">
-                      <img 
-                        src={getMealPhoto(key)} 
-                        alt={meal.name} 
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <span className="text-center leading-tight text-xs">{meal.name}</span>
-                  </motion.button>
-                ))}
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 lg:gap-6">
-              {/* Glucose Chart - More Professional Design */}
-              <div className="lg:col-span-3 order-2 lg:order-1">
-                <div className="bg-white rounded-2xl p-4 md:p-6 lg:p-8 shadow-sm border border-gray-100">
-                  <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4 md:mb-6">
-                    <div>
-                      <h3 className="text-lg md:text-xl lg:text-2xl font-bold mb-1">Glucose Response Prediction</h3>
-                      <p className="text-xs md:text-sm text-muted-foreground">Realtime metabolic impact analysis</p>
-                    </div>
-                    <div className="flex items-center gap-2 text-xs text-muted-foreground mt-2 md:mt-0">
-                      <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
-                      <span className="hidden sm:inline">Target Range: 80-120 mg/dL</span>
-                      <span className="sm:hidden">Target: 80-120</span>
-                    </div>
+            {/* Mobile: Compact Layout with Chart and Controls Together */}
+            <div className="block lg:hidden">
+              {/* Mobile Chart - Compact Version */}
+              <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 mb-4">
+                <div className="flex justify-between items-start mb-3">
+                  <div>
+                    <h3 className="text-lg font-bold mb-1">Glucose Response</h3>
+                    <p className="text-xs text-muted-foreground">Compare breakfast options</p>
                   </div>
+                  <div className="text-right">
+                    <div className="text-sm font-bold" style={{ color: currentMeal.color }}>
+                      {currentMeal.peak}
+                    </div>
+                    <div className="text-xs text-muted-foreground">Peak</div>
+                  </div>
+                </div>
 
-                  <div className="relative">
-                    {/* Professional SVG Chart */}
-                    <svg 
-                      viewBox="0 0 400 240" 
-                      className="w-full h-56 md:h-64"
-                      style={{ background: 'linear-gradient(to bottom, #fafbfc 0%, #ffffff 100%)' }}
-                    >
-                      {/* Professional Grid */}
-                      <defs>
-                        <pattern id="professional-grid" width="40" height="24" patternUnits="userSpaceOnUse">
-                          <path d="M 40 0 L 0 0 0 24" fill="none" stroke="#f1f5f9" strokeWidth="1"/>
-                        </pattern>
-                        <linearGradient id="areaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                          <stop offset="0%" stopColor={currentMeal.color} stopOpacity="0.15"/>
-                          <stop offset="100%" stopColor={currentMeal.color} stopOpacity="0.02"/>
-                        </linearGradient>
-                      </defs>
-                      <rect width="100%" height="100%" fill="url(#professional-grid)" />
+                {/* Compact Mobile Chart */}
+                <div className="relative mb-4">
+                  <svg 
+                    viewBox="0 0 320 120" 
+                    className="w-full h-24"
+                    style={{ background: 'linear-gradient(to bottom, #fafbfc 0%, #ffffff 100%)' }}
+                  >
+                    {/* Grid */}
+                    <defs>
+                      <pattern id="mobile-grid" width="32" height="12" patternUnits="userSpaceOnUse">
+                        <path d="M 32 0 L 0 0 0 12" fill="none" stroke="#f1f5f9" strokeWidth="0.5"/>
+                      </pattern>
+                      <linearGradient id="mobileAreaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stopColor={currentMeal.color} stopOpacity="0.15"/>
+                        <stop offset="100%" stopColor={currentMeal.color} stopOpacity="0.02"/>
+                      </linearGradient>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#mobile-grid)" />
 
-                      {/* Axes */}
-                      <line x1="60" y1="40" x2="60" y2="200" stroke="#e2e8f0" strokeWidth="2"/>
-                      <line x1="60" y1="200" x2="360" y2="200" stroke="#e2e8f0" strokeWidth="2"/>
+                    {/* Axes */}
+                    <line x1="40" y1="20" x2="40" y2="100" stroke="#e2e8f0" strokeWidth="1"/>
+                    <line x1="40" y1="100" x2="280" y2="100" stroke="#e2e8f0" strokeWidth="1"/>
 
-                      {/* Target Range Zone */}
-                      <rect x="60" y="120" width="300" height="48" fill="#10b981" fillOpacity="0.08" stroke="#10b981" strokeOpacity="0.2" strokeWidth="1" strokeDasharray="4,4"/>
-                      <text x="65" y="135" fontSize="11" fill="#059669" fontWeight="500">Target Range</text>
-                      
-                      {/* Y-axis grid lines and labels */}
-                      <g stroke="#f1f5f9" strokeWidth="1">
-                        <line x1="60" y1="56" x2="360" y2="56"/>
-                        <line x1="60" y1="88" x2="360" y2="88"/>
-                        <line x1="60" y1="120" x2="360" y2="120"/>
-                        <line x1="60" y1="152" x2="360" y2="152"/>
-                        <line x1="60" y1="184" x2="360" y2="184"/>
-                      </g>
-                      
-                      {/* Y-axis labels */}
-                      <text x="45" y="60" fontSize="12" fill="#64748b" textAnchor="end" fontWeight="500">200</text>
-                      <text x="45" y="92" fontSize="12" fill="#64748b" textAnchor="end" fontWeight="500">160</text>
-                      <text x="45" y="124" fontSize="12" fill="#10b981" textAnchor="end" fontWeight="600">120</text>
-                      <text x="45" y="156" fontSize="12" fill="#64748b" textAnchor="end" fontWeight="500">100</text>
-                      <text x="45" y="188" fontSize="12" fill="#10b981" textAnchor="end" fontWeight="600">80</text>
-                      
-                      {/* X-axis labels */}
-                      <text x="60" y="220" fontSize="12" fill="#64748b" textAnchor="middle" fontWeight="500">0min</text>
-                      <text x="135" y="220" fontSize="12" fill="#64748b" textAnchor="middle" fontWeight="500">30min</text>
-                      <text x="210" y="220" fontSize="12" fill="#64748b" textAnchor="middle" fontWeight="500">1hr</text>
-                      <text x="285" y="220" fontSize="12" fill="#64748b" textAnchor="middle" fontWeight="500">2hr</text>
-                      <text x="360" y="220" fontSize="12" fill="#64748b" textAnchor="middle" fontWeight="500">3hr</text>
+                    {/* Target Range */}
+                    <rect x="40" y="60" width="240" height="24" fill="#10b981" fillOpacity="0.1" stroke="#10b981" strokeOpacity="0.3" strokeWidth="0.5" strokeDasharray="2,2"/>
+                    
+                    {/* Y-axis labels - simplified for mobile */}
+                    <text x="35" y="25" fontSize="10" fill="#64748b" textAnchor="end">200</text>
+                    <text x="35" y="65" fontSize="10" fill="#10b981" textAnchor="end" fontWeight="600">120</text>
+                    <text x="35" y="85" fontSize="10" fill="#10b981" textAnchor="end" fontWeight="600">80</text>
+                    
+                    {/* X-axis labels - simplified */}
+                    <text x="40" y="115" fontSize="9" fill="#64748b" textAnchor="middle">0</text>
+                    <text x="160" y="115" fontSize="9" fill="#64748b" textAnchor="middle">1h</text>
+                    <text x="280" y="115" fontSize="9" fill="#64748b" textAnchor="middle">3h</text>
 
-                      {/* Area under curve */}
-                      <AnimatePresence mode="wait">
-                        <motion.path
-                          key={`area-${selectedMeal}`}
-                          d={`${currentMeal.path} L 360,200 L 60,200 Z`}
-                          fill="url(#areaGradient)"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          transition={{ duration: 0.6, ease: "easeOut" }}
-                        />
-                      </AnimatePresence>
+                    {/* Mobile-adjusted curve paths */}
+                    <AnimatePresence mode="wait">
+                      <motion.path
+                        key={`mobile-area-${selectedMeal}`}
+                        d={`${currentMeal.path.replace(/(\d+)/g, (match) => String(Math.round(parseInt(match) * 0.8 + (parseInt(match) > 200 ? -40 : 0))))} L 280,100 L 40,100 Z`}
+                        fill="url(#mobileAreaGradient)"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                      />
+                    </AnimatePresence>
 
-                      {/* Main Glucose Curve - Properly Positioned */}
-                      <AnimatePresence mode="wait">
-                        <motion.path
-                          key={selectedMeal}
-                          d={currentMeal.path}
-                          fill="none"
-                          stroke={currentMeal.color}
-                          strokeWidth="3"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          initial={{ pathLength: 0, opacity: 0 }}
-                          animate={{ pathLength: 1, opacity: 1 }}
-                          exit={{ pathLength: 0, opacity: 0 }}
-                          transition={{ duration: 1.2, ease: "easeOut" }}
-                          style={{
-                            filter: `drop-shadow(0 2px 8px ${currentMeal.color}30)`
-                          }}
-                        />
-                      </AnimatePresence>
+                    <AnimatePresence mode="wait">
+                      <motion.path
+                        key={`mobile-${selectedMeal}`}
+                        d={currentMeal.path.replace(/(\d+)/g, (match) => String(Math.round(parseInt(match) * 0.8 + (parseInt(match) > 200 ? -40 : 0))))}
+                        fill="none"
+                        stroke={currentMeal.color}
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        initial={{ pathLength: 0, opacity: 0 }}
+                        animate={{ pathLength: 1, opacity: 1 }}
+                        exit={{ pathLength: 0, opacity: 0 }}
+                        transition={{ duration: 1, ease: "easeOut" }}
+                      />
+                    </AnimatePresence>
+                  </svg>
+                </div>
 
-                      {/* Peak Indicator - More Precise Positioning */}
-                      <motion.g
-                        initial={{ scale: 0, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        transition={{ delay: 0.8, duration: 0.4, type: "spring", bounce: 0.3 }}
+                {/* Mobile Meal Selection - Horizontal Scroll */}
+                <div className="overflow-x-auto pb-2">
+                  <div className="flex gap-2 min-w-max">
+                    {Object.entries(mealData).map(([key, meal]) => (
+                      <motion.button
+                        key={key}
+                        className={`flex-shrink-0 flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-xs transition-all duration-300 ${
+                          selectedMeal === key 
+                            ? `bg-gradient-to-r ${meal.gradient} text-white shadow-lg` 
+                            : 'bg-gray-100 text-foreground hover:bg-gray-200'
+                        }`}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => setSelectedMeal(key)}
                       >
-                        <circle 
-                          cx={selectedMeal === 'sugary' ? '160' : selectedMeal === 'normal' ? '160' : selectedMeal === 'orangeJuice' ? '160' : selectedMeal === 'coffee' ? '210' : selectedMeal === 'balanced' ? '210' : selectedMeal === 'oatmeal' ? '160' : '210'} 
-                          cy={selectedMeal === 'sugary' ? '64' : selectedMeal === 'normal' ? '96' : selectedMeal === 'orangeJuice' ? '72' : selectedMeal === 'coffee' ? '182' : selectedMeal === 'balanced' ? '176' : selectedMeal === 'oatmeal' ? '140' : '180'}
-                          r="5" 
-                          fill="white"
-                          stroke={currentMeal.color}
-                          strokeWidth="3"
-                        />
-                        <motion.circle 
-                          cx={selectedMeal === 'sugary' ? '160' : selectedMeal === 'normal' ? '160' : selectedMeal === 'orangeJuice' ? '160' : selectedMeal === 'coffee' ? '210' : selectedMeal === 'balanced' ? '210' : selectedMeal === 'oatmeal' ? '160' : '210'} 
-                          cy={selectedMeal === 'sugary' ? '64' : selectedMeal === 'normal' ? '96' : selectedMeal === 'orangeJuice' ? '72' : selectedMeal === 'coffee' ? '182' : selectedMeal === 'balanced' ? '176' : selectedMeal === 'oatmeal' ? '140' : '180'}
-                          r="12" 
-                          fill="none"
-                          stroke={currentMeal.color}
-                          strokeWidth="2"
-                          strokeOpacity="0.6"
-                          animate={{ scale: [1, 1.4, 1] }}
-                          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                        />
-                        {/* Peak Value Label */}
-                        <motion.text 
-                          x={selectedMeal === 'sugary' ? '160' : selectedMeal === 'normal' ? '160' : selectedMeal === 'orangeJuice' ? '160' : selectedMeal === 'coffee' ? '210' : selectedMeal === 'balanced' ? '210' : selectedMeal === 'oatmeal' ? '160' : '210'} 
-                          y={selectedMeal === 'sugary' ? '45' : selectedMeal === 'normal' ? '77' : selectedMeal === 'orangeJuice' ? '53' : selectedMeal === 'coffee' ? '163' : selectedMeal === 'balanced' ? '157' : selectedMeal === 'oatmeal' ? '121' : '161'}
-                          fontSize="11" 
-                          fill={currentMeal.color} 
-                          textAnchor="middle" 
-                          fontWeight="bold"
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 1 }}
-                        >
-                          {currentMeal.peak}
-                        </motion.text>
-                      </motion.g>
+                        <div className="w-6 h-6 rounded overflow-hidden">
+                          <img 
+                            src={getMealPhoto(key)} 
+                            alt={meal.name} 
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        <span className="whitespace-nowrap">{meal.name}</span>
+                      </motion.button>
+                    ))}
+                  </div>
+                </div>
 
-                      {/* Baseline indicator */}
-                      <line x1="60" y1="184" x2="75" y2="184" stroke="#64748b" strokeWidth="3" strokeLinecap="round"/>
-                      <text x="80" y="188" fontSize="11" fill="#64748b" fontWeight="500">Baseline</text>
-                    </svg>
+                {/* Current Selection Info */}
+                <div className="mt-3 p-3 bg-gray-50 rounded-lg">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div className="text-sm font-semibold">{currentMeal.name}</div>
+                      <div className="text-xs text-muted-foreground">{currentMeal.description}</div>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-xs text-muted-foreground">Time to Peak</div>
+                      <div className="text-sm font-semibold">{currentMeal.time}</div>
+                    </div>
                   </div>
                 </div>
               </div>
+            </div>
 
-              {/* Stats and Meal Selection - Improved Layout */}
-              <div className="lg:col-span-2 space-y-4 order-1 lg:order-2">
-                {/* Current Meal Stats */}
-                <motion.div 
-                  className="bg-white rounded-2xl p-4 lg:p-6 shadow-sm border border-gray-100"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4, duration: 0.4 }}
-                >
-                  <div className="text-center mb-4 lg:mb-6">
-                    <motion.div 
-                      className="w-12 h-12 lg:w-16 lg:h-16 rounded-lg overflow-hidden mx-auto mb-2 border border-gray-200"
-                      animate={{ scale: [1, 1.05, 1] }}
-                      transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 2 }}
-                    >
-                      <img 
-                        src={getMealPhoto(selectedMeal)} 
-                        alt={currentMeal.name} 
-                        className="w-full h-full object-cover"
-                      />
-                    </motion.div>
-                    <h4 className="text-base lg:text-lg font-bold">{currentMeal.name}</h4>
-                    <p className="text-xs lg:text-sm text-muted-foreground">{currentMeal.description}</p>
-                  </div>
-                  
-                  <div className="grid grid-cols-2 gap-3 lg:gap-4">
-                    <div className="text-center p-2 lg:p-3 rounded-lg bg-gray-50">
-                      <div className="text-xs text-muted-foreground uppercase tracking-wide mb-1">Peak Level</div>
-                      <div className="text-base lg:text-lg font-bold" style={{ color: currentMeal.color }}>
-                        {currentMeal.peak}
+            {/* Desktop Layout */}
+            <div className="hidden lg:block">
+              <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 lg:gap-6">
+                {/* Glucose Chart - More Professional Design */}
+                <div className="lg:col-span-3 order-2 lg:order-1">
+                  <div className="bg-white rounded-2xl p-4 md:p-6 lg:p-8 shadow-sm border border-gray-100">
+                    <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4 md:mb-6">
+                      <div>
+                        <h3 className="text-lg md:text-xl lg:text-2xl font-bold mb-1">Glucose Response Prediction</h3>
+                        <p className="text-xs md:text-sm text-muted-foreground">Realtime metabolic impact analysis</p>
+                      </div>
+                      <div className="flex items-center gap-2 text-xs text-muted-foreground mt-2 md:mt-0">
+                        <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
+                        <span className="hidden sm:inline">Target Range: 80-120 mg/dL</span>
+                        <span className="sm:hidden">Target: 80-120</span>
                       </div>
                     </div>
-                    <div className="text-center p-2 lg:p-3 rounded-lg bg-gray-50">
-                      <div className="text-xs text-muted-foreground uppercase tracking-wide mb-1">Time to Peak</div>
-                      <div className="text-base lg:text-lg font-bold">{currentMeal.time}</div>
+
+                    <div className="relative">
+                      {/* Professional SVG Chart */}
+                      <svg 
+                        viewBox="0 0 400 240" 
+                        className="w-full h-56 md:h-64"
+                        style={{ background: 'linear-gradient(to bottom, #fafbfc 0%, #ffffff 100%)' }}
+                      >
+                        {/* Professional Grid */}
+                        <defs>
+                          <pattern id="professional-grid" width="40" height="24" patternUnits="userSpaceOnUse">
+                            <path d="M 40 0 L 0 0 0 24" fill="none" stroke="#f1f5f9" strokeWidth="1"/>
+                          </pattern>
+                          <linearGradient id="areaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stopColor={currentMeal.color} stopOpacity="0.15"/>
+                            <stop offset="100%" stopColor={currentMeal.color} stopOpacity="0.02"/>
+                          </linearGradient>
+                        </defs>
+                        <rect width="100%" height="100%" fill="url(#professional-grid)" />
+
+                        {/* Axes */}
+                        <line x1="60" y1="40" x2="60" y2="200" stroke="#e2e8f0" strokeWidth="2"/>
+                        <line x1="60" y1="200" x2="360" y2="200" stroke="#e2e8f0" strokeWidth="2"/>
+
+                        {/* Target Range Zone */}
+                        <rect x="60" y="120" width="300" height="48" fill="#10b981" fillOpacity="0.08" stroke="#10b981" strokeOpacity="0.2" strokeWidth="1" strokeDasharray="4,4"/>
+                        <text x="65" y="135" fontSize="11" fill="#059669" fontWeight="500">Target Range</text>
+                        
+                        {/* Y-axis grid lines and labels */}
+                        <g stroke="#f1f5f9" strokeWidth="1">
+                          <line x1="60" y1="56" x2="360" y2="56"/>
+                          <line x1="60" y1="88" x2="360" y2="88"/>
+                          <line x1="60" y1="120" x2="360" y2="120"/>
+                          <line x1="60" y1="152" x2="360" y2="152"/>
+                          <line x1="60" y1="184" x2="360" y2="184"/>
+                        </g>
+                        
+                        {/* Y-axis labels */}
+                        <text x="45" y="60" fontSize="12" fill="#64748b" textAnchor="end" fontWeight="500">200</text>
+                        <text x="45" y="92" fontSize="12" fill="#64748b" textAnchor="end" fontWeight="500">160</text>
+                        <text x="45" y="124" fontSize="12" fill="#10b981" textAnchor="end" fontWeight="600">120</text>
+                        <text x="45" y="156" fontSize="12" fill="#64748b" textAnchor="end" fontWeight="500">100</text>
+                        <text x="45" y="188" fontSize="12" fill="#10b981" textAnchor="end" fontWeight="600">80</text>
+                        
+                        {/* X-axis labels */}
+                        <text x="60" y="220" fontSize="12" fill="#64748b" textAnchor="middle" fontWeight="500">0min</text>
+                        <text x="135" y="220" fontSize="12" fill="#64748b" textAnchor="middle" fontWeight="500">30min</text>
+                        <text x="210" y="220" fontSize="12" fill="#64748b" textAnchor="middle" fontWeight="500">1hr</text>
+                        <text x="285" y="220" fontSize="12" fill="#64748b" textAnchor="middle" fontWeight="500">2hr</text>
+                        <text x="360" y="220" fontSize="12" fill="#64748b" textAnchor="middle" fontWeight="500">3hr</text>
+
+                        {/* Area under curve */}
+                        <AnimatePresence mode="wait">
+                          <motion.path
+                            key={`area-${selectedMeal}`}
+                            d={`${currentMeal.path} L 360,200 L 60,200 Z`}
+                            fill="url(#areaGradient)"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.6, ease: "easeOut" }}
+                          />
+                        </AnimatePresence>
+
+                        {/* Main Glucose Curve - Properly Positioned */}
+                        <AnimatePresence mode="wait">
+                          <motion.path
+                            key={selectedMeal}
+                            d={currentMeal.path}
+                            fill="none"
+                            stroke={currentMeal.color}
+                            strokeWidth="3"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            initial={{ pathLength: 0, opacity: 0 }}
+                            animate={{ pathLength: 1, opacity: 1 }}
+                            exit={{ pathLength: 0, opacity: 0 }}
+                            transition={{ duration: 1.2, ease: "easeOut" }}
+                            style={{
+                              filter: `drop-shadow(0 2px 8px ${currentMeal.color}30)`
+                            }}
+                          />
+                        </AnimatePresence>
+
+                        {/* Peak Indicator - More Precise Positioning */}
+                        <motion.g
+                          initial={{ scale: 0, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          transition={{ delay: 0.8, duration: 0.4, type: "spring", bounce: 0.3 }}
+                        >
+                          <circle 
+                            cx={selectedMeal === 'sugary' ? '160' : selectedMeal === 'normal' ? '160' : selectedMeal === 'orangeJuice' ? '160' : selectedMeal === 'coffee' ? '210' : selectedMeal === 'balanced' ? '210' : selectedMeal === 'oatmeal' ? '160' : '210'} 
+                            cy={selectedMeal === 'sugary' ? '64' : selectedMeal === 'normal' ? '96' : selectedMeal === 'orangeJuice' ? '72' : selectedMeal === 'coffee' ? '182' : selectedMeal === 'balanced' ? '176' : selectedMeal === 'oatmeal' ? '140' : '180'}
+                            r="5" 
+                            fill="white"
+                            stroke={currentMeal.color}
+                            strokeWidth="3"
+                          />
+                          <motion.circle 
+                            cx={selectedMeal === 'sugary' ? '160' : selectedMeal === 'normal' ? '160' : selectedMeal === 'orangeJuice' ? '160' : selectedMeal === 'coffee' ? '210' : selectedMeal === 'balanced' ? '210' : selectedMeal === 'oatmeal' ? '160' : '210'} 
+                            cy={selectedMeal === 'sugary' ? '64' : selectedMeal === 'normal' ? '96' : selectedMeal === 'orangeJuice' ? '72' : selectedMeal === 'coffee' ? '182' : selectedMeal === 'balanced' ? '176' : selectedMeal === 'oatmeal' ? '140' : '180'}
+                            r="12" 
+                            fill="none"
+                            stroke={currentMeal.color}
+                            strokeWidth="2"
+                            strokeOpacity="0.6"
+                            animate={{ scale: [1, 1.4, 1] }}
+                            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                          />
+                          {/* Peak Value Label */}
+                          <motion.text 
+                            x={selectedMeal === 'sugary' ? '160' : selectedMeal === 'normal' ? '160' : selectedMeal === 'orangeJuice' ? '160' : selectedMeal === 'coffee' ? '210' : selectedMeal === 'balanced' ? '210' : selectedMeal === 'oatmeal' ? '160' : '210'} 
+                            y={selectedMeal === 'sugary' ? '45' : selectedMeal === 'normal' ? '77' : selectedMeal === 'orangeJuice' ? '53' : selectedMeal === 'coffee' ? '163' : selectedMeal === 'balanced' ? '157' : selectedMeal === 'oatmeal' ? '121' : '161'}
+                            fontSize="11" 
+                            fill={currentMeal.color} 
+                            textAnchor="middle" 
+                            fontWeight="bold"
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 1 }}
+                          >
+                            {currentMeal.peak}
+                          </motion.text>
+                        </motion.g>
+
+                        {/* Baseline indicator */}
+                        <line x1="60" y1="184" x2="75" y2="184" stroke="#64748b" strokeWidth="3" strokeLinecap="round"/>
+                        <text x="80" y="188" fontSize="11" fill="#64748b" fontWeight="500">Baseline</text>
+                      </svg>
                     </div>
                   </div>
-                </motion.div>
+                </div>
 
-                {/* Meal Selection - Desktop */}
-                <div className="hidden lg:block">
-                  <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
-                    <h5 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-4">
-                      Compare Meals
-                    </h5>
+                {/* Stats and Meal Selection - Improved Layout */}
+                <div className="lg:col-span-2 space-y-4 order-1 lg:order-2">
+                  {/* Current Meal Stats */}
+                  <motion.div 
+                    className="bg-white rounded-2xl p-4 lg:p-6 shadow-sm border border-gray-100"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4, duration: 0.4 }}
+                  >
+                    <div className="text-center mb-4 lg:mb-6">
+                      <motion.div 
+                        className="w-12 h-12 lg:w-16 lg:h-16 rounded-lg overflow-hidden mx-auto mb-2 border border-gray-200"
+                        animate={{ scale: [1, 1.05, 1] }}
+                        transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 2 }}
+                      >
+                        <img 
+                          src={getMealPhoto(selectedMeal)} 
+                          alt={currentMeal.name} 
+                          className="w-full h-full object-cover"
+                        />
+                      </motion.div>
+                      <h4 className="text-base lg:text-lg font-bold">{currentMeal.name}</h4>
+                      <p className="text-xs lg:text-sm text-muted-foreground">{currentMeal.description}</p>
+                    </div>
                     
-                    <div className="space-y-2">
-                      {Object.entries(mealData).map(([key, meal]) => (
-                        <motion.button
-                          key={key}
-                          className={`w-full flex items-center gap-3 px-3 py-3 rounded-lg font-medium transition-all duration-200 ${
-                            selectedMeal === key 
-                              ? `bg-gradient-to-r ${meal.gradient} text-white shadow-md` 
-                              : 'bg-gray-50 text-foreground hover:bg-gray-100'
-                          }`}
-                          whileTap={{ scale: 0.98 }}
-                          whileHover={{ scale: 1.01 }}
-                          onClick={() => setSelectedMeal(key)}
-                        >
-                          <div className="w-8 h-8 rounded overflow-hidden">
-                            <img 
-                              src={getMealPhoto(key)} 
-                              alt={meal.name} 
-                              className="w-full h-full object-cover"
-                            />
-                          </div>
-                          <div className="text-left flex-1">
-                            <div className="text-sm font-medium">{meal.name}</div>
-                            <div className={`text-xs ${selectedMeal === key ? 'text-white/80' : 'text-muted-foreground'}`}>
-                              Peak: {meal.peak}
+                    <div className="grid grid-cols-2 gap-3 lg:gap-4">
+                      <div className="text-center p-2 lg:p-3 rounded-lg bg-gray-50">
+                        <div className="text-xs text-muted-foreground uppercase tracking-wide mb-1">Peak Level</div>
+                        <div className="text-base lg:text-lg font-bold" style={{ color: currentMeal.color }}>
+                          {currentMeal.peak}
+                        </div>
+                      </div>
+                      <div className="text-center p-2 lg:p-3 rounded-lg bg-gray-50">
+                        <div className="text-xs text-muted-foreground uppercase tracking-wide mb-1">Time to Peak</div>
+                        <div className="text-base lg:text-lg font-bold">{currentMeal.time}</div>
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  {/* Meal Selection - Desktop */}
+                  <div className="hidden lg:block">
+                    <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+                      <h5 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-4">
+                        Compare Meals
+                      </h5>
+                      
+                      <div className="space-y-2">
+                        {Object.entries(mealData).map(([key, meal]) => (
+                          <motion.button
+                            key={key}
+                            className={`w-full flex items-center gap-3 px-3 py-3 rounded-lg font-medium transition-all duration-200 ${
+                              selectedMeal === key 
+                                ? `bg-gradient-to-r ${meal.gradient} text-white shadow-md` 
+                                : 'bg-gray-50 text-foreground hover:bg-gray-100'
+                            }`}
+                            whileTap={{ scale: 0.98 }}
+                            whileHover={{ scale: 1.01 }}
+                            onClick={() => setSelectedMeal(key)}
+                          >
+                            <div className="w-8 h-8 rounded overflow-hidden">
+                              <img 
+                                src={getMealPhoto(key)} 
+                                alt={meal.name} 
+                                className="w-full h-full object-cover"
+                              />
                             </div>
-                          </div>
-                        </motion.button>
-                      ))}
+                            <div className="text-left flex-1">
+                              <div className="text-sm font-medium">{meal.name}</div>
+                              <div className={`text-xs ${selectedMeal === key ? 'text-white/80' : 'text-muted-foreground'}`}>
+                                Peak: {meal.peak}
+                              </div>
+                            </div>
+                          </motion.button>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
