@@ -19,37 +19,70 @@ const RotatingSugarCube = () => {
         }}
       >
         {/* Simple 3D Sugar Cube */}
-        <div 
+        <motion.div 
           className="relative w-full h-full"
           style={{
             transformStyle: 'preserve-3d',
-            transform: 'rotateX(-15deg) rotateY(20deg)'
+            transform: 'rotateX(-15deg) rotateY(25deg)'
+          }}
+          animate={{
+            rotateX: [-15, -10, -15],
+            rotateY: [25, 35, 25],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut"
           }}
         >
           {/* Front face */}
           <div 
-            className="absolute w-full h-full bg-white/80 border border-foreground/60"
+            className="absolute w-full h-full bg-white border border-gray-800"
             style={{
-              transform: 'translateZ(4px)'
+              transform: 'translateZ(6px)'
+            }}
+          />
+          
+          {/* Back face */}
+          <div 
+            className="absolute w-full h-full bg-gray-100 border border-gray-800"
+            style={{
+              transform: 'translateZ(-6px) rotateY(180deg)'
             }}
           />
           
           {/* Right face */}
           <div 
-            className="absolute w-full h-full bg-white/60 border border-foreground/50"
+            className="absolute w-full h-full bg-gray-200 border border-gray-800"
             style={{
-              transform: 'rotateY(90deg) translateZ(4px)'
+              transform: 'rotateY(90deg) translateZ(6px)'
+            }}
+          />
+          
+          {/* Left face */}
+          <div 
+            className="absolute w-full h-full bg-gray-200 border border-gray-800"
+            style={{
+              transform: 'rotateY(-90deg) translateZ(6px)'
             }}
           />
           
           {/* Top face */}
           <div 
-            className="absolute w-full h-full bg-white/90 border border-foreground/70"
+            className="absolute w-full h-full bg-gray-50 border border-gray-800"
             style={{
-              transform: 'rotateX(90deg) translateZ(4px)'
+              transform: 'rotateX(90deg) translateZ(6px)'
             }}
           />
-        </div>
+          
+          {/* Bottom face */}
+          <div 
+            className="absolute w-full h-full bg-gray-300 border border-gray-800"
+            style={{
+              transform: 'rotateX(-90deg) translateZ(6px)'
+            }}
+          />
+        </motion.div>
       </motion.div>
       
       {/* AI Text - Always centered */}
