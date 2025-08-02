@@ -151,7 +151,7 @@ const SciencePage = () => {
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-background to-secondary/5 rounded-3xl transform rotate-1 group-hover:rotate-2 transition-transform"></div>
                 <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300 overflow-hidden">
-                  <div className="h-32 overflow-hidden">
+                  <div className="h-40 overflow-hidden">
                     <img 
                       src={athleteExercise}
                       alt="Athletic person exercising"
