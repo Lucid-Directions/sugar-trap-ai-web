@@ -130,16 +130,16 @@ const GlucoseCurveDemo = () => {
             transition={{ delay: 0.2, duration: 0.4 }}
           >
             {/* Mobile: Meal Selection First */}
-            <div className="block md:hidden mb-6">
+            <div className="block lg:hidden mb-6">
               <p className="text-base mb-4 text-muted-foreground text-center">
                 Compare breakfast options:
               </p>
               
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                 {Object.entries(mealData).map(([key, meal]) => (
                   <motion.button
                     key={key}
-                    className={`flex items-center gap-2 px-3 py-3 rounded-lg font-medium text-sm transition-all duration-300 ${
+                    className={`flex flex-col items-center gap-1 px-2 py-3 rounded-lg font-medium text-xs transition-all duration-300 ${
                       selectedMeal === key 
                         ? `bg-gradient-to-r ${meal.gradient} text-white shadow-lg` 
                         : 'bg-white text-foreground hover:bg-gray-50 border border-gray-200'
@@ -147,31 +147,32 @@ const GlucoseCurveDemo = () => {
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setSelectedMeal(key)}
                   >
-                    <div className="w-6 h-6 rounded overflow-hidden">
+                    <div className="w-8 h-8 rounded overflow-hidden">
                       <img 
                         src={getMealPhoto(key)} 
                         alt={meal.name} 
                         className="w-full h-full object-cover"
                       />
                     </div>
-                    <span className="text-xs leading-tight">{meal.name}</span>
+                    <span className="text-center leading-tight text-xs">{meal.name}</span>
                   </motion.button>
                 ))}
               </div>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 lg:gap-6">
               {/* Glucose Chart - More Professional Design */}
-              <div className="lg:col-span-3">
-                <div className="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100">
-                  <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-6">
+              <div className="lg:col-span-3 order-2 lg:order-1">
+                <div className="bg-white rounded-2xl p-4 md:p-6 lg:p-8 shadow-sm border border-gray-100">
+                  <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4 md:mb-6">
                     <div>
-                      <h3 className="text-xl md:text-2xl font-bold mb-1">Glucose Response Prediction</h3>
-                      <p className="text-sm text-muted-foreground">Realtime metabolic impact analysis</p>
+                      <h3 className="text-lg md:text-xl lg:text-2xl font-bold mb-1">Glucose Response Prediction</h3>
+                      <p className="text-xs md:text-sm text-muted-foreground">Realtime metabolic impact analysis</p>
                     </div>
                     <div className="flex items-center gap-2 text-xs text-muted-foreground mt-2 md:mt-0">
                       <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
-                      Target Range: 80-120 mg/dL
+                      <span className="hidden sm:inline">Target Range: 80-120 mg/dL</span>
+                      <span className="sm:hidden">Target: 80-120</span>
                     </div>
                   </div>
 
@@ -308,17 +309,17 @@ const GlucoseCurveDemo = () => {
               </div>
 
               {/* Stats and Meal Selection - Improved Layout */}
-              <div className="lg:col-span-2 space-y-4">
+              <div className="lg:col-span-2 space-y-4 order-1 lg:order-2">
                 {/* Current Meal Stats */}
                 <motion.div 
-                  className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100"
+                  className="bg-white rounded-2xl p-4 lg:p-6 shadow-sm border border-gray-100"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4, duration: 0.4 }}
                 >
-                  <div className="text-center mb-6">
+                  <div className="text-center mb-4 lg:mb-6">
                     <motion.div 
-                      className="w-16 h-16 rounded-lg overflow-hidden mx-auto mb-2 border border-gray-200"
+                      className="w-12 h-12 lg:w-16 lg:h-16 rounded-lg overflow-hidden mx-auto mb-2 border border-gray-200"
                       animate={{ scale: [1, 1.05, 1] }}
                       transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 2 }}
                     >
@@ -328,26 +329,26 @@ const GlucoseCurveDemo = () => {
                         className="w-full h-full object-cover"
                       />
                     </motion.div>
-                    <h4 className="text-lg font-bold">{currentMeal.name}</h4>
-                    <p className="text-sm text-muted-foreground">{currentMeal.description}</p>
+                    <h4 className="text-base lg:text-lg font-bold">{currentMeal.name}</h4>
+                    <p className="text-xs lg:text-sm text-muted-foreground">{currentMeal.description}</p>
                   </div>
                   
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="text-center p-3 rounded-lg bg-gray-50">
+                  <div className="grid grid-cols-2 gap-3 lg:gap-4">
+                    <div className="text-center p-2 lg:p-3 rounded-lg bg-gray-50">
                       <div className="text-xs text-muted-foreground uppercase tracking-wide mb-1">Peak Level</div>
-                      <div className="text-lg font-bold" style={{ color: currentMeal.color }}>
+                      <div className="text-base lg:text-lg font-bold" style={{ color: currentMeal.color }}>
                         {currentMeal.peak}
                       </div>
                     </div>
-                    <div className="text-center p-3 rounded-lg bg-gray-50">
+                    <div className="text-center p-2 lg:p-3 rounded-lg bg-gray-50">
                       <div className="text-xs text-muted-foreground uppercase tracking-wide mb-1">Time to Peak</div>
-                      <div className="text-lg font-bold">{currentMeal.time}</div>
+                      <div className="text-base lg:text-lg font-bold">{currentMeal.time}</div>
                     </div>
                   </div>
                 </motion.div>
 
                 {/* Meal Selection - Desktop */}
-                <div className="hidden md:block">
+                <div className="hidden lg:block">
                   <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
                     <h5 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-4">
                       Compare Meals

@@ -7,6 +7,12 @@ import Navigation from '@/components/Navigation';
 import breadAlonePhoto from '@/assets/bread-alone-photo.jpg';
 import breadAvocadoPhoto from '@/assets/bread-avocado-photo.jpg';
 import avocadoBreadSequencePhoto from '@/assets/avocado-bread-sequence-photo.jpg';
+import glucoseMonitorDevice from '@/assets/glucose-monitor-device.jpg';
+import laboratoryEquipment from '@/assets/laboratory-equipment.jpg';
+import healthAppPhone from '@/assets/health-app-phone.jpg';
+import medicalDataChart from '@/assets/medical-data-chart.jpg';
+import athleteExercise from '@/assets/athlete-exercise.jpg';
+import peacefulSleep from '@/assets/peaceful-sleep.jpg';
 
 
 const SciencePage = () => {
@@ -84,7 +90,7 @@ const SciencePage = () => {
 
             {/* Key Research Insights */}
             <motion.div
-              className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-12"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
@@ -96,9 +102,13 @@ const SciencePage = () => {
                 transition={{ delay: 0.6, duration: 0.6 }}
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-background to-secondary/5 rounded-3xl transform rotate-1 group-hover:rotate-2 transition-transform"></div>
-                <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl p-6 border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300">
-                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 bg-gradient-to-br from-green-100 to-green-200">
-                    <TrendingUp className="w-6 h-6 text-green-600" />
+                <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl p-4 lg:p-6 border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300">
+                  <div className="w-12 h-12 rounded-2xl overflow-hidden mb-4">
+                    <img 
+                      src={glucoseMonitorDevice}
+                      alt="Glucose monitoring device"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <h4 className="font-bold mb-3 text-sm">Healthy Regulation</h4>
                   <p className="text-xs text-muted-foreground leading-relaxed">
@@ -114,9 +124,13 @@ const SciencePage = () => {
                 transition={{ delay: 0.7, duration: 0.6 }}
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-background to-secondary/5 rounded-3xl transform rotate-1 group-hover:rotate-2 transition-transform"></div>
-                <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl p-6 border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300">
-                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 bg-gradient-to-br from-yellow-100 to-yellow-200">
-                    <BarChart className="w-6 h-6 text-yellow-600" />
+                <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl p-4 lg:p-6 border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300">
+                  <div className="w-12 h-12 rounded-2xl overflow-hidden mb-4">
+                    <img 
+                      src={medicalDataChart}
+                      alt="Medical data chart"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <h4 className="font-bold mb-3 text-sm">Insulin Resistance</h4>
                   <p className="text-xs text-muted-foreground leading-relaxed">
@@ -132,13 +146,17 @@ const SciencePage = () => {
                 transition={{ delay: 0.8, duration: 0.6 }}
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-background to-secondary/5 rounded-3xl transform rotate-1 group-hover:rotate-2 transition-transform"></div>
-                <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl p-6 border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300">
-                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 bg-gradient-to-br from-purple-100 to-purple-200">
-                    <Users className="w-6 h-6 text-purple-600" />
+                <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl p-4 lg:p-6 border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300">
+                  <div className="w-12 h-12 rounded-2xl overflow-hidden mb-4">
+                    <img 
+                      src={athleteExercise}
+                      alt="Athletic person exercising"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <h4 className="font-bold mb-3 text-sm">Special Populations</h4>
                   <p className="text-xs text-muted-foreground leading-relaxed">
-                    Children, athletes, and pregnant women each have unique profiles – puberty and pregnancy induce transient resistance, while athletes show enhanced action.
+                    Children, athletes, and pregnant women each have unique profiles. Puberty and pregnancy induce transient resistance, while athletes show enhanced action.
                   </p>
                 </div>
               </motion.div>
@@ -150,13 +168,17 @@ const SciencePage = () => {
                 transition={{ delay: 0.9, duration: 0.6 }}
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-background to-secondary/5 rounded-3xl transform rotate-1 group-hover:rotate-2 transition-transform"></div>
-                <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl p-6 border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300">
-                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 bg-gradient-to-br from-blue-100 to-blue-200">
-                    <Activity className="w-6 h-6 text-blue-600" />
+                <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl p-4 lg:p-6 border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300">
+                  <div className="w-12 h-12 rounded-2xl overflow-hidden mb-4">
+                    <img 
+                      src={peacefulSleep}
+                      alt="Person sleeping peacefully"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <h4 className="font-bold mb-3 text-sm">Dynamic Conditions</h4>
                   <p className="text-xs text-muted-foreground leading-relaxed">
-                    Exercise and fasting generally lower glucose/insulin requirements, whereas stress and circadian hormone surges raise glucose demands.
+                    Exercise and fasting generally lower glucose and insulin requirements, whereas stress and circadian hormone surges raise glucose demands.
                   </p>
                 </div>
               </motion.div>
@@ -222,11 +244,11 @@ const SciencePage = () => {
               ].map((issue, index) => (
                 <div key={index} className="relative group">
                   <div className="absolute inset-0 bg-gradient-to-br from-red-50 to-red-100 rounded-2xl transform rotate-1 group-hover:rotate-2 transition-transform"></div>
-                  <div className="relative bg-white rounded-2xl p-6 border border-red-200 group-hover:shadow-lg transition-all duration-300">
+                  <div className="relative bg-white rounded-2xl p-4 lg:p-6 border border-red-200 group-hover:shadow-lg transition-all duration-300">
                     <div className="w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center mb-4">
                       <span className="text-white font-bold text-sm">✕</span>
                     </div>
-                    <p className="text-sm font-medium text-red-800">{issue}</p>
+                    <p className="text-xs lg:text-sm font-medium text-red-800">{issue}</p>
                   </div>
                 </div>
               ))}
