@@ -1,11 +1,31 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useRef } from 'react';
 import { useInView } from 'framer-motion';
+import sugaryCerealPhoto from '@/assets/sugary-cereal-photo.jpg';
+import cornFlakesPhoto from '@/assets/corn-flakes-photo.jpg';
+import orangeJuicePhoto from '@/assets/orange-juice-photo.jpg';
+import blackCoffeePhoto from '@/assets/black-coffee-photo.jpg';
+import eggsAvocadoPhoto from '@/assets/eggs-avocado-photo.jpg';
+import steelCutOatsPhoto from '@/assets/steel-cut-oats-photo.jpg';
+import steakPhoto from '@/assets/steak-photo.jpg';
 
 const GlucoseCurveDemo = () => {
   const [selectedMeal, setSelectedMeal] = useState('sugary');
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+
+  const getMealPhoto = (mealKey: string) => {
+    const photoMap: { [key: string]: string } = {
+      sugary: sugaryCerealPhoto,
+      normal: cornFlakesPhoto,
+      orangeJuice: orangeJuicePhoto,
+      coffee: blackCoffeePhoto,
+      balanced: eggsAvocadoPhoto,
+      oatmeal: steelCutOatsPhoto,
+      carnivore: steakPhoto
+    };
+    return photoMap[mealKey];
+  };
 
   const mealData = {
     sugary: {
@@ -127,7 +147,13 @@ const GlucoseCurveDemo = () => {
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setSelectedMeal(key)}
                   >
-                    <span className="text-lg">{meal.emoji}</span>
+                    <div className="w-6 h-6 rounded overflow-hidden">
+                      <img 
+                        src={getMealPhoto(key)} 
+                        alt={meal.name} 
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
                     <span className="text-xs leading-tight">{meal.name}</span>
                   </motion.button>
                 ))}
@@ -292,11 +318,15 @@ const GlucoseCurveDemo = () => {
                 >
                   <div className="text-center mb-6">
                     <motion.div 
-                      className="text-4xl mb-2"
-                      animate={{ scale: [1, 1.1, 1] }}
+                      className="w-16 h-16 rounded-lg overflow-hidden mx-auto mb-2 border border-gray-200"
+                      animate={{ scale: [1, 1.05, 1] }}
                       transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 2 }}
                     >
-                      {currentMeal.emoji}
+                      <img 
+                        src={getMealPhoto(selectedMeal)} 
+                        alt={currentMeal.name} 
+                        className="w-full h-full object-cover"
+                      />
                     </motion.div>
                     <h4 className="text-lg font-bold">{currentMeal.name}</h4>
                     <p className="text-sm text-muted-foreground">{currentMeal.description}</p>
@@ -336,7 +366,13 @@ const GlucoseCurveDemo = () => {
                           whileHover={{ scale: 1.01 }}
                           onClick={() => setSelectedMeal(key)}
                         >
-                          <span className="text-lg">{meal.emoji}</span>
+                          <div className="w-8 h-8 rounded overflow-hidden">
+                            <img 
+                              src={getMealPhoto(key)} 
+                              alt={meal.name} 
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
                           <div className="text-left flex-1">
                             <div className="text-sm font-medium">{meal.name}</div>
                             <div className={`text-xs ${selectedMeal === key ? 'text-white/80' : 'text-muted-foreground'}`}>
