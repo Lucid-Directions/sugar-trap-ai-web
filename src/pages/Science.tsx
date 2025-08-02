@@ -1,6 +1,6 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { TrendingUp, Brain, Microscope, Activity, BarChart, Clock, Zap, Target, Heart, Moon, Coffee, Timer, Users, Dna, FlaskConical, LineChart } from 'lucide-react';
+import { TrendingUp, Brain, Microscope, Activity, BarChart, Clock, Zap, Target, Heart, Moon, Coffee, Timer, Users, Dna, FlaskConical, LineChart, Calendar, Dumbbell, Baby } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
@@ -398,168 +398,264 @@ const SciencePage = () => {
               </motion.div>
             </motion.div>
 
-            {/* Enhanced Scientific Foundation */}
-            <motion.div
-              className="mb-20"
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.3, duration: 0.8 }}
-            >
-              <div className="text-center mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  <span className="text-gradient">The Discovery</span> That Changed Everything
-                </h2>
-                <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                  Understanding insulin and glucose dynamics required over a century of scientific breakthroughs. 
-                  Here's how modern research reveals why personalized nutrition is not just possible—it's essential.
-                </p>
-              </div>
+              {/* Enhanced Scientific Foundation */}
+              <motion.div
+                className="mb-20"
+                initial={{ opacity: 0, y: 50 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.3, duration: 0.8 }}
+              >
+                <div className="text-center mb-16">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
+                    <FlaskConical className="w-4 h-4" />
+                    Scientific Foundation
+                  </div>
+                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+                    <span className="text-gradient bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">The Discovery</span> That Changed Everything
+                  </h2>
+                  <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+                    Understanding insulin and glucose dynamics required over a century of scientific breakthroughs. 
+                    Here's how modern research reveals why personalized nutrition is not just possible—it's essential.
+                  </p>
+                </div>
 
-              {/* Historical Context - From the knowledge base */}
-              <div className="gradient-card rounded-3xl p-8 mb-12">
-                <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
-                  <div className="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center">
-                    <FlaskConical className="w-5 h-5 text-blue-600" />
-                  </div>
-                  The Insulin Discovery: A Century of Scientific Progress
-                </h3>
-                
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div className="space-y-4">
-                    <div className="bg-white rounded-xl p-6 shadow-sm">
-                      <h4 className="font-semibold mb-3 text-blue-700">1889: The Pancreas Connection</h4>
-                      <p className="text-sm text-muted-foreground mb-2">
-                        German researchers von Mering and Minkowski surgically removed a dog's pancreas—the animal rapidly developed severe diabetes, proving the pancreas controls blood glucose.
-                      </p>
-                      <div className="text-xs text-blue-600 bg-blue-50 rounded p-2">
-                        First definitive link between pancreas and diabetes
-                      </div>
-                    </div>
-                    
-                    <div className="bg-white rounded-xl p-6 shadow-sm">
-                      <h4 className="font-semibold mb-3 text-green-700">1921: The Toronto Breakthrough</h4>
-                      <p className="text-sm text-muted-foreground mb-2">
-                        Banting, Best, Macleod, and Collip successfully isolated insulin from pancreatic islets, transforming diabetes from a death sentence to a manageable condition.
-                      </p>
-                      <div className="text-xs text-green-600 bg-green-50 rounded p-2">
-                        First successful insulin treatment: Leonard Thompson, age 14
-                      </div>
-                    </div>
-                  </div>
+                {/* Interactive Timeline */}
+                <div className="relative mb-16">
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary via-secondary to-primary/50 rounded-full"></div>
                   
-                  <div className="space-y-4">
-                    <div className="bg-white rounded-xl p-6 shadow-sm">
-                      <h4 className="font-semibold mb-3 text-purple-700">1978-1982: Synthetic Insulin</h4>
-                      <p className="text-sm text-muted-foreground mb-2">
-                        Recombinant DNA technology enabled production of synthetic human insulin, eliminating allergic reactions from animal-derived insulin.
-                      </p>
-                      <div className="text-xs text-purple-600 bg-purple-50 rounded p-2">
-                        Eli Lilly's Humulin: first biosynthetic human insulin
-                      </div>
-                    </div>
-                    
-                    <div className="bg-white rounded-xl p-6 shadow-sm">
-                      <h4 className="font-semibold mb-3 text-orange-700">2000s-Present: Precision Medicine</h4>
-                      <p className="text-sm text-muted-foreground mb-2">
-                        Continuous glucose monitors, insulin pumps, and AI-driven analytics enable personalized diabetes management based on individual metabolic patterns.
-                      </p>
-                      <div className="text-xs text-orange-600 bg-orange-50 rounded p-2">
-                        Era of automated insulin delivery and precision nutrition
-                      </div>
-                    </div>
+                  <div className="space-y-16">
+                    {[
+                      {
+                        year: "1889",
+                        title: "The Pancreas Connection",
+                        description: "German researchers von Mering and Minkowski surgically removed a dog's pancreas—the animal rapidly developed severe diabetes, proving the pancreas controls blood glucose.",
+                        impact: "First definitive link between pancreas and diabetes",
+                        color: "blue",
+                        side: "left"
+                      },
+                      {
+                        year: "1921",
+                        title: "The Toronto Breakthrough",
+                        description: "Banting, Best, Macleod, and Collip successfully isolated insulin from pancreatic islets, transforming diabetes from a death sentence to a manageable condition.",
+                        impact: "First successful insulin treatment: Leonard Thompson, age 14",
+                        color: "green",
+                        side: "right"
+                      },
+                      {
+                        year: "1978",
+                        title: "Synthetic Insulin Era",
+                        description: "Recombinant DNA technology enabled production of synthetic human insulin, eliminating allergic reactions from animal-derived insulin.",
+                        impact: "Eli Lilly's Humulin: first biosynthetic human insulin",
+                        color: "purple",
+                        side: "left"
+                      },
+                      {
+                        year: "2020s",
+                        title: "Precision Medicine",
+                        description: "Continuous glucose monitors, insulin pumps, and AI-driven analytics enable personalized diabetes management based on individual metabolic patterns.",
+                        impact: "Era of automated insulin delivery and precision nutrition",
+                        color: "orange",
+                        side: "right"
+                      }
+                    ].map((milestone, index) => (
+                      <motion.div
+                        key={index}
+                        className={`relative flex items-center ${milestone.side === 'left' ? 'justify-start' : 'justify-end'}`}
+                        initial={{ opacity: 0, x: milestone.side === 'left' ? -50 : 50 }}
+                        animate={isInView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ delay: 0.5 + index * 0.2, duration: 0.8 }}
+                      >
+                        {/* Timeline dot */}
+                        <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-white border-4 border-primary rounded-full z-10 shadow-lg"></div>
+                        
+                        {/* Content card */}
+                        <div className={`w-5/12 ${milestone.side === 'left' ? 'mr-auto pr-8' : 'ml-auto pl-8'}`}>
+                          <div className={`bg-gradient-to-br from-${milestone.color}-50 to-white rounded-2xl p-6 shadow-lg border border-${milestone.color}-100 hover:shadow-xl transition-all duration-300 group`}>
+                            <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full bg-${milestone.color}-100 text-${milestone.color}-700 text-sm font-bold mb-4`}>
+                              <Calendar className="w-4 h-4" />
+                              {milestone.year}
+                            </div>
+                            <h4 className={`text-xl font-bold mb-3 text-${milestone.color}-900 group-hover:text-${milestone.color}-700 transition-colors`}>
+                              {milestone.title}
+                            </h4>
+                            <p className="text-gray-700 mb-4 leading-relaxed">
+                              {milestone.description}
+                            </p>
+                            <div className={`text-sm font-medium text-${milestone.color}-600 bg-${milestone.color}-50 rounded-lg px-3 py-2 border border-${milestone.color}-200`}>
+                              💡 {milestone.impact}
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    ))}
                   </div>
                 </div>
-              </div>
 
-              {/* Individual Metabolic Differences - Enhanced from knowledge base */}
-              <div className="gradient-card rounded-3xl p-8 mb-12">
-                <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
-                  <div className="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center">
-                    <Target className="w-5 h-5 text-green-600" />
-                  </div>
-                  Individual Metabolic Phenotypes
-                </h3>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                  <div className="bg-white rounded-xl p-6 shadow-sm">
-                    <h4 className="font-semibold mb-3 text-green-700">Healthy Adults</h4>
-                    <ul className="text-sm space-y-2 text-muted-foreground">
-                      <li>• Fasting glucose: 70-99 mg/dL</li>
-                      <li>• Low fasting insulin (2-10 μU/mL)</li>
-                      <li>• Post-meal peak: &lt;140 mg/dL</li>
-                      <li>• Robust first-phase insulin response</li>
-                    </ul>
-                    <div className="mt-3 text-xs text-green-600 bg-green-50 rounded p-2">
-                      Tight glycemic control with minimal insulin
+                {/* Individual Metabolic Phenotypes - Enhanced from knowledge base */}
+                <div className="mb-16">
+                  <div className="text-center mb-12">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 text-secondary text-sm font-medium mb-6">
+                      <Target className="w-4 h-4" />
+                      Metabolic Diversity
                     </div>
+                    <h3 className="text-3xl md:text-4xl font-bold mb-4">
+                      Individual <span className="text-gradient bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">Metabolic Phenotypes</span>
+                    </h3>
+                    <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                      Every person has a unique metabolic fingerprint. Understanding these differences is key to personalized nutrition and optimal health outcomes.
+                    </p>
                   </div>
                   
-                  <div className="bg-white rounded-xl p-6 shadow-sm">
-                    <h4 className="font-semibold mb-3 text-yellow-700">Prediabetic Population</h4>
-                    <ul className="text-sm space-y-2 text-muted-foreground">
-                      <li>• Fasting glucose: 100-125 mg/dL</li>
-                      <li>• Elevated insulin (&gt;15 μU/mL)</li>
-                      <li>• 1-hour post-meal: &gt;160 mg/dL</li>
-                      <li>• Compensatory hyperinsulinemia</li>
-                    </ul>
-                    <div className="mt-3 text-xs text-yellow-600 bg-yellow-50 rounded p-2">
-                      <strong>30% of young adults (16-25y)</strong> show hidden insulin resistance
-                    </div>
-                  </div>
-                  
-                  <div className="bg-white rounded-xl p-6 shadow-sm">
-                    <h4 className="font-semibold mb-3 text-blue-700">Type 2 Diabetic</h4>
-                    <ul className="text-sm space-y-2 text-muted-foreground">
-                      <li>• Fasting glucose: ≥126 mg/dL</li>
-                      <li>• Early: High insulin (~31 μU/mL)</li>
-                      <li>• Late: Progressive β-cell failure</li>
-                      <li>• Lost first-phase response</li>
-                    </ul>
-                    <div className="mt-3 text-xs text-blue-600 bg-blue-50 rounded p-2">
-                      Monophasic glucose curves indicate dysfunction
-                    </div>
-                  </div>
-                  
-                  <div className="bg-white rounded-xl p-6 shadow-sm">
-                    <h4 className="font-semibold mb-3 text-purple-700">Endurance Athletes</h4>
-                    <ul className="text-sm space-y-2 text-muted-foreground">
-                      <li>• 50% lower fasting insulin</li>
-                      <li>• 22% higher insulin sensitivity</li>
-                      <li>• 32% greater mitochondrial capacity</li>
-                      <li>• Superior glucose uptake efficiency</li>
-                    </ul>
-                    <div className="mt-3 text-xs text-purple-600 bg-purple-50 rounded p-2">
-                      Training creates metabolic flexibility and efficiency
-                    </div>
-                  </div>
-                  
-                  <div className="bg-white rounded-xl p-6 shadow-sm">
-                    <h4 className="font-semibold mb-3 text-indigo-700">Children & Adolescents</h4>
-                    <ul className="text-sm space-y-2 text-muted-foreground">
-                      <li>• Age 3-4: ~3-4 μU/mL insulin</li>
-                      <li>• Age 10: ~7-9 μU/mL insulin</li>
-                      <li>• Puberty: 25-50% ↓ sensitivity</li>
-                      <li>• Very robust β-cell function</li>
-                    </ul>
-                    <div className="mt-3 text-xs text-indigo-600 bg-indigo-50 rounded p-2">
-                      25% of obese children already show glucose intolerance
-                    </div>
-                  </div>
-                  
-                  <div className="bg-white rounded-xl p-6 shadow-sm">
-                    <h4 className="font-semibold mb-3 text-pink-700">Pregnancy</h4>
-                    <ul className="text-sm space-y-2 text-muted-foreground">
-                      <li>• 50-60% ↓ insulin sensitivity</li>
-                      <li>• 200-250% ↑ insulin production</li>
-                      <li>• 70% ↑ insulin needs (T1DM)</li>
-                      <li>• Gestational diabetes risk</li>
-                    </ul>
-                    <div className="mt-3 text-xs text-pink-600 bg-pink-50 rounded p-2">
-                      Placental hormones create physiological resistance
-                    </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {[
+                      {
+                        title: "Healthy Adults",
+                        color: "emerald",
+                        icon: Heart,
+                        metrics: [
+                          "Fasting glucose: 70-99 mg/dL",
+                          "Low fasting insulin (2-10 μU/mL)",
+                          "Post-meal peak: <140 mg/dL",
+                          "Robust first-phase insulin response"
+                        ],
+                        highlight: "Tight glycemic control with minimal insulin",
+                        percentage: "~60% of population"
+                      },
+                      {
+                        title: "Type 1 Diabetic",
+                        color: "red",
+                        icon: Zap,
+                        metrics: [
+                          "Autoimmune β-cell destruction",
+                          "Absolute insulin deficiency",
+                          "C-peptide: <0.5 ng/mL",
+                          "Requires exogenous insulin"
+                        ],
+                        highlight: "Precise insulin dosing prevents DKA",
+                        percentage: "~5% of diabetics"
+                      },
+                      {
+                        title: "Prediabetic Population",
+                        color: "amber",
+                        icon: TrendingUp,
+                        metrics: [
+                          "Fasting glucose: 100-125 mg/dL",
+                          "Elevated insulin (>15 μU/mL)",
+                          "1-hour post-meal: >160 mg/dL",
+                          "Compensatory hyperinsulinemia"
+                        ],
+                        highlight: "30% of young adults (16-25y) show hidden insulin resistance",
+                        percentage: "~35% of adults"
+                      },
+                      {
+                        title: "Type 2 Diabetic",
+                        color: "blue",
+                        icon: Activity,
+                        metrics: [
+                          "Fasting glucose: ≥126 mg/dL",
+                          "Early: High insulin (~31 μU/mL)",
+                          "Late: Progressive β-cell failure",
+                          "Lost first-phase response"
+                        ],
+                        highlight: "Monophasic glucose curves indicate dysfunction",
+                        percentage: "~95% of diabetics"
+                      },
+                      {
+                        title: "Endurance Athletes",
+                        color: "purple",
+                        icon: Dumbbell,
+                        metrics: [
+                          "50% lower fasting insulin",
+                          "22% higher insulin sensitivity",
+                          "32% greater mitochondrial capacity",
+                          "Superior glucose uptake efficiency"
+                        ],
+                        highlight: "Training creates metabolic flexibility and efficiency",
+                        percentage: "Elite performers"
+                      },
+                      {
+                        title: "Children & Adolescents",
+                        color: "indigo",
+                        icon: Baby,
+                        metrics: [
+                          "Age 3-4: ~3-4 μU/mL insulin",
+                          "Age 10: ~7-9 μU/mL insulin",
+                          "Puberty: 25-50% ↓ sensitivity",
+                          "Very robust β-cell function"
+                        ],
+                        highlight: "25% of obese children already show glucose intolerance",
+                        percentage: "Developing metabolism"
+                      },
+                      {
+                        title: "Pregnancy",
+                        color: "pink",
+                        icon: Baby,
+                        metrics: [
+                          "50-60% ↓ insulin sensitivity",
+                          "200-250% ↑ insulin production",
+                          "70% ↑ insulin needs (T1DM)",
+                          "Gestational diabetes risk"
+                        ],
+                        highlight: "Placental hormones create physiological resistance",
+                        percentage: "Temporary adaptation"
+                      },
+                      {
+                        title: "Elderly Population",
+                        color: "gray",
+                        icon: Clock,
+                        metrics: [
+                          "Age-related insulin resistance",
+                          "Reduced β-cell responsiveness",
+                          "Slower glucose clearance",
+                          "Higher baseline inflammation"
+                        ],
+                        highlight: "Natural aging affects glucose metabolism",
+                        percentage: "Progressive changes"
+                      }
+                    ].map((phenotype, index) => (
+                      <motion.div
+                        key={index}
+                        className={`group relative bg-gradient-to-br from-${phenotype.color}-50 via-white to-${phenotype.color}-50/30 rounded-2xl p-6 border border-${phenotype.color}-100 hover:border-${phenotype.color}-200 hover:shadow-xl transition-all duration-300 cursor-pointer`}
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={isInView ? { opacity: 1, y: 0 } : {}}
+                        transition={{ delay: 0.8 + index * 0.1, duration: 0.6 }}
+                        whileHover={{ scale: 1.02 }}
+                      >
+                        {/* Header */}
+                        <div className="flex items-center justify-between mb-4">
+                          <div className={`w-12 h-12 bg-${phenotype.color}-100 rounded-xl flex items-center justify-center group-hover:bg-${phenotype.color}-200 transition-colors`}>
+                            <phenotype.icon className={`w-6 h-6 text-${phenotype.color}-600`} />
+                          </div>
+                          <div className={`text-xs font-medium text-${phenotype.color}-600 bg-${phenotype.color}-100 rounded-full px-3 py-1`}>
+                            {phenotype.percentage}
+                          </div>
+                        </div>
+                        
+                        <h4 className={`text-lg font-bold mb-4 text-${phenotype.color}-900 group-hover:text-${phenotype.color}-700 transition-colors`}>
+                          {phenotype.title}
+                        </h4>
+                        
+                        {/* Metrics */}
+                        <ul className="space-y-2 mb-4">
+                          {phenotype.metrics.map((metric, metricIndex) => (
+                            <li key={metricIndex} className="text-sm text-gray-700 flex items-start gap-2">
+                              <div className={`w-1.5 h-1.5 bg-${phenotype.color}-400 rounded-full mt-2 flex-shrink-0`}></div>
+                              <span>{metric}</span>
+                            </li>
+                          ))}
+                        </ul>
+                        
+                        {/* Highlight */}
+                        <div className={`text-sm font-medium text-${phenotype.color}-700 bg-${phenotype.color}-50 rounded-lg px-3 py-2 border border-${phenotype.color}-200`}>
+                          💡 {phenotype.highlight}
+                        </div>
+                        
+                        {/* Hover effect overlay */}
+                        <div className={`absolute inset-0 bg-gradient-to-r from-${phenotype.color}-500/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none`}></div>
+                      </motion.div>
+                    ))}
                   </div>
                 </div>
-              </div>
 
               {/* Physiological Context - Enhanced from knowledge base */}
               <div className="gradient-card rounded-3xl p-8 mb-12">
