@@ -104,7 +104,7 @@ const PricingPage = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       {/* Hero Section */}
-      <section className="py-12 bg-gradient-to-b from-background to-secondary/20">
+      <section className="pt-20 pb-12 bg-gradient-to-b from-background to-secondary/20">
         <div className="container mx-auto px-4">
           <motion.div
             className="text-center mb-8"
