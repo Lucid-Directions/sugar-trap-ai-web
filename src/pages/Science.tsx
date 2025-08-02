@@ -38,7 +38,7 @@ const SciencePage = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      {/* Hero Section - Keep as is */}
+      {/* Hero Section with Research Insights */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-secondary/10"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,theme(colors.primary/8),transparent_50%)]"></div>
@@ -46,7 +46,7 @@ const SciencePage = () => {
         
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
-            className="max-w-5xl mx-auto text-center"
+            className="max-w-6xl mx-auto text-center"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
@@ -63,7 +63,7 @@ const SciencePage = () => {
               </div>
             </motion.div>
             
-            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold leading-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold leading-tight mb-8">
               The Science of{" "}
               <span className="text-gradient bg-gradient-to-r from-primary via-primary/80 to-secondary bg-clip-text text-transparent block lg:inline">
                 Personal Nutrition
@@ -71,19 +71,51 @@ const SciencePage = () => {
             </h1>
             
             <motion.p 
-              className="text-base sm:text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto mt-6"
+              className="text-base sm:text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-4xl mx-auto mb-12"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
             >
               Everyone's glucose response is as unique as their fingerprint. Modern research reveals why traditional one-size-fits-all approaches fail, and how personalized nutrition science is revolutionizing health.
             </motion.p>
-            
+
+            {/* Key Research Insights */}
             <motion.div
-              className="flex justify-center items-center mt-8"
-              initial={{ opacity: 0, y: 20 }}
+              className="grid md:grid-cols-3 gap-6 mb-12"
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
+            >
+              {studies.map((study, index) => (
+                <motion.div
+                  key={index}
+                  className="relative group"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 + index * 0.1, duration: 0.6 }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-background to-secondary/5 rounded-3xl transform rotate-1 group-hover:rotate-2 transition-transform"></div>
+                  <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300">
+                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 bg-gradient-to-br ${
+                      index === 0 ? 'from-green-100 to-green-200' : 
+                      index === 1 ? 'from-blue-100 to-blue-200' : 
+                      'from-purple-100 to-purple-200'
+                    }`}>
+                      <study.icon className={`w-7 h-7 ${study.color}`} />
+                    </div>
+                    <h3 className="text-lg font-bold mb-3 text-foreground">{study.title}</h3>
+                    <p className="text-sm text-muted-foreground mb-4 font-medium">{study.journal}</p>
+                    <p className="text-sm font-semibold text-foreground leading-relaxed">{study.finding}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+            
+            <motion.div
+              className="flex justify-center items-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8, duration: 0.8 }}
             >
               <Button asChild size="lg" className="rounded-full px-8 py-6 text-lg font-semibold bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary shadow-xl hover:shadow-2xl transition-all duration-300">
                 <Link to="/waitlist">Start Your Journey</Link>
@@ -488,8 +520,10 @@ const SciencePage = () => {
                   
                   <div className="grid md:grid-cols-3 gap-6">
                     <div className="text-center">
-                      <div className="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                        <div className="w-8 h-6 bg-amber-600 rounded-sm"></div>
+                      <div className="w-20 h-20 bg-red-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <div className="w-12 h-8 bg-gradient-to-br from-amber-500 to-amber-700 rounded-lg relative">
+                          <div className="absolute inset-1 bg-amber-300 rounded opacity-60"></div>
+                        </div>
                       </div>
                       <h5 className="font-semibold mb-2">Bread Alone</h5>
                       <div className="text-2xl font-bold text-red-600 mb-2">Baseline Spike</div>
@@ -497,10 +531,15 @@ const SciencePage = () => {
                     </div>
 
                     <div className="text-center">
-                      <div className="w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                      <div className="w-20 h-20 bg-yellow-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                         <div className="flex items-center gap-1">
-                          <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                          <div className="w-4 h-3 bg-amber-600 rounded-sm"></div>
+                          <div className="w-6 h-6 bg-gradient-to-br from-green-400 to-green-600 rounded-full relative">
+                            <div className="absolute inset-1 bg-green-300 rounded-full"></div>
+                            <div className="absolute inset-2 bg-amber-200 rounded-full"></div>
+                          </div>
+                          <div className="w-6 h-4 bg-gradient-to-br from-amber-500 to-amber-700 rounded relative">
+                            <div className="absolute inset-0.5 bg-amber-300 rounded opacity-60"></div>
+                          </div>
                         </div>
                       </div>
                       <h5 className="font-semibold mb-2">Bread + Avocado</h5>
@@ -509,11 +548,16 @@ const SciencePage = () => {
                     </div>
 
                     <div className="text-center">
-                      <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                      <div className="w-20 h-20 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                         <div className="flex items-center gap-1">
-                          <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                          <Timer className="w-3 h-3 text-gray-400" />
-                          <div className="w-3 h-2 bg-amber-600 rounded-sm"></div>
+                          <div className="w-5 h-5 bg-gradient-to-br from-green-400 to-green-600 rounded-full relative">
+                            <div className="absolute inset-1 bg-green-300 rounded-full"></div>
+                            <div className="absolute inset-1.5 bg-amber-200 rounded-full"></div>
+                          </div>
+                          <Timer className="w-4 h-4 text-gray-500" />
+                          <div className="w-5 h-3 bg-gradient-to-br from-amber-500 to-amber-700 rounded relative">
+                            <div className="absolute inset-0.5 bg-amber-300 rounded opacity-60"></div>
+                          </div>
                         </div>
                       </div>
                       <h5 className="font-semibold mb-2">Avocado First, Then Bread</h5>
