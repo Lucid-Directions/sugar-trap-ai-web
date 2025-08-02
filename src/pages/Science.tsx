@@ -186,7 +186,7 @@ const SciencePage = () => {
               </h2>
               
               <div className="space-y-8">
-                {/* Population Differences */}
+                {/* Population Differences - Enhanced */}
                 <div className="gradient-card rounded-3xl p-8">
                   <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
                     <div className="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center">
@@ -195,15 +195,18 @@ const SciencePage = () => {
                     Individual Differences Matter
                   </h3>
                   
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-8">
                     <div className="bg-white rounded-xl p-6 shadow-sm">
                       <h4 className="font-semibold mb-3 text-green-700">Healthy Adults</h4>
                       <ul className="text-sm space-y-2 text-muted-foreground">
                         <li>• Fasting glucose: 70-99 mg/dL</li>
                         <li>• Low fasting insulin (2-10 μU/mL)</li>
                         <li>• Post-meal peak: &lt;140 mg/dL</li>
-                        <li>• High insulin sensitivity</li>
+                        <li>• Tight glycemic control</li>
                       </ul>
+                      <div className="mt-3 text-xs text-green-600 bg-green-50 rounded p-2">
+                        First-phase insulin response keeps glucose spikes minimal
+                      </div>
                     </div>
                     
                     <div className="bg-white rounded-xl p-6 shadow-sm">
@@ -214,6 +217,22 @@ const SciencePage = () => {
                         <li>• 1-hour post-meal: &gt;160 mg/dL</li>
                         <li>• Compensatory hyperinsulinemia</li>
                       </ul>
+                      <div className="mt-3 text-xs text-yellow-600 bg-yellow-50 rounded p-2">
+                        Pancreas working "overtime" to overcome resistance
+                      </div>
+                    </div>
+                    
+                    <div className="bg-white rounded-xl p-6 shadow-sm">
+                      <h4 className="font-semibold mb-3 text-blue-700">Type 2 Diabetic</h4>
+                      <ul className="text-sm space-y-2 text-muted-foreground">
+                        <li>• Fasting glucose: ≥126 mg/dL</li>
+                        <li>• Early: High insulin (~31 μU/mL)</li>
+                        <li>• Late: Declining insulin</li>
+                        <li>• Lost first-phase response</li>
+                      </ul>
+                      <div className="mt-3 text-xs text-blue-600 bg-blue-50 rounded p-2">
+                        Progressive β-cell dysfunction over time
+                      </div>
                     </div>
                     
                     <div className="bg-white rounded-xl p-6 shadow-sm">
@@ -221,22 +240,55 @@ const SciencePage = () => {
                       <ul className="text-sm space-y-2 text-muted-foreground">
                         <li>• 50% lower fasting insulin</li>
                         <li>• 22% higher insulin sensitivity</li>
-                        <li>• Blunted glucose response</li>
-                        <li>• Enhanced muscle uptake</li>
+                        <li>• Enhanced mitochondrial capacity</li>
+                        <li>• Superior glucose uptake</li>
                       </ul>
+                      <div className="mt-3 text-xs text-purple-600 bg-purple-50 rounded p-2">
+                        Training creates metabolic flexibility
+                      </div>
+                    </div>
+                    
+                    <div className="bg-white rounded-xl p-6 shadow-sm">
+                      <h4 className="font-semibold mb-3 text-indigo-700">Children</h4>
+                      <ul className="text-sm space-y-2 text-muted-foreground">
+                        <li>• Age 3-4: ~3-4 μU/mL insulin</li>
+                        <li>• Age 10: ~7-9 μU/mL insulin</li>
+                        <li>• Puberty: temporary resistance</li>
+                        <li>• Very insulin sensitive</li>
+                      </ul>
+                      <div className="mt-3 text-xs text-indigo-600 bg-indigo-50 rounded p-2">
+                        Obesity can cause early glucose intolerance
+                      </div>
+                    </div>
+                    
+                    <div className="bg-white rounded-xl p-6 shadow-sm">
+                      <h4 className="font-semibold mb-3 text-pink-700">Pregnancy</h4>
+                      <ul className="text-sm space-y-2 text-muted-foreground">
+                        <li>• 50-60% ↓ insulin sensitivity</li>
+                        <li>• 200-250% ↑ insulin production</li>
+                        <li>• 70% ↑ insulin needs (T1DM)</li>
+                        <li>• Gestational diabetes risk</li>
+                      </ul>
+                      <div className="mt-3 text-xs text-pink-600 bg-pink-50 rounded p-2">
+                        Placental hormones drive resistance
+                      </div>
                     </div>
                   </div>
                   
-                  <div className="mt-6 bg-blue-50 rounded-xl p-6">
-                    <h4 className="font-semibold text-blue-800 mb-2">Key Research Finding</h4>
+                  <div className="bg-blue-50 rounded-xl p-6">
+                    <h4 className="font-semibold text-blue-800 mb-2">Critical Research Finding</h4>
                     <p className="text-blue-700 text-sm">
-                      Studies show ~30% of young adults have hyperinsulinemia despite normal glucose tolerance, 
-                      indicating early metabolic dysfunction years before diabetes diagnosis.
+                      <strong>30% of young adults (16-25y)</strong> have hyperinsulinemia despite normal glucose tolerance, 
+                      indicating early metabolic dysfunction years before diabetes diagnosis. This represents millions of people 
+                      with "hidden" insulin resistance.
+                    </p>
+                    <p className="text-blue-600 text-xs mt-2 italic">
+                      Source: Battalwar et al., Front Endocrinol (2023)
                     </p>
                   </div>
                 </div>
 
-                {/* Conditions & Context */}
+                {/* Conditions & Context - Enhanced */}
                 <div className="gradient-card rounded-3xl p-8">
                   <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
                     <div className="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center">
@@ -245,51 +297,161 @@ const SciencePage = () => {
                     How Context Changes Everything
                   </h3>
                   
-                  <div className="grid md:grid-cols-2 gap-8">
+                  <div className="grid md:grid-cols-2 gap-8 mb-8">
                     <div>
-                      <h4 className="font-semibold mb-4 text-green-700">Exercise Effects</h4>
+                      <h4 className="font-semibold mb-4 text-green-700 flex items-center gap-2">
+                        <span>💪</span> Exercise Effects
+                      </h4>
                       <div className="space-y-3">
                         <div className="bg-green-50 rounded-lg p-4">
-                          <p className="text-sm font-medium text-green-800 mb-1">During Exercise</p>
-                          <p className="text-sm text-green-700">Insulin drops, glucose uptake becomes insulin-independent</p>
+                          <p className="text-sm font-medium text-green-800 mb-1">During Moderate Exercise</p>
+                          <p className="text-sm text-green-700">
+                            Insulin levels drop, glucose uptake becomes insulin-independent via muscle contractions
+                          </p>
+                          <p className="text-xs text-green-600 mt-1 italic">
+                            GLUT4 transporters activate without insulin
+                          </p>
                         </div>
                         <div className="bg-green-50 rounded-lg p-4">
-                          <p className="text-sm font-medium text-green-800 mb-1">Post-Exercise</p>
-                          <p className="text-sm text-green-700">Insulin sensitivity increased for 24-48 hours</p>
+                          <p className="text-sm font-medium text-green-800 mb-1">High-Intensity Exercise</p>
+                          <p className="text-sm text-green-700">
+                            Stress hormones can temporarily raise glucose for ~1 hour post-workout
+                          </p>
                         </div>
+                        <div className="bg-green-50 rounded-lg p-4">
+                          <p className="text-sm font-medium text-green-800 mb-1">Post-Exercise (24-48h)</p>
+                          <p className="text-sm text-green-700">
+                            Insulin sensitivity increases, muscles prioritize glycogen refill
+                          </p>
+                        </div>
+                      </div>
+                      <div className="mt-3 text-xs text-green-600 bg-green-100 rounded p-2">
+                        <strong>Research:</strong> Athletes show 50% lower insulin levels for same glucose (Bioblast, 2012)
                       </div>
                     </div>
                     
                     <div>
-                      <h4 className="font-semibold mb-4 text-red-700">Stress Impact</h4>
+                      <h4 className="font-semibold mb-4 text-red-700 flex items-center gap-2">
+                        <span>😰</span> Stress Impact
+                      </h4>
                       <div className="space-y-3">
                         <div className="bg-red-50 rounded-lg p-4">
-                          <p className="text-sm font-medium text-red-800 mb-1">Acute Stress</p>
-                          <p className="text-sm text-red-700">Glucose spikes 20-35 mg/dL in healthy people, 50-100 mg/dL in diabetics</p>
+                          <p className="text-sm font-medium text-red-800 mb-1">Acute Stress Response</p>
+                          <p className="text-sm text-red-700">
+                            Adrenaline suppresses insulin, triggers liver glucose release
+                          </p>
+                          <p className="text-xs text-red-600 mt-1">
+                            +20-35 mg/dL in healthy people, +50-100 mg/dL in diabetics
+                          </p>
                         </div>
                         <div className="bg-red-50 rounded-lg p-4">
-                          <p className="text-sm font-medium text-red-800 mb-1">Chronic Stress</p>
-                          <p className="text-sm text-red-700">Cortisol increases insulin resistance long-term</p>
+                          <p className="text-sm font-medium text-red-800 mb-1">Chronic Stress (Cortisol)</p>
+                          <p className="text-sm text-red-700">
+                            Increases insulin resistance, promotes glucose production
+                          </p>
+                          <p className="text-xs text-red-600 mt-1">
+                            Depression linked to hyperinsulinemia risk
+                          </p>
                         </div>
+                        <div className="bg-red-50 rounded-lg p-4">
+                          <p className="text-sm font-medium text-red-800 mb-1">Critical Illness</p>
+                          <p className="text-sm text-red-700">
+                            "Stress hyperglycemia" can spike glucose &gt;300 mg/dL even in non-diabetics
+                          </p>
+                        </div>
+                      </div>
+                      <div className="mt-3 text-xs text-red-600 bg-red-100 rounded p-2">
+                        <strong>Research:</strong> Morning cortisol peaks linked to dawn phenomenon (Kamba et al., 2016)
                       </div>
                     </div>
                   </div>
                   
-                  <div className="mt-6 grid md:grid-cols-2 gap-6">
+                  <div className="grid md:grid-cols-3 gap-6 mb-8">
                     <div className="bg-indigo-50 rounded-xl p-6">
-                      <h4 className="font-semibold text-indigo-800 mb-2">Sleep & Circadian</h4>
-                      <p className="text-indigo-700 text-sm">
-                        Even one night of poor sleep reduces insulin sensitivity the next day. 
-                        Dawn phenomenon causes morning glucose rise due to cortisol/growth hormone.
-                      </p>
+                      <h4 className="font-semibold text-indigo-800 mb-2 flex items-center gap-2">
+                        <span>😴</span> Sleep & Circadian
+                      </h4>
+                      <div className="space-y-3 text-sm">
+                        <div className="bg-white rounded p-3">
+                          <p className="font-medium text-indigo-700 mb-1">Sleep Deprivation</p>
+                          <p className="text-indigo-600 text-xs">Single night of poor sleep = reduced insulin sensitivity next day</p>
+                        </div>
+                        <div className="bg-white rounded p-3">
+                          <p className="font-medium text-indigo-700 mb-1">Dawn Phenomenon</p>
+                          <p className="text-indigo-600 text-xs">4-8 AM: Growth hormone & cortisol raise glucose</p>
+                        </div>
+                        <div className="bg-white rounded p-3">
+                          <p className="font-medium text-indigo-700 mb-1">Circadian Misalignment</p>
+                          <p className="text-indigo-600 text-xs">Shift work decreases insulin sensitivity</p>
+                        </div>
+                      </div>
+                      <div className="mt-3 text-xs text-indigo-600 italic">
+                        Source: Nguyen et al., Diabetes (2019)
+                      </div>
                     </div>
                     
                     <div className="bg-orange-50 rounded-xl p-6">
-                      <h4 className="font-semibold text-orange-800 mb-2">Pregnancy Changes</h4>
-                      <p className="text-orange-700 text-sm">
-                        Late pregnancy: 50-60% decrease in insulin sensitivity. 
-                        Insulin requirements can double by third trimester.
-                      </p>
+                      <h4 className="font-semibold text-orange-800 mb-2 flex items-center gap-2">
+                        <span>🤰</span> Pregnancy Changes
+                      </h4>
+                      <div className="space-y-3 text-sm">
+                        <div className="bg-white rounded p-3">
+                          <p className="font-medium text-orange-700 mb-1">Progressive Resistance</p>
+                          <p className="text-orange-600 text-xs">50-60% ↓ insulin sensitivity by late pregnancy</p>
+                        </div>
+                        <div className="bg-white rounded p-3">
+                          <p className="font-medium text-orange-700 mb-1">Insulin Production</p>
+                          <p className="text-orange-600 text-xs">200-250% ↑ to compensate for resistance</p>
+                        </div>
+                        <div className="bg-white rounded p-3">
+                          <p className="font-medium text-orange-700 mb-1">T1DM Impact</p>
+                          <p className="text-orange-600 text-xs">~70% ↑ insulin needs by third trimester</p>
+                        </div>
+                      </div>
+                      <div className="mt-3 text-xs text-orange-600 italic">
+                        Source: Jensen et al., J Diabetes Res (2019)
+                      </div>
+                    </div>
+                    
+                    <div className="bg-purple-50 rounded-xl p-6">
+                      <h4 className="font-semibold text-purple-800 mb-2 flex items-center gap-2">
+                        <span>⏰</span> Fasting States
+                      </h4>
+                      <div className="space-y-3 text-sm">
+                        <div className="bg-white rounded p-3">
+                          <p className="font-medium text-purple-700 mb-1">Overnight Fast</p>
+                          <p className="text-purple-600 text-xs">Steady glucose (70-99 mg/dL), low insulin (2-10 μU/mL)</p>
+                        </div>
+                        <div className="bg-white rounded p-3">
+                          <p className="font-medium text-purple-700 mb-1">Extended Fasting</p>
+                          <p className="text-purple-600 text-xs">Insulin drops further, ketone production increases</p>
+                        </div>
+                        <div className="bg-white rounded p-3">
+                          <p className="font-medium text-purple-700 mb-1">Therapeutic Benefit</p>
+                          <p className="text-purple-600 text-xs">Intermittent fasting improves insulin sensitivity</p>
+                        </div>
+                      </div>
+                      <div className="mt-3 text-xs text-purple-600 italic">
+                        Time-restricted feeding shows metabolic benefits
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-gradient-to-r from-yellow-50 to-amber-50 rounded-xl p-6">
+                    <h4 className="font-semibold text-amber-800 mb-3 text-center">Key Clinical Insight</h4>
+                    <p className="text-amber-700 text-sm text-center">
+                      Modern continuous glucose monitoring reveals that the same meal can cause vastly different glucose responses 
+                      based on sleep quality, stress levels, exercise timing, and even time of day. This variability explains why 
+                      traditional "one-size-fits-all" nutrition advice often fails.
+                    </p>
+                    <div className="flex justify-center items-center gap-4 mt-4 text-xs text-amber-600">
+                      <span>🏃‍♂️ Exercise context</span>
+                      <span>•</span>
+                      <span>😴 Sleep quality</span>
+                      <span>•</span>
+                      <span>⏰ Meal timing</span>
+                      <span>•</span>
+                      <span>😰 Stress levels</span>
                     </div>
                   </div>
                 </div>
