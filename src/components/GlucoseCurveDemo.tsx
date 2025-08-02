@@ -30,87 +30,73 @@ const GlucoseCurveDemo = () => {
   const mealData = {
     sugary: {
       name: "Sugary Cereal",
-      path: "M 60,170 Q 110,35 160,45 Q 210,55 260,100 Q 310,140 360,165",
+      path: "M 60,184 Q 110,56 160,64 Q 210,72 260,120 Q 310,160 360,180",
       color: "#ef4444",
       gradient: "from-red-500 to-red-600",
       peak: "195mg/dL",
       time: "25 min",
       description: "Extreme spike, dramatic crash",
-      emoji: "🥣",
-      peakX: 110,
-      peakY: 35
+      emoji: "🥣"
     },
     normal: {
       name: "Corn Flakes",
-      path: "M 60,170 Q 110,60 160,70 Q 210,80 260,110 Q 310,135 360,155",
+      path: "M 60,184 Q 110,88 160,96 Q 210,104 260,136 Q 310,152 360,168",
       color: "#f97316",
       gradient: "from-orange-500 to-orange-600",
       peak: "165mg/dL",
       time: "35 min",
       description: "High spike, surprising for 'healthy' cereal",
-      emoji: "🌽",
-      peakX: 110,
-      peakY: 60
+      emoji: "🌽"
     },
     orangeJuice: {
       name: "Fresh Orange Juice",
-      path: "M 60,170 Q 110,55 160,65 Q 210,75 260,105 Q 310,145 360,160",
+      path: "M 60,184 Q 110,64 160,72 Q 210,80 260,128 Q 310,168 360,176",
       color: "#ff8c00",
       gradient: "from-orange-400 to-orange-500",
       peak: "180mg/dL",
       time: "30 min",
       description: "Sharp spike, liquid sugars hit fast",
-      emoji: "🍊",
-      peakX: 110,
-      peakY: 55
+      emoji: "🍊"
     },
     coffee: {
       name: "Black Coffee",
-      path: "M 60,170 Q 110,168 160,167 Q 210,166 260,167 Q 310,168 360,169",
+      path: "M 60,184 Q 110,183 160,182 Q 210,181 260,182 Q 310,183 360,184",
       color: "#6b5b73",
       gradient: "from-gray-600 to-gray-700",
       peak: "85mg/dL",
       time: "60 min",
       description: "Virtually no impact on glucose",
-      emoji: "☕",
-      peakX: 210,
-      peakY: 166
+      emoji: "☕"
     },
     balanced: {
       name: "Eggs & Avocado",
-      path: "M 60,170 Q 110,165 160,163 Q 210,161 260,163 Q 310,165 360,167",
+      path: "M 60,184 Q 110,180 160,178 Q 210,176 260,178 Q 310,180 360,182",
       color: "#10b981",
       gradient: "from-emerald-500 to-emerald-600",
       peak: "88mg/dL",
       time: "90 min",
       description: "Minimal rise, very stable",
-      emoji: "🥑",
-      peakX: 210,
-      peakY: 161
+      emoji: "🥑"
     },
     oatmeal: {
       name: "Steel-Cut Oats",
-      path: "M 60,170 Q 110,105 160,110 Q 210,115 260,125 Q 310,140 360,150",
+      path: "M 60,184 Q 110,136 160,140 Q 210,144 260,152 Q 310,160 360,168",
       color: "#f59e0b",
       gradient: "from-amber-500 to-amber-600",
       peak: "125mg/dL",
       time: "60 min",
       description: "Moderate rise, sustained energy",
-      emoji: "🥣",
-      peakX: 210,
-      peakY: 115
+      emoji: "🥣"
     },
     carnivore: {
       name: "Carnivore (Steak)",
-      path: "M 60,170 Q 110,169 160,168 Q 210,167 260,168 Q 310,169 360,170",
+      path: "M 60,184 Q 110,182 160,181 Q 210,180 260,181 Q 310,182 360,183",
       color: "#8b5cf6",
       gradient: "from-purple-500 to-purple-600",
       peak: "82mg/dL",
       time: "120 min",
       description: "Virtually flat, maximum stability",
-      emoji: "🥩",
-      peakX: 210,
-      peakY: 167
+      emoji: "🥩"
     }
   };
 
@@ -248,24 +234,40 @@ const GlucoseCurveDemo = () => {
                       animate={{ scale: 1, opacity: 1 }}
                       transition={{ delay: 0.8, duration: 0.4 }}
                     >
-                      <circle 
-                        cx={currentMeal.peakX ? 50 + (currentMeal.peakX - 60) * (270 / 300) : "160"} 
-                        cy={currentMeal.peakY || "170"}
-                        r="4" 
-                        fill="white" 
-                        stroke={currentMeal.color} 
-                        strokeWidth="2"
-                      />
-                      <text 
-                        x={currentMeal.peakX ? 50 + (currentMeal.peakX - 60) * (270 / 300) : "160"} 
-                        y={currentMeal.peakY ? currentMeal.peakY - 8 : "162"} 
-                        fontSize="10" 
-                        fill={currentMeal.color} 
-                        textAnchor="middle" 
-                        fontWeight="600"
-                      >
-                        {currentMeal.peak}
-                      </text>
+                      {(() => {
+                        const mobilePeakPositions = {
+                          sugary: { x: 50 + (110 - 60) * (270 / 300), y: 56 },
+                          normal: { x: 50 + (110 - 60) * (270 / 300), y: 88 },
+                          orangeJuice: { x: 50 + (110 - 60) * (270 / 300), y: 64 },
+                          coffee: { x: 50 + (210 - 60) * (270 / 300), y: 181 },
+                          balanced: { x: 50 + (210 - 60) * (270 / 300), y: 176 },
+                          oatmeal: { x: 50 + (110 - 60) * (270 / 300), y: 136 },
+                          carnivore: { x: 50 + (210 - 60) * (270 / 300), y: 180 }
+                        };
+                        const pos = mobilePeakPositions[selectedMeal] || { x: 160, y: 170 };
+                        return (
+                          <>
+                            <circle 
+                              cx={pos.x} 
+                              cy={pos.y}
+                              r="4" 
+                              fill="white" 
+                              stroke={currentMeal.color} 
+                              strokeWidth="2"
+                            />
+                            <text 
+                              x={pos.x} 
+                              y={pos.y - 8} 
+                              fontSize="10" 
+                              fill={currentMeal.color} 
+                              textAnchor="middle" 
+                              fontWeight="600"
+                            >
+                              {currentMeal.peak}
+                            </text>
+                          </>
+                        );
+                      })()}
                     </motion.g>
                   </svg>
                 </div>
