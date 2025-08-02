@@ -414,84 +414,88 @@ const SciencePage = () => {
                     <span className="text-gradient bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">The Discovery</span> That Changed Everything
                   </h2>
                   <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-                    Understanding insulin and glucose dynamics required over a century of scientific breakthroughs. 
-                    Here's how modern research reveals why personalized nutrition is not just possible—it's essential.
+                    From accidental discoveries to precision medicine—how a century of breakthroughs 
+                    revealed why your glucose response is as unique as your fingerprint.
                   </p>
                 </div>
 
-                {/* Interactive Timeline */}
+                {/* Compact Scientific Milestones */}
                 <div className="relative mb-16">
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary via-secondary to-primary/50 rounded-full"></div>
-                  
-                  <div className="space-y-16">
-                    {[
-                      {
-                        year: "1889",
-                        title: "The Pancreas Connection",
-                        description: "German researchers von Mering and Minkowski surgically removed a dog's pancreas—the animal rapidly developed severe diabetes, proving the pancreas controls blood glucose.",
-                        impact: "First definitive link between pancreas and diabetes",
-                        color: "blue",
-                        side: "left"
-                      },
-                      {
-                        year: "1921",
-                        title: "The Toronto Breakthrough",
-                        description: "Banting, Best, Macleod, and Collip successfully isolated insulin from pancreatic islets, transforming diabetes from a death sentence to a manageable condition.",
-                        impact: "First successful insulin treatment: Leonard Thompson, age 14",
-                        color: "green",
-                        side: "right"
-                      },
-                      {
-                        year: "1978",
-                        title: "Synthetic Insulin Era",
-                        description: "Recombinant DNA technology enabled production of synthetic human insulin, eliminating allergic reactions from animal-derived insulin.",
-                        impact: "Eli Lilly's Humulin: first biosynthetic human insulin",
-                        color: "purple",
-                        side: "left"
-                      },
-                      {
-                        year: "2020s",
-                        title: "Precision Medicine",
-                        description: "Continuous glucose monitors, insulin pumps, and AI-driven analytics enable personalized diabetes management based on individual metabolic patterns.",
-                        impact: "Era of automated insulin delivery and precision nutrition",
-                        color: "orange",
-                        side: "right"
-                      }
-                    ].map((milestone, index) => (
-                      <motion.div
-                        key={index}
-                        className={`relative flex items-center ${milestone.side === 'left' ? 'justify-start' : 'justify-end'}`}
-                        initial={{ opacity: 0, x: milestone.side === 'left' ? -50 : 50 }}
-                        animate={isInView ? { opacity: 1, x: 0 } : {}}
-                        transition={{ delay: 0.5 + index * 0.2, duration: 0.8 }}
-                      >
-                        {/* Timeline dot */}
-                        <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-white border-4 border-primary rounded-full z-10 shadow-lg"></div>
-                        
-                        {/* Content card */}
-                        <div className={`w-5/12 ${milestone.side === 'left' ? 'mr-auto pr-8' : 'ml-auto pl-8'}`}>
-                          <div className={`bg-gradient-to-br from-${milestone.color}-50 to-white rounded-2xl p-6 shadow-lg border border-${milestone.color}-100 hover:shadow-xl transition-all duration-300 group`}>
-                            <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full bg-${milestone.color}-100 text-${milestone.color}-700 text-sm font-bold mb-4`}>
-                              <Calendar className="w-4 h-4" />
-                              {milestone.year}
+                  {/* Modern timeline design */}
+                  <div className="relative bg-gradient-to-r from-background via-muted/20 to-background rounded-2xl p-8 md:p-12 overflow-hidden">
+                    {/* Background elements */}
+                    <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+                    <div className="absolute top-4 right-4 w-32 h-32 bg-primary/5 rounded-full blur-3xl"></div>
+                    <div className="absolute bottom-4 left-4 w-24 h-24 bg-secondary/5 rounded-full blur-2xl"></div>
+                    
+                    <div className="relative z-10">
+                      <h3 className="text-2xl font-bold mb-8 text-center">Century of Scientific Breakthroughs</h3>
+                      
+                      {/* Horizontal timeline for larger screens, vertical for mobile */}
+                      <div className="hidden md:flex items-center justify-between mb-8">
+                        <div className="flex-1 h-0.5 bg-gradient-to-r from-transparent via-primary/30 to-primary/30"></div>
+                        <div className="w-3 h-3 bg-primary rounded-full mx-4"></div>
+                        <div className="flex-1 h-0.5 bg-gradient-to-r from-primary/30 to-primary/30"></div>
+                        <div className="w-3 h-3 bg-primary rounded-full mx-4"></div>
+                        <div className="flex-1 h-0.5 bg-gradient-to-r from-primary/30 to-primary/30"></div>
+                        <div className="w-3 h-3 bg-primary rounded-full mx-4"></div>
+                        <div className="flex-1 h-0.5 bg-gradient-to-r from-primary/30 to-transparent"></div>
+                      </div>
+                      
+                      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                        {[
+                          {
+                            year: "1889",
+                            title: "Pancreas Link",
+                            description: "First proof that pancreas controls blood glucose",
+                            impact: "Foundation discovery"
+                          },
+                          {
+                            year: "1921",
+                            title: "Insulin Isolated",
+                            description: "Toronto team saves Leonard Thompson, age 14",
+                            impact: "Medical miracle"
+                          },
+                          {
+                            year: "1978",
+                            title: "Synthetic Era",
+                            description: "Recombinant DNA creates human insulin",
+                            impact: "Precision manufacturing"
+                          },
+                          {
+                            year: "2020s",
+                            title: "AI Precision",
+                            description: "CGM + AI reveals individual patterns",
+                            impact: "Personalized medicine"
+                          }
+                        ].map((milestone, index) => (
+                          <motion.div
+                            key={index}
+                            className="text-center group"
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={isInView ? { opacity: 1, y: 0 } : {}}
+                            transition={{ delay: 0.5 + index * 0.1, duration: 0.6 }}
+                          >
+                            <div className="bg-white/60 backdrop-blur-sm rounded-xl p-4 hover:bg-white/80 transition-all duration-300 border border-white/20 group-hover:shadow-lg">
+                              <div className="text-primary font-bold text-lg mb-2">{milestone.year}</div>
+                              <h4 className="font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+                                {milestone.title}
+                              </h4>
+                              <p className="text-sm text-muted-foreground mb-2 leading-relaxed">
+                                {milestone.description}
+                              </p>
+                              <div className="text-xs text-primary/70 font-medium">
+                                {milestone.impact}
+                              </div>
                             </div>
-                            <h4 className={`text-xl font-bold mb-3 text-${milestone.color}-900 group-hover:text-${milestone.color}-700 transition-colors`}>
-                              {milestone.title}
-                            </h4>
-                            <p className="text-gray-700 mb-4 leading-relaxed">
-                              {milestone.description}
-                            </p>
-                            <div className={`text-sm font-medium text-${milestone.color}-600 bg-${milestone.color}-50 rounded-lg px-3 py-2 border border-${milestone.color}-200`}>
-                              💡 {milestone.impact}
-                            </div>
-                          </div>
-                        </div>
-                      </motion.div>
-                    ))}
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                {/* Individual Metabolic Phenotypes - Enhanced from knowledge base */}
+                {/* Individual Metabolic Phenotypes - Modern Design */}
                 <div className="mb-16">
                   <div className="text-center mb-12">
                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 text-secondary text-sm font-medium mb-6">
@@ -499,161 +503,138 @@ const SciencePage = () => {
                       Metabolic Diversity
                     </div>
                     <h3 className="text-3xl md:text-4xl font-bold mb-4">
-                      Individual <span className="text-gradient bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">Metabolic Phenotypes</span>
+                      Individual <span className="text-gradient bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">Metabolic Fingerprints</span>
                     </h3>
                     <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                      Every person has a unique metabolic fingerprint. Understanding these differences is key to personalized nutrition and optimal health outcomes.
+                      Every person responds differently to the same food. Here's why personalization isn't optional—it's essential.
                     </p>
                   </div>
                   
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {[
-                      {
-                        title: "Healthy Adults",
-                        color: "emerald",
-                        icon: Heart,
-                        metrics: [
-                          "Fasting glucose: 70-99 mg/dL",
-                          "Low fasting insulin (2-10 μU/mL)",
-                          "Post-meal peak: <140 mg/dL",
-                          "Robust first-phase insulin response"
-                        ],
-                        highlight: "Tight glycemic control with minimal insulin",
-                        percentage: "~60% of population"
-                      },
-                      {
-                        title: "Type 1 Diabetic",
-                        color: "red",
-                        icon: Zap,
-                        metrics: [
-                          "Autoimmune β-cell destruction",
-                          "Absolute insulin deficiency",
-                          "C-peptide: <0.5 ng/mL",
-                          "Requires exogenous insulin"
-                        ],
-                        highlight: "Precise insulin dosing prevents DKA",
-                        percentage: "~5% of diabetics"
-                      },
-                      {
-                        title: "Prediabetic Population",
-                        color: "amber",
-                        icon: TrendingUp,
-                        metrics: [
-                          "Fasting glucose: 100-125 mg/dL",
-                          "Elevated insulin (>15 μU/mL)",
-                          "1-hour post-meal: >160 mg/dL",
-                          "Compensatory hyperinsulinemia"
-                        ],
-                        highlight: "30% of young adults (16-25y) show hidden insulin resistance",
-                        percentage: "~35% of adults"
-                      },
-                      {
-                        title: "Type 2 Diabetic",
-                        color: "blue",
-                        icon: Activity,
-                        metrics: [
-                          "Fasting glucose: ≥126 mg/dL",
-                          "Early: High insulin (~31 μU/mL)",
-                          "Late: Progressive β-cell failure",
-                          "Lost first-phase response"
-                        ],
-                        highlight: "Monophasic glucose curves indicate dysfunction",
-                        percentage: "~95% of diabetics"
-                      },
-                      {
-                        title: "Endurance Athletes",
-                        color: "purple",
-                        icon: Dumbbell,
-                        metrics: [
-                          "50% lower fasting insulin",
-                          "22% higher insulin sensitivity",
-                          "32% greater mitochondrial capacity",
-                          "Superior glucose uptake efficiency"
-                        ],
-                        highlight: "Training creates metabolic flexibility and efficiency",
-                        percentage: "Elite performers"
-                      },
-                      {
-                        title: "Children & Adolescents",
-                        color: "indigo",
-                        icon: Baby,
-                        metrics: [
-                          "Age 3-4: ~3-4 μU/mL insulin",
-                          "Age 10: ~7-9 μU/mL insulin",
-                          "Puberty: 25-50% ↓ sensitivity",
-                          "Very robust β-cell function"
-                        ],
-                        highlight: "25% of obese children already show glucose intolerance",
-                        percentage: "Developing metabolism"
-                      },
-                      {
-                        title: "Pregnancy",
-                        color: "pink",
-                        icon: Baby,
-                        metrics: [
-                          "50-60% ↓ insulin sensitivity",
-                          "200-250% ↑ insulin production",
-                          "70% ↑ insulin needs (T1DM)",
-                          "Gestational diabetes risk"
-                        ],
-                        highlight: "Placental hormones create physiological resistance",
-                        percentage: "Temporary adaptation"
-                      },
-                      {
-                        title: "Elderly Population",
-                        color: "gray",
-                        icon: Clock,
-                        metrics: [
-                          "Age-related insulin resistance",
-                          "Reduced β-cell responsiveness",
-                          "Slower glucose clearance",
-                          "Higher baseline inflammation"
-                        ],
-                        highlight: "Natural aging affects glucose metabolism",
-                        percentage: "Progressive changes"
-                      }
-                    ].map((phenotype, index) => (
-                      <motion.div
-                        key={index}
-                        className={`group relative bg-gradient-to-br from-${phenotype.color}-50 via-white to-${phenotype.color}-50/30 rounded-2xl p-6 border border-${phenotype.color}-100 hover:border-${phenotype.color}-200 hover:shadow-xl transition-all duration-300 cursor-pointer`}
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={isInView ? { opacity: 1, y: 0 } : {}}
-                        transition={{ delay: 0.8 + index * 0.1, duration: 0.6 }}
-                        whileHover={{ scale: 1.02 }}
-                      >
-                        {/* Header */}
-                        <div className="flex items-center justify-between mb-4">
-                          <div className={`w-12 h-12 bg-${phenotype.color}-100 rounded-xl flex items-center justify-center group-hover:bg-${phenotype.color}-200 transition-colors`}>
-                            <phenotype.icon className={`w-6 h-6 text-${phenotype.color}-600`} />
+                  {/* Modern grid with floating cards */}
+                  <div className="relative">
+                    {/* Background gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 rounded-3xl"></div>
+                    
+                    <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-8">
+                      {[
+                        {
+                          title: "Healthy Adults",
+                          color: "emerald",
+                          icon: Heart,
+                          glucose: "70-99 mg/dL",
+                          insulin: "2-10 μU/mL", 
+                          response: "Tight control",
+                          population: "~60%"
+                        },
+                        {
+                          title: "Type 1 Diabetic",
+                          color: "red",
+                          icon: Zap,
+                          glucose: "Variable",
+                          insulin: "External only",
+                          response: "Requires precision",
+                          population: "~5% of diabetics"
+                        },
+                        {
+                          title: "Prediabetic",
+                          color: "amber",
+                          icon: TrendingUp,
+                          glucose: "100-125 mg/dL",
+                          insulin: ">15 μU/mL",
+                          response: "Compensating",
+                          population: "~35%"
+                        },
+                        {
+                          title: "Type 2 Diabetic",
+                          color: "blue",
+                          icon: Activity,
+                          glucose: "≥126 mg/dL",
+                          insulin: "Declining",
+                          response: "Impaired",
+                          population: "~95% of diabetics"
+                        },
+                        {
+                          title: "Elite Athletes",
+                          color: "purple",
+                          icon: Dumbbell,
+                          glucose: "Optimized",
+                          insulin: "50% lower",
+                          response: "Enhanced",
+                          population: "Peak performers"
+                        },
+                        {
+                          title: "Growing Youth",
+                          color: "indigo",
+                          icon: Baby,
+                          glucose: "Dynamic",
+                          insulin: "Age-dependent",
+                          response: "Developing",
+                          population: "25% at risk"
+                        },
+                        {
+                          title: "Pregnancy",
+                          color: "pink",
+                          icon: Heart,
+                          glucose: "Maternal priority",
+                          insulin: "2.5x production",
+                          response: "Adaptive",
+                          population: "Temporary state"
+                        },
+                        {
+                          title: "Aging Adults",
+                          color: "slate",
+                          icon: Clock,
+                          glucose: "Gradual rise",
+                          insulin: "Decreasing sensitivity",
+                          response: "Progressive",
+                          population: "Natural changes"
+                        }
+                      ].map((phenotype, index) => (
+                        <motion.div
+                          key={index}
+                          className="group relative"
+                          initial={{ opacity: 0, y: 30 }}
+                          animate={isInView ? { opacity: 1, y: 0 } : {}}
+                          transition={{ delay: 0.8 + index * 0.05, duration: 0.6 }}
+                          whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+                        >
+                          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/90 hover:shadow-xl transition-all duration-300 h-full">
+                            {/* Header */}
+                            <div className="flex items-center justify-between mb-4">
+                              <div className={`w-10 h-10 bg-${phenotype.color}-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-200`}>
+                                <phenotype.icon className={`w-5 h-5 text-${phenotype.color}-600`} />
+                              </div>
+                              <div className={`text-xs font-medium text-${phenotype.color}-600 bg-${phenotype.color}/10 rounded-full px-2 py-1`}>
+                                {phenotype.population}
+                              </div>
+                            </div>
+                            
+                            <h4 className={`text-lg font-bold mb-3 text-${phenotype.color}-900 group-hover:text-${phenotype.color}-700 transition-colors`}>
+                              {phenotype.title}
+                            </h4>
+                            
+                            {/* Key metrics in compact format */}
+                            <div className="space-y-2 mb-4">
+                              <div className="flex justify-between items-center text-sm">
+                                <span className="text-muted-foreground">Glucose:</span>
+                                <span className="font-medium">{phenotype.glucose}</span>
+                              </div>
+                              <div className="flex justify-between items-center text-sm">
+                                <span className="text-muted-foreground">Insulin:</span>
+                                <span className="font-medium">{phenotype.insulin}</span>
+                              </div>
+                              <div className="flex justify-between items-center text-sm">
+                                <span className="text-muted-foreground">Response:</span>
+                                <span className={`font-medium text-${phenotype.color}-600`}>{phenotype.response}</span>
+                              </div>
+                            </div>
+                            
+                            {/* Subtle indicator line */}
+                            <div className={`w-full h-1 bg-gradient-to-r from-${phenotype.color}-200 to-${phenotype.color}-400 rounded-full opacity-60`}></div>
                           </div>
-                          <div className={`text-xs font-medium text-${phenotype.color}-600 bg-${phenotype.color}-100 rounded-full px-3 py-1`}>
-                            {phenotype.percentage}
-                          </div>
-                        </div>
-                        
-                        <h4 className={`text-lg font-bold mb-4 text-${phenotype.color}-900 group-hover:text-${phenotype.color}-700 transition-colors`}>
-                          {phenotype.title}
-                        </h4>
-                        
-                        {/* Metrics */}
-                        <ul className="space-y-2 mb-4">
-                          {phenotype.metrics.map((metric, metricIndex) => (
-                            <li key={metricIndex} className="text-sm text-gray-700 flex items-start gap-2">
-                              <div className={`w-1.5 h-1.5 bg-${phenotype.color}-400 rounded-full mt-2 flex-shrink-0`}></div>
-                              <span>{metric}</span>
-                            </li>
-                          ))}
-                        </ul>
-                        
-                        {/* Highlight */}
-                        <div className={`text-sm font-medium text-${phenotype.color}-700 bg-${phenotype.color}-50 rounded-lg px-3 py-2 border border-${phenotype.color}-200`}>
-                          💡 {phenotype.highlight}
-                        </div>
-                        
-                        {/* Hover effect overlay */}
-                        <div className={`absolute inset-0 bg-gradient-to-r from-${phenotype.color}-500/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none`}></div>
-                      </motion.div>
-                    ))}
+                        </motion.div>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
