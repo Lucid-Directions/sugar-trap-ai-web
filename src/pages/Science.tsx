@@ -238,28 +238,164 @@ const SciencePage = () => {
               </p>
             </motion.div>
 
+            {/* Traditional Problems vs Modern Solutions */}
             <motion.div
-              className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20"
+              className="mb-20"
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.2, duration: 0.8 }}
             >
-              {[
-                "Ignored individual metabolic differences",
-                "Treated all calories as equal", 
-                "Overlooked hormonal responses to food",
-                "Created unsustainable restriction cycles"
-              ].map((issue, index) => (
-                <div key={index} className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-red-50 to-red-100 rounded-2xl transform rotate-1 group-hover:rotate-2 transition-transform"></div>
-                  <div className="relative bg-white rounded-2xl p-4 lg:p-6 border border-red-200 group-hover:shadow-lg transition-all duration-300">
-                    <div className="w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center mb-4">
-                      <span className="text-white font-bold text-sm">✕</span>
-                    </div>
-                    <p className="text-xs lg:text-sm font-medium text-red-800">{issue}</p>
+              <div className="grid lg:grid-cols-2 gap-16 items-center">
+                {/* Left side - Traditional Problems */}
+                <div className="space-y-6">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 border border-red-200 text-red-700 text-sm font-medium mb-4">
+                    <Target className="w-4 h-4" />
+                    The Old Paradigm
+                  </div>
+                  
+                  <div className="space-y-4">
+                    {[
+                      {
+                        icon: Users,
+                        title: "One-Size-Fits-All Approach",
+                        description: "Ignored individual metabolic differences and genetic variations",
+                        stat: "95% of diets fail long-term"
+                      },
+                      {
+                        icon: BarChart,
+                        title: "Calorie Counting Focus",
+                        description: "Treated all calories as equal, ignoring food quality and timing",
+                        stat: "200 calories of soda ≠ 200 calories of almonds"
+                      },
+                      {
+                        icon: Activity,
+                        title: "Hormonal Blindness",
+                        description: "Overlooked insulin, cortisol, and hunger hormone responses",
+                        stat: "Insulin can vary 10x between individuals"
+                      },
+                      {
+                        icon: Timer,
+                        title: "Restriction Cycles",
+                        description: "Created unsustainable patterns leading to metabolic adaptation",
+                        stat: "Metabolism drops up to 40% during restriction"
+                      }
+                    ].map((problem, index) => (
+                      <motion.div
+                        key={index}
+                        className="flex gap-4 p-4 rounded-2xl bg-gradient-to-r from-red-50/50 to-transparent border border-red-100 group hover:shadow-md transition-all duration-300"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={isInView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ delay: 0.3 + index * 0.1, duration: 0.6 }}
+                      >
+                        <div className="flex-shrink-0">
+                          <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center group-hover:bg-red-200 transition-colors">
+                            <problem.icon className="w-6 h-6 text-red-600" />
+                          </div>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h4 className="font-semibold text-gray-900 mb-1">{problem.title}</h4>
+                          <p className="text-sm text-gray-600 mb-2">{problem.description}</p>
+                          <div className="text-xs font-medium text-red-600 bg-red-100 rounded px-2 py-1 inline-block">
+                            {problem.stat}
+                          </div>
+                        </div>
+                      </motion.div>
+                    ))}
                   </div>
                 </div>
-              ))}
+
+                {/* Right side - Modern Solutions */}
+                <div className="space-y-6">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 border border-green-200 text-green-700 text-sm font-medium mb-4">
+                    <Zap className="w-4 h-4" />
+                    The New Science
+                  </div>
+                  
+                  <div className="space-y-4">
+                    {[
+                      {
+                        icon: Dna,
+                        title: "Personalized Metabolic Profiling",
+                        description: "CGM data reveals individual glucose response patterns",
+                        stat: "70% variation in glucose response to identical foods"
+                      },
+                      {
+                        icon: LineChart,
+                        title: "Glucose-Centric Approach",
+                        description: "Focus on metabolic impact rather than caloric content",
+                        stat: "Food order can reduce glucose spikes by 40%"
+                      },
+                      {
+                        icon: Heart,
+                        title: "Hormonal Optimization",
+                        description: "Strategic timing and combinations to optimize insulin sensitivity",
+                        stat: "Protein first can lower peak glucose by 30%"
+                      },
+                      {
+                        icon: Brain,
+                        title: "Sustainable Patterns",
+                        description: "Data-driven habits that work with your natural rhythms",
+                        stat: "85% adherence with personalized protocols"
+                      }
+                    ].map((solution, index) => (
+                      <motion.div
+                        key={index}
+                        className="flex gap-4 p-4 rounded-2xl bg-gradient-to-r from-green-50/50 to-transparent border border-green-100 group hover:shadow-md transition-all duration-300"
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={isInView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ delay: 0.3 + index * 0.1, duration: 0.6 }}
+                      >
+                        <div className="flex-shrink-0">
+                          <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center group-hover:bg-green-200 transition-colors">
+                            <solution.icon className="w-6 h-6 text-green-600" />
+                          </div>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h4 className="font-semibold text-gray-900 mb-1">{solution.title}</h4>
+                          <p className="text-sm text-gray-600 mb-2">{solution.description}</p>
+                          <div className="text-xs font-medium text-green-600 bg-green-100 rounded px-2 py-1 inline-block">
+                            {solution.stat}
+                          </div>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Central comparison visual */}
+              <motion.div
+                className="relative mt-16"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ delay: 0.8, duration: 0.8 }}
+              >
+                <div className="text-center">
+                  <div className="inline-flex items-center gap-4 p-6 rounded-2xl bg-gradient-to-r from-gray-50 to-gray-100 border border-gray-200">
+                    <div className="text-center">
+                      <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-2 mx-auto">
+                        <BarChart className="w-8 h-8 text-red-600" />
+                      </div>
+                      <div className="text-sm font-semibold text-red-700">Traditional</div>
+                      <div className="text-xs text-red-600">Calories Only</div>
+                    </div>
+                    
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-0.5 bg-gray-300"></div>
+                      <div className="w-3 h-3 bg-gray-400 rounded-full"></div>
+                      <div className="w-8 h-0.5 bg-gray-300"></div>
+                    </div>
+                    
+                    <div className="text-center">
+                      <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-2 mx-auto">
+                        <LineChart className="w-8 h-8 text-green-600" />
+                      </div>
+                      <div className="text-sm font-semibold text-green-700">Personalized</div>
+                      <div className="text-xs text-green-600">Glucose-Centric</div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
             </motion.div>
 
             {/* Enhanced Scientific Foundation */}
