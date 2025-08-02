@@ -151,7 +151,7 @@ const HeroSection = () => {
           {[...Array(4)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-32 h-32 bg-primary/5 rounded-full blur-2xl"
+              className="absolute w-32 h-32 bg-yellow-300/10 rounded-full blur-2xl"
               animate={{
                 x: [0, 80, -60, 0],
                 y: [0, -70, 90, 0],
