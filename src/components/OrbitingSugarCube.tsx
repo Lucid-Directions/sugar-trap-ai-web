@@ -5,28 +5,22 @@ const RotatingSugarCube = () => {
     <div className="w-10 h-10 md:w-12 md:h-12 relative flex items-center justify-center">
       {/* 3D Rotating Sugar Cube Container */}
       <motion.div
-        className="absolute inset-0"
+        className="absolute inset-2 md:inset-2"
         style={{
           transformStyle: 'preserve-3d',
         }}
         animate={{
           rotateX: [0, 360],
           rotateY: [0, 360],
-          rotateZ: [0, 360],
         }}
         transition={{
           rotateX: {
-            duration: 7,
+            duration: 12,
             repeat: Infinity,
             ease: "linear"
           },
           rotateY: {
-            duration: 5,
-            repeat: Infinity,
-            ease: "linear"
-          },
-          rotateZ: {
-            duration: 11,
+            duration: 8,
             repeat: Infinity,
             ease: "linear"
           }
@@ -34,49 +28,49 @@ const RotatingSugarCube = () => {
       >
         {/* Front face */}
         <div 
-          className="absolute inset-0 bg-white/20 border border-foreground/30 backdrop-blur-sm"
+          className="absolute inset-0 bg-white/30 border border-foreground/50"
           style={{
-            transform: 'translateZ(12px)'
+            transform: 'translateZ(8px)'
           }}
         />
         
         {/* Back face */}
         <div 
-          className="absolute inset-0 bg-white/15 border border-foreground/25 backdrop-blur-sm"
+          className="absolute inset-0 bg-white/20 border border-foreground/40"
           style={{
-            transform: 'translateZ(-12px) rotateY(180deg)'
+            transform: 'translateZ(-8px)'
           }}
         />
         
         {/* Right face */}
         <div 
-          className="absolute inset-0 bg-white/25 border border-foreground/35 backdrop-blur-sm"
+          className="absolute inset-0 bg-white/25 border border-foreground/45"
           style={{
-            transform: 'rotateY(90deg) translateZ(12px)'
+            transform: 'rotateY(90deg) translateZ(8px)'
           }}
         />
         
         {/* Left face */}
         <div 
-          className="absolute inset-0 bg-white/25 border border-foreground/35 backdrop-blur-sm"
+          className="absolute inset-0 bg-white/25 border border-foreground/45"
           style={{
-            transform: 'rotateY(-90deg) translateZ(12px)'
+            transform: 'rotateY(-90deg) translateZ(8px)'
           }}
         />
         
         {/* Top face */}
         <div 
-          className="absolute inset-0 bg-white/30 border border-foreground/40 backdrop-blur-sm"
+          className="absolute inset-0 bg-white/35 border border-foreground/55"
           style={{
-            transform: 'rotateX(90deg) translateZ(12px)'
+            transform: 'rotateX(90deg) translateZ(8px)'
           }}
         />
         
         {/* Bottom face */}
         <div 
-          className="absolute inset-0 bg-white/20 border border-foreground/30 backdrop-blur-sm"
+          className="absolute inset-0 bg-white/15 border border-foreground/35"
           style={{
-            transform: 'rotateX(-90deg) translateZ(12px)'
+            transform: 'rotateX(-90deg) translateZ(8px)'
           }}
         />
       </motion.div>
