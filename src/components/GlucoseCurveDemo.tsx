@@ -28,6 +28,26 @@ const GlucoseCurveDemo = () => {
       description: "High spike, surprising for 'healthy' cereal",
       emoji: "🌽"
     },
+    orangeJuice: {
+      name: "Fresh Orange Juice",
+      path: "M 60,184 Q 110,64 160,72 Q 210,80 260,128 Q 310,168 360,176",
+      color: "#ff8c00",
+      gradient: "from-orange-400 to-orange-500",
+      peak: "180mg/dL",
+      time: "30 min",
+      description: "Sharp spike, liquid sugars hit fast",
+      emoji: "🍊"
+    },
+    coffee: {
+      name: "Black Coffee",
+      path: "M 60,184 Q 110,183 160,182 Q 210,181 260,182 Q 310,183 360,184",
+      color: "#6b5b73",
+      gradient: "from-gray-600 to-gray-700",
+      peak: "85mg/dL",
+      time: "60 min",
+      description: "Virtually no impact on glucose",
+      emoji: "☕"
+    },
     balanced: {
       name: "Eggs & Avocado",
       path: "M 60,184 Q 110,180 160,178 Q 210,176 260,178 Q 310,180 360,182",
@@ -219,16 +239,16 @@ const GlucoseCurveDemo = () => {
                         transition={{ delay: 0.8, duration: 0.4, type: "spring", bounce: 0.3 }}
                       >
                         <circle 
-                          cx={selectedMeal === 'sugary' ? '160' : selectedMeal === 'normal' ? '160' : selectedMeal === 'balanced' ? '210' : selectedMeal === 'oatmeal' ? '160' : '210'} 
-                          cy={selectedMeal === 'sugary' ? '64' : selectedMeal === 'normal' ? '96' : selectedMeal === 'balanced' ? '176' : selectedMeal === 'oatmeal' ? '140' : '180'} 
+                          cx={selectedMeal === 'sugary' ? '160' : selectedMeal === 'normal' ? '160' : selectedMeal === 'orangeJuice' ? '160' : selectedMeal === 'coffee' ? '210' : selectedMeal === 'balanced' ? '210' : selectedMeal === 'oatmeal' ? '160' : '210'} 
+                          cy={selectedMeal === 'sugary' ? '64' : selectedMeal === 'normal' ? '96' : selectedMeal === 'orangeJuice' ? '72' : selectedMeal === 'coffee' ? '182' : selectedMeal === 'balanced' ? '176' : selectedMeal === 'oatmeal' ? '140' : '180'}
                           r="5" 
                           fill="white"
                           stroke={currentMeal.color}
                           strokeWidth="3"
                         />
                         <motion.circle 
-                          cx={selectedMeal === 'sugary' ? '160' : selectedMeal === 'normal' ? '160' : selectedMeal === 'balanced' ? '210' : selectedMeal === 'oatmeal' ? '160' : '210'} 
-                          cy={selectedMeal === 'sugary' ? '64' : selectedMeal === 'normal' ? '96' : selectedMeal === 'balanced' ? '176' : selectedMeal === 'oatmeal' ? '140' : '180'}
+                          cx={selectedMeal === 'sugary' ? '160' : selectedMeal === 'normal' ? '160' : selectedMeal === 'orangeJuice' ? '160' : selectedMeal === 'coffee' ? '210' : selectedMeal === 'balanced' ? '210' : selectedMeal === 'oatmeal' ? '160' : '210'} 
+                          cy={selectedMeal === 'sugary' ? '64' : selectedMeal === 'normal' ? '96' : selectedMeal === 'orangeJuice' ? '72' : selectedMeal === 'coffee' ? '182' : selectedMeal === 'balanced' ? '176' : selectedMeal === 'oatmeal' ? '140' : '180'}
                           r="12" 
                           fill="none"
                           stroke={currentMeal.color}
@@ -239,8 +259,8 @@ const GlucoseCurveDemo = () => {
                         />
                         {/* Peak Value Label */}
                         <motion.text 
-                          x={selectedMeal === 'sugary' ? '160' : selectedMeal === 'normal' ? '160' : selectedMeal === 'balanced' ? '210' : selectedMeal === 'oatmeal' ? '160' : '210'} 
-                          y={selectedMeal === 'sugary' ? '45' : selectedMeal === 'normal' ? '77' : selectedMeal === 'balanced' ? '157' : selectedMeal === 'oatmeal' ? '121' : '161'}
+                          x={selectedMeal === 'sugary' ? '160' : selectedMeal === 'normal' ? '160' : selectedMeal === 'orangeJuice' ? '160' : selectedMeal === 'coffee' ? '210' : selectedMeal === 'balanced' ? '210' : selectedMeal === 'oatmeal' ? '160' : '210'} 
+                          y={selectedMeal === 'sugary' ? '45' : selectedMeal === 'normal' ? '77' : selectedMeal === 'orangeJuice' ? '53' : selectedMeal === 'coffee' ? '163' : selectedMeal === 'balanced' ? '157' : selectedMeal === 'oatmeal' ? '121' : '161'}
                           fontSize="11" 
                           fill={currentMeal.color} 
                           textAnchor="middle" 
