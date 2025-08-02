@@ -88,9 +88,9 @@ const SciencePage = () => {
               Everyone's glucose response is as unique as their fingerprint. Modern research reveals why traditional one-size-fits-all approaches fail, and how personalized nutrition science is revolutionizing health.
             </motion.p>
 
-            {/* Key Research Insights */}
+            {/* Key Research Insights - Mobile Optimized */}
             <motion.div
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-12"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-12"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
@@ -103,15 +103,15 @@ const SciencePage = () => {
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-background to-secondary/5 rounded-3xl transform rotate-1 group-hover:rotate-2 transition-transform"></div>
                 <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300 overflow-hidden">
-                  <div className="h-48 overflow-hidden">
+                  <div className="h-32 md:h-48 overflow-hidden">
                     <img 
                       src={glucoseResponseIllustration}
                       alt="Glucose level chart showing healthy regulation"
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="p-4 lg:p-6">
-                    <h4 className="font-bold mb-3 text-sm">Healthy Regulation</h4>
+                  <div className="p-3 md:p-4 lg:p-6">
+                    <h4 className="font-bold mb-2 md:mb-3 text-xs md:text-sm">Healthy Regulation</h4>
                     <p className="text-xs text-muted-foreground leading-relaxed">
                       Healthy individuals maintain tightly regulated glucose with low insulin due to high sensitivity.
                     </p>
@@ -127,15 +127,15 @@ const SciencePage = () => {
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-background to-secondary/5 rounded-3xl transform rotate-1 group-hover:rotate-2 transition-transform"></div>
                 <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300 overflow-hidden">
-                  <div className="h-48 overflow-hidden">
+                  <div className="h-32 md:h-48 overflow-hidden">
                     <img 
                       src={medicalDataChart}
                       alt="Medical data chart"
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="p-4 lg:p-6">
-                    <h4 className="font-bold mb-3 text-sm">Insulin Resistance</h4>
+                  <div className="p-3 md:p-4 lg:p-6">
+                    <h4 className="font-bold mb-2 md:mb-3 text-xs md:text-sm">Insulin Resistance</h4>
                     <p className="text-xs text-muted-foreground leading-relaxed">
                       Insulin-resistant states show elevated insulin levels and impaired glucose tolerance, progressing to beta-cell failure if unchecked.
                     </p>
@@ -151,15 +151,15 @@ const SciencePage = () => {
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-background to-secondary/5 rounded-3xl transform rotate-1 group-hover:rotate-2 transition-transform"></div>
                 <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300 overflow-hidden">
-                  <div className="h-48 overflow-hidden">
+                  <div className="h-32 md:h-48 overflow-hidden">
                      <img 
                       src={diverseWellnessGroup}
                       alt="Diverse group of people"
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="p-4 lg:p-6">
-                    <h4 className="font-bold mb-3 text-sm">Special Populations</h4>
+                  <div className="p-3 md:p-4 lg:p-6">
+                    <h4 className="font-bold mb-2 md:mb-3 text-xs md:text-sm">Special Populations</h4>
                     <p className="text-xs text-muted-foreground leading-relaxed">
                       Children, athletes, and pregnant women each have unique profiles. Puberty and pregnancy induce transient resistance, while athletes show enhanced action.
                     </p>
@@ -175,15 +175,15 @@ const SciencePage = () => {
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-background to-secondary/5 rounded-3xl transform rotate-1 group-hover:rotate-2 transition-transform"></div>
                 <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300 overflow-hidden">
-                  <div className="h-48 overflow-hidden">
+                  <div className="h-32 md:h-48 overflow-hidden">
                     <img 
                       src={peacefulSleep}
                       alt="Person sleeping peacefully"
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="p-4 lg:p-6">
-                    <h4 className="font-bold mb-3 text-sm">Dynamic Conditions</h4>
+                  <div className="p-3 md:p-4 lg:p-6">
+                    <h4 className="font-bold mb-2 md:mb-3 text-xs md:text-sm">Dynamic Conditions</h4>
                     <p className="text-xs text-muted-foreground leading-relaxed">
                       Exercise and fasting generally lower glucose and insulin requirements, whereas stress and circadian hormone surges raise glucose demands.
                     </p>
@@ -238,14 +238,14 @@ const SciencePage = () => {
               </p>
             </motion.div>
 
-            {/* Traditional Problems vs Modern Solutions */}
+            {/* Traditional Problems vs Modern Solutions - Mobile Optimized */}
             <motion.div
-              className="mb-20"
+              className="mb-16 md:mb-20"
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.2, duration: 0.8 }}
             >
-              <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center">
                 {/* Left side - Traditional Problems */}
                 <div className="space-y-6">
                   <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 border border-red-200 text-red-700 text-sm font-medium mb-4">
@@ -282,19 +282,19 @@ const SciencePage = () => {
                     ].map((problem, index) => (
                       <motion.div
                         key={index}
-                        className="flex gap-4 p-4 rounded-2xl bg-gradient-to-r from-red-50/50 to-transparent border border-red-100 group hover:shadow-md transition-all duration-300"
+                        className="flex gap-3 md:gap-4 p-3 md:p-4 rounded-2xl bg-gradient-to-r from-red-50/50 to-transparent border border-red-100 group hover:shadow-md transition-all duration-300"
                         initial={{ opacity: 0, x: -20 }}
                         animate={isInView ? { opacity: 1, x: 0 } : {}}
                         transition={{ delay: 0.3 + index * 0.1, duration: 0.6 }}
                       >
                         <div className="flex-shrink-0">
-                          <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center group-hover:bg-red-200 transition-colors">
-                            <problem.icon className="w-6 h-6 text-red-600" />
+                          <div className="w-8 h-8 md:w-12 md:h-12 bg-red-100 rounded-xl flex items-center justify-center group-hover:bg-red-200 transition-colors">
+                            <problem.icon className="w-4 h-4 md:w-6 md:h-6 text-red-600" />
                           </div>
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h4 className="font-semibold text-gray-900 mb-1">{problem.title}</h4>
-                          <p className="text-sm text-gray-600 mb-2">{problem.description}</p>
+                          <h4 className="font-semibold text-gray-900 mb-1 text-sm md:text-base">{problem.title}</h4>
+                          <p className="text-xs md:text-sm text-gray-600 mb-2">{problem.description}</p>
                           <div className="text-xs font-medium text-red-600 bg-red-100 rounded px-2 py-1 inline-block">
                             {problem.stat}
                           </div>
@@ -340,19 +340,19 @@ const SciencePage = () => {
                     ].map((solution, index) => (
                       <motion.div
                         key={index}
-                        className="flex gap-4 p-4 rounded-2xl bg-gradient-to-r from-green-50/50 to-transparent border border-green-100 group hover:shadow-md transition-all duration-300"
+                        className="flex gap-3 md:gap-4 p-3 md:p-4 rounded-2xl bg-gradient-to-r from-green-50/50 to-transparent border border-green-100 group hover:shadow-md transition-all duration-300"
                         initial={{ opacity: 0, x: 20 }}
                         animate={isInView ? { opacity: 1, x: 0 } : {}}
                         transition={{ delay: 0.3 + index * 0.1, duration: 0.6 }}
                       >
                         <div className="flex-shrink-0">
-                          <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center group-hover:bg-green-200 transition-colors">
-                            <solution.icon className="w-6 h-6 text-green-600" />
+                          <div className="w-8 h-8 md:w-12 md:h-12 bg-green-100 rounded-xl flex items-center justify-center group-hover:bg-green-200 transition-colors">
+                            <solution.icon className="w-4 h-4 md:w-6 md:h-6 text-green-600" />
                           </div>
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h4 className="font-semibold text-gray-900 mb-1">{solution.title}</h4>
-                          <p className="text-sm text-gray-600 mb-2">{solution.description}</p>
+                          <h4 className="font-semibold text-gray-900 mb-1 text-sm md:text-base">{solution.title}</h4>
+                          <p className="text-xs md:text-sm text-gray-600 mb-2">{solution.description}</p>
                           <div className="text-xs font-medium text-green-600 bg-green-100 rounded px-2 py-1 inline-block">
                             {solution.stat}
                           </div>
@@ -515,7 +515,7 @@ const SciencePage = () => {
                     {/* Background gradient */}
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 rounded-3xl"></div>
                     
-                    <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-8">
+                    <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 p-4 md:p-8">
                       {[
                         {
                           title: "Healthy Adults",
@@ -598,7 +598,7 @@ const SciencePage = () => {
                           transition={{ delay: 0.8 + index * 0.05, duration: 0.6 }}
                           whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
                         >
-                          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/90 hover:shadow-xl transition-all duration-300 h-full">
+                          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 md:p-6 border border-white/20 hover:bg-white/90 hover:shadow-xl transition-all duration-300 h-full">
                             {/* Header */}
                             <div className="flex items-center justify-between mb-4">
                               <div className={`w-10 h-10 bg-${phenotype.color}-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-200`}>
@@ -609,7 +609,7 @@ const SciencePage = () => {
                               </div>
                             </div>
                             
-                            <h4 className={`text-lg font-bold mb-3 text-${phenotype.color}-900 group-hover:text-${phenotype.color}-700 transition-colors`}>
+                            <h4 className={`text-base md:text-lg font-bold mb-3 text-${phenotype.color}-900 group-hover:text-${phenotype.color}-700 transition-colors`}>
                               {phenotype.title}
                             </h4>
                             
@@ -647,9 +647,9 @@ const SciencePage = () => {
                   Physiological Context: How Conditions Modulate Glucose Response
                 </h3>
                 
-                <div className="grid md:grid-cols-2 gap-8">
+                <div className="grid md:grid-cols-2 gap-6 md:gap-8">
                   <div className="space-y-6">
-                    <div className="bg-green-50 rounded-xl p-6">
+                    <div className="bg-green-50 rounded-xl p-4 md:p-6">
                       <h4 className="font-semibold mb-4 text-green-700 flex items-center gap-2">
                         <Activity className="w-5 h-5" />
                         Exercise Physiology
@@ -679,7 +679,7 @@ const SciencePage = () => {
                       </div>
                     </div>
 
-                    <div className="bg-red-50 rounded-xl p-6">
+                    <div className="bg-red-50 rounded-xl p-4 md:p-6">
                       <h4 className="font-semibold mb-4 text-red-700 flex items-center gap-2">
                         <Heart className="w-5 h-5" />
                         Stress Response
@@ -702,7 +702,7 @@ const SciencePage = () => {
                   </div>
                   
                   <div className="space-y-6">
-                    <div className="bg-indigo-50 rounded-xl p-6">
+                    <div className="bg-indigo-50 rounded-xl p-4 md:p-6">
                       <h4 className="font-semibold mb-4 text-indigo-700 flex items-center gap-2">
                         <Moon className="w-5 h-5" />
                         Sleep & Circadian Rhythms
@@ -729,7 +729,7 @@ const SciencePage = () => {
                       </div>
                     </div>
 
-                    <div className="bg-amber-50 rounded-xl p-6">
+                    <div className="bg-amber-50 rounded-xl p-4 md:p-6">
                       <h4 className="font-semibold mb-4 text-amber-700 flex items-center gap-2">
                         <Timer className="w-5 h-5" />
                         Fasting vs. Fed States
@@ -762,8 +762,8 @@ const SciencePage = () => {
                   The Era of Precision Nutrition
                 </h3>
                 
-                <div className="grid md:grid-cols-3 gap-6 mb-8">
-                  <div className="bg-white rounded-xl p-6 shadow-sm">
+                <div className="grid md:grid-cols-3 gap-4 md:gap-6 mb-8">
+                  <div className="bg-white rounded-xl p-4 md:p-6 shadow-sm">
                     <h4 className="font-semibold mb-3 text-cyan-700">Continuous Glucose Monitoring</h4>
                     <p className="text-sm text-muted-foreground mb-3">
                       Real-time glucose data every few minutes reveals individual patterns previously invisible to traditional testing.
@@ -773,7 +773,7 @@ const SciencePage = () => {
                     </div>
                   </div>
                   
-                  <div className="bg-white rounded-xl p-6 shadow-sm">
+                  <div className="bg-white rounded-xl p-4 md:p-6 shadow-sm">
                     <h4 className="font-semibold mb-3 text-emerald-700">Multi-Omics Analysis</h4>
                     <p className="text-sm text-muted-foreground mb-3">
                       Integration of genomics, microbiomics, metabolomics creates comprehensive metabolic profiles.
@@ -783,7 +783,7 @@ const SciencePage = () => {
                     </div>
                   </div>
                   
-                  <div className="bg-white rounded-xl p-6 shadow-sm">
+                  <div className="bg-white rounded-xl p-4 md:p-6 shadow-sm">
                     <h4 className="font-semibold mb-3 text-violet-700">AI-Driven Predictions</h4>
                     <p className="text-sm text-muted-foreground mb-3">
                       Machine learning algorithms identify complex patterns in food composition, timing, and individual response.
@@ -812,44 +812,44 @@ const SciencePage = () => {
                 <div className="bg-white rounded-2xl p-8 shadow-inner">
                   <h4 className="text-xl font-bold mb-6 text-center">Clinical Example: Bread Response Modification</h4>
                   
-                  <div className="grid md:grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
                     <div className="text-center">
-                      <div className="w-20 h-20 rounded-2xl overflow-hidden mx-auto mb-4 border border-gray-200">
+                      <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl overflow-hidden mx-auto mb-3 md:mb-4 border border-gray-200">
                         <img 
                           src={breadAlonePhoto} 
                           alt="Bread alone" 
                           className="w-full h-full object-cover"
                         />
                       </div>
-                      <h5 className="font-semibold mb-2">Bread Alone</h5>
-                      <div className="text-2xl font-bold text-red-600 mb-2">Baseline Spike</div>
-                      <p className="text-sm text-muted-foreground">Rapid glucose rise, energy crash in 2 hours</p>
+                      <h5 className="font-semibold mb-2 text-sm md:text-base">Bread Alone</h5>
+                      <div className="text-lg md:text-2xl font-bold text-red-600 mb-2">Baseline Spike</div>
+                      <p className="text-xs md:text-sm text-muted-foreground">Rapid glucose rise, energy crash in 2 hours</p>
                     </div>
 
                     <div className="text-center">
-                      <div className="w-20 h-20 rounded-2xl overflow-hidden mx-auto mb-4 border border-gray-200">
+                      <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl overflow-hidden mx-auto mb-3 md:mb-4 border border-gray-200">
                         <img 
                           src={breadAvocadoPhoto} 
                           alt="Bread with avocado" 
                           className="w-full h-full object-cover"
                         />
                       </div>
-                      <h5 className="font-semibold mb-2">Bread + Avocado</h5>
-                      <div className="text-2xl font-bold text-yellow-600 mb-2">40% Reduction</div>
-                      <p className="text-sm text-muted-foreground">Fats slow glucose absorption</p>
+                      <h5 className="font-semibold mb-2 text-sm md:text-base">Bread + Avocado</h5>
+                      <div className="text-lg md:text-2xl font-bold text-yellow-600 mb-2">40% Reduction</div>
+                      <p className="text-xs md:text-sm text-muted-foreground">Fats slow glucose absorption</p>
                     </div>
 
                     <div className="text-center">
-                      <div className="w-20 h-20 rounded-2xl overflow-hidden mx-auto mb-4 border border-gray-200">
+                      <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl overflow-hidden mx-auto mb-3 md:mb-4 border border-gray-200">
                         <img 
                           src={avocadoBreadSequencePhoto} 
                           alt="Avocado first, then bread sequence" 
                           className="w-full h-full object-cover"
                         />
                       </div>
-                      <h5 className="font-semibold mb-2">Avocado First, Then Bread</h5>
-                      <div className="text-2xl font-bold text-green-600 mb-2">70% Reduction</div>
-                      <p className="text-sm text-muted-foreground">Optimal sequence for stable glucose</p>
+                      <h5 className="font-semibold mb-2 text-sm md:text-base">Avocado First, Then Bread</h5>
+                      <div className="text-lg md:text-2xl font-bold text-green-600 mb-2">70% Reduction</div>
+                      <p className="text-xs md:text-sm text-muted-foreground">Optimal sequence for stable glucose</p>
                     </div>
                   </div>
                   
@@ -876,7 +876,7 @@ const SciencePage = () => {
                 <span className="text-gradient">Peer-Reviewed</span> Research Foundation
               </h2>
 
-              <div className="grid md:grid-cols-3 gap-8">
+              <div className="grid md:grid-cols-3 gap-6 md:gap-8">
                 {studies.map((study, index) => (
                   <motion.div
                     key={study.title}
@@ -942,18 +942,18 @@ const SciencePage = () => {
                   with modern AI capabilities—making personalized nutrition accessible without expensive clinical testing.
                 </p>
 
-                <div className="grid md:grid-cols-3 gap-6 mb-8">
-                  <div className="bg-white rounded-xl p-6 shadow-sm">
+                <div className="grid md:grid-cols-3 gap-4 md:gap-6 mb-8">
+                  <div className="bg-white rounded-xl p-4 md:p-6 shadow-sm">
                     <BarChart className="w-8 h-8 text-primary mx-auto mb-3" />
                     <h3 className="font-semibold mb-2">Multi-Factor Analysis</h3>
                     <p className="text-sm text-muted-foreground">Integrates food composition, sequence, timing, and your unique metabolic profile</p>
                   </div>
-                  <div className="bg-white rounded-xl p-6 shadow-sm">
+                  <div className="bg-white rounded-xl p-4 md:p-6 shadow-sm">
                     <Brain className="w-8 h-8 text-primary mx-auto mb-3" />
                     <h3 className="font-semibold mb-2">Personalized Predictions</h3>
                     <p className="text-sm text-muted-foreground">Learns your individual patterns across different physiological states</p>
                   </div>
-                  <div className="bg-white rounded-xl p-6 shadow-sm">
+                  <div className="bg-white rounded-xl p-4 md:p-6 shadow-sm">
                     <Activity className="w-8 h-8 text-primary mx-auto mb-3" />
                     <h3 className="font-semibold mb-2">Context-Aware Recommendations</h3>
                     <p className="text-sm text-muted-foreground">Adapts to exercise, stress, sleep, and circadian factors</p>
