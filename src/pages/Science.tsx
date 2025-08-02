@@ -46,11 +46,11 @@ const SciencePage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl font-bold mb-6">
+            <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold mb-6">
               The New Science of 
               <span className="text-gradient block">Nutrition</span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+            <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed px-4">
               It's not just about calories anymore. Groundbreaking research reveals the crucial missing piece—
               <strong className="text-foreground"> your body's hormonal response to food.</strong>
             </p>
@@ -115,7 +115,7 @@ const SciencePage = () => {
                     Individual Differences Matter
                   </h3>
                   
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                     <div className="bg-white rounded-xl p-6 shadow-sm">
                       <h4 className="font-semibold mb-3 text-green-700">Healthy Adults</h4>
                       <ul className="text-sm space-y-2 text-muted-foreground">
@@ -279,7 +279,7 @@ const SciencePage = () => {
                 Understanding <span className="text-gradient">Glucose & Insulin</span>
               </h2>
 
-              <div className="grid md:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                 <div className="gradient-card rounded-2xl p-6">
                   <h3 className="text-xl font-bold mb-4">What Happens When You Eat</h3>
                   <div className="space-y-4">

@@ -116,7 +116,7 @@ const PricingPage = () => {
               Simple, Transparent 
               <span className="text-gradient block">Pricing</span>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4">
               Start with familiar tracking, then unlock revolutionary glucose insights when you're ready.
               <strong className="text-foreground"> Every journey begins somewhere.</strong>
             </p>
@@ -127,11 +127,7 @@ const PricingPage = () => {
       {/* Pricing Cards */}
       <section className="py-8">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-3 gap-4 md:gap-6 max-w-6xl mx-auto"
-            style={{ 
-              gridTemplateRows: 'auto',
-              alignItems: 'stretch'
-            }}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-6xl mx-auto"
           >
             {plans.map((plan, index) => (
               <motion.div
@@ -178,12 +174,12 @@ const PricingPage = () => {
                     <plan.icon className="w-8 h-8 text-white" />
                   </motion.div>
                   
-                  <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
+                  <h3 className="text-xl md:text-2xl font-bold mb-2">{plan.name}</h3>
                   <div className="mb-4">
-                    <span className="text-4xl font-bold">{plan.price}</span>
-                    <span className="text-muted-foreground">{plan.period}</span>
+                    <span className="text-3xl md:text-4xl font-bold">{plan.price}</span>
+                    <span className="text-muted-foreground text-sm md:text-base">{plan.period}</span>
                   </div>
-                  <p className="text-muted-foreground">{plan.description}</p>
+                  <p className="text-muted-foreground text-sm md:text-base">{plan.description}</p>
                 </div>
 
                 {/* Features List */}
@@ -239,7 +235,7 @@ const PricingPage = () => {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
             {benefits.map((benefit, index) => (
               <motion.div
                 key={benefit.title}

@@ -114,9 +114,9 @@ const GlucoseCurveDemo = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               {/* Glucose Chart */}
-              <div className="lg:col-span-3">
+              <div className="lg:col-span-2">
                 <div className="bg-white rounded-2xl p-4 md:p-8 shadow-inner">
                   <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-4 md:mb-6">
                     <h3 className="text-lg md:text-2xl font-bold mb-2 md:mb-0">Your Predicted Glucose Response</h3>
@@ -204,7 +204,7 @@ const GlucoseCurveDemo = () => {
               </div>
 
               {/* Stats and Desktop Meal Selection */}
-              <div className="lg:col-span-2 space-y-6">
+              <div className="lg:col-span-1 space-y-6">
                 {/* Meal Stats */}
                 <motion.div 
                   className="bg-white rounded-2xl p-4 md:p-6 shadow-inner"

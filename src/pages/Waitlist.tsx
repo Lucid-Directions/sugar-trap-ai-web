@@ -63,11 +63,11 @@ const WaitlistPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl font-bold mb-6">
+            <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold mb-6">
               Be Part of the 
               <span className="text-gradient block">Nutrition Revolution</span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+            <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed px-4">
               The future of food tracking is almost here. Join thousands who are ready to see beyond calories 
               and understand their body's true response to food.
             </p>
@@ -161,7 +161,7 @@ const WaitlistPage = () => {
             </h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-6xl mx-auto">
             {benefits.map((benefit, index) => (
               <motion.div
                 key={benefit.title}
@@ -200,7 +200,7 @@ const WaitlistPage = () => {
                 What You'll <span className="text-gradient">Discover</span>
               </h2>
 
-              <div className="grid md:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                 {discoveries.map((discovery, index) => (
                   <motion.div
                     key={discovery}
@@ -245,7 +245,7 @@ const WaitlistPage = () => {
               Join Our Growing <span className="text-gradient">Community</span>
             </h2>
 
-            <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-4xl mx-auto mb-12">
               <div className="text-center">
                 <div className="text-4xl md:text-5xl font-bold text-primary mb-2">10,000+</div>
                 <div className="text-muted-foreground">Early Adopters</div>
