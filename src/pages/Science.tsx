@@ -48,7 +48,7 @@ const SciencePage = () => {
       <Navigation />
       
       {/* Hero Section with Research Insights */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-0">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-secondary/10"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,theme(colors.primary/8),transparent_50%)]"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,theme(colors.secondary/10),transparent_50%)]"></div>
@@ -66,9 +66,9 @@ const SciencePage = () => {
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.8 }}
             >
-              <div className="relative inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/20 backdrop-blur-sm">
+              <div className="relative inline-flex items-center gap-3 px-4 py-2 md:px-6 md:py-3 rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/20 backdrop-blur-sm">
                 <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
-                <span className="text-sm font-medium text-primary">Evidence-Based Nutrition Science</span>
+                <span className="text-xs md:text-sm font-medium text-primary">Evidence-Based Nutrition Science</span>
               </div>
             </motion.div>
             
@@ -240,12 +240,49 @@ const SciencePage = () => {
 
             {/* Traditional Problems vs Modern Solutions - Mobile Optimized */}
             <motion.div
-              className="mb-16 md:mb-20"
+              className="mb-12 md:mb-20"
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.2, duration: 0.8 }}
             >
-              <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center">
+              {/* Mobile: Compact card format, Desktop: Original two-column layout */}
+              <div className="lg:hidden">
+                <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-lg">
+                  <div className="grid grid-cols-2 gap-4 mb-6">
+                    <div className="text-center">
+                      <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mb-2 mx-auto">
+                        <Target className="w-6 h-6 text-red-600" />
+                      </div>
+                      <div className="text-sm font-medium text-red-700">Old Paradigm</div>
+                      <div className="text-xs text-red-600">One-size-fits-all</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-2 mx-auto">
+                        <Zap className="w-6 h-6 text-green-600" />
+                      </div>
+                      <div className="text-sm font-medium text-green-700">New Science</div>
+                      <div className="text-xs text-green-600">Personalized glucose</div>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between p-3 bg-gradient-to-r from-red-50 to-green-50 rounded-lg">
+                      <span className="text-sm text-gray-600">Calorie counting</span>
+                      <span className="text-sm font-medium text-green-700">→ Glucose response</span>
+                    </div>
+                    <div className="flex items-center justify-between p-3 bg-gradient-to-r from-red-50 to-green-50 rounded-lg">
+                      <span className="text-sm text-gray-600">95% diet failure</span>
+                      <span className="text-sm font-medium text-green-700">→ 85% adherence</span>
+                    </div>
+                    <div className="flex items-center justify-between p-3 bg-gradient-to-r from-red-50 to-green-50 rounded-lg">
+                      <span className="text-sm text-gray-600">Hormonal blindness</span>
+                      <span className="text-sm font-medium text-green-700">→ Real-time insights</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="hidden lg:grid lg:grid-cols-2 gap-8 md:gap-16 items-center">
                 {/* Left side - Traditional Problems */}
                 <div className="space-y-6">
                   <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 border border-red-200 text-red-700 text-sm font-medium mb-4">
@@ -420,9 +457,30 @@ const SciencePage = () => {
                 </div>
 
                 {/* Compact Scientific Milestones */}
-                <div className="relative mb-16">
-                  {/* Modern timeline design */}
-                  <div className="relative bg-gradient-to-r from-background via-muted/20 to-background rounded-2xl p-8 md:p-12 overflow-hidden">
+                <div className="relative mb-12 md:mb-16">
+                  {/* Mobile: Ultra-compact timeline */}
+                  <div className="md:hidden">
+                    <div className="bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                      <h3 className="text-lg font-bold mb-4 text-center">Century of Breakthroughs</h3>
+                      <div className="grid grid-cols-2 gap-3">
+                        {[
+                          { year: "1889", title: "Pancreas Link", icon: "🔬" },
+                          { year: "1921", title: "Insulin Isolated", icon: "💉" },
+                          { year: "1978", title: "Synthetic Era", icon: "🧬" },
+                          { year: "2020s", title: "AI Precision", icon: "🤖" }
+                        ].map((milestone, index) => (
+                          <div key={index} className="text-center p-2 bg-white/40 rounded-lg">
+                            <div className="text-lg mb-1">{milestone.icon}</div>
+                            <div className="text-xs font-bold text-primary">{milestone.year}</div>
+                            <div className="text-xs font-medium">{milestone.title}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Desktop: Original timeline design */}
+                  <div className="hidden md:block relative bg-gradient-to-r from-background via-muted/20 to-background rounded-2xl p-8 md:p-12 overflow-hidden">
                     {/* Background elements */}
                     <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
                     <div className="absolute top-4 right-4 w-32 h-32 bg-primary/5 rounded-full blur-3xl"></div>
@@ -431,8 +489,8 @@ const SciencePage = () => {
                     <div className="relative z-10">
                       <h3 className="text-2xl font-bold mb-8 text-center">Century of Scientific Breakthroughs</h3>
                       
-                      {/* Horizontal timeline for larger screens, vertical for mobile */}
-                      <div className="hidden md:flex items-center justify-between mb-8">
+                      {/* Horizontal timeline for larger screens */}
+                      <div className="flex items-center justify-between mb-8">
                         <div className="flex-1 h-0.5 bg-gradient-to-r from-transparent via-primary/30 to-primary/30"></div>
                         <div className="w-3 h-3 bg-primary rounded-full mx-4"></div>
                         <div className="flex-1 h-0.5 bg-gradient-to-r from-primary/30 to-primary/30"></div>
@@ -442,7 +500,7 @@ const SciencePage = () => {
                         <div className="flex-1 h-0.5 bg-gradient-to-r from-primary/30 to-transparent"></div>
                       </div>
                       
-                      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                      <div className="grid grid-cols-4 gap-6">
                         {[
                           {
                             year: "1889",
@@ -510,8 +568,32 @@ const SciencePage = () => {
                     </p>
                   </div>
                   
-                  {/* Modern grid with floating cards */}
-                  <div className="relative">
+                  {/* Mobile: Compact metabolic fingerprints */}
+                  <div className="md:hidden">
+                    <div className="bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                      <div className="grid grid-cols-2 gap-3">
+                        {[
+                          { title: "Healthy", color: "emerald", response: "Optimal", icon: "💚" },
+                          { title: "Prediabetic", color: "amber", response: "Compensating", icon: "⚠️" },
+                          { title: "Type 1", color: "red", response: "External insulin", icon: "💉" },
+                          { title: "Type 2", color: "blue", response: "Impaired", icon: "📈" },
+                          { title: "Athletes", color: "purple", response: "Enhanced", icon: "💪" },
+                          { title: "Youth", color: "indigo", response: "Developing", icon: "👶" },
+                          { title: "Pregnancy", color: "pink", response: "Adaptive", icon: "🤱" },
+                          { title: "Aging", color: "slate", response: "Progressive", icon: "👴" }
+                        ].map((phenotype, index) => (
+                          <div key={index} className="text-center p-3 bg-white/40 rounded-lg">
+                            <div className="text-lg mb-1">{phenotype.icon}</div>
+                            <div className="text-xs font-bold mb-1">{phenotype.title}</div>
+                            <div className="text-xs text-muted-foreground">{phenotype.response}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Desktop: Full metabolic fingerprints grid */}
+                  <div className="hidden md:block relative">
                     {/* Background gradient */}
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 rounded-3xl"></div>
                     
@@ -639,15 +721,33 @@ const SciencePage = () => {
                 </div>
 
               {/* Physiological Context - Enhanced from knowledge base */}
-              <div className="gradient-card rounded-3xl p-8 mb-12">
-                <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
-                  <div className="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center">
-                    <Zap className="w-5 h-5 text-purple-600" />
+              <div className="gradient-card rounded-3xl p-6 md:p-8 mb-12">
+                <h3 className="text-lg md:text-2xl font-bold mb-4 md:mb-6 flex items-center gap-3">
+                  <div className="w-8 h-8 md:w-10 md:h-10 bg-purple-100 rounded-xl flex items-center justify-center">
+                    <Zap className="w-4 h-4 md:w-5 md:h-5 text-purple-600" />
                   </div>
-                  Physiological Context: How Conditions Modulate Glucose Response
+                  <span className="hidden md:inline">Physiological Context: How Conditions Modulate Glucose Response</span>
+                  <span className="md:hidden">Physiological Context</span>
                 </h3>
                 
-                <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+                {/* Mobile: Compact grid */}
+                <div className="md:hidden grid grid-cols-2 gap-3">
+                  {[
+                    { title: "Exercise", icon: "🏃", effect: "Enhanced uptake", color: "green" },
+                    { title: "Stress", icon: "😰", effect: "Elevated glucose", color: "red" },
+                    { title: "Sleep", icon: "😴", effect: "Circadian rhythm", color: "indigo" },
+                    { title: "Fasting", icon: "⏰", effect: "Stable glucose", color: "amber" }
+                  ].map((context, index) => (
+                    <div key={index} className="text-center p-3 bg-white/40 rounded-lg">
+                      <div className="text-lg mb-1">{context.icon}</div>
+                      <div className="text-xs font-bold mb-1">{context.title}</div>
+                      <div className="text-xs text-muted-foreground">{context.effect}</div>
+                    </div>
+                  ))}
+                </div>
+                
+                {/* Desktop: Full detailed grid */}
+                <div className="hidden md:grid md:grid-cols-2 gap-6 md:gap-8">
                   <div className="space-y-6">
                     <div className="bg-green-50 rounded-xl p-4 md:p-6">
                       <h4 className="font-semibold mb-4 text-green-700 flex items-center gap-2">
