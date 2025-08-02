@@ -230,7 +230,7 @@ const PricingPage = () => {
               Why Invest in <span className="text-gradient">Your Health?</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Understanding your glucose response isn't just about nutrition—it's about 
+              Understanding your glucose response isn't just about nutrition, it's about 
               optimizing every aspect of your health and performance.
             </p>
           </motion.div>

@@ -16,7 +16,7 @@ const ProblemSection = () => {
     {
       icon: Brain,
       title: "Brain Fog",
-      description: "Your 3pm energy crash isn't about willpower—it's about biology",
+      description: "Your 3pm energy crash isn't about willpower, it's about biology",
       color: "text-orange-500"
     },
     {

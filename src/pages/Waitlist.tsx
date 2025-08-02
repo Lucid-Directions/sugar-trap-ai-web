@@ -35,7 +35,7 @@ const WaitlistPage = () => {
   ];
 
   const discoveries = [
-    "Why your glucose response is as unique as your fingerprint—and what that means for your health",
+    "Why your glucose response is as unique as your fingerprint and what that means for your health",
     "How food sequence can reduce glucose spikes by 70% using the same ingredients",
     "The hidden metabolic cost of stress, sleep, and exercise on your daily energy",
     "Why stable blood sugar is the key to sustained energy, better mood, and long-term wellness"
@@ -68,9 +68,9 @@ const WaitlistPage = () => {
               <span className="text-gradient block">Is About to Be Revealed</span>
             </h1>
             <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed px-4">
-              Every meal you eat sends a unique signal through your bloodstream—a metabolic fingerprint as individual as you are. 
+              Every meal you eat sends a unique signal through your bloodstream, a metabolic fingerprint as individual as you are. 
               For the first time in history, AI can decode this hidden language and show you exactly how to optimize your energy, 
-              mood, and long-term health. The future of personalized nutrition isn't coming—it's here.
+              mood, and long-term health. The future of personalized nutrition isn't coming, it's here.
             </p>
           </motion.div>
 
@@ -161,7 +161,7 @@ const WaitlistPage = () => {
               Why Your <span className="text-gradient">Metabolic Health</span> Matters
             </h2>
             <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto">
-              Stable glucose isn't just for diabetics—it's the foundation of sustained energy, clear thinking, 
+              Stable glucose isn't just for diabetics, it's the foundation of sustained energy, clear thinking, 
               mood stability, and long-term wellness for everyone.
             </p>
           </motion.div>
@@ -207,7 +207,7 @@ const WaitlistPage = () => {
               
               <p className="text-base md:text-lg text-muted-foreground text-center mb-8 max-w-3xl mx-auto">
                 Beyond calories lies a hidden world of metabolic optimization. Discover the science that elite athletes, 
-                biohackers, and longevity researchers have been using—now accessible to everyone.
+                biohackers, and longevity researchers have been using, now accessible to everyone.
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">

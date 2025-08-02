@@ -475,7 +475,7 @@ const SciencePage = () => {
               </h2>
               <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
                 For decades, weight management advice was simple: <strong>calories in, calories out</strong>. 
-                But groundbreaking research has revealed why this oversimplified model fails to account for the body's complex hormonal response to food—the key to sustainable metabolic health.
+                But groundbreaking research has revealed why this oversimplified model fails to account for the body's complex hormonal response to food, the key to sustainable metabolic health.
               </p>
             </motion.div>
 
@@ -833,7 +833,7 @@ const SciencePage = () => {
                     <span className="text-gradient bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">The Discovery</span> That Changed Everything
                   </h2>
                   <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-                    From accidental discoveries to precision medicine—how a century of breakthroughs 
+                    From accidental discoveries to precision medicine, how a century of breakthroughs 
                     revealed why your glucose response is as unique as your fingerprint.
                   </p>
                 </div>
@@ -994,7 +994,7 @@ const SciencePage = () => {
                       Individual <span className="text-gradient bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">Metabolic Fingerprints</span>
                     </h3>
                     <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                      Every person responds differently to the same food. Here's why personalization isn't optional—it's essential.
+                      Every person responds differently to the same food. Here's why personalization isn't optional, it's essential.
                     </p>
                   </div>
                   
@@ -1726,8 +1726,8 @@ const SciencePage = () => {
                 </h3>
                 
                 <p className="text-lg text-muted-foreground mb-8 text-center">
-                  Research demonstrates that food sequence and combination can alter glucose response by up to 70%—
-                  the same ingredients in different order create completely different metabolic outcomes.
+                  Research demonstrates that food sequence and combination can alter glucose response by up to 70%. 
+                  The same ingredients in different order create completely different metabolic outcomes.
                 </p>
 
                 <div className="bg-white rounded-2xl p-8 shadow-inner">
@@ -2020,7 +2020,7 @@ const SciencePage = () => {
                 <p className="text-lg text-muted-foreground mb-8 max-w-4xl mx-auto">
                   We integrate cutting-edge research on individual metabolic differences, physiological context, and food interaction science 
                   to predict your personal glucose response to any meal. This represents the convergence of a century of insulin research 
-                  with modern AI capabilities—making personalized nutrition accessible without expensive clinical testing.
+                  with modern AI capabilities, making personalized nutrition accessible without expensive clinical testing.
                 </p>
 
                 <div className="grid md:grid-cols-3 gap-4 md:gap-6 mb-8">
