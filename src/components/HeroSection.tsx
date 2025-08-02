@@ -2,6 +2,27 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { ArrowRight, Play, Users, Star, ArrowDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import phoneSugaryCereal from '@/assets/phone-sugary-cereal.jpg';
+import phoneSmoothie from '@/assets/phone-smoothie.jpg';
+import phoneEggsAvocado from '@/assets/phone-eggs-avocado.jpg';
+import phoneToastJam from '@/assets/phone-toast-jam.jpg';
+import phoneOatmeal from '@/assets/phone-oatmeal.jpg';
+import phoneBagel from '@/assets/phone-bagel.jpg';
+import phoneYogurtGranola from '@/assets/phone-yogurt-granola.jpg';
+
+// Helper function to get meal photo
+const getMealPhoto = (mealName: string) => {
+  const photoMap: { [key: string]: string } = {
+    "Sugary Cereal": phoneSugaryCereal,
+    "Berry Smoothie": phoneSmoothie,
+    "Eggs & Avocado": phoneEggsAvocado,
+    "Toast & Jam": phoneToastJam,
+    "Oatmeal Bowl": phoneOatmeal,
+    "Cream Cheese Bagel": phoneBagel,
+    "Yogurt & Granola": phoneYogurtGranola
+  };
+  return photoMap[mealName];
+};
 
 // Phone Mockup Component
 const PhoneDemo = ({ currentMeal }) => {
@@ -37,17 +58,15 @@ const PhoneDemo = ({ currentMeal }) => {
                 transition={{ duration: 0.5 }}
                 className="space-y-3"
               >
-                {/* Food Image Placeholder */}
-                <div className="aspect-square bg-gray-50 rounded-xl flex items-center justify-center">
-                  <motion.div
-                    className="text-4xl"
-                    animate={{ scale: [1, 1.1, 1] }}
+                {/* Food Image - Now with realistic photos */}
+                <div className="aspect-square bg-gray-50 rounded-xl overflow-hidden">
+                  <motion.img
+                    src={getMealPhoto(currentMeal.name)}
+                    alt={currentMeal.name}
+                    className="w-full h-full object-cover"
+                    animate={{ scale: [1, 1.02, 1] }}
                     transition={{ duration: 2, repeat: Infinity }}
-                  >
-                    {currentMeal.name === "Sugary Cereal" && "🥣"}
-                    {currentMeal.name === "Smoothie" && "🥤"}
-                    {currentMeal.name === "Eggs & Avocado" && "🍳"}
-                  </motion.div>
+                  />
                 </div>
                 
                 {/* Meal Name */}
@@ -57,12 +76,14 @@ const PhoneDemo = ({ currentMeal }) => {
                 <div className="bg-gray-50 rounded-lg p-3">
                   <div className="text-xs text-gray-600 mb-2">Predicted Glucose Response</div>
                   <svg viewBox="0 0 200 60" className="w-full h-16">
-                    <motion.path
-                      d={
-                        currentMeal.spike === "high"
-                          ? "M 10,50 Q 50,15 90,25 T 170,55"
-                          : "M 10,40 Q 50,35 90,38 T 170,40"
-                      }
+                     <motion.path
+                       d={
+                         currentMeal.spike === "high"
+                           ? "M 10,50 Q 50,15 90,25 T 170,55"
+                           : currentMeal.spike === "medium"
+                           ? "M 10,45 Q 50,25 90,30 T 170,50"
+                           : "M 10,40 Q 50,35 90,38 T 170,40"
+                       }
                       fill="none"
                       stroke={
                         currentMeal.color === "red"
@@ -76,18 +97,18 @@ const PhoneDemo = ({ currentMeal }) => {
                       animate={{ pathLength: 1 }}
                       transition={{ duration: 2, ease: "easeInOut" }}
                     />
-                    {/* Spike indicator */}
-                    {currentMeal.spike === "high" && (
-                      <motion.circle
-                        cx="70"
-                        cy="20"
-                        r="4"
-                        fill="#ef4444"
-                        initial={{ scale: 0 }}
-                        animate={{ scale: [0, 1.2, 1] }}
-                        transition={{ delay: 1, duration: 0.5 }}
-                      />
-                    )}
+                     {/* Spike indicator */}
+                     {(currentMeal.spike === "high" || currentMeal.spike === "medium") && (
+                       <motion.circle
+                         cx="70"
+                         cy={currentMeal.spike === "high" ? "20" : "27"}
+                         r="4"
+                         fill={currentMeal.spike === "high" ? "#ef4444" : "#f97316"}
+                         initial={{ scale: 0 }}
+                         animate={{ scale: [0, 1.2, 1] }}
+                         transition={{ delay: 1, duration: 0.5 }}
+                       />
+                     )}
                   </svg>
                   <div className="flex justify-between text-xs mt-1">
                     <span className="text-gray-500">Now</span>
@@ -106,16 +127,26 @@ const PhoneDemo = ({ currentMeal }) => {
                     ⚠️ High spike predicted - expect energy crash
                   </motion.div>
                 )}
-                {currentMeal.spike === "low" && (
-                  <motion.div
-                    className="bg-green-50 text-green-700 text-xs p-2 rounded-lg"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 2 }}
-                  >
-                    ✅ Stable energy - great choice!
-                  </motion.div>
-                )}
+                 {currentMeal.spike === "medium" && (
+                   <motion.div
+                     className="bg-orange-50 text-orange-700 text-xs p-2 rounded-lg"
+                     initial={{ opacity: 0, scale: 0.9 }}
+                     animate={{ opacity: 1, scale: 1 }}
+                     transition={{ delay: 2 }}
+                   >
+                     ⚠️ Moderate spike - manageable but could be better
+                   </motion.div>
+                 )}
+                 {currentMeal.spike === "low" && (
+                   <motion.div
+                     className="bg-green-50 text-green-700 text-xs p-2 rounded-lg"
+                     initial={{ opacity: 0, scale: 0.9 }}
+                     animate={{ opacity: 1, scale: 1 }}
+                     transition={{ delay: 2 }}
+                   >
+                     ✅ Stable energy - great choice!
+                   </motion.div>
+                 )}
               </motion.div>
             </AnimatePresence>
           </div>
@@ -130,7 +161,11 @@ const HeroSection = () => {
   
   const meals = [
     { name: "Sugary Cereal", spike: "high", color: "red" },
-    { name: "Smoothie", spike: "high", color: "orange" },
+    { name: "Berry Smoothie", spike: "high", color: "orange" },
+    { name: "Toast & Jam", spike: "high", color: "red" },
+    { name: "Cream Cheese Bagel", spike: "high", color: "orange" },
+    { name: "Oatmeal Bowl", spike: "medium", color: "orange" },
+    { name: "Yogurt & Granola", spike: "medium", color: "orange" },
     { name: "Eggs & Avocado", spike: "low", color: "green" }
   ];
   
