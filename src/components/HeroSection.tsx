@@ -254,20 +254,6 @@ const HeroSection = () => {
                   </span>
                 </Button>
               </motion.div>
-              
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="px-6 py-3 text-base font-semibold border-2 hover:bg-primary/5 hover:border-primary transition-all duration-300 flex items-center gap-2"
-                >
-                  <Play className="w-4 h-4" />
-                  Watch 30-Second Demo
-                </Button>
-              </motion.div>
             </motion.div>
             
             {/* Trust Indicators */}
