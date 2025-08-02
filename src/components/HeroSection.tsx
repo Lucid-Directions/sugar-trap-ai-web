@@ -145,31 +145,6 @@ const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-background via-background to-secondary/10">
       
-      {/* Subtle Background Particles */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0">
-          {[...Array(4)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-32 h-32 bg-yellow-300/10 rounded-full blur-2xl"
-              animate={{
-                x: [0, 80, -60, 0],
-                y: [0, -70, 90, 0],
-              }}
-              transition={{
-                duration: 20 + i * 5,
-                repeat: Infinity,
-                ease: "linear",
-                delay: i * 2,
-              }}
-              style={{
-                left: `${i * 20}%`,
-                top: `${i * 20}%`,
-              }}
-            />
-          ))}
-        </div>
-      </div>
 
       <div className="relative z-10 container mx-auto px-4 py-20 lg:py-32">
         <div className="grid lg:grid-cols-[1fr,0.6fr] gap-8 lg:gap-16 items-center">
