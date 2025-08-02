@@ -4,6 +4,9 @@ import { TrendingUp, Brain, Microscope, Activity, BarChart, Clock, Zap, Target, 
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
+import breadAlonePhoto from '@/assets/bread-alone-photo.jpg';
+import breadAvocadoPhoto from '@/assets/bread-avocado-photo.jpg';
+import avocadoBreadSequencePhoto from '@/assets/avocado-bread-sequence-photo.jpg';
 
 
 const SciencePage = () => {
@@ -568,10 +571,12 @@ const SciencePage = () => {
                   
                   <div className="grid md:grid-cols-3 gap-6">
                     <div className="text-center">
-                      <div className="w-20 h-20 bg-red-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                        <div className="w-12 h-8 bg-gradient-to-br from-amber-500 to-amber-700 rounded-lg relative">
-                          <div className="absolute inset-1 bg-amber-300 rounded opacity-60"></div>
-                        </div>
+                      <div className="w-20 h-20 rounded-2xl overflow-hidden mx-auto mb-4 border border-gray-200">
+                        <img 
+                          src={breadAlonePhoto} 
+                          alt="Bread alone" 
+                          className="w-full h-full object-cover"
+                        />
                       </div>
                       <h5 className="font-semibold mb-2">Bread Alone</h5>
                       <div className="text-2xl font-bold text-red-600 mb-2">Baseline Spike</div>
@@ -579,16 +584,12 @@ const SciencePage = () => {
                     </div>
 
                     <div className="text-center">
-                      <div className="w-20 h-20 bg-yellow-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                        <div className="flex items-center gap-1">
-                          <div className="w-6 h-6 bg-gradient-to-br from-green-400 to-green-600 rounded-full relative">
-                            <div className="absolute inset-1 bg-green-300 rounded-full"></div>
-                            <div className="absolute inset-2 bg-amber-200 rounded-full"></div>
-                          </div>
-                          <div className="w-6 h-4 bg-gradient-to-br from-amber-500 to-amber-700 rounded relative">
-                            <div className="absolute inset-0.5 bg-amber-300 rounded opacity-60"></div>
-                          </div>
-                        </div>
+                      <div className="w-20 h-20 rounded-2xl overflow-hidden mx-auto mb-4 border border-gray-200">
+                        <img 
+                          src={breadAvocadoPhoto} 
+                          alt="Bread with avocado" 
+                          className="w-full h-full object-cover"
+                        />
                       </div>
                       <h5 className="font-semibold mb-2">Bread + Avocado</h5>
                       <div className="text-2xl font-bold text-yellow-600 mb-2">40% Reduction</div>
@@ -596,17 +597,12 @@ const SciencePage = () => {
                     </div>
 
                     <div className="text-center">
-                      <div className="w-20 h-20 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                        <div className="flex items-center gap-1">
-                          <div className="w-5 h-5 bg-gradient-to-br from-green-400 to-green-600 rounded-full relative">
-                            <div className="absolute inset-1 bg-green-300 rounded-full"></div>
-                            <div className="absolute inset-1.5 bg-amber-200 rounded-full"></div>
-                          </div>
-                          <Timer className="w-4 h-4 text-gray-500" />
-                          <div className="w-5 h-3 bg-gradient-to-br from-amber-500 to-amber-700 rounded relative">
-                            <div className="absolute inset-0.5 bg-amber-300 rounded opacity-60"></div>
-                          </div>
-                        </div>
+                      <div className="w-20 h-20 rounded-2xl overflow-hidden mx-auto mb-4 border border-gray-200">
+                        <img 
+                          src={avocadoBreadSequencePhoto} 
+                          alt="Avocado first, then bread sequence" 
+                          className="w-full h-full object-cover"
+                        />
                       </div>
                       <h5 className="font-semibold mb-2">Avocado First, Then Bread</h5>
                       <div className="text-2xl font-bold text-green-600 mb-2">70% Reduction</div>
