@@ -63,7 +63,7 @@ const GlucoseCurveDemo = () => {
   const currentMeal = mealData[selectedMeal];
 
   return (
-    <section className="py-16 bg-gradient-to-b from-secondary/20 to-background">
+    <section id="glucose-demo" className="py-16 bg-gradient-to-b from-secondary/20 to-background">
       <div className="container mx-auto px-4">
         <motion.div
           ref={ref}
@@ -114,148 +114,218 @@ const GlucoseCurveDemo = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              {/* Glucose Chart */}
-              <div className="lg:col-span-2">
-                <div className="bg-white rounded-2xl p-4 md:p-8 shadow-inner">
-                  <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-4 md:mb-6">
-                    <h3 className="text-lg md:text-2xl font-bold mb-2 md:mb-0">Your Predicted Glucose Response</h3>
-                    <div className="flex items-center gap-2 text-xs md:text-sm text-muted-foreground">
-                      <div className="w-2 h-2 md:w-3 md:h-3 bg-gray-300 rounded-full"></div>
-                      Normal Range: 80-120 mg/dL
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+              {/* Glucose Chart - More Professional Design */}
+              <div className="lg:col-span-3">
+                <div className="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100">
+                  <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-6">
+                    <div>
+                      <h3 className="text-xl md:text-2xl font-bold mb-1">Glucose Response Prediction</h3>
+                      <p className="text-sm text-muted-foreground">Real-time metabolic impact analysis</p>
+                    </div>
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground mt-2 md:mt-0">
+                      <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
+                      Target Range: 80-120 mg/dL
                     </div>
                   </div>
 
                   <div className="relative">
-                    {/* SVG Chart */}
+                    {/* Professional SVG Chart */}
                     <svg 
-                      viewBox="0 0 180 120" 
-                      className="w-full h-48 md:h-64 lg:h-80"
-                      style={{ background: 'linear-gradient(to bottom, #f8fafc 0%, #ffffff 100%)' }}
+                      viewBox="0 0 400 240" 
+                      className="w-full h-56 md:h-64"
+                      style={{ background: 'linear-gradient(to bottom, #fafbfc 0%, #ffffff 100%)' }}
                     >
-                      {/* Grid Lines */}
+                      {/* Professional Grid */}
                       <defs>
-                        <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
-                          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#e2e8f0" strokeWidth="0.5"/>
+                        <pattern id="professional-grid" width="40" height="24" patternUnits="userSpaceOnUse">
+                          <path d="M 40 0 L 0 0 0 24" fill="none" stroke="#f1f5f9" strokeWidth="1"/>
                         </pattern>
+                        <linearGradient id="areaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                          <stop offset="0%" stopColor={currentMeal.color} stopOpacity="0.15"/>
+                          <stop offset="100%" stopColor={currentMeal.color} stopOpacity="0.02"/>
+                        </linearGradient>
                       </defs>
-                      <rect width="100%" height="100%" fill="url(#grid)" />
+                      <rect width="100%" height="100%" fill="url(#professional-grid)" />
 
-                      {/* Normal Range Zone */}
-                      <rect x="10" y="60" width="150" height="20" fill="#10b981" fillOpacity="0.1" />
+                      {/* Axes */}
+                      <line x1="60" y1="40" x2="60" y2="200" stroke="#e2e8f0" strokeWidth="2"/>
+                      <line x1="60" y1="200" x2="360" y2="200" stroke="#e2e8f0" strokeWidth="2"/>
+
+                      {/* Target Range Zone */}
+                      <rect x="60" y="120" width="300" height="48" fill="#10b981" fillOpacity="0.08" stroke="#10b981" strokeOpacity="0.2" strokeWidth="1" strokeDasharray="4,4"/>
+                      <text x="65" y="135" fontSize="11" fill="#059669" fontWeight="500">Target Range</text>
+                      
+                      {/* Y-axis grid lines and labels */}
+                      <g stroke="#f1f5f9" strokeWidth="1">
+                        <line x1="60" y1="56" x2="360" y2="56"/>
+                        <line x1="60" y1="88" x2="360" y2="88"/>
+                        <line x1="60" y1="120" x2="360" y2="120"/>
+                        <line x1="60" y1="152" x2="360" y2="152"/>
+                        <line x1="60" y1="184" x2="360" y2="184"/>
+                      </g>
                       
                       {/* Y-axis labels */}
-                      <text x="5" y="25" fontSize="10" fill="#64748b">200</text>
-                      <text x="5" y="45" fontSize="10" fill="#64748b">150</text>
-                      <text x="5" y="65" fontSize="10" fill="#64748b">120</text>
-                      <text x="5" y="85" fontSize="10" fill="#64748b">80</text>
+                      <text x="45" y="60" fontSize="12" fill="#64748b" textAnchor="end" fontWeight="500">200</text>
+                      <text x="45" y="92" fontSize="12" fill="#64748b" textAnchor="end" fontWeight="500">160</text>
+                      <text x="45" y="124" fontSize="12" fill="#10b981" textAnchor="end" fontWeight="600">120</text>
+                      <text x="45" y="156" fontSize="12" fill="#64748b" textAnchor="end" fontWeight="500">100</text>
+                      <text x="45" y="188" fontSize="12" fill="#10b981" textAnchor="end" fontWeight="600">80</text>
                       
                       {/* X-axis labels */}
-                      <text x="10" y="115" fontSize="10" fill="#64748b">0</text>
-                      <text x="50" y="115" fontSize="10" fill="#64748b">1hr</text>
-                      <text x="90" y="115" fontSize="10" fill="#64748b">2hr</text>
-                      <text x="130" y="115" fontSize="10" fill="#64748b">3hr</text>
+                      <text x="60" y="220" fontSize="12" fill="#64748b" textAnchor="middle" fontWeight="500">0min</text>
+                      <text x="135" y="220" fontSize="12" fill="#64748b" textAnchor="middle" fontWeight="500">30min</text>
+                      <text x="210" y="220" fontSize="12" fill="#64748b" textAnchor="middle" fontWeight="500">1hr</text>
+                      <text x="285" y="220" fontSize="12" fill="#64748b" textAnchor="middle" fontWeight="500">2hr</text>
+                      <text x="360" y="220" fontSize="12" fill="#64748b" textAnchor="middle" fontWeight="500">3hr</text>
 
-                      {/* Animated Glucose Curve */}
+                      {/* Area under curve */}
+                      <AnimatePresence mode="wait">
+                        <motion.path
+                          key={`area-${selectedMeal}`}
+                          d={`${currentMeal.path.replace('M 10,80', 'M 60,184').replace('Q 40,10 80,15 Q 120,25 160,100', selectedMeal === 'sugary' ? 'Q 135,56 210,64 Q 285,88 360,200' : selectedMeal === 'normal' ? 'Q 135,88 210,96 Q 285,104 360,176' : selectedMeal === 'balanced' ? 'Q 135,180 210,182 Q 285,184 360,188' : selectedMeal === 'oatmeal' ? 'Q 135,136 210,140 Q 285,152 360,168' : 'Q 135,182 210,183 Q 285,184 360,185')} L 360,200 L 60,200 Z`}
+                          fill="url(#areaGradient)"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.6, ease: "easeOut" }}
+                        />
+                      </AnimatePresence>
+
+                      {/* Main Glucose Curve - More Accurate Paths */}
                       <AnimatePresence mode="wait">
                         <motion.path
                           key={selectedMeal}
-                          d={currentMeal.path}
+                          d={currentMeal.path.replace('M 10,80', 'M 60,184').replace('Q 40,10 80,15 Q 120,25 160,100', selectedMeal === 'sugary' ? 'Q 135,56 210,64 Q 285,88 360,200' : selectedMeal === 'normal' ? 'Q 135,88 210,96 Q 285,104 360,176' : selectedMeal === 'balanced' ? 'Q 135,180 210,182 Q 285,184 360,188' : selectedMeal === 'oatmeal' ? 'Q 135,136 210,140 Q 285,152 360,168' : 'Q 135,182 210,183 Q 285,184 360,185')}
                           fill="none"
                           stroke={currentMeal.color}
-                          strokeWidth="4"
+                          strokeWidth="3"
                           strokeLinecap="round"
+                          strokeLinejoin="round"
                           initial={{ pathLength: 0, opacity: 0 }}
                           animate={{ pathLength: 1, opacity: 1 }}
                           exit={{ pathLength: 0, opacity: 0 }}
-                          transition={{ duration: 0.8, ease: "easeOut" }}
+                          transition={{ duration: 1.2, ease: "easeOut" }}
                           style={{
-                            filter: `drop-shadow(0 0 8px ${currentMeal.color}40)`
+                            filter: `drop-shadow(0 2px 8px ${currentMeal.color}30)`
                           }}
                         />
                       </AnimatePresence>
 
-                      {/* Peak Indicator */}
+                      {/* Peak Indicator - More Precise Positioning */}
                       <motion.g
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 0.5, duration: 0.3, type: "spring", bounce: 0.4 }}
+                        initial={{ scale: 0, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ delay: 0.8, duration: 0.4, type: "spring", bounce: 0.3 }}
                       >
                         <circle 
-                          cx={selectedMeal === 'sugary' ? '80' : selectedMeal === 'normal' ? '80' : selectedMeal === 'balanced' ? '80' : selectedMeal === 'oatmeal' ? '80' : '80'} 
-                          cy={selectedMeal === 'sugary' ? '25' : selectedMeal === 'normal' ? '30' : selectedMeal === 'balanced' ? '70' : selectedMeal === 'oatmeal' ? '55' : '79'} 
-                          r="4" 
-                          fill={currentMeal.color}
+                          cx={selectedMeal === 'sugary' ? '210' : selectedMeal === 'normal' ? '210' : selectedMeal === 'balanced' ? '210' : selectedMeal === 'oatmeal' ? '210' : '210'} 
+                          cy={selectedMeal === 'sugary' ? '64' : selectedMeal === 'normal' ? '96' : selectedMeal === 'balanced' ? '182' : selectedMeal === 'oatmeal' ? '140' : '183'} 
+                          r="5" 
+                          fill="white"
+                          stroke={currentMeal.color}
+                          strokeWidth="3"
                         />
                         <motion.circle 
-                          cx={selectedMeal === 'sugary' ? '80' : selectedMeal === 'normal' ? '80' : selectedMeal === 'balanced' ? '80' : selectedMeal === 'oatmeal' ? '80' : '80'} 
-                          cy={selectedMeal === 'sugary' ? '25' : selectedMeal === 'normal' ? '30' : selectedMeal === 'balanced' ? '70' : selectedMeal === 'oatmeal' ? '55' : '79'}
-                          r="8" 
+                          cx={selectedMeal === 'sugary' ? '210' : selectedMeal === 'normal' ? '210' : selectedMeal === 'balanced' ? '210' : selectedMeal === 'oatmeal' ? '210' : '210'} 
+                          cy={selectedMeal === 'sugary' ? '64' : selectedMeal === 'normal' ? '96' : selectedMeal === 'balanced' ? '182' : selectedMeal === 'oatmeal' ? '140' : '183'}
+                          r="12" 
                           fill="none"
                           stroke={currentMeal.color}
                           strokeWidth="2"
-                      animate={{ scale: [1, 1.3, 1] }}
-                      transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                          strokeOpacity="0.6"
+                          animate={{ scale: [1, 1.4, 1] }}
+                          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                         />
+                        {/* Peak Value Label */}
+                        <motion.text 
+                          x={selectedMeal === 'sugary' ? '210' : selectedMeal === 'normal' ? '210' : selectedMeal === 'balanced' ? '210' : selectedMeal === 'oatmeal' ? '210' : '210'} 
+                          y={selectedMeal === 'sugary' ? '45' : selectedMeal === 'normal' ? '77' : selectedMeal === 'balanced' ? '163' : selectedMeal === 'oatmeal' ? '121' : '164'}
+                          fontSize="11" 
+                          fill={currentMeal.color} 
+                          textAnchor="middle" 
+                          fontWeight="bold"
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 1 }}
+                        >
+                          {currentMeal.peak}
+                        </motion.text>
                       </motion.g>
+
+                      {/* Baseline indicator */}
+                      <line x1="60" y1="184" x2="75" y2="184" stroke="#64748b" strokeWidth="3" strokeLinecap="round"/>
+                      <text x="80" y="188" fontSize="11" fill="#64748b" fontWeight="500">Baseline</text>
                     </svg>
                   </div>
                 </div>
               </div>
 
-              {/* Stats and Desktop Meal Selection */}
-              <div className="lg:col-span-1 space-y-6">
-                {/* Meal Stats */}
+              {/* Stats and Meal Selection - Improved Layout */}
+              <div className="lg:col-span-2 space-y-4">
+                {/* Current Meal Stats */}
                 <motion.div 
-                  className="bg-white rounded-2xl p-4 md:p-6 shadow-inner"
+                  className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3, duration: 0.4 }}
+                  transition={{ delay: 0.4, duration: 0.4 }}
                 >
-                  <h4 className="text-lg font-semibold mb-4 text-center">
-                    {currentMeal.emoji} {currentMeal.name}
-                  </h4>
-                  <div className="space-y-4">
-                    <div className="text-center">
-                      <div className="text-sm text-muted-foreground">Peak Glucose</div>
-                      <div className={`text-xl font-bold`} style={{ color: currentMeal.color }}>
+                  <div className="text-center mb-6">
+                    <motion.div 
+                      className="text-4xl mb-2"
+                      animate={{ scale: [1, 1.1, 1] }}
+                      transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 2 }}
+                    >
+                      {currentMeal.emoji}
+                    </motion.div>
+                    <h4 className="text-lg font-bold">{currentMeal.name}</h4>
+                    <p className="text-sm text-muted-foreground">{currentMeal.description}</p>
+                  </div>
+                  
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="text-center p-3 rounded-lg bg-gray-50">
+                      <div className="text-xs text-muted-foreground uppercase tracking-wide mb-1">Peak Level</div>
+                      <div className="text-lg font-bold" style={{ color: currentMeal.color }}>
                         {currentMeal.peak}
                       </div>
                     </div>
-                    <div className="text-center">
-                      <div className="text-sm text-muted-foreground">Time to Peak</div>
-                      <div className="text-xl font-bold">{currentMeal.time}</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-sm text-muted-foreground">Energy Pattern</div>
-                      <div className="text-sm font-medium">{currentMeal.description}</div>
+                    <div className="text-center p-3 rounded-lg bg-gray-50">
+                      <div className="text-xs text-muted-foreground uppercase tracking-wide mb-1">Time to Peak</div>
+                      <div className="text-lg font-bold">{currentMeal.time}</div>
                     </div>
                   </div>
                 </motion.div>
 
-                {/* Desktop Meal Selection */}
+                {/* Meal Selection - Desktop */}
                 <div className="hidden md:block">
-                  <p className="text-lg mb-4 text-muted-foreground text-center">
-                    Compare options:
-                  </p>
-                  
-                  <div className="space-y-3">
-                    {Object.entries(mealData).map(([key, meal]) => (
-                      <motion.button
-                        key={key}
-                        className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all duration-300 ${
-                          selectedMeal === key 
-                            ? `bg-gradient-to-r ${meal.gradient} text-white shadow-lg` 
-                            : 'bg-white text-foreground hover:bg-gray-50 border border-gray-200'
-                        }`}
-                    whileTap={{ scale: 0.98 }}
-                    whileHover={{ scale: 1.01 }}
-                        onClick={() => setSelectedMeal(key)}
-                      >
-                        <span className="text-xl">{meal.emoji}</span>
-                        <span className="text-sm">{meal.name}</span>
-                      </motion.button>
-                    ))}
+                  <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+                    <h5 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-4">
+                      Compare Meals
+                    </h5>
+                    
+                    <div className="space-y-2">
+                      {Object.entries(mealData).map(([key, meal]) => (
+                        <motion.button
+                          key={key}
+                          className={`w-full flex items-center gap-3 px-3 py-3 rounded-lg font-medium transition-all duration-200 ${
+                            selectedMeal === key 
+                              ? `bg-gradient-to-r ${meal.gradient} text-white shadow-md` 
+                              : 'bg-gray-50 text-foreground hover:bg-gray-100'
+                          }`}
+                          whileTap={{ scale: 0.98 }}
+                          whileHover={{ scale: 1.01 }}
+                          onClick={() => setSelectedMeal(key)}
+                        >
+                          <span className="text-lg">{meal.emoji}</span>
+                          <div className="text-left flex-1">
+                            <div className="text-sm font-medium">{meal.name}</div>
+                            <div className={`text-xs ${selectedMeal === key ? 'text-white/80' : 'text-muted-foreground'}`}>
+                              Peak: {meal.peak}
+                            </div>
+                          </div>
+                        </motion.button>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
