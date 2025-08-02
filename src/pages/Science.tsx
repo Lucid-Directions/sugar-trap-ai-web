@@ -92,6 +92,31 @@ const SciencePage = () => {
                 <Link to="/science#research">Explore Research</Link>
               </Button>
             </motion.div>
+            
+            <motion.div
+              className="max-w-4xl mx-auto mt-12 sm:mt-16 lg:mt-20"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8, duration: 0.8 }}
+            >
+              <div className="bg-gradient-to-br from-primary/5 via-background to-secondary/5 rounded-2xl p-6 sm:p-8 border border-primary/10 backdrop-blur-sm">
+                <h3 className="text-lg font-semibold mb-4 text-center text-primary">Key Research Insights</h3>
+                <div className="prose prose-sm sm:prose-base text-muted-foreground leading-relaxed">
+                  <p className="mb-4">
+                    <strong>Healthy individuals</strong> maintain tightly regulated glucose with low insulin due to high sensitivity.
+                  </p>
+                  <p className="mb-4">
+                    <strong>Insulin-resistant states</strong> (prediabetes, type 2 diabetes) show elevated insulin levels and impaired glucose tolerance, progressing to beta-cell failure if unchecked.
+                  </p>
+                  <p className="mb-4">
+                    <strong>Special populations</strong> like children, athletes, and pregnant women each have unique profiles – e.g. puberty and late pregnancy both induce transient insulin resistance (for different reasons), while athletes exhibit enhanced insulin action and lower insulin needs.
+                  </p>
+                  <p className="mb-0">
+                    <strong>Conditions like fasting, feeding, exercise, stress, and sleep cycles</strong> acutely modulate insulin and glucose: exercise and fasting generally lower glucose/insulin requirements, whereas stress and circadian hormone surges raise glucose and can demand more insulin.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
         
