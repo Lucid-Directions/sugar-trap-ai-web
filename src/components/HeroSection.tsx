@@ -157,41 +157,41 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-background via-background to-secondary/10">
-      {/* Animated Background Elements - Subtle and Moving */}
+      {/* Animated Background Elements - Left Side Only */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Floating Particles - Gentle Movement, Very Subtle */}
+        {/* Floating Particles - Confined to Left Side */}
         <div className="absolute inset-0">
           {[...Array(3)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-40 h-40 bg-gray-200/20 rounded-full blur-3xl"
+              className="absolute w-32 h-32 bg-gray-200/15 rounded-full blur-3xl"
               animate={{
-                x: [0, 120, -80, 0],
-                y: [0, -90, 110, 0],
+                x: [0, 60, -40, 0],
+                y: [0, -80, 90, 0],
               }}
               transition={{
-                duration: 18 + i * 4,
+                duration: 15 + i * 3,
                 repeat: Infinity,
                 ease: "linear",
                 delay: i * 2,
               }}
               style={{
-                left: `${i * 30}%`,
-                top: `${i * 25}%`,
+                left: `${i * 15}%`,  // Keep on left side (0%, 15%, 30%)
+                top: `${20 + i * 20}%`,
               }}
             />
           ))}
         </div>
         
-        {/* Very Gentle Gradient Animation - Neutral Colors */}
+        {/* Gentle Gradient - Left Side Focused */}
         <motion.div
-          className="absolute inset-0 opacity-[0.08]"
+          className="absolute inset-0 opacity-[0.06]"
           animate={{
             background: [
-              "radial-gradient(circle at 15% 25%, #e5e7eb 0%, transparent 45%)",
-              "radial-gradient(circle at 85% 75%, #f3f4f6 0%, transparent 45%)",
-              "radial-gradient(circle at 25% 85%, #e5e7eb 0%, transparent 45%)",
-              "radial-gradient(circle at 75% 15%, #f3f4f6 0%, transparent 45%)",
+              "radial-gradient(circle at 10% 30%, #e5e7eb 0%, transparent 35%)",
+              "radial-gradient(circle at 25% 70%, #f3f4f6 0%, transparent 35%)",
+              "radial-gradient(circle at 15% 80%, #e5e7eb 0%, transparent 35%)",
+              "radial-gradient(circle at 20% 20%, #f3f4f6 0%, transparent 35%)",
             ],
           }}
           transition={{ duration: 12, repeat: Infinity }}
