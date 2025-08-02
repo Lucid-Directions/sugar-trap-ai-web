@@ -102,18 +102,20 @@ const SciencePage = () => {
                 transition={{ delay: 0.6, duration: 0.6 }}
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-background to-secondary/5 rounded-3xl transform rotate-1 group-hover:rotate-2 transition-transform"></div>
-                <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl p-4 lg:p-6 border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300">
-                  <div className="w-12 h-12 rounded-2xl overflow-hidden mb-4">
+                <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300 overflow-hidden">
+                  <div className="h-20 overflow-hidden">
                     <img 
                       src={glucoseMonitorDevice}
                       alt="Glucose monitoring device"
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <h4 className="font-bold mb-3 text-sm">Healthy Regulation</h4>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    Healthy individuals maintain tightly regulated glucose with low insulin due to high sensitivity.
-                  </p>
+                  <div className="p-4 lg:p-6">
+                    <h4 className="font-bold mb-3 text-sm">Healthy Regulation</h4>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      Healthy individuals maintain tightly regulated glucose with low insulin due to high sensitivity.
+                    </p>
+                  </div>
                 </div>
               </motion.div>
 
@@ -124,18 +126,20 @@ const SciencePage = () => {
                 transition={{ delay: 0.7, duration: 0.6 }}
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-background to-secondary/5 rounded-3xl transform rotate-1 group-hover:rotate-2 transition-transform"></div>
-                <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl p-4 lg:p-6 border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300">
-                  <div className="w-12 h-12 rounded-2xl overflow-hidden mb-4">
+                <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300 overflow-hidden">
+                  <div className="h-20 overflow-hidden">
                     <img 
                       src={medicalDataChart}
                       alt="Medical data chart"
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <h4 className="font-bold mb-3 text-sm">Insulin Resistance</h4>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    Insulin-resistant states show elevated insulin levels and impaired glucose tolerance, progressing to beta-cell failure if unchecked.
-                  </p>
+                  <div className="p-4 lg:p-6">
+                    <h4 className="font-bold mb-3 text-sm">Insulin Resistance</h4>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      Insulin-resistant states show elevated insulin levels and impaired glucose tolerance, progressing to beta-cell failure if unchecked.
+                    </p>
+                  </div>
                 </div>
               </motion.div>
 
@@ -146,18 +150,20 @@ const SciencePage = () => {
                 transition={{ delay: 0.8, duration: 0.6 }}
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-background to-secondary/5 rounded-3xl transform rotate-1 group-hover:rotate-2 transition-transform"></div>
-                <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl p-4 lg:p-6 border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300">
-                  <div className="w-12 h-12 rounded-2xl overflow-hidden mb-4">
+                <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300 overflow-hidden">
+                  <div className="h-20 overflow-hidden">
                     <img 
                       src={athleteExercise}
                       alt="Athletic person exercising"
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <h4 className="font-bold mb-3 text-sm">Special Populations</h4>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    Children, athletes, and pregnant women each have unique profiles. Puberty and pregnancy induce transient resistance, while athletes show enhanced action.
-                  </p>
+                  <div className="p-4 lg:p-6">
+                    <h4 className="font-bold mb-3 text-sm">Special Populations</h4>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      Children, athletes, and pregnant women each have unique profiles. Puberty and pregnancy induce transient resistance, while athletes show enhanced action.
+                    </p>
+                  </div>
                 </div>
               </motion.div>
 
@@ -168,18 +174,20 @@ const SciencePage = () => {
                 transition={{ delay: 0.9, duration: 0.6 }}
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-background to-secondary/5 rounded-3xl transform rotate-1 group-hover:rotate-2 transition-transform"></div>
-                <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl p-4 lg:p-6 border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300">
-                  <div className="w-12 h-12 rounded-2xl overflow-hidden mb-4">
+                <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300 overflow-hidden">
+                  <div className="h-20 overflow-hidden">
                     <img 
                       src={peacefulSleep}
                       alt="Person sleeping peacefully"
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <h4 className="font-bold mb-3 text-sm">Dynamic Conditions</h4>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    Exercise and fasting generally lower glucose and insulin requirements, whereas stress and circadian hormone surges raise glucose demands.
-                  </p>
+                  <div className="p-4 lg:p-6">
+                    <h4 className="font-bold mb-3 text-sm">Dynamic Conditions</h4>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      Exercise and fasting generally lower glucose and insulin requirements, whereas stress and circadian hormone surges raise glucose demands.
+                    </p>
+                  </div>
                 </div>
               </motion.div>
             </motion.div>
