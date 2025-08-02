@@ -11,7 +11,7 @@ import glucoseMonitorDevice from '@/assets/glucose-monitor-device.jpg';
 import laboratoryEquipment from '@/assets/laboratory-equipment.jpg';
 import healthAppPhone from '@/assets/health-app-phone.jpg';
 import medicalDataChart from '@/assets/medical-data-chart.jpg';
-import athleteExercise from '@/assets/athlete-exercise.jpg';
+import diverseWellnessGroup from '@/assets/diverse-wellness-group.jpg';
 import peacefulSleep from '@/assets/peaceful-sleep.jpg';
 
 
@@ -152,9 +152,9 @@ const SciencePage = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-background to-secondary/5 rounded-3xl transform rotate-1 group-hover:rotate-2 transition-transform"></div>
                 <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl border border-white/20 shadow-xl group-hover:shadow-2xl transition-all duration-300 overflow-hidden">
                   <div className="h-48 overflow-hidden">
-                    <img 
-                      src={athleteExercise}
-                      alt="Athletic person exercising"
+                     <img 
+                      src={diverseWellnessGroup}
+                      alt="Diverse group of people"
                       className="w-full h-full object-cover"
                     />
                   </div>
