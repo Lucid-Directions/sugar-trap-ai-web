@@ -227,25 +227,6 @@ const HeroSection = () => {
               behind every meal before you feel the crash.
             </motion.p>
             
-            {/* Social Proof */}
-            <motion.div
-              className="flex flex-wrap items-center gap-4 text-sm"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-            >
-              <div className="flex items-center gap-2">
-                <Users className="w-4 h-4 text-primary" />
-                <span className="font-semibold">10,247</span>
-                <span className="text-muted-foreground">early adopters</span>
-              </div>
-              <div className="flex items-center gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
-                ))}
-                <span className="text-muted-foreground ml-1">4.9/5</span>
-              </div>
-            </motion.div>
             
             {/* CTAs */}
             <motion.div
