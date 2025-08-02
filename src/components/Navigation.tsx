@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import OrbitingSugarCube from './OrbitingSugarCube';
+import RotatingSugarCube from './OrbitingSugarCube';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,12 +46,7 @@ const Navigation = () => {
               transition={{ duration: 0.2 }}
             >
               <span className="text-2xl md:text-3xl font-bold">SugarTrap</span>
-              <div className="w-10 h-10 md:w-12 md:h-12 relative">
-                <OrbitingSugarCube />
-                <div className="absolute inset-0 flex items-center justify-center z-10">
-                  <span className="text-sm md:text-base font-bold">AI</span>
-                </div>
-              </div>
+              <RotatingSugarCube />
             </motion.div>
           </Link>
 
