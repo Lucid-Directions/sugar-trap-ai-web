@@ -54,7 +54,7 @@ const WaitlistPage = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       {/* Hero Section */}
-      <section className="py-24 bg-gradient-to-b from-background to-secondary/20">
+      <section className="pt-24 pb-16 bg-gradient-to-b from-background to-secondary/20">
         <div className="container mx-auto px-4">
           <motion.div
             ref={ref}
