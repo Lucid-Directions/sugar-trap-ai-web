@@ -168,7 +168,7 @@ const GlucoseCurveDemo = () => {
                           initial={{ pathLength: 0, opacity: 0 }}
                           animate={{ pathLength: 1, opacity: 1 }}
                           exit={{ pathLength: 0, opacity: 0 }}
-                          transition={{ duration: 2, ease: "easeInOut" }}
+                          transition={{ duration: 0.8, ease: "easeOut" }}
                           style={{
                             filter: `drop-shadow(0 0 8px ${currentMeal.color}40)`
                           }}
@@ -177,9 +177,9 @@ const GlucoseCurveDemo = () => {
 
                       {/* Peak Indicator */}
                       <motion.g
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ delay: 1.5, duration: 0.5, type: "spring" }}
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 0.5, duration: 0.3, type: "spring", bounce: 0.4 }}
                       >
                         <circle 
                           cx={selectedMeal === 'sugary' ? '80' : selectedMeal === 'normal' ? '80' : selectedMeal === 'balanced' ? '80' : selectedMeal === 'oatmeal' ? '80' : '80'} 
@@ -194,8 +194,8 @@ const GlucoseCurveDemo = () => {
                           fill="none"
                           stroke={currentMeal.color}
                           strokeWidth="2"
-                          animate={{ scale: [1, 1.5, 1] }}
-                          transition={{ duration: 2, repeat: Infinity }}
+                      animate={{ scale: [1, 1.3, 1] }}
+                      transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                         />
                       </motion.g>
                     </svg>
@@ -210,7 +210,7 @@ const GlucoseCurveDemo = () => {
                   className="bg-white rounded-2xl p-4 md:p-6 shadow-inner"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.8, duration: 0.6 }}
+                  transition={{ delay: 0.3, duration: 0.4 }}
                 >
                   <h4 className="text-lg font-semibold mb-4 text-center">
                     {currentMeal.emoji} {currentMeal.name}
@@ -248,8 +248,8 @@ const GlucoseCurveDemo = () => {
                             ? `bg-gradient-to-r ${meal.gradient} text-white shadow-lg` 
                             : 'bg-white text-foreground hover:bg-gray-50 border border-gray-200'
                         }`}
-                        whileTap={{ scale: 0.95 }}
-                        whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    whileHover={{ scale: 1.01 }}
                         onClick={() => setSelectedMeal(key)}
                       >
                         <span className="text-xl">{meal.emoji}</span>
@@ -265,7 +265,7 @@ const GlucoseCurveDemo = () => {
               className="mt-8 text-center text-muted-foreground max-w-2xl mx-auto text-sm md:text-base"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 1, duration: 0.6 }}
+              transition={{ delay: 0.4, duration: 0.4 }}
             >
               SugarTrap AI predicts your personal glucose response to any meal using advanced AI,
               giving you insights previously only available through medical testing.
