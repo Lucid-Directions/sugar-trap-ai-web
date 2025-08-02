@@ -45,8 +45,8 @@ const Navigation = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
-              <span className="text-xl sm:text-2xl lg:text-3xl font-bold">SugarTrap</span>
-              <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 relative">
+              <span className="text-2xl sm:text-2xl lg:text-3xl font-bold">SugarTrap</span>
+              <div className="w-10 h-10 sm:w-10 sm:h-10 lg:w-12 lg:h-12 relative">
                 <OrbitingSugarCube />
                 <div className="absolute inset-0 flex items-center justify-center z-10">
                   <span className="text-xs sm:text-sm lg:text-base font-bold">AI</span>
