@@ -52,7 +52,7 @@ const SciencePage = () => {
             transition={{ duration: 1, ease: "easeOut" }}
           >
             <motion.div
-              className="inline-block mb-8"
+              className="inline-block mb-4 sm:mb-6 lg:mb-8"
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.8 }}
@@ -63,7 +63,7 @@ const SciencePage = () => {
               </div>
             </motion.div>
             
-            <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold mb-8 leading-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold leading-tight">
               The Science of{" "}
               <span className="text-gradient bg-gradient-to-r from-primary via-primary/80 to-secondary bg-clip-text text-transparent block lg:inline">
                 Personal Nutrition
@@ -71,7 +71,7 @@ const SciencePage = () => {
             </h1>
             
             <motion.p 
-              className="text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-12"
+              className="text-base sm:text-lg lg:text-xl text-muted-foreground leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
@@ -80,7 +80,7 @@ const SciencePage = () => {
             </motion.p>
             
             <motion.div
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4 sm:mt-6 lg:mt-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
