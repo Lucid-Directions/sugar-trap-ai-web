@@ -106,7 +106,7 @@ const ProblemSection = () => {
               <p>
                 Modern science has revealed that <span className="text-gradient font-semibold">
                 how your body responds to food
-                </span> matters far more than simple calorie math.
+                </span> matters far more than simple calorie maths.
               </p>
               
               <p>
