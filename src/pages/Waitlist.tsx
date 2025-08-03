@@ -4,45 +4,31 @@ import { Mail, CheckCircle, Users, Gift, BookOpen, Crown, Instagram, Twitter, Fa
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import Navigation from '@/components/Navigation';
-
 const WaitlistPage = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+  const isInView = useInView(ref, {
+    once: true
+  });
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const benefits = [
-    {
-      icon: Gift,
-      title: "Pioneer Access",
-      description: "First to experience AI-powered metabolic insights before anyone else"
-    },
-    {
-      icon: CheckCircle,
-      title: "50% Launch Savings",
-      description: "Lock in founding member pricing on all premium features"
-    },
-    {
-      icon: BookOpen,
-      title: "Metabolic Mastery",
-      description: "Weekly science-backed insights to optimize your energy and health"
-    },
-    {
-      icon: Crown,
-      title: "Shape the Future",
-      description: "Your feedback helps create the ultimate metabolic optimization tool"
-    }
-  ];
-
-  const discoveries = [
-    "Why glucose spikes predict heart disease better than cholesterol levels (even in healthy people)",
-    "How your gut microbiome contributes up to 10% of your daily energy extraction from food",
-    "The shocking truth: 69% of people have 'social jet lag' destroying their metabolism without knowing it",
-    "Why your endothelial cells can't protect themselves from glucose damage, making spikes extra harmful",
-    "How short-chain fatty acids from fiber act like natural insulin sensitizers in your body",
-    "The incretin system collapse: why Type 2 diabetics lose 70% of their natural glucose control mechanism"
-  ];
-
+  const benefits = [{
+    icon: Gift,
+    title: "Pioneer Access",
+    description: "First to experience AI-powered metabolic insights before anyone else"
+  }, {
+    icon: CheckCircle,
+    title: "50% Launch Savings",
+    description: "Lock in founding member pricing on all premium features"
+  }, {
+    icon: BookOpen,
+    title: "Metabolic Mastery",
+    description: "Weekly science-backed insights to optimize your energy and health"
+  }, {
+    icon: Crown,
+    title: "Shape the Future",
+    description: "Your feedback helps create the ultimate metabolic optimization tool"
+  }];
+  const discoveries = ["Why glucose spikes predict heart disease better than cholesterol levels (even in healthy people)", "How your gut microbiome contributes up to 10% of your daily energy extraction from food", "The shocking truth: 69% of people have 'social jet lag' destroying their metabolism without knowing it", "Why your endothelial cells can't protect themselves from glucose damage, making spikes extra harmful", "How short-chain fatty acids from fiber act like natural insulin sensitizers in your body", "The incretin system collapse: why Type 2 diabetics lose 70% of their natural glucose control mechanism"];
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (email) {
@@ -51,20 +37,20 @@ const WaitlistPage = () => {
       console.log('Email submitted:', email);
     }
   };
-
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       <Navigation />
       {/* Hero Section */}
       <section className="pt-24 pb-16 bg-gradient-to-b from-background to-secondary/20">
         <div className="container mx-auto px-4">
-          <motion.div
-            ref={ref}
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
+          <motion.div ref={ref} className="text-center mb-16" initial={{
+          opacity: 0,
+          y: 50
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          duration: 0.8
+        }}>
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6">
               Your Body's Hidden Language
               <span className="text-gradient block">Is About to Be Revealed</span>
@@ -77,18 +63,21 @@ const WaitlistPage = () => {
           </motion.div>
 
           {/* Waitlist Form */}
-          <motion.div
-            className="max-w-2xl mx-auto"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ delay: 0.4, duration: 0.8 }}
-          >
-            {!isSubmitted ? (
-              <div className="gradient-card rounded-3xl p-6 md:p-8">
+          <motion.div className="max-w-2xl mx-auto" initial={{
+          opacity: 0,
+          scale: 0.95
+        }} animate={isInView ? {
+          opacity: 1,
+          scale: 1
+        } : {}} transition={{
+          delay: 0.4,
+          duration: 0.8
+        }}>
+            {!isSubmitted ? <div className="gradient-card rounded-3xl p-6 md:p-8">
                 <div className="text-center mb-6">
                   <div className="flex items-center justify-center gap-3 mb-3">
                     <Users className="w-6 h-6 text-primary" />
-                    <span className="text-lg md:text-xl font-bold">Join 12,000+ Metabolic Pioneers</span>
+                    <span className="text-lg md:text-xl font-bold">Join the Metabolic Pioneers</span>
                   </div>
                   <p className="text-sm md:text-base text-muted-foreground">
                     Be among the first to unlock your personal glucose code
@@ -98,21 +87,10 @@ const WaitlistPage = () => {
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="relative">
                     <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-                    <Input
-                      type="email"
-                      placeholder="Enter your email address"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="pl-12 h-12 text-base rounded-xl border-2 focus:border-primary"
-                      required
-                    />
+                    <Input type="email" placeholder="Enter your email address" value={email} onChange={e => setEmail(e.target.value)} className="pl-12 h-12 text-base rounded-xl border-2 focus:border-primary" required />
                   </div>
                   
-                  <Button
-                    type="submit"
-                    size="lg"
-                    className="w-full h-12 text-base magnetic-button shadow-lg hover:shadow-glow"
-                  >
+                  <Button type="submit" size="lg" className="w-full h-12 text-base magnetic-button shadow-lg hover:shadow-glow">
                     Unlock Your Metabolic Code - 50% Off
                   </Button>
                 </form>
@@ -120,20 +98,24 @@ const WaitlistPage = () => {
                 <p className="text-xs text-muted-foreground text-center mt-4">
                   We respect your privacy. Unsubscribe anytime. No spam, just science.
                 </p>
-              </div>
-            ) : (
-              <motion.div
-                className="gradient-card rounded-3xl p-6 md:p-8 text-center"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6 }}
-              >
-                <motion.div
-                  className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 0.2, type: "spring", bounce: 0.5 }}
-                >
+              </div> : <motion.div className="gradient-card rounded-3xl p-6 md:p-8 text-center" initial={{
+            opacity: 0,
+            scale: 0.8
+          }} animate={{
+            opacity: 1,
+            scale: 1
+          }} transition={{
+            duration: 0.6
+          }}>
+                <motion.div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4" initial={{
+              scale: 0
+            }} animate={{
+              scale: 1
+            }} transition={{
+              delay: 0.2,
+              type: "spring",
+              bounce: 0.5
+            }}>
                   <CheckCircle className="w-8 h-8 text-green-600" />
                 </motion.div>
                 
@@ -144,8 +126,7 @@ const WaitlistPage = () => {
                 <p className="text-sm text-muted-foreground">
                   Check your email for confirmation and your first metabolic insights!
                 </p>
-              </motion.div>
-            )}
+              </motion.div>}
           </motion.div>
         </div>
       </section>
@@ -153,12 +134,16 @@ const WaitlistPage = () => {
       {/* Benefits Section */}
       <section className="py-24">
         <div className="container mx-auto px-4">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 50 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.6, duration: 0.8 }}
-          >
+          <motion.div className="text-center mb-16" initial={{
+          opacity: 0,
+          y: 50
+        }} animate={isInView ? {
+          opacity: 1,
+          y: 0
+        } : {}} transition={{
+          delay: 0.6,
+          duration: 0.8
+        }}>
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               Why Your <span className="text-gradient">Metabolic Health</span> Matters
             </h2>
@@ -169,26 +154,28 @@ const WaitlistPage = () => {
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-6xl mx-auto">
-            {benefits.map((benefit, index) => (
-              <motion.div
-                key={benefit.title}
-                className="gradient-card rounded-2xl p-6 text-center hover-lift"
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: index * 0.2 + 0.8, duration: 0.6 }}
-              >
-                <motion.div
-                  className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ duration: 0.2 }}
-                >
+            {benefits.map((benefit, index) => <motion.div key={benefit.title} className="gradient-card rounded-2xl p-6 text-center hover-lift" initial={{
+            opacity: 0,
+            y: 30
+          }} animate={isInView ? {
+            opacity: 1,
+            y: 0
+          } : {}} transition={{
+            delay: index * 0.2 + 0.8,
+            duration: 0.6
+          }}>
+                <motion.div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4" whileHover={{
+              scale: 1.1,
+              rotate: 5
+            }} transition={{
+              duration: 0.2
+            }}>
                   <benefit.icon className="w-8 h-8 text-primary" />
                 </motion.div>
                 
                 <h3 className="text-xl font-bold mb-3">{benefit.title}</h3>
                 <p className="text-muted-foreground text-sm">{benefit.description}</p>
-              </motion.div>
-            ))}
+              </motion.div>)}
           </div>
         </div>
       </section>
@@ -196,12 +183,16 @@ const WaitlistPage = () => {
       {/* What You'll Discover */}
       <section className="py-24 bg-gradient-to-b from-secondary/20 to-background">
         <div className="container mx-auto px-4">
-          <motion.div
-            className="max-w-4xl mx-auto"
-            initial={{ opacity: 0, y: 50 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 1.2, duration: 0.8 }}
-          >
+          <motion.div className="max-w-4xl mx-auto" initial={{
+          opacity: 0,
+          y: 50
+        }} animate={isInView ? {
+          opacity: 1,
+          y: 0
+        } : {}} transition={{
+          delay: 1.2,
+          duration: 0.8
+        }}>
             <div className="gradient-card rounded-3xl p-6 md:p-8">
               <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">
                 The Science You'll <span className="text-gradient">Master</span>
@@ -213,28 +204,31 @@ const WaitlistPage = () => {
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                {discoveries.map((discovery, index) => (
-                  <motion.div
-                    key={discovery}
-                    className="flex items-start gap-4"
-                    initial={{ opacity: 0, x: -30 }}
-                    animate={isInView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ delay: index * 0.2 + 1.4, duration: 0.6 }}
-                  >
+                {discoveries.map((discovery, index) => <motion.div key={discovery} className="flex items-start gap-4" initial={{
+                opacity: 0,
+                x: -30
+              }} animate={isInView ? {
+                opacity: 1,
+                x: 0
+              } : {}} transition={{
+                delay: index * 0.2 + 1.4,
+                duration: 0.6
+              }}>
                     <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                       <CheckCircle className="w-5 h-5 text-primary" />
                     </div>
                     <p className="text-lg">{discovery}</p>
-                  </motion.div>
-                ))}
+                  </motion.div>)}
               </div>
 
-              <motion.div
-                className="text-center mt-8"
-                initial={{ opacity: 0 }}
-                animate={isInView ? { opacity: 1 } : {}}
-                transition={{ delay: 2, duration: 0.6 }}
-              >
+              <motion.div className="text-center mt-8" initial={{
+              opacity: 0
+            }} animate={isInView ? {
+              opacity: 1
+            } : {}} transition={{
+              delay: 2,
+              duration: 0.6
+            }}>
                 <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-xl p-4 md:p-6">
                   <p className="text-base md:text-lg font-medium text-foreground mb-2">
                     The Future of Metabolic Health
@@ -253,57 +247,45 @@ const WaitlistPage = () => {
       {/* Community Stats */}
       <section className="py-24">
         <div className="container mx-auto px-4">
-          <motion.div
-            className="text-center"
-            initial={{ opacity: 0, y: 50 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 2.2, duration: 0.8 }}
-          >
+          <motion.div className="text-center" initial={{
+          opacity: 0,
+          y: 50
+        }} animate={isInView ? {
+          opacity: 1,
+          y: 0
+        } : {}} transition={{
+          delay: 2.2,
+          duration: 0.8
+        }}>
             <h2 className="text-3xl md:text-4xl font-bold mb-8">
               Join the <span className="text-gradient">Metabolic Revolution</span>
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-8">
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-primary mb-2">12,000+</div>
-                <div className="text-sm md:text-base text-muted-foreground">Health Optimizers</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-primary mb-2">70%</div>
-                <div className="text-sm md:text-base text-muted-foreground">Report Better Energy</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-primary mb-2">50+</div>
-                <div className="text-sm md:text-base text-muted-foreground">Countries Represented</div>
-              </div>
-            </div>
+            
 
             {/* Social Links */}
             <div className="flex justify-center items-center gap-6">
               <p className="text-muted-foreground">Follow our journey:</p>
               <div className="flex gap-4">
-                <motion.a
-                  href="#"
-                  className="w-10 h-10 bg-gradient-to-br from-pink-500 to-purple-600 rounded-lg flex items-center justify-center text-white hover-scale"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                >
+                <motion.a href="#" className="w-10 h-10 bg-gradient-to-br from-pink-500 to-purple-600 rounded-lg flex items-center justify-center text-white hover-scale" whileHover={{
+                scale: 1.1
+              }} whileTap={{
+                scale: 0.95
+              }}>
                   <Instagram className="w-5 h-5" />
                 </motion.a>
-                <motion.a
-                  href="#"
-                  className="w-10 h-10 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg flex items-center justify-center text-white hover-scale"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                >
+                <motion.a href="#" className="w-10 h-10 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg flex items-center justify-center text-white hover-scale" whileHover={{
+                scale: 1.1
+              }} whileTap={{
+                scale: 0.95
+              }}>
                   <Twitter className="w-5 h-5" />
                 </motion.a>
-                <motion.a
-                  href="#"
-                  className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center text-white hover-scale"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                >
+                <motion.a href="#" className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center text-white hover-scale" whileHover={{
+                scale: 1.1
+              }} whileTap={{
+                scale: 0.95
+              }}>
                   <Facebook className="w-5 h-5" />
                 </motion.a>
               </div>
@@ -313,15 +295,18 @@ const WaitlistPage = () => {
       </section>
 
       {/* Final CTA */}
-      {!isSubmitted && (
-        <section className="py-24 bg-gradient-to-b from-background to-secondary/20">
+      {!isSubmitted && <section className="py-24 bg-gradient-to-b from-background to-secondary/20">
           <div className="container mx-auto px-4">
-            <motion.div
-              className="gradient-card rounded-3xl p-6 md:p-8 text-center max-w-3xl mx-auto"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ delay: 2.6, duration: 0.8 }}
-            >
+            <motion.div className="gradient-card rounded-3xl p-6 md:p-8 text-center max-w-3xl mx-auto" initial={{
+          opacity: 0,
+          scale: 0.95
+        }} animate={isInView ? {
+          opacity: 1,
+          scale: 1
+        } : {}} transition={{
+          delay: 2.6,
+          duration: 0.8
+        }}>
               <h2 className="text-2xl md:text-3xl font-bold mb-4">
                 Your Metabolic <span className="text-gradient">Awakening</span> Awaits
               </h2>
@@ -330,19 +315,14 @@ const WaitlistPage = () => {
                 rewriting the rules of nutrition and unlocking their metabolic potential.
               </p>
               
-              <Button
-                size="lg"
-                className="magnetic-button shadow-lg hover:shadow-glow text-sm md:text-base px-6 py-3"
-                onClick={() => document.querySelector('input[type="email"]')?.scrollIntoView({ behavior: 'smooth' })}
-              >
+              <Button size="lg" className="magnetic-button shadow-lg hover:shadow-glow text-sm md:text-base px-6 py-3" onClick={() => document.querySelector('input[type="email"]')?.scrollIntoView({
+            behavior: 'smooth'
+          })}>
                 Start Your Transformation - Join Now
               </Button>
             </motion.div>
           </div>
-        </section>
-      )}
-    </div>
-  );
+        </section>}
+    </div>;
 };
-
 export default WaitlistPage;
