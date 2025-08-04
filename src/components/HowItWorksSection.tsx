@@ -1,36 +1,95 @@
 import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Camera, BarChart3, Brain, Lightbulb, Zap, Smartphone, Activity, Star, Trophy, Target, TrendingUp, Users, Crown, MessageCircle, Heart } from 'lucide-react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 const HowItWorksSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, {
     once: true
   });
+  const [selectedStep, setSelectedStep] = useState<null | typeof steps[0]>(null);
+  
   const steps = [{
     icon: Camera,
     title: "Snap Any Meal",
     description: "Take a photo or scan a barcode. Our AI instantly identifies ingredients and portions with remarkable accuracy.",
     features: ["Photo recognition", "Barcode scanning", "Portion estimation"],
-    color: "from-blue-500 to-blue-600"
+    color: "from-blue-500 to-blue-600",
+    expandedContent: {
+      subtitle: "Advanced Computer Vision Technology",
+      details: [
+        "Our proprietary AI uses advanced computer vision algorithms trained on millions of food images to achieve 95%+ accuracy in food identification.",
+        "The system recognizes over 10,000 different foods and can distinguish between similar items (like different types of bread or rice varieties).",
+        "Portion estimation uses depth analysis and size reference points in your photo to calculate serving sizes within 10% accuracy of professional measurements.",
+        "Barcode scanning provides instant access to a database of over 2 million packaged foods with complete nutritional information."
+      ],
+      benefits: [
+        "Save 5+ minutes per meal compared to manual entry",
+        "Eliminate guesswork in portion sizes",
+        "Track foods you've never logged before instantly"
+      ]
+    }
   }, {
     icon: BarChart3,
     title: "Get Full Analysis",
     description: "Receive complete nutritional breakdown including calories, macros, and micronutrients for traditional tracking.",
     features: ["Calorie counting", "Macro tracking", "Micronutrient analysis"],
-    color: "from-green-500 to-green-600"
+    color: "from-green-500 to-green-600",
+    expandedContent: {
+      subtitle: "Comprehensive Nutritional Intelligence",
+      details: [
+        "Beyond basic macros, we track 30+ micronutrients including vitamins, minerals, and phytonutrients often missing from other apps.",
+        "Our analysis includes bioavailability factors - understanding that 100mg of iron from spinach affects your body differently than 100mg from red meat.",
+        "Fiber analysis breaks down soluble vs insoluble fiber, crucial for glucose prediction and digestive health optimization.",
+        "We track food timing and combinations that affect nutrient absorption and metabolic response."
+      ],
+      benefits: [
+        "Complete nutritional picture beyond calories",
+        "Identify micronutrient gaps in your diet",
+        "Understand nutrient synergies and absorption"
+      ]
+    }
   }, {
     icon: Brain,
     title: "AI Glucose Prediction",
     description: "See your predicted blood sugar response curve and understand exactly how this meal will affect your energy.",
     features: ["Glucose prediction", "Energy forecasting", "Personalised insights"],
     color: "from-purple-500 to-purple-600",
-    premium: true
+    premium: true,
+    expandedContent: {
+      subtitle: "Personalized Metabolic Modeling",
+      details: [
+        "Our AI model considers your unique metabolic profile, including insulin sensitivity, previous glucose responses, and genetic factors.",
+        "The prediction algorithm factors in meal timing, food combinations, current glucose levels, sleep quality, stress, and activity patterns.",
+        "We model the complete glucose curve over 3-4 hours, not just peak values, showing you when energy will peak and when it might crash.",
+        "The system learns from your responses over time, becoming more accurate with each meal you track."
+      ],
+      benefits: [
+        "Prevent energy crashes before they happen",
+        "Optimize meal timing for peak performance",
+        "Make food choices based on how YOU respond"
+      ]
+    }
   }, {
     icon: Lightbulb,
     title: "Optimise & Learn",
     description: "Get science-backed suggestions to optimise any meal for stable, lasting energy and better health outcomes.",
     features: ["Meal optimisation", "Personalised tips", "Long-term patterns"],
-    color: "from-amber-500 to-amber-600"
+    color: "from-amber-500 to-amber-600",
+    expandedContent: {
+      subtitle: "Intelligent Meal Optimization Engine",
+      details: [
+        "Our recommendation engine suggests simple swaps that can reduce glucose spikes by 40-70% while maintaining taste and satisfaction.",
+        "We provide sequence optimization - the order you eat foods in a meal can significantly impact your glucose response.",
+        "Timing recommendations help you understand when your body is most insulin sensitive for optimal meal timing.",
+        "Pattern recognition identifies your personal 'glucose triggers' and suggests alternatives that work better for your metabolism."
+      ],
+      benefits: [
+        "Reduce glucose spikes without sacrificing enjoyment",
+        "Learn sustainable habits that fit your lifestyle",
+        "Discover your unique metabolic patterns"
+      ]
+    }
   }, {
     icon: Activity,
     title: "CGM Integration & Validation",
@@ -38,7 +97,21 @@ const HowItWorksSection = () => {
     features: ["Connect your own CGM device", "Compare predictions to actual data", "Advanced analytics dashboard", "Healthcare provider reports", "Meal timing recommendations"],
     color: "from-indigo-600 to-purple-700",
     premium: true,
-    isMax: true
+    isMax: true,
+    expandedContent: {
+      subtitle: "Real-Time Validation & Advanced Analytics",
+      details: [
+        "Seamlessly connect popular CGM devices (Dexcom, FreeStyle Libre, Medtronic) to compare predictions with actual glucose data.",
+        "Our machine learning algorithm continuously improves predictions based on your real-world responses, achieving 90%+ accuracy.",
+        "Advanced analytics include glucose variability scores, time-in-range optimization, and dawn phenomenon analysis.",
+        "Healthcare provider integration allows you to share comprehensive reports with your doctor, including meal-glucose correlations and pattern insights."
+      ],
+      benefits: [
+        "Validate and improve prediction accuracy over time",
+        "Professional-grade analytics for health optimization",
+        "Share meaningful data with healthcare providers"
+      ]
+    }
   }];
   return <section id="how-it-works-section" className="py-12 sm:py-16 bg-gradient-to-b from-background to-secondary/20">
       <div className="container mx-auto px-4">
@@ -73,7 +146,7 @@ const HowItWorksSection = () => {
           delay: index * 0.1,
           duration: 0.4
         }}>
-              <div className="gradient-card rounded-3xl p-6 sm:p-8 hover-lift">
+              <div className="gradient-card rounded-3xl p-6 sm:p-8 hover-lift cursor-pointer" onClick={() => setSelectedStep(step)}>
                 {/* Step Number */}
                 <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
                   <motion.div className={`w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br ${step.color} flex items-center justify-center text-white font-bold text-lg sm:text-xl relative flex-shrink-0`} whileHover={{
@@ -98,8 +171,8 @@ const HowItWorksSection = () => {
                     </p>
 
                     {/* Features */}
-                    <div className="space-y-2">
-                      {step.features.map((feature, featureIndex) => <motion.div key={feature} className="flex items-center gap-2 text-sm" initial={{
+                    <div className="space-y-2 mb-4">
+                      {step.features.slice(0, 3).map((feature, featureIndex) => <motion.div key={feature} className="flex items-center gap-2 text-sm" initial={{
                     opacity: 0,
                     x: -20
                   }} animate={isInView ? {
@@ -111,6 +184,10 @@ const HowItWorksSection = () => {
                           <div className="w-2 h-2 bg-primary rounded-full"></div>
                           <span>{feature}</span>
                         </motion.div>)}
+                    </div>
+                    
+                    <div className="text-sm text-primary font-medium">
+                      Click to learn more →
                     </div>
                   </div>
                 </div>
@@ -490,6 +567,71 @@ const HowItWorksSection = () => {
             </div>
           </div>
         </motion.div>
+
+        {/* Step Detail Modal */}
+        <Dialog open={!!selectedStep} onOpenChange={() => setSelectedStep(null)}>
+          <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+            {selectedStep && (
+              <>
+                <DialogHeader>
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${selectedStep.color} flex items-center justify-center text-white relative`}>
+                      <selectedStep.icon className="w-8 h-8" />
+                      {selectedStep.premium && (
+                        <div className={`absolute -bottom-1 -right-1 bg-gradient-to-r text-xs px-2 py-1 rounded-full font-bold ${selectedStep.isMax ? 'from-indigo-500 to-purple-600 text-white' : 'from-yellow-400 to-yellow-500 text-black'}`}>
+                          {selectedStep.isMax ? 'MAX' : 'PRO'}
+                        </div>
+                      )}
+                    </div>
+                    <div>
+                      <DialogTitle className="text-2xl">{selectedStep.title}</DialogTitle>
+                      <DialogDescription className="text-lg mt-1">
+                        {selectedStep.expandedContent.subtitle}
+                      </DialogDescription>
+                    </div>
+                  </div>
+                </DialogHeader>
+                
+                <div className="space-y-6">
+                  <div className="space-y-4">
+                    <h4 className="font-semibold text-lg">How It Works:</h4>
+                    {selectedStep.expandedContent.details.map((detail, index) => (
+                      <div key={index} className="p-4 bg-secondary/50 rounded-lg">
+                        <p className="text-sm leading-relaxed">{detail}</p>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  <div className="p-4 bg-primary/10 rounded-lg border border-primary/20">
+                    <h4 className="font-semibold text-primary mb-3">Key Benefits:</h4>
+                    <div className="space-y-2">
+                      {selectedStep.expandedContent.benefits.map((benefit, index) => (
+                        <div key={index} className="flex items-start gap-2">
+                          <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                          <p className="text-sm leading-relaxed">{benefit}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {selectedStep.features.length > 3 && (
+                    <div className="p-4 bg-secondary/30 rounded-lg">
+                      <h4 className="font-semibold mb-3">Additional Features:</h4>
+                      <div className="space-y-2">
+                        {selectedStep.features.slice(3).map((feature, index) => (
+                          <div key={index} className="flex items-center gap-2 text-sm">
+                            <div className="w-2 h-2 bg-muted-foreground rounded-full"></div>
+                            <span>{feature}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </>
+            )}
+          </DialogContent>
+        </Dialog>
       </div>
     </section>;
 };
