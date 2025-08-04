@@ -395,136 +395,174 @@ const SciencePage = () => {
                 <TabsTrigger value="myths">Myths vs Facts</TabsTrigger>
               </TabsList>
 
-              <TabsContent value="overview" className="space-y-6">
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    <Card className="h-full hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                      <CardHeader>
-                        <div className="flex items-start justify-between mb-3">
-                          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center">
-                            <Badge className="w-6 h-6 text-primary" />
-                          </div>
-                          <Badge className="bg-green-100 text-green-700">Beginner</Badge>
-                        </div>
-                        <CardTitle className="text-lg">Optimal Insulin Sensitivity</CardTitle>
-                        <CardDescription>
-                          Understanding how your body efficiently manages blood sugar with minimal hormonal intervention.
-                        </CardDescription>
-                      </CardHeader>
-                      <CardContent className="space-y-4">
-                        <div className="space-y-2">
-                          <h5 className="font-medium text-sm">Key Findings:</h5>
-                          <ul className="space-y-1">
-                            <li className="text-sm text-muted-foreground flex items-start gap-2">
-                              <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                              Optimal insulin sensitivity requires 2-10x less insulin than insulin-resistant states
-                            </li>
-                            <li className="text-sm text-muted-foreground flex items-start gap-2">
-                              <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                              Stable glucose levels correlate with 25% improvement in cognitive function
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="flex items-center justify-between pt-4 border-t">
-                          <span className="text-sm text-muted-foreground">5 min read</span>
-                          <Button variant="ghost" size="sm">
-                            Explore
-                            <ArrowRight className="w-4 h-4 ml-1" />
-                          </Button>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
+              <TabsContent value="overview" className="space-y-8">
+                <div className="space-y-8">
+                  <Card className="p-8">
+                    <h3 className="text-3xl font-bold mb-6 text-foreground">The Discovery of Insulin: A Century-Long Journey</h3>
+                    <div className="space-y-6 text-muted-foreground leading-relaxed">
+                      <p className="text-lg">
+                        The discovery of insulin was not a singular event but an evolutionary process, built upon decades of foundational research by scientists across the globe. The ultimate success of the Toronto team lay not in the initial concept, but in their ability to translate a crude pancreatic extract into a purified, life-saving therapeutic that transformed diabetes from a fatal disease into a manageable condition.
+                      </p>
+                      
+                      <div className="bg-gradient-to-r from-primary/5 to-accent/5 p-6 rounded-lg border border-border/50">
+                        <h4 className="text-xl font-semibold text-foreground mb-4">The Toronto Breakthrough: October 31, 1920</h4>
+                        <p>
+                          The critical insight came to Frederick Banting on the night of October 31, 1920, while preparing a lecture on the pancreas. He reviewed an article describing how pancreatic stones could obstruct the pancreatic duct, leading to degeneration of enzyme-producing cells while leaving the insulin-producing islet cells intact. Banting scribbled his now-famous note: <em>"Ligate pancreatic ducts of dog. Keep dogs alive till acini degenerate leaving islets. Try to isolate the internal secretion of these to relieve glycosurea"</em>.
+                        </p>
+                      </div>
 
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.1 }}
-                  >
-                    <Card className="h-full hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                      <CardHeader>
-                        <div className="flex items-start justify-between mb-3">
-                          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center">
-                            <Badge className="w-6 h-6 text-primary" />
+                      <div className="grid md:grid-cols-2 gap-8">
+                        <div>
+                          <h4 className="text-xl font-semibold text-foreground mb-4">The Toronto Team</h4>
+                          <div className="space-y-4">
+                            <div className="border-l-4 border-primary pl-4">
+                              <h5 className="font-semibold text-foreground">Frederick Banting & Charles Best</h5>
+                              <p className="text-sm">Conceived and executed the duct-ligation experiment, successfully isolating an extract that lowered blood sugar in diabetic dogs in May 1921.</p>
+                            </div>
+                            <div className="border-l-4 border-accent pl-4">
+                              <h5 className="font-semibold text-foreground">James Bertram Collip</h5>
+                              <p className="text-sm">Made the pivotal discovery that the active principle could be precipitated using high alcohol concentration, removing toxic protein contaminants and making insulin safe for human use.</p>
+                            </div>
+                            <div className="border-l-4 border-secondary pl-4">
+                              <h5 className="font-semibold text-foreground">J.J.R. Macleod</h5>
+                              <p className="text-sm">Provided laboratory space, resources, and expert supervision. Co-recipient of the 1923 Nobel Prize, which he shared with Collip.</p>
+                            </div>
                           </div>
-                          <Badge className="bg-yellow-100 text-yellow-700">Intermediate</Badge>
                         </div>
-                        <CardTitle className="text-lg">Compensatory Hyperinsulinemia</CardTitle>
-                        <CardDescription>
-                          When your pancreas works overtime to overcome cellular resistance - the hidden precursor to diabetes.
-                        </CardDescription>
-                      </CardHeader>
-                      <CardContent className="space-y-4">
-                        <div className="space-y-2">
-                          <h5 className="font-medium text-sm">Key Findings:</h5>
-                          <ul className="space-y-1">
-                            <li className="text-sm text-muted-foreground flex items-start gap-2">
-                              <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                              Compensatory hyperinsulinemia can persist for 10-15 years before diabetes onset
-                            </li>
-                            <li className="text-sm text-muted-foreground flex items-start gap-2">
-                              <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                              Beta-cell function declines by 4-5% annually once hyperinsulinemia begins
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="flex items-center justify-between pt-4 border-t">
-                          <span className="text-sm text-muted-foreground">8 min read</span>
-                          <Button variant="ghost" size="sm">
-                            Explore
-                            <ArrowRight className="w-4 h-4 ml-1" />
-                          </Button>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
 
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                  >
-                    <Card className="h-full hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                      <CardHeader>
-                        <div className="flex items-start justify-between mb-3">
-                          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center">
-                            <Badge className="w-6 h-6 text-primary" />
+                        <div>
+                          <h4 className="text-xl font-semibold text-foreground mb-4">Forgotten Pioneers</h4>
+                          <div className="space-y-4">
+                            <div className="bg-destructive/5 p-4 rounded-lg border border-destructive/20">
+                              <h5 className="font-semibold text-foreground">Nicolae Constantin Paulescu (Romanian)</h5>
+                              <p className="text-sm">Published detailed experiments with "pancrein" in summer 1921—months before Toronto's publications. His work was largely ignored due to language barriers and location outside dominant scientific centers.</p>
+                            </div>
+                            <div className="bg-warning/5 p-4 rounded-lg border border-warning/20">
+                              <h5 className="font-semibold text-foreground">Georg Ludwig Zuelzer (German)</h5>
+                              <p className="text-sm">Administered bovine pancreatic extracts to diabetic patients as early as 1906. Granted U.S. patent for "acomatol" in 1912, which initially blocked Toronto's patent application.</p>
+                            </div>
                           </div>
-                          <Badge className="bg-blue-100 text-blue-700">Beginner</Badge>
                         </div>
-                        <CardTitle className="text-lg">Fat Metabolism: Debunking Decades of Myths</CardTitle>
-                        <CardDescription>
-                          Modern research reveals why saturated fats aren't the cardiovascular villains once believed.
-                        </CardDescription>
-                      </CardHeader>
-                      <CardContent className="space-y-4">
-                        <div className="space-y-2">
-                          <h5 className="font-medium text-sm">Key Findings:</h5>
-                          <ul className="space-y-1">
-                            <li className="text-sm text-muted-foreground flex items-start gap-2">
-                              <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                              No significant association between saturated fat and cardiovascular disease in 78 studies (650,000 people)
-                            </li>
-                            <li className="text-sm text-muted-foreground flex items-start gap-2">
-                              <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                              Only 15% of blood cholesterol comes from diet, 85% produced by liver
-                            </li>
-                          </ul>
+                      </div>
+
+                      <div className="bg-gradient-to-r from-accent/5 to-secondary/5 p-6 rounded-lg border border-border/50">
+                        <h4 className="text-xl font-semibold text-foreground mb-4">First Human Success: Leonard Thompson</h4>
+                        <p>
+                          On January 11, 1922, 14-year-old Leonard Thompson, dying from type 1 diabetes, received the first injection. It failed—his blood sugar showed modest drop but he developed a sterile abscess. On January 23, 1922, he received Collip's purified extract. The results were dramatic and immediate: his blood sugar plummeted to near-normal levels, his condition improved remarkably, with no significant side effects. For the first time in history, type 1 diabetes was no longer an absolute death sentence.
+                        </p>
+                      </div>
+                    </div>
+                  </Card>
+
+                  <Card className="p-8">
+                    <h3 className="text-3xl font-bold mb-6 text-foreground">The Physiology of Euglycemia: A Hormonal Symphony</h3>
+                    <div className="space-y-6 text-muted-foreground leading-relaxed">
+                      <p className="text-lg">
+                        The maintenance of blood glucose within a narrow, healthy range—euglycemia—is a masterpiece of physiological regulation. It is not a simple reactive system but a proactive, multi-organ network coordinated by a symphony of hormones ensuring that the body's cells, particularly the brain which relies almost exclusively on glucose, have a constant and stable supply of energy.
+                      </p>
+
+                      <div className="grid md:grid-cols-3 gap-6">
+                        <div className="bg-primary/5 p-6 rounded-lg border border-primary/20">
+                          <h4 className="text-lg font-semibold text-foreground mb-3">The Pancreatic Islet</h4>
+                          <div className="space-y-3 text-sm">
+                            <div>
+                              <span className="font-semibold text-foreground">β-cells (65-80%):</span> Produce insulin, the body's primary glucose-lowering hormone
+                            </div>
+                            <div>
+                              <span className="font-semibold text-foreground">α-cells (15-20%):</span> Produce glucagon, the main counter-regulatory hormone that raises blood glucose
+                            </div>
+                            <div>
+                              <span className="font-semibold text-foreground">δ-cells:</span> Secrete somatostatin, inhibiting both insulin and glucagon release
+                            </div>
+                          </div>
                         </div>
-                        <div className="flex items-center justify-between pt-4 border-t">
-                          <span className="text-sm text-muted-foreground">12 min read</span>
-                          <Button variant="ghost" size="sm">
-                            Explore
-                            <ArrowRight className="w-4 h-4 ml-1" />
-                          </Button>
+
+                        <div className="bg-accent/5 p-6 rounded-lg border border-accent/20">
+                          <h4 className="text-lg font-semibold text-foreground mb-3">The Incretin Effect</h4>
+                          <div className="space-y-3 text-sm">
+                            <p>Responsible for <span className="font-semibold text-foreground">50-70% of total insulin</span> secreted after a meal</p>
+                            <div>
+                              <span className="font-semibold text-foreground">GIP:</span> 45% of incretin-mediated insulin response
+                            </div>
+                            <div>
+                              <span className="font-semibold text-foreground">GLP-1:</span> 29% of incretin-mediated insulin response
+                            </div>
+                            <p className="text-xs italic">Released within minutes of eating, before blood glucose peaks</p>
+                          </div>
                         </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
+
+                        <div className="bg-secondary/5 p-6 rounded-lg border border-secondary/20">
+                          <h4 className="text-lg font-semibold text-foreground mb-3">Multi-Organ Network</h4>
+                          <div className="space-y-3 text-sm">
+                            <div>
+                              <span className="font-semibold text-foreground">Liver:</span> Central glucose buffer, switches between production and storage
+                            </div>
+                            <div>
+                              <span className="font-semibold text-foreground">Muscle & Fat:</span> 70-80% of insulin-stimulated glucose disposal
+                            </div>
+                            <div>
+                              <span className="font-semibold text-foreground">Brain:</span> Glucose-sensing neurons monitor and regulate via autonomic nervous system
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="bg-gradient-to-r from-primary/5 to-accent/5 p-6 rounded-lg border border-border/50">
+                        <h4 className="text-xl font-semibold text-foreground mb-4">Intra-Islet Communication: The Key to Precision</h4>
+                        <p>
+                          The physical architecture of pancreatic islets is crucial for glucose control. β-cells form a central core, surrounded by α-cells on the periphery. When β-cells release insulin into the islet's capillary network, adjacent α-cells are exposed to very high local insulin concentrations. This creates a powerful paracrine signal—insulin directly suppresses glucagon secretion, ensuring that as insulin rises to handle incoming glucose, the opposing action of glucagon is simultaneously switched off. The breakdown of this elegant micro-anatomical control system is a key contributor to diabetes pathophysiology.
+                        </p>
+                      </div>
+                    </div>
+                  </Card>
+
+                  <Card className="p-8">
+                    <h3 className="text-3xl font-bold mb-6 text-foreground">Pathophysiology: When Systems Break Down</h3>
+                    <div className="space-y-6 text-muted-foreground leading-relaxed">
+                      <div className="grid md:grid-cols-2 gap-8">
+                        <div>
+                          <h4 className="text-xl font-semibold text-foreground mb-4">Insulin Resistance: The Molecular Breakdown</h4>
+                          <p className="mb-4">
+                            Insulin resistance represents a fundamental breakdown in cellular communication, where the message sent by insulin is no longer properly received by target tissues. This post-receptor failure is driven by nutrient excess and inflammation.
+                          </p>
+                          <div className="space-y-3">
+                            <div className="bg-destructive/5 p-4 rounded-lg border border-destructive/20">
+                              <h5 className="font-semibold text-foreground text-sm mb-2">Lipotoxicity</h5>
+                              <p className="text-sm">Excess free fatty acids accumulate as toxic lipid intermediates (diacylglycerols and ceramides), activating stress kinases that block insulin signaling pathways.</p>
+                            </div>
+                            <div className="bg-warning/5 p-4 rounded-lg border border-warning/20">
+                              <h5 className="font-semibold text-foreground text-sm mb-2">Chronic Inflammation</h5>
+                              <p className="text-sm">Visceral fat infiltrated with immune cells secretes inflammatory cytokines (TNF-α, IL-6) that directly impair insulin sensitivity.</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div>
+                          <h4 className="text-xl font-semibold text-foreground mb-4">The Dual Defect of Type 2 Diabetes</h4>
+                          <p className="mb-4">
+                            Type 2 diabetes results from the collision of progressive insulin resistance with an intrinsic inability of pancreatic β-cells to sustain compensatory insulin secretion, creating a vicious cycle of metabolic dysfunction.
+                          </p>
+                          <div className="space-y-3">
+                            <div className="bg-primary/5 p-4 rounded-lg border border-primary/20">
+                              <h5 className="font-semibold text-foreground text-sm mb-2">β-Cell Exhaustion</h5>
+                              <p className="text-sm">Relentless demand for high insulin output places immense strain on β-cells, leading to functional exhaustion and gradual decline in secretory capacity.</p>
+                            </div>
+                            <div className="bg-accent/5 p-4 rounded-lg border border-accent/20">
+                              <h5 className="font-semibold text-foreground text-sm mb-2">Glucolipotoxicity</h5>
+                              <p className="text-sm">Chronic exposure to high glucose and free fatty acids is directly toxic to β-cells, inducing cellular stress and triggering apoptosis.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="bg-gradient-to-r from-secondary/5 to-primary/5 p-6 rounded-lg border border-border/50">
+                        <h4 className="text-xl font-semibold text-foreground mb-4">Metabolic Memory: The Legacy Effect</h4>
+                        <p>
+                          A critical concept in diabetes is "metabolic memory"—the phenomenon where damaging effects of poor glycemic control persist even after blood glucose is subsequently normalized. This has profound treatment implications, suggesting early aggressive intervention is paramount. The mechanisms include formation of Advanced Glycation End-products (AGEs), epigenetic modifications that "imprint" inflammatory states, and self-perpetuating oxidative stress pathways.
+                        </p>
+                      </div>
+                    </div>
+                  </Card>
                 </div>
               </TabsContent>
 
@@ -532,103 +570,152 @@ const SciencePage = () => {
                 <InteractiveScienceDemo />
               </TabsContent>
 
-              <TabsContent value="research" className="space-y-6">
-                {/* Historical Context Section */}
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <Clock className="w-5 h-5" />
-                      The Discovery of Insulin: A Century of Breakthrough Science
-                    </CardTitle>
-                    <CardDescription>
-                      From Frederick Banting's breakthrough in 1921 to modern precision medicine
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="space-y-6">
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div className="space-y-4">
-                        <h4 className="font-semibold">The Toronto Breakthrough (1921-1922)</h4>
-                        <div className="space-y-3 text-sm">
-                          <div className="border-l-4 border-blue-500 pl-4">
-                            <div className="font-medium">October 31, 1920</div>
-                            <div className="text-muted-foreground">Frederick Banting conceives the idea: "Ligate pancreatic ducts of dog. Keep dogs alive till acini degenerate leaving islets."</div>
-                          </div>
-                          <div className="border-l-4 border-green-500 pl-4">
-                            <div className="font-medium">January 23, 1922</div>
-                            <div className="text-muted-foreground">Leonard Thompson, age 14, receives purified insulin - first successful human treatment. Blood sugar drops to near-normal levels.</div>
-                          </div>
-                          <div className="border-l-4 border-purple-500 pl-4">
-                            <div className="font-medium">1923</div>
-                            <div className="text-muted-foreground">Nobel Prize awarded to Banting and Macleod. Patent sold for $1 each: "Insulin belongs to the world."</div>
-                          </div>
-                        </div>
-                      </div>
+              <TabsContent value="research" className="space-y-8">
+                <Card className="p-8">
+                  <h3 className="text-3xl font-bold mb-6 text-foreground">Emerging Frontiers in Metabolic Science</h3>
+                  <div className="space-y-8">
+                    <div className="bg-gradient-to-r from-accent/5 to-secondary/5 p-6 rounded-lg border border-border/50">
+                      <h4 className="text-2xl font-semibold text-foreground mb-4">The Gut Microbiome: A New Endocrine Organ</h4>
+                      <p className="text-muted-foreground leading-relaxed mb-4">
+                        For decades, the gut was viewed primarily as an organ of digestion and absorption. It is now recognized as a bustling, metabolically active ecosystem, home to trillions of microorganisms that function almost as an independent endocrine organ, playing a fundamental role in host nutrition, immunity, and metabolism.
+                      </p>
                       
-                      <div className="space-y-4">
-                        <h4 className="font-semibold">Unrecognized Pioneers</h4>
-                        <div className="space-y-3 text-sm">
-                          <div className="border-l-4 border-yellow-500 pl-4">
-                            <div className="font-medium">Nicolae Paulescu (1921)</div>
-                            <div className="text-muted-foreground">Published successful pancreatic extract "pancrein" months before Toronto team. Work overlooked due to language barriers.</div>
-                          </div>
-                          <div className="border-l-4 border-red-500 pl-4">
-                            <div className="font-medium">Georg Zuelzer (1906-1912)</div>
-                            <div className="text-muted-foreground">First to treat diabetic patients with pancreatic extracts. Held US patent for "acomatol" before Toronto discovery.</div>
-                          </div>
+                      <div className="grid md:grid-cols-3 gap-6 mt-6">
+                        <div className="bg-primary/5 p-4 rounded-lg border border-primary/20">
+                          <h5 className="font-semibold text-foreground mb-2">SCFA Production</h5>
+                          <p className="text-sm">Bacterial fermentation of dietary fiber produces short-chain fatty acids (butyrate, propionate, acetate) that bind to intestinal L-cells, stimulating GLP-1 release and enhancing glucose tolerance.</p>
+                        </div>
+                        <div className="bg-accent/5 p-4 rounded-lg border border-accent/20">
+                          <h5 className="font-semibold text-foreground mb-2">Gut Barrier Integrity</h5>
+                          <p className="text-sm">Dysbiosis leads to "leaky gut," allowing bacterial lipopolysaccharide (LPS) to enter bloodstream, triggering metabolic endotoxemia and systemic insulin resistance.</p>
+                        </div>
+                        <div className="bg-secondary/5 p-4 rounded-lg border border-secondary/20">
+                          <h5 className="font-semibold text-foreground mb-2">Bile Acid Metabolism</h5>
+                          <p className="text-sm">Gut bacteria modify primary bile acids into secondary bile acids, which bind to FXR and TGR5 receptors, influencing glucose and lipid metabolism in liver and other tissues.</p>
                         </div>
                       </div>
                     </div>
-                  </CardContent>
+
+                    <div className="grid md:grid-cols-2 gap-8">
+                      <div>
+                        <h4 className="text-xl font-semibold text-foreground mb-4">Athletes: The Paradox of High Muscle Fat</h4>
+                        <p className="mb-4 text-muted-foreground">
+                          Highly trained endurance athletes present a fascinating metabolic paradox. Studies measuring intramyocellular triglycerides (IMTG) found that athletes often have levels as high as sedentary, insulin-resistant individuals—yet maintain exceptional insulin sensitivity.
+                        </p>
+                        <div className="bg-primary/5 p-4 rounded-lg border border-primary/20">
+                          <h5 className="font-semibold text-foreground text-sm mb-2">The Resolution</h5>
+                          <p className="text-sm">It's not total fat quantity but quality and metabolic context. Athletes' high mitochondrial density and oxidative capacity allow efficient fat oxidation, preventing accumulation of toxic ceramides and diacylglycerols that cause insulin resistance in sedentary individuals.</p>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h4 className="text-xl font-semibold text-foreground mb-4">Pregnancy: Adaptive Insulin Resistance</h4>
+                        <p className="mb-4 text-muted-foreground">
+                          Pregnancy represents a unique metabolic challenge requiring the maternal system to support fetal growth. A key adaptation is the development of physiological insulin resistance beginning around weeks 20-24, driven by placental hormones.
+                        </p>
+                        <div className="bg-accent/5 p-4 rounded-lg border border-accent/20">
+                          <h5 className="font-semibold text-foreground text-sm mb-2">Purposeful Adaptation</h5>
+                          <p className="text-sm">Hormones like human placental lactogen (hPL) and progesterone reduce maternal glucose utilization, raising her blood glucose to facilitate transport across the placenta to the glucose-dependent fetus.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </Card>
 
-                {/* Modern Research Findings */}
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <TrendingUp className="w-5 h-5" />
-                      Latest Research Findings (2023-2025)
-                    </CardTitle>
-                    <CardDescription>Breakthrough studies reshaping our understanding of metabolism and nutrition</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-6">
-                      <div className="border-l-4 border-red-500 pl-6">
-                        <h4 className="font-semibold text-lg mb-2">The Glucose Paradox</h4>
-                        <p className="text-sm text-muted-foreground mb-2">Frontiers in Cardiovascular Medicine, 2020</p>
-                        <p className="text-sm mb-3">27% increased cardiovascular disease risk from glucose spikes, even in non-diabetics</p>
-                        <div className="bg-red-50 p-3 rounded-lg">
-                          <p className="text-xs text-red-700"><strong>Clinical Significance:</strong> Post-meal glucose spikes above 140 mg/dL increase cardiovascular risk regardless of HbA1c levels, suggesting that glucose variability may be more important than average glucose control.</p>
-                        </div>
-                      </div>
-                      
-                      <div className="border-l-4 border-emerald-500 pl-6">
-                        <h4 className="font-semibold text-lg mb-2">Gut Microbiome Carbohydrate Metabolism</h4>
-                        <p className="text-sm text-muted-foreground mb-2">Nature, 2023</p>
-                        <p className="text-sm mb-3">Microbiome contributes up to 10% of host energy extraction and significantly influences glucose homeostasis</p>
-                        <div className="bg-green-50 p-3 rounded-lg">
-                          <p className="text-xs text-green-700"><strong>Key Finding:</strong> Short-chain fatty acids produced by fiber-fermenting bacteria directly stimulate GLP-1 release, explaining why identical foods can produce different glucose responses in different individuals.</p>
-                        </div>
-                      </div>
-                      
-                      <div className="border-l-4 border-blue-500 pl-6">
-                        <h4 className="font-semibold text-lg mb-2">Circadian Metabolic Disruption</h4>
-                        <p className="text-sm text-muted-foreground mb-2">Diabetologia, 2020</p>
-                        <p className="text-sm mb-3">69% of population experiences social jet lag affecting metabolism</p>
-                        <div className="bg-blue-50 p-3 rounded-lg">
-                          <p className="text-xs text-blue-700"><strong>Research Impact:</strong> Meal timing misaligned with circadian rhythms can reduce glucose tolerance by up to 30%, providing scientific basis for time-restricted eating protocols.</p>
+                <Card className="p-8">
+                  <h3 className="text-3xl font-bold mb-6 text-foreground">The Technological Revolution in Diabetes Management</h3>
+                  <div className="space-y-6 text-muted-foreground leading-relaxed">
+                    <p className="text-lg">
+                      The last two decades have witnessed a technological revolution in diabetes management, transforming the paradigm from reactive to proactive, predictive control. These innovations have dramatically improved safety and enabled previously unattainable levels of glycemic control.
+                    </p>
+
+                    <div className="grid md:grid-cols-2 gap-8">
+                      <div>
+                        <h4 className="text-xl font-semibold text-foreground mb-4">Continuous Glucose Monitoring (CGM)</h4>
+                        <div className="space-y-4">
+                          <div className="border-l-4 border-primary pl-4">
+                            <h5 className="font-semibold text-foreground">Real-Time Data Stream</h5>
+                            <p className="text-sm">Modern CGM systems measure glucose in interstitial fluid every few minutes, 24/7, providing dynamic glucose trends with directional arrows, not just static snapshots.</p>
+                          </div>
+                          <div className="border-l-4 border-accent pl-4">
+                            <h5 className="font-semibold text-foreground">Proactive Alerts</h5>
+                            <p className="text-sm">Customizable alarms warn of impending high or low glucose levels, allowing intervention before dangerous excursions occur. Modern devices like Dexcom G7 and Abbott Freestyle Libre 3 are highly accurate with low MARD (Mean Absolute Relative Difference).</p>
+                          </div>
                         </div>
                       </div>
 
-                      <div className="border-l-4 border-purple-500 pl-6">
-                        <h4 className="font-semibold text-lg mb-2">Sleep Deprivation & Insulin Resistance</h4>
-                        <p className="text-sm text-muted-foreground mb-2">Sleep Medicine Reviews, 2023</p>
-                        <p className="text-sm mb-3">One night of sleep deprivation reduces insulin sensitivity by 25-30%</p>
-                        <div className="bg-purple-50 p-3 rounded-lg">
-                          <p className="text-xs text-purple-700"><strong>Mechanism:</strong> Sleep loss disrupts cortisol patterns and sympathetic nervous activity, creating a state resembling pre-diabetes after just 4 hours of sleep.</p>
+                      <div>
+                        <h4 className="text-xl font-semibold text-foreground mb-4">Automated Insulin Delivery (AID)</h4>
+                        <div className="space-y-4">
+                          <div className="border-l-4 border-secondary pl-4">
+                            <h5 className="font-semibold text-foreground">Hybrid Closed-Loop Systems</h5>
+                            <p className="text-sm">AID systems connect CGM and insulin pumps through sophisticated control algorithms, automatically adjusting basal insulin delivery to maintain glucose within target range with minimal user input.</p>
+                          </div>
+                          <div className="border-l-4 border-warning pl-4">
+                            <h5 className="font-semibold text-foreground">Clinical Outcomes</h5>
+                            <p className="text-sm">Studies consistently show superior glycemic outcomes—higher Time in Range (70-180 mg/dL) and lower HbA1c—while reducing hypoglycemia frequency and severity compared to conventional therapy.</p>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </CardContent>
+
+                    <div className="bg-gradient-to-r from-primary/5 to-accent/5 p-6 rounded-lg border border-border/50">
+                      <h4 className="text-xl font-semibold text-foreground mb-4">From "Thick Brown Muck" to Precision Medicine</h4>
+                      <p>
+                        The century following insulin's discovery has been marked by continuous innovation. From the initial "thick brown muck" described by Banting and Best, to animal-derived insulin, to recombinant human insulin produced by genetically engineered E. coli bacteria (1982), to modern insulin analogues with tailored pharmacokinetic profiles, and now to automated delivery systems. This evolution represents the journey from a life-saving but crude treatment to precision medicine tailored to individual metabolic patterns.
+                      </p>
+                    </div>
+                  </div>
+                </Card>
+
+                <Card className="p-8">
+                  <h3 className="text-3xl font-bold mb-6 text-foreground">Latest Research Findings (2020-2025)</h3>
+                  <div className="space-y-6">
+                    <div className="border-l-4 border-red-500 pl-6">
+                      <h4 className="font-semibold text-lg mb-2">The Glucose Paradox</h4>
+                      <p className="text-sm text-muted-foreground mb-2">Frontiers in Cardiovascular Medicine, 2020</p>
+                      <p className="text-sm mb-3">27% increased cardiovascular disease risk from glucose spikes, even in non-diabetics</p>
+                      <div className="bg-red-50 p-3 rounded-lg">
+                        <p className="text-xs text-red-700"><strong>Clinical Significance:</strong> Post-meal glucose spikes above 140 mg/dL increase cardiovascular risk regardless of HbA1c levels, suggesting that glucose variability may be more important than average glucose control for long-term health outcomes.</p>
+                      </div>
+                    </div>
+                    
+                    <div className="border-l-4 border-emerald-500 pl-6">
+                      <h4 className="font-semibold text-lg mb-2">Gut Microbiome and Personalized Nutrition</h4>
+                      <p className="text-sm text-muted-foreground mb-2">Nature, 2023</p>
+                      <p className="text-sm mb-3">Microbiome contributes up to 10% of host energy extraction and significantly influences glucose homeostasis</p>
+                      <div className="bg-green-50 p-3 rounded-lg">
+                        <p className="text-xs text-green-700"><strong>Key Finding:</strong> Short-chain fatty acids produced by fiber-fermenting bacteria directly stimulate GLP-1 release, explaining why identical foods can produce different glucose responses in different individuals. This provides biological basis for personalized nutrition approaches.</p>
+                      </div>
+                    </div>
+                    
+                    <div className="border-l-4 border-blue-500 pl-6">
+                      <h4 className="font-semibold text-lg mb-2">Circadian Metabolic Disruption</h4>
+                      <p className="text-sm text-muted-foreground mb-2">Diabetologia, 2020</p>
+                      <p className="text-sm mb-3">69% of population experiences social jet lag affecting metabolism</p>
+                      <div className="bg-blue-50 p-3 rounded-lg">
+                        <p className="text-xs text-blue-700"><strong>Research Impact:</strong> Meal timing misaligned with circadian rhythms can reduce glucose tolerance by up to 30%, providing scientific basis for time-restricted eating protocols and chronotherapy approaches to diabetes management.</p>
+                      </div>
+                    </div>
+
+                    <div className="border-l-4 border-purple-500 pl-6">
+                      <h4 className="font-semibold text-lg mb-2">Sleep Deprivation & Metabolic Health</h4>
+                      <p className="text-sm text-muted-foreground mb-2">Sleep Medicine Reviews, 2023</p>
+                      <p className="text-sm mb-3">One night of sleep deprivation reduces insulin sensitivity by 25-30%</p>
+                      <div className="bg-purple-50 p-3 rounded-lg">
+                        <p className="text-xs text-purple-700"><strong>Mechanism:</strong> Sleep loss disrupts cortisol patterns and sympathetic nervous activity, creating a state resembling pre-diabetes after just 4 hours of sleep. This highlights sleep as a critical pillar of metabolic health alongside diet and exercise.</p>
+                      </div>
+                    </div>
+
+                    <div className="border-l-4 border-orange-500 pl-6">
+                      <h4 className="font-semibold text-lg mb-2">Puberty and Insulin Resistance</h4>
+                      <p className="text-sm text-muted-foreground mb-2">Journal of Clinical Endocrinology & Metabolism, 2022</p>
+                      <p className="text-sm mb-3">Insulin sensitivity decreases by 25-50% during puberty, creating a natural "stress test" for metabolic health</p>
+                      <div className="bg-orange-50 p-3 rounded-lg">
+                        <p className="text-xs text-orange-700"><strong>Clinical Implications:</strong> The combination of physiological pubertal insulin resistance with obesity-related resistance creates a "double hit" that can overwhelm pancreatic β-cell capacity, explaining the spike in youth-onset Type 2 diabetes during adolescence.</p>
+                      </div>
+                    </div>
+                  </div>
                 </Card>
               </TabsContent>
 
