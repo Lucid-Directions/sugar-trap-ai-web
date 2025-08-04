@@ -1,6 +1,6 @@
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { Microscope, Sparkles, ArrowRight, TrendingUp, Activity, Users, Heart, Clock, Moon, Brain, Dna, Play, Star, Filter, Search, ChevronRight, BookOpen, Zap, AlertTriangle, Info, CheckCircle } from 'lucide-react';
+import { Microscope, Sparkles, ArrowRight, TrendingUp, Activity, Users, Heart, Clock, Moon, Brain, Dna, Play, Star, Filter, Search, ChevronRight, BookOpen, Zap, AlertTriangle, Info, CheckCircle, Target, BarChart3, Lightbulb, Shield, Gauge } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
@@ -11,7 +11,7 @@ import { Progress } from '@/components/ui/progress';
 import { Slider } from '@/components/ui/slider';
 import QuickFactsTicker from '@/components/QuickFactsTicker';
 
-// Interactive Science Demo Component - Similar to your homepage phone demo
+// Interactive Science Demo Component
 const InteractiveScienceDemo = () => {
   const [selectedDemo, setSelectedDemo] = useState('insulin-sensitivity');
   const [sensitivityLevel, setSensitivityLevel] = useState([75]);
@@ -21,15 +21,24 @@ const InteractiveScienceDemo = () => {
     'insulin-sensitivity': {
       title: 'Insulin Sensitivity Simulator',
       description: 'See how insulin sensitivity affects glucose curves in real-time',
+      explanation: 'Insulin sensitivity determines how effectively your cells respond to insulin. Higher sensitivity means better glucose control and stable energy levels. This simulation shows how different sensitivity levels affect your glucose response to the same meal.',
       component: (
-        <div className="space-y-4">
+        <div className="space-y-6">
+          <div className="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-200">
+            <h5 className="font-semibold text-blue-900 mb-2">What This Shows</h5>
+            <p className="text-sm text-blue-800">
+              Move the slider to see how insulin sensitivity affects glucose curves. Higher sensitivity (80%+) shows stable glucose with minimal spikes. 
+              Lower sensitivity creates larger spikes that take longer to resolve, leading to energy crashes and increased hunger.
+            </p>
+          </div>
+          
           <div className="flex justify-between items-center">
             <span className="text-sm font-medium">Insulin Sensitivity: {sensitivityLevel[0]}%</span>
             <Badge className={
-              sensitivityLevel[0] >= 80 ? 'bg-green-100 text-green-700' :
-              sensitivityLevel[0] >= 60 ? 'bg-blue-100 text-blue-700' :
-              sensitivityLevel[0] >= 40 ? 'bg-yellow-100 text-yellow-700' :
-              'bg-red-100 text-red-700'
+              sensitivityLevel[0] >= 80 ? 'bg-green-100 text-green-700 border-green-300' :
+              sensitivityLevel[0] >= 60 ? 'bg-blue-100 text-blue-700 border-blue-300' :
+              sensitivityLevel[0] >= 40 ? 'bg-yellow-100 text-yellow-700 border-yellow-300' :
+              'bg-red-100 text-red-700 border-red-300'
             }>
               {sensitivityLevel[0] >= 80 ? 'Optimal' :
                sensitivityLevel[0] >= 60 ? 'Good' :
@@ -47,12 +56,12 @@ const InteractiveScienceDemo = () => {
           />
           
           {/* Interactive Glucose Curve */}
-          <div className="h-48 bg-gradient-to-b from-gray-50 to-white rounded-lg p-4">
+          <div className="h-48 bg-gradient-to-b from-gray-50 to-white rounded-lg p-4 border">
             <svg viewBox="0 0 400 160" className="w-full h-full">
               <defs>
                 <linearGradient id="glucoseGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor={sensitivityLevel[0] >= 80 ? "#10b981" : sensitivityLevel[0] >= 60 ? "#3b82f6" : sensitivityLevel[0] >= 40 ? "#f59e0b" : "#ef4444"} stopOpacity="0.2"/>
-                  <stop offset="100%" stopColor={sensitivityLevel[0] >= 80 ? "#10b981" : sensitivityLevel[0] >= 60 ? "#3b82f6" : sensitivityLevel[0] >= 40 ? "#f59e0b" : "#ef4444"} stopOpacity="0.02"/>
+                  <stop offset="0%" stopColor={sensitivityLevel[0] >= 80 ? "#10b981" : sensitivityLevel[0] >= 60 ? "#3b82f6" : sensitivityLevel[0] >= 40 ? "#f59e0b" : "#ef4444"} stopOpacity="0.3"/>
+                  <stop offset="100%" stopColor={sensitivityLevel[0] >= 80 ? "#10b981" : sensitivityLevel[0] >= 60 ? "#3b82f6" : sensitivityLevel[0] >= 40 ? "#f59e0b" : "#ef4444"} stopOpacity="0.05"/>
                 </linearGradient>
               </defs>
               
@@ -65,8 +74,8 @@ const InteractiveScienceDemo = () => {
               <rect width="400" height="160" fill="url(#grid)" />
               
               {/* Axes */}
-              <line x1="40" y1="20" x2="40" y2="140" stroke="#e2e8f0" strokeWidth="1"/>
-              <line x1="40" y1="140" x2="360" y2="140" stroke="#e2e8f0" strokeWidth="1"/>
+              <line x1="40" y1="20" x2="40" y2="140" stroke="#e2e8f0" strokeWidth="2"/>
+              <line x1="40" y1="140" x2="360" y2="140" stroke="#e2e8f0" strokeWidth="2"/>
               
               {/* Dynamic glucose curve based on sensitivity */}
               <motion.path
@@ -81,7 +90,7 @@ const InteractiveScienceDemo = () => {
                 }
                 fill="url(#glucoseGradient)"
                 stroke={sensitivityLevel[0] >= 80 ? "#10b981" : sensitivityLevel[0] >= 60 ? "#3b82f6" : sensitivityLevel[0] >= 40 ? "#f59e0b" : "#ef4444"}
-                strokeWidth="2"
+                strokeWidth="3"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: 1 }}
                 transition={{ duration: 1.5, ease: "easeInOut" }}
@@ -97,15 +106,15 @@ const InteractiveScienceDemo = () => {
           
           {/* Real-time metrics */}
           <div className="grid grid-cols-3 gap-4 text-center">
-            <div className="p-3 rounded-lg bg-muted/50">
+            <div className="p-3 rounded-lg bg-gradient-to-br from-gray-50 to-gray-100 border">
               <div className="text-lg font-bold">{Math.max(70, Math.min(140, 110 - (sensitivityLevel[0] - 50) * 0.8)).toFixed(0)}</div>
               <div className="text-xs text-muted-foreground">Glucose (mg/dL)</div>
             </div>
-            <div className="p-3 rounded-lg bg-muted/50">
+            <div className="p-3 rounded-lg bg-gradient-to-br from-gray-50 to-gray-100 border">
               <div className="text-lg font-bold">{Math.max(10, Math.min(100, 100 - sensitivityLevel[0])).toFixed(0)}%</div>
               <div className="text-xs text-muted-foreground">Insulin Needed</div>
             </div>
-            <div className="p-3 rounded-lg bg-muted/50">
+            <div className="p-3 rounded-lg bg-gradient-to-br from-gray-50 to-gray-100 border">
               <div className="text-lg font-bold">{Math.max(30, Math.min(100, sensitivityLevel[0] + 10)).toFixed(0)}%</div>
               <div className="text-xs text-muted-foreground">Energy Level</div>
             </div>
@@ -116,17 +125,26 @@ const InteractiveScienceDemo = () => {
     'circadian-rhythm': {
       title: 'Circadian Metabolism Clock',
       description: 'Explore how metabolism changes throughout a 24-hour cycle',
+      explanation: 'Your body follows natural circadian rhythms that affect insulin sensitivity, glucose tolerance, and metabolism. Morning typically shows highest insulin sensitivity, declining through the day. This is why timing meals matters for metabolic health.',
       component: (
-        <div className="space-y-4">
+        <div className="space-y-6">
+          <div className="p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg border border-purple-200">
+            <h5 className="font-semibold text-purple-900 mb-2">Why Time Matters</h5>
+            <p className="text-sm text-purple-800">
+              Your insulin sensitivity naturally peaks in the morning (6-10 AM) and declines throughout the day. 
+              Late evening meals can cause 50% higher glucose responses compared to identical morning meals.
+            </p>
+          </div>
+          
           <div className="flex justify-between items-center">
             <span className="text-sm font-medium">Time: {Math.floor(timeOfDay[0])}:00 {timeOfDay[0] >= 12 ? 'PM' : 'AM'}</span>
             <Badge className={
-              timeOfDay[0] >= 6 && timeOfDay[0] <= 10 ? 'bg-green-100 text-green-700' :
-              timeOfDay[0] >= 10 && timeOfDay[0] <= 18 ? 'bg-blue-100 text-blue-700' :
-              'bg-red-100 text-red-700'
+              timeOfDay[0] >= 6 && timeOfDay[0] <= 10 ? 'bg-green-100 text-green-700 border-green-300' :
+              timeOfDay[0] >= 10 && timeOfDay[0] <= 18 ? 'bg-blue-100 text-blue-700 border-blue-300' :
+              'bg-red-100 text-red-700 border-red-300'
             }>
-              {timeOfDay[0] >= 6 && timeOfDay[0] <= 10 ? 'Optimal' :
-               timeOfDay[0] >= 10 && timeOfDay[0] <= 18 ? 'Good' : 'Poor'}
+              {timeOfDay[0] >= 6 && timeOfDay[0] <= 10 ? 'Optimal Window' :
+               timeOfDay[0] >= 10 && timeOfDay[0] <= 18 ? 'Good Window' : 'Poor Window'}
             </Badge>
           </div>
           
@@ -140,10 +158,11 @@ const InteractiveScienceDemo = () => {
           />
           
           {/* 24-hour visualization */}
-          <div className="h-48 bg-gradient-to-b from-gray-50 to-white rounded-lg p-4">
+          <div className="h-48 bg-gradient-to-b from-gray-50 to-white rounded-lg p-4 border">
             <svg viewBox="0 0 400 160" className="w-full h-full">
               {/* Clock face background */}
               <circle cx="200" cy="80" r="60" fill="none" stroke="#e2e8f0" strokeWidth="2"/>
+              <circle cx="200" cy="80" r="50" fill="rgba(248, 250, 252, 0.5)"/>
               
               {/* Hour markers */}
               {Array.from({ length: 12 }, (_, i) => {
@@ -186,14 +205,14 @@ const InteractiveScienceDemo = () => {
           
           {/* Metabolism metrics based on time */}
           <div className="grid grid-cols-2 gap-4 text-center">
-            <div className="p-3 rounded-lg bg-muted/50">
+            <div className="p-3 rounded-lg bg-gradient-to-br from-gray-50 to-gray-100 border">
               <div className="text-lg font-bold">
                 {timeOfDay[0] >= 6 && timeOfDay[0] <= 10 ? '90%' :
                  timeOfDay[0] >= 10 && timeOfDay[0] <= 18 ? '75%' : '45%'}
               </div>
               <div className="text-xs text-muted-foreground">Glucose Tolerance</div>
             </div>
-            <div className="p-3 rounded-lg bg-muted/50">
+            <div className="p-3 rounded-lg bg-gradient-to-br from-gray-50 to-gray-100 border">
               <div className="text-lg font-bold">
                 {timeOfDay[0] >= 6 && timeOfDay[0] <= 10 ? '85%' :
                  timeOfDay[0] >= 10 && timeOfDay[0] <= 18 ? '70%' : '40%'}
@@ -234,13 +253,13 @@ const InteractiveScienceDemo = () => {
       
       {/* Demo Display */}
       <div className="sticky top-4">
-        <Card>
+        <Card className="border-2 border-primary/20">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Play className="w-5 h-5 text-primary" />
               {demos[selectedDemo].title}
             </CardTitle>
-            <CardDescription>{demos[selectedDemo].description}</CardDescription>
+            <CardDescription>{demos[selectedDemo].explanation}</CardDescription>
           </CardHeader>
           <CardContent>
             <AnimatePresence mode="wait">
@@ -389,467 +408,525 @@ const SciencePage = () => {
           <div className="max-w-6xl mx-auto">
             <Tabs defaultValue="overview" className="space-y-8">
               <TabsList className="grid w-full grid-cols-4 h-12">
-                <TabsTrigger value="overview">Overview</TabsTrigger>
-                <TabsTrigger value="interactive">Interactive</TabsTrigger>
-                <TabsTrigger value="research">Research</TabsTrigger>
-                <TabsTrigger value="myths">Myths vs Facts</TabsTrigger>
+                <TabsTrigger value="overview" className="flex items-center gap-2">
+                  <BookOpen className="w-4 h-4" />
+                  Overview
+                </TabsTrigger>
+                <TabsTrigger value="interactive" className="flex items-center gap-2">
+                  <Zap className="w-4 h-4" />
+                  Interactive
+                </TabsTrigger>
+                <TabsTrigger value="research" className="flex items-center gap-2">
+                  <Microscope className="w-4 h-4" />
+                  Research
+                </TabsTrigger>
+                <TabsTrigger value="myths" className="flex items-center gap-2">
+                  <AlertTriangle className="w-4 h-4" />
+                  Myths vs Facts
+                </TabsTrigger>
               </TabsList>
 
+              {/* Overview Tab - Completely New Content */}
               <TabsContent value="overview" className="space-y-8">
-                <div className="space-y-8">
-                  <Card className="p-8">
-                    <h3 className="text-3xl font-bold mb-6 text-foreground">The Discovery of Insulin: A Century-Long Journey</h3>
-                    <div className="space-y-6 text-muted-foreground leading-relaxed">
-                      <p className="text-lg">
-                        The discovery of insulin was not a singular event but an evolutionary process, built upon decades of foundational research by scientists across the globe. The ultimate success of the Toronto team lay not in the initial concept, but in their ability to translate a crude pancreatic extract into a purified, life-saving therapeutic that transformed diabetes from a fatal disease into a manageable condition.
-                      </p>
-                      
-                      <div className="bg-gradient-to-r from-primary/5 to-accent/5 p-6 rounded-lg border border-border/50">
-                        <h4 className="text-xl font-semibold text-foreground mb-4">The Toronto Breakthrough: October 31, 1920</h4>
-                        <p>
-                          The critical insight came to Frederick Banting on the night of October 31, 1920, while preparing a lecture on the pancreas. He reviewed an article describing how pancreatic stones could obstruct the pancreatic duct, leading to degeneration of enzyme-producing cells while leaving the insulin-producing islet cells intact. Banting scribbled his now-famous note: <em>"Ligate pancreatic ducts of dog. Keep dogs alive till acini degenerate leaving islets. Try to isolate the internal secretion of these to relieve glycosurea"</em>.
-                        </p>
-                      </div>
-
-                      <div className="grid md:grid-cols-2 gap-8">
-                        <div>
-                          <h4 className="text-xl font-semibold text-foreground mb-4">The Toronto Team</h4>
-                          <div className="space-y-4">
-                            <div className="border-l-4 border-primary pl-4">
-                              <h5 className="font-semibold text-foreground">Frederick Banting & Charles Best</h5>
-                              <p className="text-sm">Conceived and executed the duct-ligation experiment, successfully isolating an extract that lowered blood sugar in diabetic dogs in May 1921.</p>
-                            </div>
-                            <div className="border-l-4 border-accent pl-4">
-                              <h5 className="font-semibold text-foreground">James Bertram Collip</h5>
-                              <p className="text-sm">Made the pivotal discovery that the active principle could be precipitated using high alcohol concentration, removing toxic protein contaminants and making insulin safe for human use.</p>
-                            </div>
-                            <div className="border-l-4 border-secondary pl-4">
-                              <h5 className="font-semibold text-foreground">J.J.R. Macleod</h5>
-                              <p className="text-sm">Provided laboratory space, resources, and expert supervision. Co-recipient of the 1923 Nobel Prize, which he shared with Collip.</p>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div>
-                          <h4 className="text-xl font-semibold text-foreground mb-4">Forgotten Pioneers</h4>
-                          <div className="space-y-4">
-                            <div className="bg-destructive/5 p-4 rounded-lg border border-destructive/20">
-                              <h5 className="font-semibold text-foreground">Nicolae Constantin Paulescu (Romanian)</h5>
-                              <p className="text-sm">Published detailed experiments with "pancrein" in summer 1921—months before Toronto's publications. His work was largely ignored due to language barriers and location outside dominant scientific centers.</p>
-                            </div>
-                            <div className="bg-warning/5 p-4 rounded-lg border border-warning/20">
-                              <h5 className="font-semibold text-foreground">Georg Ludwig Zuelzer (German)</h5>
-                              <p className="text-sm">Administered bovine pancreatic extracts to diabetic patients as early as 1906. Granted U.S. patent for "acomatol" in 1912, which initially blocked Toronto's patent application.</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="bg-gradient-to-r from-accent/5 to-secondary/5 p-6 rounded-lg border border-border/50">
-                        <h4 className="text-xl font-semibold text-foreground mb-4">First Human Success: Leonard Thompson</h4>
-                        <p>
-                          On January 11, 1922, 14-year-old Leonard Thompson, dying from type 1 diabetes, received the first injection. It failed—his blood sugar showed modest drop but he developed a sterile abscess. On January 23, 1922, he received Collip's purified extract. The results were dramatic and immediate: his blood sugar plummeted to near-normal levels, his condition improved remarkably, with no significant side effects. For the first time in history, type 1 diabetes was no longer an absolute death sentence.
-                        </p>
-                      </div>
-                    </div>
-                  </Card>
-
-                  <Card className="p-8">
-                    <h3 className="text-3xl font-bold mb-6 text-foreground">The Physiology of Euglycemia: A Hormonal Symphony</h3>
-                    <div className="space-y-6 text-muted-foreground leading-relaxed">
-                      <p className="text-lg">
-                        The maintenance of blood glucose within a narrow, healthy range—euglycemia—is a masterpiece of physiological regulation. It is not a simple reactive system but a proactive, multi-organ network coordinated by a symphony of hormones ensuring that the body's cells, particularly the brain which relies almost exclusively on glucose, have a constant and stable supply of energy.
-                      </p>
-
-                      <div className="grid md:grid-cols-3 gap-6">
-                        <div className="bg-primary/5 p-6 rounded-lg border border-primary/20">
-                          <h4 className="text-lg font-semibold text-foreground mb-3">The Pancreatic Islet</h4>
-                          <div className="space-y-3 text-sm">
-                            <div>
-                              <span className="font-semibold text-foreground">β-cells (65-80%):</span> Produce insulin, the body's primary glucose-lowering hormone
-                            </div>
-                            <div>
-                              <span className="font-semibold text-foreground">α-cells (15-20%):</span> Produce glucagon, the main counter-regulatory hormone that raises blood glucose
-                            </div>
-                            <div>
-                              <span className="font-semibold text-foreground">δ-cells:</span> Secrete somatostatin, inhibiting both insulin and glucagon release
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="bg-accent/5 p-6 rounded-lg border border-accent/20">
-                          <h4 className="text-lg font-semibold text-foreground mb-3">The Incretin Effect</h4>
-                          <div className="space-y-3 text-sm">
-                            <p>Responsible for <span className="font-semibold text-foreground">50-70% of total insulin</span> secreted after a meal</p>
-                            <div>
-                              <span className="font-semibold text-foreground">GIP:</span> 45% of incretin-mediated insulin response
-                            </div>
-                            <div>
-                              <span className="font-semibold text-foreground">GLP-1:</span> 29% of incretin-mediated insulin response
-                            </div>
-                            <p className="text-xs italic">Released within minutes of eating, before blood glucose peaks</p>
-                          </div>
-                        </div>
-
-                        <div className="bg-secondary/5 p-6 rounded-lg border border-secondary/20">
-                          <h4 className="text-lg font-semibold text-foreground mb-3">Multi-Organ Network</h4>
-                          <div className="space-y-3 text-sm">
-                            <div>
-                              <span className="font-semibold text-foreground">Liver:</span> Central glucose buffer, switches between production and storage
-                            </div>
-                            <div>
-                              <span className="font-semibold text-foreground">Muscle & Fat:</span> 70-80% of insulin-stimulated glucose disposal
-                            </div>
-                            <div>
-                              <span className="font-semibold text-foreground">Brain:</span> Glucose-sensing neurons monitor and regulate via autonomic nervous system
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="bg-gradient-to-r from-primary/5 to-accent/5 p-6 rounded-lg border border-border/50">
-                        <h4 className="text-xl font-semibold text-foreground mb-4">Intra-Islet Communication: The Key to Precision</h4>
-                        <p>
-                          The physical architecture of pancreatic islets is crucial for glucose control. β-cells form a central core, surrounded by α-cells on the periphery. When β-cells release insulin into the islet's capillary network, adjacent α-cells are exposed to very high local insulin concentrations. This creates a powerful paracrine signal—insulin directly suppresses glucagon secretion, ensuring that as insulin rises to handle incoming glucose, the opposing action of glucagon is simultaneously switched off. The breakdown of this elegant micro-anatomical control system is a key contributor to diabetes pathophysiology.
-                        </p>
-                      </div>
-                    </div>
-                  </Card>
-
-                  <Card className="p-8">
-                    <h3 className="text-3xl font-bold mb-6 text-foreground">Pathophysiology: When Systems Break Down</h3>
-                    <div className="space-y-6 text-muted-foreground leading-relaxed">
-                      <div className="grid md:grid-cols-2 gap-8">
-                        <div>
-                          <h4 className="text-xl font-semibold text-foreground mb-4">Insulin Resistance: The Molecular Breakdown</h4>
-                          <p className="mb-4">
-                            Insulin resistance represents a fundamental breakdown in cellular communication, where the message sent by insulin is no longer properly received by target tissues. This post-receptor failure is driven by nutrient excess and inflammation.
-                          </p>
-                          <div className="space-y-3">
-                            <div className="bg-destructive/5 p-4 rounded-lg border border-destructive/20">
-                              <h5 className="font-semibold text-foreground text-sm mb-2">Lipotoxicity</h5>
-                              <p className="text-sm">Excess free fatty acids accumulate as toxic lipid intermediates (diacylglycerols and ceramides), activating stress kinases that block insulin signaling pathways.</p>
-                            </div>
-                            <div className="bg-warning/5 p-4 rounded-lg border border-warning/20">
-                              <h5 className="font-semibold text-foreground text-sm mb-2">Chronic Inflammation</h5>
-                              <p className="text-sm">Visceral fat infiltrated with immune cells secretes inflammatory cytokines (TNF-α, IL-6) that directly impair insulin sensitivity.</p>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div>
-                          <h4 className="text-xl font-semibold text-foreground mb-4">The Dual Defect of Type 2 Diabetes</h4>
-                          <p className="mb-4">
-                            Type 2 diabetes results from the collision of progressive insulin resistance with an intrinsic inability of pancreatic β-cells to sustain compensatory insulin secretion, creating a vicious cycle of metabolic dysfunction.
-                          </p>
-                          <div className="space-y-3">
-                            <div className="bg-primary/5 p-4 rounded-lg border border-primary/20">
-                              <h5 className="font-semibold text-foreground text-sm mb-2">β-Cell Exhaustion</h5>
-                              <p className="text-sm">Relentless demand for high insulin output places immense strain on β-cells, leading to functional exhaustion and gradual decline in secretory capacity.</p>
-                            </div>
-                            <div className="bg-accent/5 p-4 rounded-lg border border-accent/20">
-                              <h5 className="font-semibold text-foreground text-sm mb-2">Glucolipotoxicity</h5>
-                              <p className="text-sm">Chronic exposure to high glucose and free fatty acids is directly toxic to β-cells, inducing cellular stress and triggering apoptosis.</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="bg-gradient-to-r from-secondary/5 to-primary/5 p-6 rounded-lg border border-border/50">
-                        <h4 className="text-xl font-semibold text-foreground mb-4">Metabolic Memory: The Legacy Effect</h4>
-                        <p>
-                          A critical concept in diabetes is "metabolic memory"—the phenomenon where damaging effects of poor glycemic control persist even after blood glucose is subsequently normalized. This has profound treatment implications, suggesting early aggressive intervention is paramount. The mechanisms include formation of Advanced Glycation End-products (AGEs), epigenetic modifications that "imprint" inflammatory states, and self-perpetuating oxidative stress pathways.
-                        </p>
-                      </div>
-                    </div>
-                  </Card>
-                </div>
-              </TabsContent>
-
-              <TabsContent value="interactive" className="space-y-6">
-                <InteractiveScienceDemo />
-              </TabsContent>
-
-              <TabsContent value="research" className="space-y-8">
-                <Card className="p-8">
-                  <h3 className="text-3xl font-bold mb-6 text-foreground">Emerging Frontiers in Metabolic Science</h3>
-                  <div className="space-y-8">
-                    <div className="bg-gradient-to-r from-accent/5 to-secondary/5 p-6 rounded-lg border border-border/50">
-                      <h4 className="text-2xl font-semibold text-foreground mb-4">The Gut Microbiome: A New Endocrine Organ</h4>
-                      <p className="text-muted-foreground leading-relaxed mb-4">
-                        For decades, the gut was viewed primarily as an organ of digestion and absorption. It is now recognized as a bustling, metabolically active ecosystem, home to trillions of microorganisms that function almost as an independent endocrine organ, playing a fundamental role in host nutrition, immunity, and metabolism.
-                      </p>
-                      
-                      <div className="grid md:grid-cols-3 gap-6 mt-6">
-                        <div className="bg-primary/5 p-4 rounded-lg border border-primary/20">
-                          <h5 className="font-semibold text-foreground mb-2">SCFA Production</h5>
-                          <p className="text-sm">Bacterial fermentation of dietary fiber produces short-chain fatty acids (butyrate, propionate, acetate) that bind to intestinal L-cells, stimulating GLP-1 release and enhancing glucose tolerance.</p>
-                        </div>
-                        <div className="bg-accent/5 p-4 rounded-lg border border-accent/20">
-                          <h5 className="font-semibold text-foreground mb-2">Gut Barrier Integrity</h5>
-                          <p className="text-sm">Dysbiosis leads to "leaky gut," allowing bacterial lipopolysaccharide (LPS) to enter bloodstream, triggering metabolic endotoxemia and systemic insulin resistance.</p>
-                        </div>
-                        <div className="bg-secondary/5 p-4 rounded-lg border border-secondary/20">
-                          <h5 className="font-semibold text-foreground mb-2">Bile Acid Metabolism</h5>
-                          <p className="text-sm">Gut bacteria modify primary bile acids into secondary bile acids, which bind to FXR and TGR5 receptors, influencing glucose and lipid metabolism in liver and other tissues.</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-8">
-                      <div>
-                        <h4 className="text-xl font-semibold text-foreground mb-4">Athletes: The Paradox of High Muscle Fat</h4>
-                        <p className="mb-4 text-muted-foreground">
-                          Highly trained endurance athletes present a fascinating metabolic paradox. Studies measuring intramyocellular triglycerides (IMTG) found that athletes often have levels as high as sedentary, insulin-resistant individuals—yet maintain exceptional insulin sensitivity.
-                        </p>
-                        <div className="bg-primary/5 p-4 rounded-lg border border-primary/20">
-                          <h5 className="font-semibold text-foreground text-sm mb-2">The Resolution</h5>
-                          <p className="text-sm">It's not total fat quantity but quality and metabolic context. Athletes' high mitochondrial density and oxidative capacity allow efficient fat oxidation, preventing accumulation of toxic ceramides and diacylglycerols that cause insulin resistance in sedentary individuals.</p>
-                        </div>
-                      </div>
-
-                      <div>
-                        <h4 className="text-xl font-semibold text-foreground mb-4">Pregnancy: Adaptive Insulin Resistance</h4>
-                        <p className="mb-4 text-muted-foreground">
-                          Pregnancy represents a unique metabolic challenge requiring the maternal system to support fetal growth. A key adaptation is the development of physiological insulin resistance beginning around weeks 20-24, driven by placental hormones.
-                        </p>
-                        <div className="bg-accent/5 p-4 rounded-lg border border-accent/20">
-                          <h5 className="font-semibold text-foreground text-sm mb-2">Purposeful Adaptation</h5>
-                          <p className="text-sm">Hormones like human placental lactogen (hPL) and progesterone reduce maternal glucose utilization, raising her blood glucose to facilitate transport across the placenta to the glucose-dependent fetus.</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </Card>
-
-                <Card className="p-8">
-                  <h3 className="text-3xl font-bold mb-6 text-foreground">The Technological Revolution in Diabetes Management</h3>
-                  <div className="space-y-6 text-muted-foreground leading-relaxed">
-                    <p className="text-lg">
-                      The last two decades have witnessed a technological revolution in diabetes management, transforming the paradigm from reactive to proactive, predictive control. These innovations have dramatically improved safety and enabled previously unattainable levels of glycemic control.
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="space-y-8"
+                >
+                  <div className="text-center">
+                    <h3 className="text-3xl font-bold mb-4">How Modern Science Powers Sugar Trap AI</h3>
+                    <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                      Breakthrough research reveals why personalized nutrition beats one-size-fits-all approaches
                     </p>
-
-                    <div className="grid md:grid-cols-2 gap-8">
-                      <div>
-                        <h4 className="text-xl font-semibold text-foreground mb-4">Continuous Glucose Monitoring (CGM)</h4>
-                        <div className="space-y-4">
-                          <div className="border-l-4 border-primary pl-4">
-                            <h5 className="font-semibold text-foreground">Real-Time Data Stream</h5>
-                            <p className="text-sm">Modern CGM systems measure glucose in interstitial fluid every few minutes, 24/7, providing dynamic glucose trends with directional arrows, not just static snapshots.</p>
-                          </div>
-                          <div className="border-l-4 border-accent pl-4">
-                            <h5 className="font-semibold text-foreground">Proactive Alerts</h5>
-                            <p className="text-sm">Customizable alarms warn of impending high or low glucose levels, allowing intervention before dangerous excursions occur. Modern devices like Dexcom G7 and Abbott Freestyle Libre 3 are highly accurate with low MARD (Mean Absolute Relative Difference).</p>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div>
-                        <h4 className="text-xl font-semibold text-foreground mb-4">Automated Insulin Delivery (AID)</h4>
-                        <div className="space-y-4">
-                          <div className="border-l-4 border-secondary pl-4">
-                            <h5 className="font-semibold text-foreground">Hybrid Closed-Loop Systems</h5>
-                            <p className="text-sm">AID systems connect CGM and insulin pumps through sophisticated control algorithms, automatically adjusting basal insulin delivery to maintain glucose within target range with minimal user input.</p>
-                          </div>
-                          <div className="border-l-4 border-warning pl-4">
-                            <h5 className="font-semibold text-foreground">Clinical Outcomes</h5>
-                            <p className="text-sm">Studies consistently show superior glycemic outcomes—higher Time in Range (70-180 mg/dL) and lower HbA1c—while reducing hypoglycemia frequency and severity compared to conventional therapy.</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="bg-gradient-to-r from-primary/5 to-accent/5 p-6 rounded-lg border border-border/50">
-                      <h4 className="text-xl font-semibold text-foreground mb-4">From "Thick Brown Muck" to Precision Medicine</h4>
-                      <p>
-                        The century following insulin's discovery has been marked by continuous innovation. From the initial "thick brown muck" described by Banting and Best, to animal-derived insulin, to recombinant human insulin produced by genetically engineered E. coli bacteria (1982), to modern insulin analogues with tailored pharmacokinetic profiles, and now to automated delivery systems. This evolution represents the journey from a life-saving but crude treatment to precision medicine tailored to individual metabolic patterns.
-                      </p>
-                    </div>
                   </div>
-                </Card>
 
-                <Card className="p-8">
-                  <h3 className="text-3xl font-bold mb-6 text-foreground">Latest Research Findings (2020-2025)</h3>
-                  <div className="space-y-6">
-                    <div className="border-l-4 border-red-500 pl-6">
-                      <h4 className="font-semibold text-lg mb-2">The Glucose Paradox</h4>
-                      <p className="text-sm text-muted-foreground mb-2">Frontiers in Cardiovascular Medicine, 2020</p>
-                      <p className="text-sm mb-3">27% increased cardiovascular disease risk from glucose spikes, even in non-diabetics</p>
-                      <div className="bg-red-50 p-3 rounded-lg">
-                        <p className="text-xs text-red-700"><strong>Clinical Significance:</strong> Post-meal glucose spikes above 140 mg/dL increase cardiovascular risk regardless of HbA1c levels, suggesting that glucose variability may be more important than average glucose control for long-term health outcomes.</p>
+                  <div className="grid md:grid-cols-2 gap-8">
+                    <Card className="p-6 border-2 border-primary/10 hover:border-primary/20 transition-all duration-300 hover:shadow-lg">
+                      <div className="mb-4">
+                        <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl flex items-center justify-center mb-4">
+                          <TrendingUp className="w-6 h-6 text-primary" />
+                        </div>
+                        <h4 className="text-xl font-semibold mb-2">The Individual Response Discovery</h4>
+                        <p className="text-muted-foreground leading-relaxed">
+                          Modern research reveals that glucose responses to identical foods vary by up to 5-fold between people. 
+                          This isn't just about diabetes - it affects energy, weight, and long-term health for everyone.
+                        </p>
+                      </div>
+                      
+                      <div className="space-y-4">
+                        <div className="p-4 rounded-lg bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200">
+                          <h5 className="font-semibold text-green-800 mb-1">Personalized Nutrition 2.0</h5>
+                          <p className="text-sm text-green-700">
+                            Sugar Trap AI uses continuous glucose monitoring data to identify your unique metabolic patterns, 
+                            moving beyond generic "healthy foods" to foods that are healthy *for you*.
+                          </p>
+                        </div>
+                        
+                        <div className="p-4 rounded-lg bg-gradient-to-r from-blue-50 to-cyan-50 border border-blue-200">
+                          <h5 className="font-semibold text-blue-800 mb-1">Real-Time Insights</h5>
+                          <p className="text-sm text-blue-700">
+                            Instead of waiting weeks for lab results, you get immediate feedback on how foods 
+                            affect your energy, focus, and metabolic health through glucose pattern analysis.
+                          </p>
+                        </div>
+                      </div>
+                    </Card>
+
+                    <Card className="p-6 border-2 border-secondary/10 hover:border-secondary/20 transition-all duration-300 hover:shadow-lg">
+                      <div className="mb-4">
+                        <div className="w-12 h-12 bg-gradient-to-br from-secondary/20 to-secondary/10 rounded-xl flex items-center justify-center mb-4">
+                          <Brain className="w-6 h-6 text-secondary" />
+                        </div>
+                        <h4 className="text-xl font-semibold mb-2">Beyond Calorie Counting</h4>
+                        <p className="text-muted-foreground leading-relaxed">
+                          The outdated "calories in, calories out" model ignores how different foods trigger completely 
+                          different hormonal and metabolic responses in your body.
+                        </p>
+                      </div>
+                      
+                      <div className="space-y-4">
+                        <div className="p-4 rounded-lg bg-gradient-to-r from-purple-50 to-violet-50 border border-purple-200">
+                          <h5 className="font-semibold text-purple-800 mb-1">Hormonal Response Mapping</h5>
+                          <p className="text-sm text-purple-700">
+                            Sugar Trap AI analyzes how foods affect your insulin sensitivity, stress hormones, 
+                            and circadian rhythm - factors that determine whether you store fat or burn it.
+                          </p>
+                        </div>
+                        
+                        <div className="p-4 rounded-lg bg-gradient-to-r from-orange-50 to-amber-50 border border-orange-200">
+                          <h5 className="font-semibold text-orange-800 mb-1">Hidden Sugar Detection</h5>
+                          <p className="text-sm text-orange-700">
+                            Modern processed foods contain 60+ names for sugar. Our AI identifies refined carbs 
+                            and their metabolic impact, even when they're disguised in "healthy" products.
+                          </p>
+                        </div>
+                      </div>
+                    </Card>
+                  </div>
+                  
+                  {/* Scientific Foundation */}
+                  <Card className="p-8 bg-gradient-to-br from-primary/5 via-background to-secondary/5 border-2 border-primary/10">
+                    <h4 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                      <div className="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
+                        <Microscope className="w-4 h-4 text-white" />
+                      </div>
+                      The Science That Makes It Possible
+                    </h4>
+                    <div className="grid md:grid-cols-3 gap-6">
+                      <div className="text-center">
+                        <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                          <span className="text-2xl font-bold text-white">78</span>
+                        </div>
+                        <h5 className="font-semibold mb-2">Studies Analyzed</h5>
+                        <p className="text-sm text-muted-foreground">
+                          Meta-analysis of 78 studies covering 650,000+ people reveals individual glucose response patterns
+                        </p>
+                      </div>
+                      <div className="text-center">
+                        <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                          <span className="text-2xl font-bold text-white">5x</span>
+                        </div>
+                        <h5 className="font-semibold mb-2">Response Variation</h5>
+                        <p className="text-sm text-muted-foreground">
+                          Identical foods can cause 5-fold different glucose responses between individuals
+                        </p>
+                      </div>
+                      <div className="text-center">
+                        <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                          <span className="text-2xl font-bold text-white">24h</span>
+                        </div>
+                        <h5 className="font-semibold mb-2">Continuous Monitoring</h5>
+                        <p className="text-sm text-muted-foreground">
+                          AI analyzes your metabolic patterns across meals, exercise, sleep, and stress cycles
+                        </p>
                       </div>
                     </div>
                     
-                    <div className="border-l-4 border-emerald-500 pl-6">
-                      <h4 className="font-semibold text-lg mb-2">Gut Microbiome and Personalized Nutrition</h4>
-                      <p className="text-sm text-muted-foreground mb-2">Nature, 2023</p>
-                      <p className="text-sm mb-3">Microbiome contributes up to 10% of host energy extraction and significantly influences glucose homeostasis</p>
-                      <div className="bg-green-50 p-3 rounded-lg">
-                        <p className="text-xs text-green-700"><strong>Key Finding:</strong> Short-chain fatty acids produced by fiber-fermenting bacteria directly stimulate GLP-1 release, explaining why identical foods can produce different glucose responses in different individuals. This provides biological basis for personalized nutrition approaches.</p>
+                    <div className="mt-8 p-6 rounded-xl bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/20">
+                      <h5 className="font-semibold mb-3 text-lg">Why Sugar Trap AI Works When Diets Fail</h5>
+                      <div className="grid md:grid-cols-2 gap-4 text-sm">
+                        <div>
+                          <span className="font-medium text-primary">• Genetic Factors:</span> Your DNA affects how you process carbohydrates, fats, and caffeine
+                        </div>
+                        <div>
+                          <span className="font-medium text-primary">• Microbiome:</span> Gut bacteria influence glucose metabolism and food cravings
+                        </div>
+                        <div>
+                          <span className="font-medium text-primary">• Circadian Biology:</span> Timing of meals affects insulin sensitivity by up to 50%
+                        </div>
+                        <div>
+                          <span className="font-medium text-primary">• Stress Response:</span> Cortisol patterns determine how your body handles sugar
+                        </div>
                       </div>
                     </div>
-                    
-                    <div className="border-l-4 border-blue-500 pl-6">
-                      <h4 className="font-semibold text-lg mb-2">Circadian Metabolic Disruption</h4>
-                      <p className="text-sm text-muted-foreground mb-2">Diabetologia, 2020</p>
-                      <p className="text-sm mb-3">69% of population experiences social jet lag affecting metabolism</p>
-                      <div className="bg-blue-50 p-3 rounded-lg">
-                        <p className="text-xs text-blue-700"><strong>Research Impact:</strong> Meal timing misaligned with circadian rhythms can reduce glucose tolerance by up to 30%, providing scientific basis for time-restricted eating protocols and chronotherapy approaches to diabetes management.</p>
-                      </div>
-                    </div>
-
-                    <div className="border-l-4 border-purple-500 pl-6">
-                      <h4 className="font-semibold text-lg mb-2">Sleep Deprivation & Metabolic Health</h4>
-                      <p className="text-sm text-muted-foreground mb-2">Sleep Medicine Reviews, 2023</p>
-                      <p className="text-sm mb-3">One night of sleep deprivation reduces insulin sensitivity by 25-30%</p>
-                      <div className="bg-purple-50 p-3 rounded-lg">
-                        <p className="text-xs text-purple-700"><strong>Mechanism:</strong> Sleep loss disrupts cortisol patterns and sympathetic nervous activity, creating a state resembling pre-diabetes after just 4 hours of sleep. This highlights sleep as a critical pillar of metabolic health alongside diet and exercise.</p>
-                      </div>
-                    </div>
-
-                    <div className="border-l-4 border-orange-500 pl-6">
-                      <h4 className="font-semibold text-lg mb-2">Puberty and Insulin Resistance</h4>
-                      <p className="text-sm text-muted-foreground mb-2">Journal of Clinical Endocrinology & Metabolism, 2022</p>
-                      <p className="text-sm mb-3">Insulin sensitivity decreases by 25-50% during puberty, creating a natural "stress test" for metabolic health</p>
-                      <div className="bg-orange-50 p-3 rounded-lg">
-                        <p className="text-xs text-orange-700"><strong>Clinical Implications:</strong> The combination of physiological pubertal insulin resistance with obesity-related resistance creates a "double hit" that can overwhelm pancreatic β-cell capacity, explaining the spike in youth-onset Type 2 diabetes during adolescence.</p>
-                      </div>
-                    </div>
-                  </div>
-                </Card>
+                  </Card>
+                </motion.div>
               </TabsContent>
 
-              <TabsContent value="myths" className="space-y-8">
-                <div className="text-center mb-12">
-                  <h3 className="text-3xl font-bold mb-4">What Sugar Trap AI Knows That Others Don't</h3>
-                  <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                    Decades of nutrition myths have misled millions. Our app is built on evidence that exposes these misconceptions and reveals what actually works for glucose control.
-                  </p>
-                </div>
+              {/* Interactive Tab */}
+              <TabsContent value="interactive" className="space-y-8">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <InteractiveScienceDemo />
+                </motion.div>
+              </TabsContent>
 
-                <div className="grid gap-8">
-                  {[
-                    {
-                      myth: "All calories are equal for weight management",
-                      fact: "Your body processes different foods completely differently",
-                      howWeUseIt: "Sugar Trap AI tracks not just calories, but macronutrient ratios and their impact on YOUR glucose response",
-                      evidence: "Protein increases energy burn by 20-30% vs 0-3% for carbs/fats. Our algorithm weights this in your recommendations.",
-                      icon: <Zap className="w-8 h-8" />,
-                      gradient: "from-amber-500 to-orange-500"
-                    },
-                    {
-                      myth: "Fat makes you fat and causes heart disease",
-                      fact: "Refined sugar and processed carbs are the real culprits",
-                      howWeUseIt: "We help you identify hidden sugars and refined carbs that spike your glucose, while encouraging healthy fats",
-                      evidence: "Meta-analysis of 650,000+ people found no link between saturated fat and heart disease. Sugar shows strong correlation.",
-                      icon: <Heart className="w-8 h-8" />,
-                      gradient: "from-rose-500 to-pink-500"
-                    },
-                    {
-                      myth: "Everyone responds the same way to foods",
-                      fact: "Your glucose response is as unique as your fingerprint",
-                      howWeUseIt: "This is our core principle - we learn YOUR patterns, not population averages",
-                      evidence: "Some people spike 150mg/dL on bananas but only 15mg/dL on cookies. We capture YOUR unique responses.",
-                      icon: <Users className="w-8 h-8" />,
-                      gradient: "from-blue-500 to-cyan-500"
-                    },
-                    {
-                      myth: "Meal timing doesn't matter - just eat less",
-                      fact: "When you eat is almost as important as what you eat",
-                      howWeUseIt: "Our circadian intelligence suggests optimal meal timing based on your natural glucose rhythms",
-                      evidence: "Glucose tolerance drops 25% in evening. Same meal at breakfast vs dinner shows dramatically different responses.",
-                      icon: <Clock className="w-8 h-8" />,
-                      gradient: "from-purple-500 to-violet-500"
-                    },
-                    {
-                      myth: "Low-fat diets are always healthiest",
-                      fact: "Lower carb approaches often work better for glucose control",
-                      howWeUseIt: "We suggest food combinations that naturally lower glucose spikes without restrictive dieting",
-                      evidence: "Adding protein/fat can reduce glucose spikes by 40%. Our suggestions use these proven interactions.",
-                      icon: <TrendingUp className="w-8 h-8" />,
-                      gradient: "from-green-500 to-emerald-500"
-                    }
-                  ].map((item, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="relative overflow-hidden"
-                    >
-                      <Card className="border-2 border-gray-100 hover:border-primary/20 transition-all duration-300 hover:shadow-xl">
-                        <CardContent className="p-0">
-                          <div className="grid lg:grid-cols-3 gap-0">
-                            {/* Myth Section */}
-                            <div className="bg-gradient-to-br from-red-50 to-red-100 p-6 border-r border-gray-100">
-                              <div className="flex items-start gap-3 mb-4">
-                                <div className="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center">
-                                  <span className="text-white font-bold">✗</span>
-                                </div>
-                                <div>
-                                  <Badge variant="destructive" className="mb-2">OUTDATED BELIEF</Badge>
-                                  <p className="font-semibold text-red-800 leading-tight">{item.myth}</p>
-                                </div>
-                              </div>
-                            </div>
-                            
-                            {/* Fact Section */}
-                            <div className="bg-gradient-to-br from-green-50 to-green-100 p-6 border-r border-gray-100">
-                              <div className="flex items-start gap-3 mb-4">
-                                <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
-                                  <span className="text-white font-bold">✓</span>
-                                </div>
-                                <div>
-                                  <Badge variant="secondary" className="mb-2 bg-green-600 text-white">PROVEN SCIENCE</Badge>
-                                  <p className="font-semibold text-green-800 leading-tight">{item.fact}</p>
-                                </div>
-                              </div>
-                            </div>
-                            
-                            {/* How We Use It Section */}
-                            <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6">
-                              <div className="flex items-start gap-3">
-                                <div className={`w-12 h-12 bg-gradient-to-r ${item.gradient} rounded-full flex items-center justify-center text-white`}>
-                                  {item.icon}
-                                </div>
-                                <div>
-                                  <Badge className="mb-2 bg-blue-600 text-white">SUGAR TRAP AI</Badge>
-                                  <p className="font-semibold text-blue-800 leading-tight mb-3">{item.howWeUseIt}</p>
-                                  <p className="text-xs text-blue-700 bg-white/60 p-2 rounded">{item.evidence}</p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-                  ))}
-                </div>
+              {/* Research Tab */}
+              <TabsContent value="research" className="space-y-8">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="space-y-8"
+                >
+                  <div className="text-center">
+                    <h3 className="text-2xl font-bold mb-4">Latest Research Evidence</h3>
+                    <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                      Cutting-edge studies revealing individual differences in metabolism across diverse populations
+                    </p>
+                  </div>
 
-                {/* Action Section */}
-                <div className="mt-12">
-                  <Card className="bg-gradient-to-r from-primary/10 via-secondary/5 to-primary/10 border-primary/20">
-                    <CardContent className="p-8 text-center">
-                      <div className="max-w-3xl mx-auto">
-                        <h4 className="text-2xl font-bold mb-4">Stop Guessing. Start Knowing.</h4>
-                        <p className="text-muted-foreground mb-6 text-lg">
-                          While others follow outdated nutrition rules, Sugar Trap AI gives you personalized insights based on cutting-edge research and YOUR unique biology.
-                        </p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                          <Button size="lg" className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-white" asChild>
-                            <Link to="/waitlist" className="flex items-center gap-2">
-                              Get Early Access
-                              <ArrowRight className="w-4 h-4" />
-                            </Link>
-                          </Button>
-                          <Button variant="outline" size="lg">
-                            Learn More About Our Science
-                          </Button>
+                  {/* Research Categories */}
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <Card className="p-6">
+                      <h4 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                        <Activity className="w-5 h-5 text-primary" />
+                        Normal Population
+                      </h4>
+                      <div className="space-y-3">
+                        <div className="text-sm">
+                          <span className="font-medium">Glucose Variability:</span> 5-fold difference in response to identical foods
+                        </div>
+                        <div className="text-sm">
+                          <span className="font-medium">Age Factor:</span> Insulin sensitivity declines 1-2% per year after 30
+                        </div>
+                        <div className="text-sm">
+                          <span className="font-medium">Gender Differences:</span> Women show 15% higher variability during hormonal cycles
                         </div>
                       </div>
-                    </CardContent>
+                    </Card>
+
+                    <Card className="p-6">
+                      <h4 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                        <Users className="w-5 h-5 text-blue-500" />
+                        Athletes
+                      </h4>
+                      <div className="space-y-3">
+                        <div className="text-sm">
+                          <span className="font-medium">Paradox Finding:</span> High muscle fat but excellent insulin sensitivity
+                        </div>
+                        <div className="text-sm">
+                          <span className="font-medium">Metabolic Flexibility:</span> Superior fat oxidation prevents toxic lipid accumulation
+                        </div>
+                        <div className="text-sm">
+                          <span className="font-medium">Recovery Patterns:</span> 2x faster glucose clearance after training
+                        </div>
+                      </div>
+                    </Card>
+
+                    <Card className="p-6">
+                      <h4 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                        <Heart className="w-5 h-5 text-pink-500" />
+                        Pregnancy
+                      </h4>
+                      <div className="space-y-3">
+                        <div className="text-sm">
+                          <span className="font-medium">Hormonal Changes:</span> Placental hormones reduce insulin sensitivity by 50%
+                        </div>
+                        <div className="text-sm">
+                          <span className="font-medium">Adaptive Purpose:</span> Directs glucose to growing fetus
+                        </div>
+                        <div className="text-sm">
+                          <span className="font-medium">Risk Factor:</span> 30% develop gestational diabetes without intervention
+                        </div>
+                      </div>
+                    </Card>
+
+                    <Card className="p-6">
+                      <h4 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                        <Star className="w-5 h-5 text-yellow-500" />
+                        Children
+                      </h4>
+                      <div className="space-y-3">
+                        <div className="text-sm">
+                          <span className="font-medium">Pubertal Changes:</span> 25-50% decrease in insulin sensitivity during adolescence
+                        </div>
+                        <div className="text-sm">
+                          <span className="font-medium">Growth Hormones:</span> Natural resistance supports rapid development
+                        </div>
+                        <div className="text-sm">
+                          <span className="font-medium">Recovery:</span> Sensitivity typically returns post-puberty in healthy individuals
+                        </div>
+                      </div>
+                    </Card>
+
+                    <Card className="p-6">
+                      <h4 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                        <Clock className="w-5 h-5 text-purple-500" />
+                        Shift Workers
+                      </h4>
+                      <div className="space-y-3">
+                        <div className="text-sm">
+                          <span className="font-medium">Circadian Disruption:</span> 40% higher diabetes risk in night shift workers
+                        </div>
+                        <div className="text-sm">
+                          <span className="font-medium">Sleep Debt:</span> Each hour of sleep loss = 9% decrease in insulin sensitivity
+                        </div>
+                        <div className="text-sm">
+                          <span className="font-medium">Meal Timing:</span> Eating at night amplifies glucose responses by 20%
+                        </div>
+                      </div>
+                    </Card>
+
+                    <Card className="p-6">
+                      <h4 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                        <Moon className="w-5 h-5 text-indigo-500" />
+                        Older Adults
+                      </h4>
+                      <div className="space-y-3">
+                        <div className="text-sm">
+                          <span className="font-medium">Age-Related Decline:</span> Progressive β-cell dysfunction and insulin resistance
+                        </div>
+                        <div className="text-sm">
+                          <span className="font-medium">Medication Impact:</span> Common drugs affect glucose metabolism
+                        </div>
+                        <div className="text-sm">
+                          <span className="font-medium">Intervention Success:</span> Exercise can restore 30% of lost sensitivity
+                        </div>
+                      </div>
+                    </Card>
+                  </div>
+
+                  {/* Key Research Findings */}
+                  <Card className="p-8 bg-gradient-to-r from-primary/5 to-secondary/5">
+                    <h4 className="text-xl font-semibold mb-6 flex items-center gap-2">
+                      <Microscope className="w-5 h-5 text-primary" />
+                      Breakthrough Research Supporting Personalized Nutrition
+                    </h4>
+                    <div className="grid md:grid-cols-2 gap-8">
+                      <div>
+                        <h5 className="font-semibold mb-3 text-primary">The PREDICT Study (2019-2023)</h5>
+                        <p className="text-sm text-muted-foreground mb-4">
+                          The world's largest nutrition study tracking 1,100+ people found that genetic, 
+                          microbiome, and metabolic factors create unique nutritional profiles. Participants 
+                          showed dramatic differences in how they responded to identical meals.
+                        </p>
+                        <div className="space-y-2 text-sm">
+                          <div>• <span className="font-medium">Sample Size:</span> 1,100+ participants, 100,000+ meals analyzed</div>
+                          <div>• <span className="font-medium">Key Finding:</span> Personal response variation greater than food type variation</div>
+                          <div>• <span className="font-medium">Clinical Impact:</span> Personalized advice 2x more effective than generic guidelines</div>
+                        </div>
+                      </div>
+                      <div>
+                        <h5 className="font-semibold mb-3 text-secondary">Continuous Glucose Monitoring Revolution</h5>
+                        <p className="text-sm text-muted-foreground mb-4">
+                          2023 studies show CGM in non-diabetic populations reveals hidden metabolic 
+                          dysfunction. 40% of "healthy" individuals show glucose patterns indicating 
+                          prediabetes risk, undetectable by standard testing.
+                        </p>
+                        <div className="space-y-2 text-sm">
+                          <div>• <span className="font-medium">Hidden Prediabetes:</span> 40% of normal HbA1c individuals show concerning patterns</div>
+                          <div>• <span className="font-medium">Early Detection:</span> CGM identifies risk 3-5 years before blood tests</div>
+                          <div>• <span className="font-medium">Lifestyle Impact:</span> Real-time feedback improves adherence by 85%</div>
+                        </div>
+                      </div>
+                    </div>
                   </Card>
-                </div>
+                </motion.div>
+              </TabsContent>
+
+              {/* Myths vs Facts Tab - Redesigned */}
+              <TabsContent value="myths" className="space-y-8">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="space-y-8"
+                >
+                  <div className="text-center">
+                    <h3 className="text-2xl font-bold mb-4">Nutrition Myths vs. Scientific Facts</h3>
+                    <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                      Separating evidence-based nutrition from outdated beliefs and marketing myths
+                    </p>
+                  </div>
+
+                  <div className="space-y-6">
+                    {/* Myth 1 */}
+                    <Card className="overflow-hidden border-2 border-gray-200 hover:border-primary/30 transition-colors">
+                      <div className="grid md:grid-cols-3">
+                        <div className="p-6 bg-gradient-to-br from-red-50 to-red-100 border-r border-gray-200">
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
+                              <AlertTriangle className="w-4 h-4 text-white" />
+                            </div>
+                            <h4 className="font-bold text-red-800">Outdated Belief</h4>
+                          </div>
+                          <p className="text-red-700 font-medium">
+                            "All calories are created equal - weight loss is just calories in vs. calories out"
+                          </p>
+                        </div>
+                        <div className="p-6 bg-gradient-to-br from-green-50 to-green-100 border-r border-gray-200">
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                              <CheckCircle className="w-4 h-4 text-white" />
+                            </div>
+                            <h4 className="font-bold text-green-800">Proven Science</h4>
+                          </div>
+                          <p className="text-green-700 font-medium">
+                            Different foods trigger vastly different hormonal and metabolic responses, affecting hunger, fat storage, and energy levels
+                          </p>
+                        </div>
+                        <div className="p-6 bg-gradient-to-br from-blue-50 to-blue-100">
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                              <Target className="w-4 h-4 text-white" />
+                            </div>
+                            <h4 className="font-bold text-blue-800">Sugar Trap AI Solution</h4>
+                          </div>
+                          <p className="text-blue-700 font-medium">
+                            Tracks how specific foods affect your glucose, energy, and hunger patterns to optimize your personal calorie quality
+                          </p>
+                        </div>
+                      </div>
+                    </Card>
+
+                    {/* Myth 2 */}
+                    <Card className="overflow-hidden border-2 border-gray-200 hover:border-primary/30 transition-colors">
+                      <div className="grid md:grid-cols-3">
+                        <div className="p-6 bg-gradient-to-br from-red-50 to-red-100 border-r border-gray-200">
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
+                              <AlertTriangle className="w-4 h-4 text-white" />
+                            </div>
+                            <h4 className="font-bold text-red-800">Outdated Belief</h4>
+                          </div>
+                          <p className="text-red-700 font-medium">
+                            "Healthy foods are the same for everyone - follow universal dietary guidelines"
+                          </p>
+                        </div>
+                        <div className="p-6 bg-gradient-to-br from-green-50 to-green-100 border-r border-gray-200">
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                              <CheckCircle className="w-4 h-4 text-white" />
+                            </div>
+                            <h4 className="font-bold text-green-800">Proven Science</h4>
+                          </div>
+                          <p className="text-green-700 font-medium">
+                            Individual glucose responses to identical foods vary by up to 5-fold due to genetics, microbiome, and metabolic differences
+                          </p>
+                        </div>
+                        <div className="p-6 bg-gradient-to-br from-blue-50 to-blue-100">
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                              <Target className="w-4 h-4 text-white" />
+                            </div>
+                            <h4 className="font-bold text-blue-800">Sugar Trap AI Solution</h4>
+                          </div>
+                          <p className="text-blue-700 font-medium">
+                            Creates personalized food rankings based on your unique metabolic response, not generic health claims
+                          </p>
+                        </div>
+                      </div>
+                    </Card>
+
+                    {/* Myth 3 */}
+                    <Card className="overflow-hidden border-2 border-gray-200 hover:border-primary/30 transition-colors">
+                      <div className="grid md:grid-cols-3">
+                        <div className="p-6 bg-gradient-to-br from-red-50 to-red-100 border-r border-gray-200">
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
+                              <AlertTriangle className="w-4 h-4 text-white" />
+                            </div>
+                            <h4 className="font-bold text-red-800">Outdated Belief</h4>
+                          </div>
+                          <p className="text-red-700 font-medium">
+                            "Fat is the enemy - low-fat diets are healthiest for weight loss"
+                          </p>
+                        </div>
+                        <div className="p-6 bg-gradient-to-br from-green-50 to-green-100 border-r border-gray-200">
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                              <CheckCircle className="w-4 h-4 text-white" />
+                            </div>
+                            <h4 className="font-bold text-green-800">Proven Science</h4>
+                          </div>
+                          <p className="text-green-700 font-medium">
+                            Refined carbs and sugar cause more metabolic dysfunction than healthy fats. Fat quality matters more than quantity
+                          </p>
+                        </div>
+                        <div className="p-6 bg-gradient-to-br from-blue-50 to-blue-100">
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                              <Target className="w-4 h-4 text-white" />
+                            </div>
+                            <h4 className="font-bold text-blue-800">Sugar Trap AI Solution</h4>
+                          </div>
+                          <p className="text-blue-700 font-medium">
+                            Identifies hidden sugars and refined carbs that spike your glucose while highlighting beneficial fats for your metabolism
+                          </p>
+                        </div>
+                      </div>
+                    </Card>
+
+                    {/* Myth 4 */}
+                    <Card className="overflow-hidden border-2 border-gray-200 hover:border-primary/30 transition-colors">
+                      <div className="grid md:grid-cols-3">
+                        <div className="p-6 bg-gradient-to-br from-red-50 to-red-100 border-r border-gray-200">
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
+                              <AlertTriangle className="w-4 h-4 text-white" />
+                            </div>
+                            <h4 className="font-bold text-red-800">Outdated Belief</h4>
+                          </div>
+                          <p className="text-red-700 font-medium">
+                            "Meal timing doesn't matter - just focus on what you eat, not when"
+                          </p>
+                        </div>
+                        <div className="p-6 bg-gradient-to-br from-green-50 to-green-100 border-r border-gray-200">
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                              <CheckCircle className="w-4 h-4 text-white" />
+                            </div>
+                            <h4 className="font-bold text-green-800">Proven Science</h4>
+                          </div>
+                          <p className="text-green-700 font-medium">
+                            Circadian biology affects insulin sensitivity by 50%. Same meal causes higher glucose spikes when eaten late at night
+                          </p>
+                        </div>
+                        <div className="p-6 bg-gradient-to-br from-blue-50 to-blue-100">
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                              <Target className="w-4 h-4 text-white" />
+                            </div>
+                            <h4 className="font-bold text-blue-800">Sugar Trap AI Solution</h4>
+                          </div>
+                          <p className="text-blue-700 font-medium">
+                            Analyzes your circadian patterns to recommend optimal meal timing for stable glucose and better sleep
+                          </p>
+                        </div>
+                      </div>
+                    </Card>
+                  </div>
+
+                  {/* Call to Action */}
+                  <Card className="p-8 bg-gradient-to-br from-primary/10 to-secondary/10 border-2 border-primary/20 text-center">
+                    <h4 className="text-2xl font-bold mb-4">Ready to Discover Your Personal Nutrition Science?</h4>
+                    <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+                      Stop guessing what's healthy for you. Use real-time glucose data to build a nutrition plan 
+                      based on your unique biology, not outdated one-size-fits-all guidelines.
+                    </p>
+                    <Button size="lg" className="bg-gradient-to-r from-primary to-secondary text-white" asChild>
+                      <Link to="/waitlist">
+                        <Gauge className="w-5 h-5 mr-2" />
+                        Join Sugar Trap AI Beta
+                      </Link>
+                    </Button>
+                  </Card>
+                </motion.div>
               </TabsContent>
             </Tabs>
           </div>
