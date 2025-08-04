@@ -719,118 +719,137 @@ const SciencePage = () => {
                 </Card>
               </TabsContent>
 
-              <TabsContent value="myths" className="space-y-6">
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <AlertTriangle className="w-5 h-5 text-yellow-500" />
-                      Fat Myths vs Scientific Facts
-                    </CardTitle>
-                    <CardDescription>
-                      Debunking decades of nutritional misinformation with modern evidence (2023-2025 research)
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-8">
-                      {/* Historical Context */}
-                      <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-                        <h4 className="font-semibold text-blue-800 mb-3">The Rise and Fall of Fat Phobia</h4>
-                        <div className="space-y-3 text-sm text-blue-700">
-                          <div><strong>1958:</strong> Ancel Keys launches the Seven Countries Study, selectively choosing countries that supported his hypothesis while excluding France, Switzerland, and Germany.</div>
-                          <div><strong>1965:</strong> Sugar Research Foundation pays Harvard researchers equivalent of £39,000 today to shift blame from sugar to fat (Project 226).</div>
-                          <div><strong>1977:</strong> US Dietary Goals recommend reducing fat from 40% to 30% of energy intake with no randomized controlled trial evidence.</div>
-                          <div><strong>1980s-1990s:</strong> Food industry creates "low-fat" market by removing fat and adding sugar. 76% of Americans bought fat-free foods while obesity rates soared.</div>
+              <TabsContent value="myths" className="space-y-8">
+                <div className="text-center mb-12">
+                  <h3 className="text-3xl font-bold mb-4">What Sugar Trap AI Knows That Others Don't</h3>
+                  <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                    Decades of nutrition myths have misled millions. Our app is built on evidence that exposes these misconceptions and reveals what actually works for glucose control.
+                  </p>
+                </div>
+
+                <div className="grid gap-8">
+                  {[
+                    {
+                      myth: "All calories are equal for weight management",
+                      fact: "Your body processes different foods completely differently",
+                      howWeUseIt: "Sugar Trap AI tracks not just calories, but macronutrient ratios and their impact on YOUR glucose response",
+                      evidence: "Protein increases energy burn by 20-30% vs 0-3% for carbs/fats. Our algorithm weights this in your recommendations.",
+                      icon: <Zap className="w-8 h-8" />,
+                      gradient: "from-amber-500 to-orange-500"
+                    },
+                    {
+                      myth: "Fat makes you fat and causes heart disease",
+                      fact: "Refined sugar and processed carbs are the real culprits",
+                      howWeUseIt: "We help you identify hidden sugars and refined carbs that spike your glucose, while encouraging healthy fats",
+                      evidence: "Meta-analysis of 650,000+ people found no link between saturated fat and heart disease. Sugar shows strong correlation.",
+                      icon: <Heart className="w-8 h-8" />,
+                      gradient: "from-rose-500 to-pink-500"
+                    },
+                    {
+                      myth: "Everyone responds the same way to foods",
+                      fact: "Your glucose response is as unique as your fingerprint",
+                      howWeUseIt: "This is our core principle - we learn YOUR patterns, not population averages",
+                      evidence: "Some people spike 150mg/dL on bananas but only 15mg/dL on cookies. We capture YOUR unique responses.",
+                      icon: <Users className="w-8 h-8" />,
+                      gradient: "from-blue-500 to-cyan-500"
+                    },
+                    {
+                      myth: "Meal timing doesn't matter - just eat less",
+                      fact: "When you eat is almost as important as what you eat",
+                      howWeUseIt: "Our circadian intelligence suggests optimal meal timing based on your natural glucose rhythms",
+                      evidence: "Glucose tolerance drops 25% in evening. Same meal at breakfast vs dinner shows dramatically different responses.",
+                      icon: <Clock className="w-8 h-8" />,
+                      gradient: "from-purple-500 to-violet-500"
+                    },
+                    {
+                      myth: "Low-fat diets are always healthiest",
+                      fact: "Lower carb approaches often work better for glucose control",
+                      howWeUseIt: "We suggest food combinations that naturally lower glucose spikes without restrictive dieting",
+                      evidence: "Adding protein/fat can reduce glucose spikes by 40%. Our suggestions use these proven interactions.",
+                      icon: <TrendingUp className="w-8 h-8" />,
+                      gradient: "from-green-500 to-emerald-500"
+                    }
+                  ].map((item, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      className="relative overflow-hidden"
+                    >
+                      <Card className="border-2 border-gray-100 hover:border-primary/20 transition-all duration-300 hover:shadow-xl">
+                        <CardContent className="p-0">
+                          <div className="grid lg:grid-cols-3 gap-0">
+                            {/* Myth Section */}
+                            <div className="bg-gradient-to-br from-red-50 to-red-100 p-6 border-r border-gray-100">
+                              <div className="flex items-start gap-3 mb-4">
+                                <div className="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center">
+                                  <span className="text-white font-bold">✗</span>
+                                </div>
+                                <div>
+                                  <Badge variant="destructive" className="mb-2">OUTDATED BELIEF</Badge>
+                                  <p className="font-semibold text-red-800 leading-tight">{item.myth}</p>
+                                </div>
+                              </div>
+                            </div>
+                            
+                            {/* Fact Section */}
+                            <div className="bg-gradient-to-br from-green-50 to-green-100 p-6 border-r border-gray-100">
+                              <div className="flex items-start gap-3 mb-4">
+                                <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
+                                  <span className="text-white font-bold">✓</span>
+                                </div>
+                                <div>
+                                  <Badge variant="secondary" className="mb-2 bg-green-600 text-white">PROVEN SCIENCE</Badge>
+                                  <p className="font-semibold text-green-800 leading-tight">{item.fact}</p>
+                                </div>
+                              </div>
+                            </div>
+                            
+                            {/* How We Use It Section */}
+                            <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6">
+                              <div className="flex items-start gap-3">
+                                <div className={`w-12 h-12 bg-gradient-to-r ${item.gradient} rounded-full flex items-center justify-center text-white`}>
+                                  {item.icon}
+                                </div>
+                                <div>
+                                  <Badge className="mb-2 bg-blue-600 text-white">SUGAR TRAP AI</Badge>
+                                  <p className="font-semibold text-blue-800 leading-tight mb-3">{item.howWeUseIt}</p>
+                                  <p className="text-xs text-blue-700 bg-white/60 p-2 rounded">{item.evidence}</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Action Section */}
+                <div className="mt-12">
+                  <Card className="bg-gradient-to-r from-primary/10 via-secondary/5 to-primary/10 border-primary/20">
+                    <CardContent className="p-8 text-center">
+                      <div className="max-w-3xl mx-auto">
+                        <h4 className="text-2xl font-bold mb-4">Stop Guessing. Start Knowing.</h4>
+                        <p className="text-muted-foreground mb-6 text-lg">
+                          While others follow outdated nutrition rules, Sugar Trap AI gives you personalized insights based on cutting-edge research and YOUR unique biology.
+                        </p>
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                          <Button size="lg" className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-white" asChild>
+                            <Link to="/waitlist" className="flex items-center gap-2">
+                              Get Early Access
+                              <ArrowRight className="w-4 h-4" />
+                            </Link>
+                          </Button>
+                          <Button variant="outline" size="lg">
+                            Learn More About Our Science
+                          </Button>
                         </div>
                       </div>
-
-                      {/* Myth vs Fact Cards */}
-                      <div className="space-y-6">
-                        <div className="space-y-3">
-                          <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
-                            <h4 className="font-semibold text-red-700 mb-2 flex items-center gap-2">
-                              <CheckCircle className="w-4 h-4 rotate-45" />
-                              Myth
-                            </h4>
-                            <p className="text-sm">All saturated fats cause heart disease</p>
-                          </div>
-                          <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
-                            <h4 className="font-semibold text-green-700 mb-2 flex items-center gap-2">
-                              <CheckCircle className="w-4 h-4" />
-                              Scientific Fact
-                            </h4>
-                            <p className="text-sm mb-2">78 studies involving 650,000 people found no significant association between saturated fat and cardiovascular disease</p>
-                            <p className="text-xs text-green-600"><strong>Evidence:</strong> Yamada et al. (2025), JMA Journal - analysis of 9 RCTs with 13,532 participants found no significant differences in cardiovascular mortality with saturated fat restriction</p>
-                          </div>
-                        </div>
-
-                        <div className="space-y-3">
-                          <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
-                            <h4 className="font-semibold text-red-700 mb-2 flex items-center gap-2">
-                              <CheckCircle className="w-4 h-4 rotate-45" />
-                              Myth
-                            </h4>
-                            <p className="text-sm">Dietary cholesterol directly raises blood cholesterol</p>
-                          </div>
-                          <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
-                            <h4 className="font-semibold text-green-700 mb-2 flex items-center gap-2">
-                              <CheckCircle className="w-4 h-4" />
-                              Scientific Fact
-                            </h4>
-                            <p className="text-sm mb-2">Only 15% of blood cholesterol comes from diet; 85% is produced by the liver</p>
-                            <p className="text-xs text-green-600"><strong>Evidence:</strong> 2015-2020 US Dietary Guidelines removed the 300mg daily cholesterol limit, stating "cholesterol is not considered a nutrient of concern for overconsumption"</p>
-                          </div>
-                        </div>
-
-                        <div className="space-y-3">
-                          <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
-                            <h4 className="font-semibold text-red-700 mb-2 flex items-center gap-2">
-                              <CheckCircle className="w-4 h-4 rotate-45" />
-                              Myth
-                            </h4>
-                            <p className="text-sm">Omega-6 fats are always inflammatory</p>
-                          </div>
-                          <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
-                            <h4 className="font-semibold text-green-700 mb-2 flex items-center gap-2">
-                              <CheckCircle className="w-4 h-4" />
-                              Scientific Fact
-                            </h4>
-                            <p className="text-sm mb-2">Higher omega-6 intake linked to 12% lower cardiovascular mortality in recent studies</p>
-                            <p className="text-xs text-green-600"><strong>Evidence:</strong> Sadeghi et al. (2025) global meta-analysis of 150 cohorts and 230 studies found protective effects against cardiovascular disease and all-cause mortality</p>
-                          </div>
-                        </div>
-
-                        <div className="space-y-3">
-                          <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
-                            <h4 className="font-semibold text-red-700 mb-2 flex items-center gap-2">
-                              <CheckCircle className="w-4 h-4 rotate-45" />
-                              Myth
-                            </h4>
-                            <p className="text-sm">Low-fat diets are always healthier</p>
-                          </div>
-                          <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
-                            <h4 className="font-semibold text-green-700 mb-2 flex items-center gap-2">
-                              <CheckCircle className="w-4 h-4" />
-                              Scientific Fact
-                            </h4>
-                            <p className="text-sm mb-2">Mediterranean diet high in healthy fats shows superior health outcomes compared to low-fat diets</p>
-                            <p className="text-xs text-green-600"><strong>Evidence:</strong> Laffond et al. (2023) systematic review of 24 studies found consistent associations with reduced all-cause mortality in both general populations and cardiovascular disease patients</p>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Modern Consensus */}
-                      <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
-                        <h4 className="font-semibold text-gray-800 mb-3">Modern Scientific Consensus (2023-2025)</h4>
-                        <div className="space-y-2 text-sm text-gray-700">
-                          <div>• <strong>Quality over Quantity:</strong> Focus on fat source and processing rather than total fat restriction</div>
-                          <div>• <strong>Essential Nutrients:</strong> Fats are required for hormone production, vitamin absorption, and brain function</div>
-                          <div>• <strong>Individual Variation:</strong> Genetic differences affect fat metabolism and optimal dietary composition</div>
-                          <div>• <strong>Avoid Trans Fats:</strong> The only fat with consistent evidence of harm (EU regulation limits to 2g per 100g fat)</div>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                    </CardContent>
+                  </Card>
+                </div>
               </TabsContent>
             </Tabs>
           </div>
