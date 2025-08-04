@@ -4,7 +4,11 @@ import { Microscope, Sparkles, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
-import ScienceHub from '@/components/science/ScienceHub';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Progress } from '@/components/ui/progress';
+import { Slider } from '@/components/ui/slider';
 import QuickFactsTicker from '@/components/QuickFactsTicker';
 
 const SciencePage = () => {
@@ -136,8 +140,97 @@ const SciencePage = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.3 }}
+            className="max-w-4xl mx-auto"
           >
-            <ScienceHub />
+            <Tabs defaultValue="overview" className="space-y-8">
+              <TabsList className="grid w-full grid-cols-4 h-12">
+                <TabsTrigger value="overview">Overview</TabsTrigger>
+                <TabsTrigger value="interactive">Interactive</TabsTrigger>
+                <TabsTrigger value="research">Research</TabsTrigger>
+                <TabsTrigger value="myths">Myths vs Facts</TabsTrigger>
+              </TabsList>
+
+              <TabsContent value="overview" className="space-y-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Science Topics</CardTitle>
+                    <CardDescription>Explore the latest research in metabolism and nutrition</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div className="p-6 border rounded-lg">
+                        <h3 className="font-semibold mb-2">Optimal Insulin Sensitivity</h3>
+                        <p className="text-sm text-muted-foreground mb-4">Understanding how your body efficiently manages blood sugar with minimal hormonal intervention.</p>
+                        <Badge>Beginner</Badge>
+                      </div>
+                      <div className="p-6 border rounded-lg">
+                        <h3 className="font-semibold mb-2">Fat Metabolism Truth</h3>
+                        <p className="text-sm text-muted-foreground mb-4">Debunking decades of fat phobia with modern evidence-based nutritional science.</p>
+                        <Badge>Intermediate</Badge>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+
+              <TabsContent value="interactive" className="space-y-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Interactive Demos</CardTitle>
+                    <CardDescription>Coming soon - Interactive visualizations and simulations</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-center py-12 text-muted-foreground">
+                      Interactive content will be available here
+                    </div>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+
+              <TabsContent value="research" className="space-y-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Latest Research</CardTitle>
+                    <CardDescription>Breakthrough studies reshaping our understanding</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <div className="border-l-4 border-primary pl-4">
+                        <h4 className="font-semibold">No significant association between saturated fat and cardiovascular disease</h4>
+                        <p className="text-sm text-muted-foreground">Meta-analysis of 78 studies involving 650,000 people</p>
+                      </div>
+                      <div className="border-l-4 border-primary pl-4">
+                        <h4 className="font-semibold">Higher omega-6 intake linked to 12% lower cardiovascular mortality</h4>
+                        <p className="text-sm text-muted-foreground">Global meta-analysis, 2025</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+
+              <TabsContent value="myths" className="space-y-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Myths vs Facts</CardTitle>
+                    <CardDescription>Debunking nutritional misinformation</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-6">
+                      <div className="space-y-3">
+                        <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+                          <h4 className="font-semibold text-red-700">❌ Myth</h4>
+                          <p className="text-sm">All saturated fats cause heart disease</p>
+                        </div>
+                        <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+                          <h4 className="font-semibold text-green-700">✅ Fact</h4>
+                          <p className="text-sm">78 studies involving 650,000 people found no significant association between saturated fat and cardiovascular disease</p>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+            </Tabs>
           </motion.div>
         </div>
       </section>
