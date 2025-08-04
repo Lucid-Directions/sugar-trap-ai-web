@@ -1,6 +1,7 @@
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { Microscope, Sparkles, ArrowRight, TrendingUp, Activity, Users, Heart, Clock, Moon, Brain, Dna, Play, Star, Filter, Search, ChevronRight, BookOpen, Zap, AlertTriangle, Info, CheckCircle, Target, BarChart3, Lightbulb, Shield, Gauge } from 'lucide-react';
+import { Microscope, Sparkles, ArrowRight, TrendingUp, Activity, Users, Heart, Clock, Moon, Brain, Dna, Play, Star, Filter, Search, ChevronRight, BookOpen, Zap, AlertTriangle, Info, CheckCircle, Target, BarChart3, Lightbulb, Shield, Gauge, ChevronDown, X } from 'lucide-react';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
@@ -754,159 +755,135 @@ const SciencePage = () => {
                     </p>
                   </div>
 
-                  <div className="space-y-6">
-                    {/* Myth 1 */}
-                    <Card className="overflow-hidden border-2 border-gray-200 hover:border-primary/30 transition-colors">
-                      <div className="grid md:grid-cols-3">
-                        <div className="p-6 bg-gradient-to-br from-red-50 to-red-100 border-r border-gray-200">
-                          <div className="flex items-center gap-3 mb-3">
-                            <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
-                              <AlertTriangle className="w-4 h-4 text-white" />
-                            </div>
-                            <h4 className="font-bold text-red-800">Outdated Belief</h4>
+                  <div className="grid gap-4 md:grid-cols-2">
+                    <Card className="relative overflow-hidden border-2 border-destructive/20 bg-gradient-to-br from-background to-destructive/5">
+                      <div className="p-6">
+                        <div className="flex items-start gap-3 mb-4">
+                          <div className="p-2 rounded-full bg-destructive/10">
+                            <X className="h-5 w-5 text-destructive" />
                           </div>
-                          <p className="text-red-700 font-medium">
-                            "All calories are created equal - weight loss is just calories in vs. calories out"
-                          </p>
+                          <div>
+                            <h4 className="font-semibold text-destructive mb-1">Outdated Belief</h4>
+                            <p className="text-lg font-medium">"All calories are equal"</p>
+                          </div>
                         </div>
-                        <div className="p-6 bg-gradient-to-br from-green-50 to-green-100 border-r border-gray-200">
-                          <div className="flex items-center gap-3 mb-3">
-                            <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-                              <CheckCircle className="w-4 h-4 text-white" />
+                        <p className="text-sm text-muted-foreground mb-4">The oversimplified "calories in, calories out" model ignores complex hormonal and metabolic effects.</p>
+                        
+                        <div className="space-y-3">
+                          <div className="p-3 rounded-lg bg-accent/10 border border-accent/20">
+                            <div className="flex items-center gap-2 mb-2">
+                              <CheckCircle className="h-4 w-4 text-accent" />
+                              <span className="font-medium text-accent">Proven Science</span>
                             </div>
-                            <h4 className="font-bold text-green-800">Proven Science</h4>
+                            <p className="text-sm">100 calories from sugar trigger vastly different hormonal responses than 100 calories from protein, affecting satiety, metabolism, and fat storage.</p>
                           </div>
-                          <p className="text-green-700 font-medium">
-                            Different foods trigger vastly different hormonal and metabolic responses, affecting hunger, fat storage, and energy levels
-                          </p>
-                        </div>
-                        <div className="p-6 bg-gradient-to-br from-blue-50 to-blue-100">
-                          <div className="flex items-center gap-3 mb-3">
-                            <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                              <Target className="w-4 h-4 text-white" />
+                          
+                          <div className="p-3 rounded-lg bg-primary/10 border border-primary/20">
+                            <div className="flex items-center gap-2 mb-2">
+                              <Zap className="h-4 w-4 text-primary" />
+                              <span className="font-medium text-primary">Sugar Trap AI Solution</span>
                             </div>
-                            <h4 className="font-bold text-blue-800">Sugar Trap AI Solution</h4>
+                            <p className="text-sm">Track real-time glucose responses to reveal how your body actually processes different calorie sources beyond simple math.</p>
                           </div>
-                          <p className="text-blue-700 font-medium">
-                            Tracks how specific foods affect your glucose, energy, and hunger patterns to optimize your personal calorie quality
-                          </p>
                         </div>
                       </div>
                     </Card>
 
-                    {/* Myth 2 */}
-                    <Card className="overflow-hidden border-2 border-gray-200 hover:border-primary/30 transition-colors">
-                      <div className="grid md:grid-cols-3">
-                        <div className="p-6 bg-gradient-to-br from-red-50 to-red-100 border-r border-gray-200">
-                          <div className="flex items-center gap-3 mb-3">
-                            <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
-                              <AlertTriangle className="w-4 h-4 text-white" />
-                            </div>
-                            <h4 className="font-bold text-red-800">Outdated Belief</h4>
+                    <Card className="relative overflow-hidden border-2 border-destructive/20 bg-gradient-to-br from-background to-destructive/5">
+                      <div className="p-6">
+                        <div className="flex items-start gap-3 mb-4">
+                          <div className="p-2 rounded-full bg-destructive/10">
+                            <X className="h-5 w-5 text-destructive" />
                           </div>
-                          <p className="text-red-700 font-medium">
-                            "Healthy foods are the same for everyone - follow universal dietary guidelines"
-                          </p>
+                          <div>
+                            <h4 className="font-semibold text-destructive mb-1">Outdated Belief</h4>
+                            <p className="text-lg font-medium">"Fat makes you fat"</p>
+                          </div>
                         </div>
-                        <div className="p-6 bg-gradient-to-br from-green-50 to-green-100 border-r border-gray-200">
-                          <div className="flex items-center gap-3 mb-3">
-                            <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-                              <CheckCircle className="w-4 h-4 text-white" />
+                        <p className="text-sm text-muted-foreground mb-4">The low-fat diet craze led to increased refined carb consumption, worsening metabolic health.</p>
+                        
+                        <div className="space-y-3">
+                          <div className="p-3 rounded-lg bg-accent/10 border border-accent/20">
+                            <div className="flex items-center gap-2 mb-2">
+                              <CheckCircle className="h-4 w-4 text-accent" />
+                              <span className="font-medium text-accent">Proven Science</span>
                             </div>
-                            <h4 className="font-bold text-green-800">Proven Science</h4>
+                            <p className="text-sm">Healthy fats improve satiety, slow glucose absorption, and don't trigger insulin spikes. Higher fat intake can improve metabolic health when refined carbs are reduced.</p>
                           </div>
-                          <p className="text-green-700 font-medium">
-                            Individual glucose responses to identical foods vary by up to 5-fold due to genetics, microbiome, and metabolic differences
-                          </p>
-                        </div>
-                        <div className="p-6 bg-gradient-to-br from-blue-50 to-blue-100">
-                          <div className="flex items-center gap-3 mb-3">
-                            <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                              <Target className="w-4 h-4 text-white" />
+                          
+                          <div className="p-3 rounded-lg bg-primary/10 border border-primary/20">
+                            <div className="flex items-center gap-2 mb-2">
+                              <Zap className="h-4 w-4 text-primary" />
+                              <span className="font-medium text-primary">Sugar Trap AI Solution</span>
                             </div>
-                            <h4 className="font-bold text-blue-800">Sugar Trap AI Solution</h4>
+                            <p className="text-sm">Monitor how adding healthy fats to meals affects your glucose stability and satiety levels.</p>
                           </div>
-                          <p className="text-blue-700 font-medium">
-                            Creates personalized food rankings based on your unique metabolic response, not generic health claims
-                          </p>
                         </div>
                       </div>
                     </Card>
 
-                    {/* Myth 3 */}
-                    <Card className="overflow-hidden border-2 border-gray-200 hover:border-primary/30 transition-colors">
-                      <div className="grid md:grid-cols-3">
-                        <div className="p-6 bg-gradient-to-br from-red-50 to-red-100 border-r border-gray-200">
-                          <div className="flex items-center gap-3 mb-3">
-                            <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
-                              <AlertTriangle className="w-4 h-4 text-white" />
-                            </div>
-                            <h4 className="font-bold text-red-800">Outdated Belief</h4>
+                    <Card className="relative overflow-hidden border-2 border-destructive/20 bg-gradient-to-br from-background to-destructive/5">
+                      <div className="p-6">
+                        <div className="flex items-start gap-3 mb-4">
+                          <div className="p-2 rounded-full bg-destructive/10">
+                            <X className="h-5 w-5 text-destructive" />
                           </div>
-                          <p className="text-red-700 font-medium">
-                            "Fat is the enemy - low-fat diets are healthiest for weight loss"
-                          </p>
+                          <div>
+                            <h4 className="font-semibold text-destructive mb-1">Outdated Belief</h4>
+                            <p className="text-lg font-medium">"Natural sugars are always healthy"</p>
+                          </div>
                         </div>
-                        <div className="p-6 bg-gradient-to-br from-green-50 to-green-100 border-r border-gray-200">
-                          <div className="flex items-center gap-3 mb-3">
-                            <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-                              <CheckCircle className="w-4 h-4 text-white" />
+                        <p className="text-sm text-muted-foreground mb-4">Many believe sugars from fruits, honey, or agave are inherently healthier than processed sugars.</p>
+                        
+                        <div className="space-y-3">
+                          <div className="p-3 rounded-lg bg-accent/10 border border-accent/20">
+                            <div className="flex items-center gap-2 mb-2">
+                              <CheckCircle className="h-4 w-4 text-accent" />
+                              <span className="font-medium text-accent">Proven Science</span>
                             </div>
-                            <h4 className="font-bold text-green-800">Proven Science</h4>
+                            <p className="text-sm">While whole fruits provide fiber and nutrients, extracted fruit sugars behave similarly to table sugar in your bloodstream. Context matters more than source.</p>
                           </div>
-                          <p className="text-green-700 font-medium">
-                            Refined carbs and sugar cause more metabolic dysfunction than healthy fats. Fat quality matters more than quantity
-                          </p>
-                        </div>
-                        <div className="p-6 bg-gradient-to-br from-blue-50 to-blue-100">
-                          <div className="flex items-center gap-3 mb-3">
-                            <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                              <Target className="w-4 h-4 text-white" />
+                          
+                          <div className="p-3 rounded-lg bg-primary/10 border border-primary/20">
+                            <div className="flex items-center gap-2 mb-2">
+                              <Zap className="h-4 w-4 text-primary" />
+                              <span className="font-medium text-primary">Sugar Trap AI Solution</span>
                             </div>
-                            <h4 className="font-bold text-blue-800">Sugar Trap AI Solution</h4>
+                            <p className="text-sm">Compare glucose responses to different "natural" sugar sources and discover which forms your body handles best.</p>
                           </div>
-                          <p className="text-blue-700 font-medium">
-                            Identifies hidden sugars and refined carbs that spike your glucose while highlighting beneficial fats for your metabolism
-                          </p>
                         </div>
                       </div>
                     </Card>
 
-                    {/* Myth 4 */}
-                    <Card className="overflow-hidden border-2 border-gray-200 hover:border-primary/30 transition-colors">
-                      <div className="grid md:grid-cols-3">
-                        <div className="p-6 bg-gradient-to-br from-red-50 to-red-100 border-r border-gray-200">
-                          <div className="flex items-center gap-3 mb-3">
-                            <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
-                              <AlertTriangle className="w-4 h-4 text-white" />
-                            </div>
-                            <h4 className="font-bold text-red-800">Outdated Belief</h4>
+                    <Card className="relative overflow-hidden border-2 border-destructive/20 bg-gradient-to-br from-background to-destructive/5">
+                      <div className="p-6">
+                        <div className="flex items-start gap-3 mb-4">
+                          <div className="p-2 rounded-full bg-destructive/10">
+                            <X className="h-5 w-5 text-destructive" />
                           </div>
-                          <p className="text-red-700 font-medium">
-                            "Meal timing doesn't matter - just focus on what you eat, not when"
-                          </p>
+                          <div>
+                            <h4 className="font-semibold text-destructive mb-1">Outdated Belief</h4>
+                            <p className="text-lg font-medium">"Eating frequently boosts metabolism"</p>
+                          </div>
                         </div>
-                        <div className="p-6 bg-gradient-to-br from-green-50 to-green-100 border-r border-gray-200">
-                          <div className="flex items-center gap-3 mb-3">
-                            <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-                              <CheckCircle className="w-4 h-4 text-white" />
+                        <p className="text-sm text-muted-foreground mb-4">The idea that frequent small meals "stoke the metabolic fire" has been widely promoted but lacks support.</p>
+                        
+                        <div className="space-y-3">
+                          <div className="p-3 rounded-lg bg-accent/10 border border-accent/20">
+                            <div className="flex items-center gap-2 mb-2">
+                              <CheckCircle className="h-4 w-4 text-accent" />
+                              <span className="font-medium text-accent">Proven Science</span>
                             </div>
-                            <h4 className="font-bold text-green-800">Proven Science</h4>
+                            <p className="text-sm">Meal frequency doesn't significantly affect 24-hour energy expenditure. Constant eating can lead to insulin resistance and impaired metabolic flexibility.</p>
                           </div>
-                          <p className="text-green-700 font-medium">
-                            Circadian biology affects insulin sensitivity by 50%. Same meal causes higher glucose spikes when eaten late at night
-                          </p>
-                        </div>
-                        <div className="p-6 bg-gradient-to-br from-blue-50 to-blue-100">
-                          <div className="flex items-center gap-3 mb-3">
-                            <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                              <Target className="w-4 h-4 text-white" />
+                          
+                          <div className="p-3 rounded-lg bg-primary/10 border border-primary/20">
+                            <div className="flex items-center gap-2 mb-2">
+                              <Zap className="h-4 w-4 text-primary" />
+                              <span className="font-medium text-primary">Sugar Trap AI Solution</span>
                             </div>
-                            <h4 className="font-bold text-blue-800">Sugar Trap AI Solution</h4>
+                            <p className="text-sm">Experiment with different eating patterns and observe how meal timing affects your glucose stability and energy levels.</p>
                           </div>
-                          <p className="text-blue-700 font-medium">
-                            Analyzes your circadian patterns to recommend optimal meal timing for stable glucose and better sleep
-                          </p>
                         </div>
                       </div>
                     </Card>
