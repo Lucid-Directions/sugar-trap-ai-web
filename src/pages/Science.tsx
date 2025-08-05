@@ -290,7 +290,7 @@ const SciencePage = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-0">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 md:pt-20">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-secondary/10"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,theme(colors.primary/8),transparent_50%)]"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,theme(colors.secondary/10),transparent_50%)]"></div>
@@ -366,12 +366,19 @@ const SciencePage = () => {
 
             {/* CTA Buttons */}
             <motion.div
-              className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
+              className="flex flex-col sm:flex-row gap-4 justify-center mb-8"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.8 }}
             >
-              <Button size="lg" className="group bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-white">
+              <Button 
+                size="lg" 
+                className="group bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-white"
+                onClick={() => {
+                  const element = document.getElementById('interactive-science');
+                  element?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
                 <Microscope className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
                 Explore Interactive Science
               </Button>
@@ -380,6 +387,45 @@ const SciencePage = () => {
                   Join Research Community
                 </Link>
               </Button>
+            </motion.div>
+            
+            {/* Trust Indicators */}
+            <motion.div
+              className="flex flex-wrap justify-center gap-6 mb-8 text-sm text-muted-foreground"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1, duration: 0.8 }}
+            >
+              <div className="flex items-center gap-2">
+                <Shield className="w-4 h-4 text-green-600" />
+                <span>✓ Bank-level data security</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Target className="w-4 h-4 text-blue-600" />
+                <span>✓ 90% more affordable than CGM devices</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Zap className="w-4 h-4 text-purple-600" />
+                <span>✓ No hardware needed</span>
+              </div>
+            </motion.div>
+            
+            {/* Global Availability */}
+            <motion.div
+              className="flex flex-wrap justify-center gap-4 mb-16 text-xs text-muted-foreground"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.2, duration: 0.8 }}
+            >
+              <span className="flex items-center gap-1">
+                <span>🌍</span> Available on iOS worldwide
+              </span>
+              <span className="flex items-center gap-1">
+                <span>🇬🇧</span> Designed in the UK
+              </span>
+              <span className="flex items-center gap-1">
+                <span>💳</span> Multiple currency support
+              </span>
             </motion.div>
 
             {/* Core Science Foundation Cards */}
@@ -576,7 +622,7 @@ const SciencePage = () => {
       </section>
 
       {/* Science Topics Section */}
-      <section className="py-16 lg:py-24 bg-gradient-to-b from-background to-secondary/5">
+      <section id="interactive-science" className="py-16 lg:py-24 bg-gradient-to-b from-background to-secondary/5">
         <div className="container mx-auto px-4">
           <motion.div
             className="text-center mb-16"
@@ -1093,6 +1139,22 @@ const SciencePage = () => {
                       </Link>
                     </Button>
                   </Card>
+                  
+                  {/* SEO Footer Content */}
+                  <div className="mt-12 pt-8 border-t border-border/50 text-center">
+                    <p className="text-sm text-muted-foreground mb-2">
+                      SugarTrap AI - Predicting glucose response for a healthier world
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      Join thousands worldwide who've discovered their personal glucose patterns
+                    </p>
+                  </div>
+                  
+                  {/* Hidden SEO Content */}
+                  <div className="sr-only" style={{position: 'absolute', left: '-10000px'}}>
+                    <h2>AI-Powered Glucose Monitoring App</h2>
+                    <p>Metabolic health tracking, diabetes prevention, blood sugar prediction app available worldwide</p>
+                  </div>
                 </motion.div>
               </TabsContent>
             </Tabs>
