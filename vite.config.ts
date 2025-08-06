@@ -8,6 +8,9 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
+    fs: {
+      allow: ['..']
+    }
   },
   plugins: [
     react(),
@@ -25,8 +28,13 @@ export default defineConfig(({ mode }) => ({
       input: {
         main: './index.html',
       },
+      external: ['/sitemap.xml', '/robots.txt']
     },
     assetsDir: 'assets',
     copyPublicDir: true,
+  },
+  preview: {
+    port: 8080,
+    host: "::",
   },
 }));
