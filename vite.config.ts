@@ -27,8 +27,7 @@ export default defineConfig(({ mode }) => ({
     rollupOptions: {
       input: {
         main: './index.html',
-      },
-      external: ['/sitemap.xml', '/robots.txt']
+      }
     },
     assetsDir: 'assets',
     copyPublicDir: true,
