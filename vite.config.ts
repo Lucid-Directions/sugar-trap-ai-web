@@ -26,5 +26,7 @@ export default defineConfig(({ mode }) => ({
         main: './index.html',
       },
     },
+    assetsDir: 'assets',
+    copyPublicDir: true,
   },
 }));
