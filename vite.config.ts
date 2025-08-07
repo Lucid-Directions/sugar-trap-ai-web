@@ -24,6 +24,20 @@ export default defineConfig(({ mode }) => ({
   },
   publicDir: 'public',
   build: {
+    rollupOptions: {
+      input: {
+        main: './index.html',
+      },
+      output: {
+        assetFileNames: (assetInfo) => {
+          // Keep sitemap.xml and robots.txt at root level without hash
+          if (assetInfo.name === 'sitemap.xml' || assetInfo.name === 'robots.txt') {
+            return '[name][extname]';
+          }
+          return 'assets/[name]-[hash][extname]';
+        }
+      }
+    },
     assetsDir: 'assets',
     copyPublicDir: true,
   },
