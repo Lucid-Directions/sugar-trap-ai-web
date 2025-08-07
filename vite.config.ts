@@ -27,6 +27,14 @@ export default defineConfig(({ mode }) => ({
     rollupOptions: {
       input: {
         main: './index.html',
+      },
+      output: {
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name === 'sitemap.xml' || assetInfo.name === 'robots.txt') {
+            return '[name][extname]';
+          }
+          return 'assets/[name]-[hash][extname]';
+        }
       }
     },
     assetsDir: 'assets',
