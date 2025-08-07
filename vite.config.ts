@@ -28,6 +28,7 @@ export default defineConfig(({ mode }) => ({
       input: {
         main: './index.html',
       },
+      external: ['/sitemap.xml', '/robots.txt'],
       output: {
         assetFileNames: (assetInfo) => {
           // Keep sitemap.xml and robots.txt at root level without hash
