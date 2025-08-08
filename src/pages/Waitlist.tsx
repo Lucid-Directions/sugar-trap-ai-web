@@ -1,5 +1,5 @@
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Mail, CheckCircle, Users, Gift, BookOpen, Crown, Instagram, Twitter, Facebook } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -11,6 +11,10 @@ const WaitlistPage = () => {
   });
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
+  
+  useEffect(() => {
+    document.title = "Join Waitlist - Be First to Predict Your Glucose | SugarTrap AI";
+  }, []);
   const benefits = [{
     icon: Gift,
     title: "Pioneer Access",

@@ -1,5 +1,5 @@
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Check, Star, Zap, BarChart3, Brain, Heart, TrendingUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
@@ -9,6 +9,10 @@ const PricingPage = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+  
+  useEffect(() => {
+    document.title = "Pricing - Affordable Glucose Monitoring | SugarTrap AI";
+  }, []);
 
   const handlePlanClick = (planName: string) => {
     setSelectedPlan(planName);

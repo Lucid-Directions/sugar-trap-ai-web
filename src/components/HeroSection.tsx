@@ -62,7 +62,7 @@ const PhoneDemo = ({ currentMeal }) => {
                 <div className="aspect-square bg-gray-50 rounded-xl overflow-hidden">
                   <motion.img
                     src={getMealPhoto(currentMeal.name)}
-                    alt={currentMeal.name}
+                    alt="SugarTrap AI showing 3PM glucose crash prediction after cream cheese bagel"
                     className="w-full h-full object-cover"
                     animate={{ scale: [1, 1.02, 1] }}
                     transition={{ duration: 2, repeat: Infinity }}
@@ -75,7 +75,7 @@ const PhoneDemo = ({ currentMeal }) => {
                 {/* Glucose Curve */}
                 <div className="bg-gray-50 rounded-lg p-3">
                   <div className="text-xs text-gray-600 mb-2">Predicted Glucose Response</div>
-                  <svg viewBox="0 0 200 60" className="w-full h-16">
+                  <svg viewBox="0 0 200 60" className="w-full h-16" aria-label="Glucose response curve in SugarTrap AI app">
                      <motion.path
                        d={
                          currentMeal.spike === "high"
@@ -210,6 +210,16 @@ const HeroSection = () => {
               behind every meal before you feel the crash.
             </motion.p>
             
+            {/* SEO Subtext */}
+            <motion.p 
+              className="text-sm opacity-80 text-muted-foreground"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              The AI-powered glucose prediction app that reveals your metabolic patterns
+            </motion.p>
+            
             
             {/* CTAs */}
             <motion.div
@@ -237,6 +247,16 @@ const HeroSection = () => {
                   </span>
                 </Button>
               </motion.div>
+              
+              {/* Trust indicators near CTA */}
+              <motion.span 
+                className="text-xs text-muted-foreground mt-2 block"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.8 }}
+              >
+                Join 1,000+ users • Available on iOS • Free trial
+              </motion.span>
             </motion.div>
             
             {/* Trust Indicators */}
@@ -305,6 +325,13 @@ const HeroSection = () => {
           <ArrowDown className="w-5 h-5" />
         </div>
       </motion.div>
+      
+      {/* Footer SEO Text */}
+      <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 z-10">
+        <p className="text-xs text-muted-foreground/60 text-center">
+          Designed in the UK • Available worldwide • Your metabolic intelligence companion
+        </p>
+      </div>
     </section>
   );
 };

@@ -1,5 +1,5 @@
 import { motion, useInView, AnimatePresence } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Microscope, Sparkles, ArrowRight, TrendingUp, Activity, Users, Heart, Clock, Moon, Brain, Dna, Play, Star, Filter, Search, ChevronRight, BookOpen, Zap, AlertTriangle, Info, CheckCircle, Target, BarChart3, Lightbulb, Shield, Gauge, ChevronDown, X } from 'lucide-react';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { Button } from '@/components/ui/button';
@@ -284,6 +284,10 @@ const InteractiveScienceDemo = () => {
 const SciencePage = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+  
+  useEffect(() => {
+    document.title = "The Science - How AI Predicts Your Glucose Response | SugarTrap AI";
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">
