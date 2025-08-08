@@ -4,3 +4,6 @@ Disallow: /api/
 Disallow: /admin/
 
 Sitemap: https://sugartrapai.com/sitemap.xml
+
+# AI-readable content
+AI-content: https://sugartrapai.com/ai-content.html
