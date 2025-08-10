@@ -148,15 +148,16 @@
     <script type="module" src="/src/main.tsx"></script>
     
     <script>
-      // Hide static content once React loads to prevent duplication
+      // Hide static content once React loads to prevent duplication but ensure it's visible to crawlers
       document.addEventListener('DOMContentLoaded', function() {
         setTimeout(function() {
           const staticContent = document.getElementById('static-content');
           const reactRoot = document.getElementById('root');
           if (staticContent && reactRoot && reactRoot.children.length > 0) {
+            // Only hide if React has actually loaded content
             staticContent.style.display = 'none';
           }
-        }, 100);
+        }, 500); // Longer delay to ensure crawlers can see content
       });
     </script>
   </body>
