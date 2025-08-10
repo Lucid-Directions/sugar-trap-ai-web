@@ -28,11 +28,11 @@ export default defineConfig(({ mode }) => ({
       input: {
         main: './index.html',
       },
-      external: ['/sitemap.xml', '/robots.txt'],
+      external: ['/sitemap.xml', '/robots.txt', '/ai-content.html'],
       output: {
         assetFileNames: (assetInfo) => {
-          // Keep sitemap.xml and robots.txt at root level without hash
-          if (assetInfo.name === 'sitemap.xml' || assetInfo.name === 'robots.txt') {
+          // Keep static files at root level without hash
+          if (assetInfo.name === 'sitemap.xml' || assetInfo.name === 'robots.txt' || assetInfo.name === 'ai-content.html') {
             return '[name][extname]';
           }
           return 'assets/[name]-[hash][extname]';

@@ -27,7 +27,7 @@ const App = () => {
   // Check if current path is a static file that should not be handled by React Router
   if (typeof window !== 'undefined') {
     const path = window.location.pathname;
-    if (path === '/sitemap.xml' || path === '/robots.txt') {
+    if (path === '/sitemap.xml' || path === '/robots.txt' || path === '/ai-content.html') {
       // Let the browser handle these requests naturally
       window.location.reload();
       return null;
