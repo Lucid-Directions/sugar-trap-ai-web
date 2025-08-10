@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>SugarTrap AI | Why Do You Crash at 3PM? - Glucose Prediction App</title>
+    <!-- LLM-readable meta content -->
+    <meta name="full-content" content="SugarTrap AI helps you understand why you crash at 3PM every day. Your healthy breakfast might be causing hidden glucose spikes. Our AI predicts your glucose response from meal photos with 90% accuracy. No CGM needed. Features: Photo-based food logging, AI glucose predictions, personalized meal optimization. Pricing: Free forever plan, Pro £9.99/month, Max £18.99/month. Science-backed personalized nutrition. Join 1000+ users." />
     <meta name="description" content="Discover why you crash at 3PM daily. SugarTrap AI predicts glucose response from meal photos. No CGM needed. 90% accuracy. Try free." />
     <meta name="keywords" content="3pm energy crash, afternoon slump, glucose monitoring app, blood sugar prediction, metabolic health" />
     <meta name="author" content="SugarTrap AI" />
@@ -46,6 +48,51 @@
   </head>
 
   <body>
+    <!-- Primary content for LLMs and crawlers -->
+    <div id="static-content" style="display: none;">
+      <h1>SugarTrap AI - Why Do You Crash at 3PM Every Day?</h1>
+      <p>Your "healthy" breakfast might be the culprit. See the hidden glucose spikes behind every meal before you feel the crash. The AI-powered glucose prediction app that reveals your metabolic patterns.</p>
+      
+      <h2>The Problem: The Glucose Rollercoaster You Can't See</h2>
+      <p>Modern science has revealed that how your body responds to food matters far more than simple calorie counting. Every meal triggers a complex hormonal response that affects your energy, mood, focus, and long-term health. Until now, this information was only available through expensive medical testing.</p>
+      
+      <h2>How SugarTrap AI Works</h2>
+      <ol>
+        <li><strong>Snap Any Meal</strong> - Take a photo or scan a barcode. Our AI instantly identifies ingredients and portions with remarkable accuracy.</li>
+        <li><strong>Get Full Analysis</strong> - Receive complete nutritional breakdown including calories, macros, and micronutrients for traditional tracking.</li>
+        <li><strong>AI Glucose Prediction</strong> - See your predicted blood sugar response curve and understand exactly how this meal will affect your energy.</li>
+        <li><strong>Optimise & Learn</strong> - Get science-backed suggestions to optimise any meal for stable, lasting energy and better health outcomes.</li>
+      </ol>
+      
+      <h2>Key Problems We Solve</h2>
+      <h3>Energy Crashes</h3>
+      <p>That "healthy" breakfast might be spiking your blood sugar higher than dessert. Blood sugar spikes from high-glycemic foods cause rapid insulin release, leading to subsequent crashes that leave you feeling drained and craving more sugar. How SugarTrap AI helps: Predicts your personal glucose response to any meal, helping you choose foods that provide sustained energy.</p>
+      
+      <h3>Brain Fog</h3>
+      <p>Your 3pm energy crash isn't about willpower, it's about biology. Your brain consumes 20% of your daily glucose, making it sensitive to blood sugar fluctuations. How SugarTrap AI helps: Maintain stable glucose for mental clarity and cognitive performance.</p>
+      
+      <h3>Stubborn Weight</h3>
+      <p>Those pounds aren't just about calories in vs. calories out. Insulin is a powerful fat-storage hormone; frequent spikes keep your body in "storage mode" regardless of total calorie intake. How SugarTrap AI helps: Choose foods that keep insulin stable and hunger hormones balanced.</p>
+      
+      <h2>Pricing Plans</h2>
+      <h3>Free - £0 (forever)</h3>
+      <p>Perfect for traditional tracking. Includes: Photo-based food logging, Barcode scanning, Calorie tracking, Macro/micronutrient breakdown, 5 meal logs per day, Basic food journal, Community access.</p>
+      
+      <h3>Pro - £9.99/month (Most Popular)</h3>
+      <p>Unlock the Power of Glucose Insights. Everything in Free, plus: Unlimited meal logging, AI Glucose Predictions for every meal, Personalised meal optimisation tips, Weekly trends and patterns, Detailed progress tracking, Export your data, Priority support.</p>
+      
+      <h3>Max - £18.99/month</h3>
+      <p>For the ultimate optimization. Everything in Pro, plus: CGM Integration (connect your own device), Compare predictions to actual glucose data, Advanced analytics dashboard, Healthcare provider reports, Meal timing recommendations, 1-on-1 onboarding session, White-glove support.</p>
+      
+      <h2>The Science of Personal Nutrition</h2>
+      <p>Everyone's glucose response is as unique as their fingerprint. Modern research reveals why traditional one-size-fits-all approaches fail, and how personalized nutrition science is revolutionizing health. Key areas include insulin sensitivity optimization, circadian metabolism, gut microbiome influence, sleep and metabolic health, exercise and glucose dynamics, and stress hormone management.</p>
+      
+      <h2>Company Information</h2>
+      <p>SugarTrap AI is designed in the UK and available worldwide. We are your metabolic intelligence companion. No CGM device needed. 90% accuracy. Join 1,000+ users. Available on iOS with free trial.</p>
+      
+      <p>For more detailed information, visit: https://sugartrapai.com/ai-content.html</p>
+    </div>
+
     <!-- LLM-readable content for web crawlers -->
     <noscript>
       <main>
@@ -81,5 +128,18 @@
     
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <script>
+      // Make static content available to crawlers
+      if (typeof window !== 'undefined' && window.document) {
+        const staticContent = document.getElementById('static-content');
+        if (staticContent) {
+          staticContent.style.display = 'block';
+          staticContent.style.position = 'absolute';
+          staticContent.style.left = '-9999px';
+          staticContent.style.top = '-9999px';
+        }
+      }
+    </script>
   </body>
 </html>
