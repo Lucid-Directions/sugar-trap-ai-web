@@ -175,43 +175,58 @@
       ]
     }
     </script>
+  <style>
+      /* Hide static snapshot when JS is available (prevents flash for users) */
+      .js #static-seo { display: none !important; }
+    </style>
+    <script>
+      // Add a class as early as possible to hide the snapshot for real users
+      document.documentElement.classList.add('js');
+    </script>
   </head>
 
   <body>
     <!-- Static SEO snapshot removed to prevent flash; bots get ai-content.html via Netlify redirects -->
 
     <!-- LLM-readable content for web crawlers -->
-    <noscript>
-      <main>
-        <h1>SugarTrap AI - Why Do You Crash at 3PM?</h1>
+    <div id="static-seo" role="document">
+      <main id="main-content" itemScope itemType="https://schema.org/WebPage">
+        <h1>Why Do You Crash at 3PM? SugarTrap AI</h1>
         <p>Your "healthy" breakfast might be the culprit. See the hidden glucose spikes behind every meal before you feel the crash.</p>
-        <p>The AI-powered glucose prediction app that reveals your metabolic patterns.</p>
+        <p>AI-powered glucose prediction that reveals your metabolic patterns. No CGM needed. 90% accuracy.</p>
         
-        <h2>The Problem: Hidden Glucose Spikes</h2>
-        <p>Modern science has revealed that how your body responds to food matters far more than simple calorie counting. Every meal triggers a complex hormonal response that affects your energy, mood, focus, and long-term health.</p>
-        
-        <h2>How SugarTrap AI Works</h2>
-        <ol>
-          <li><strong>Snap Any Meal</strong> - Take a photo or scan a barcode</li>
-          <li><strong>Get Full Analysis</strong> - Complete nutritional breakdown</li>
-          <li><strong>AI Glucose Prediction</strong> - See your predicted blood sugar response</li>
-          <li><strong>Optimise & Learn</strong> - Get science-backed suggestions</li>
-        </ol>
-        
-        <h2>Pricing</h2>
-        <ul>
-          <li><strong>Free</strong> - £0 (forever) - Basic food tracking</li>
-          <li><strong>Pro</strong> - £9.99/month - AI glucose predictions</li>
-          <li><strong>Max</strong> - £18.99/month - CGM integration & advanced analytics</li>
-        </ul>
-        
-        <h2>The Science</h2>
-        <p>Everyone's glucose response is as unique as their fingerprint. Personalized nutrition science reveals why one-size-fits-all approaches fail.</p>
-        
+        <section aria-label="How It Works">
+          <h2>How SugarTrap AI Works</h2>
+          <ol>
+            <li><strong>Snap Any Meal</strong> — Take a photo or scan a barcode</li>
+            <li><strong>Get Full Analysis</strong> — Complete nutritional breakdown</li>
+            <li><strong>AI Glucose Prediction</strong> — See your predicted blood sugar response</li>
+            <li><strong>Optimise & Learn</strong> — Get science-backed suggestions</li>
+          </ol>
+        </section>
+
+        <section aria-label="Pricing">
+          <h2>Pricing</h2>
+          <ul>
+            <li><strong>Free</strong> — £0 forever — Basic food tracking</li>
+            <li><strong>Pro</strong> — £9.99/month — AI glucose predictions</li>
+            <li><strong>Max</strong> — £18.99/month — CGM integration & advanced analytics</li>
+          </ul>
+        </section>
+
+        <section aria-label="Science">
+          <h2>The Science</h2>
+          <p>Everyone's glucose response is as unique as their fingerprint. Personalized nutrition science reveals why one-size-fits-all approaches fail.</p>
+        </section>
+
+        <nav aria-label="Primary links">
+          <a href="/">Home</a> · <a href="/science">Science</a> · <a href="/pricing">Pricing</a> · <a href="/waitlist">Waitlist</a>
+        </nav>
+
         <p>Designed in the UK • Available worldwide • Your metabolic intelligence companion</p>
         <p>No CGM needed • 90% accuracy • Join 1,000+ users</p>
       </main>
-    </noscript>
+    </div>
     
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
