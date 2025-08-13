@@ -24,6 +24,10 @@ const ScrollToTop = () => {
 };
 
 const App = () => {
+  // Hide static SEO content once React loads
+  useEffect(() => {
+    document.documentElement.classList.add('react-loaded');
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>

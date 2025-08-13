@@ -176,13 +176,11 @@
     }
     </script>
   <style>
-      /* Hide static snapshot when JS is available (prevents flash for users) */
-      .js #static-seo { display: none !important; }
+      /* Hide static content only after React loads */
+      .react-loaded #static-seo { display: none !important; }
+      /* Ensure static content is visible by default for LLMs */
+      #static-seo { display: block; }
     </style>
-    <script>
-      // Add a class as early as possible to hide the snapshot for real users
-      document.documentElement.classList.add('js');
-    </script>
   </head>
 
   <body>
