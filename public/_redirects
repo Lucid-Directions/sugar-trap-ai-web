@@ -1,17 +1,21 @@
-/   /ai-content.html   200!   User-Agent=GPTBot
-/   /ai-content.html   200!   User-Agent=ChatGPT-User
-/   /ai-content.html   200!   User-Agent=OpenAI
-/   /ai-content.html   200!   User-Agent=Anthropic
-/   /ai-content.html   200!   User-Agent=Claude
-/   /ai-content.html   200!   User-Agent=Claude-Web
-/   /ai-content.html   200!   User-Agent=ClaudeBot
-/   /ai-content.html   200!   User-Agent=PerplexityBot
-/   /ai-content.html   200!   User-Agent=CCBot
-/   /ai-content.html   200!   User-Agent=Bytespider
-/   /ai-content.html   200!   User-Agent=Google-Extended
-/   /ai-content.html   200!   User-Agent=bot
-/   /ai-content.html   200!   User-Agent=spider
-/   /ai-content.html   200!   User-Agent=crawler
+# AI and LLM User Agents
+/   /ai-content.html   200!   User-Agent=*GPTBot*
+/   /ai-content.html   200!   User-Agent=*ChatGPT*
+/   /ai-content.html   200!   User-Agent=*OpenAI*
+/   /ai-content.html   200!   User-Agent=*Anthropic*
+/   /ai-content.html   200!   User-Agent=*Claude*
+/   /ai-content.html   200!   User-Agent=*PerplexityBot*
+/   /ai-content.html   200!   User-Agent=*CCBot*
+/   /ai-content.html   200!   User-Agent=*Bytespider*
+/   /ai-content.html   200!   User-Agent=*Google-Extended*
+/   /ai-content.html   200!   User-Agent=*Gemini*
+/   /ai-content.html   200!   User-Agent=*Bard*
+/   /ai-content.html   200!   User-Agent=*Meta-AI*
+/   /ai-content.html   200!   User-Agent=*bot*
+/   /ai-content.html   200!   User-Agent=*spider*
+/   /ai-content.html   200!   User-Agent=*crawler*
+/   /ai-content.html   200!   User-Agent=*scraper*
+/   /ai-content.html   200!   User-Agent=*fetch*
 
 /sitemap.xml    /sitemap.xml    200
 /robots.txt     /robots.txt     200
