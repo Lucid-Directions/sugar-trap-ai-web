@@ -1,9 +1,30 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
-import { Mail, CheckCircle, Users, Gift, BookOpen, Crown, Instagram, Twitter, Facebook } from 'lucide-react';
+import { Mail, CheckCircle, Users, Gift, BookOpen, Crown, Instagram, Twitter, Facebook, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { useToast } from '@/hooks/use-toast';
 import Navigation from '@/components/Navigation';
+import { z } from 'zod';
+// Zod schema for email validation
+const emailSchema = z.object({
+  email: z
+    .string()
+    .min(1, 'Email is required')
+    .email('Please enter a valid email address')
+    .max(254, 'Email address is too long')
+    .refine((email) => {
+      // Additional security: block common suspicious patterns
+      const suspiciousPatterns = [
+        /\+.*\+/, // Multiple plus signs
+        /\.{2,}/, // Multiple consecutive dots
+        /[<>]/, // HTML brackets
+        /javascript:/i, // Potential XSS
+      ];
+      return !suspiciousPatterns.some(pattern => pattern.test(email));
+    }, 'Invalid email format'),
+});
+
 const WaitlistPage = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, {
@@ -11,6 +32,10 @@ const WaitlistPage = () => {
   });
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [validationError, setValidationError] = useState('');
+  const [lastSubmissionTime, setLastSubmissionTime] = useState(0);
+  const { toast } = useToast();
   
   useEffect(() => {
     document.title = "Join Waitlist - Be First to Predict Your Glucose | SugarTrap AI";
@@ -33,12 +58,51 @@ const WaitlistPage = () => {
     description: "Your feedback helps create the ultimate metabolic optimization tool"
   }];
   const discoveries = ["Why glucose spikes predict heart disease better than cholesterol levels (even in healthy people)", "How your gut microbiome contributes up to 10% of your daily energy extraction from food", "The shocking truth: 69% of people have 'social jet lag' destroying their metabolism without knowing it", "Why your endothelial cells can't protect themselves from glucose damage, making spikes extra harmful", "How short-chain fatty acids from fiber act like natural insulin sensitizers in your body", "The incretin system collapse: why Type 2 diabetics lose 70% of their natural glucose control mechanism"];
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      setIsSubmitted(true);
-      // Here you would typically send the email to your backend
-      console.log('Email submitted:', email);
+    setValidationError('');
+
+    // Rate limiting: prevent rapid submissions (basic client-side protection)
+    const now = Date.now();
+    if (now - lastSubmissionTime < 5000) { // 5 second cooldown
+      setValidationError('Please wait before submitting again');
+      return;
+    }
+
+    // Validate email with Zod
+    try {
+      const validatedData = emailSchema.parse({ email: email.trim() });
+      setIsSubmitting(true);
+
+      // Simulate API call with proper error handling
+      try {
+        // Here you would typically send the email to your backend
+        await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate network delay
+        
+        console.log('Email submitted:', validatedData.email);
+        setIsSubmitted(true);
+        setLastSubmissionTime(now);
+        
+        toast({
+          title: "Successfully joined!",
+          description: "Welcome to the metabolic revolution! Check your email for confirmation.",
+        });
+      } catch (error) {
+        console.error('Submission error:', error);
+        toast({
+          title: "Submission failed",
+          description: "Please try again. If the problem persists, contact support.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        setValidationError(error.issues[0].message);
+      } else {
+        setValidationError('An unexpected error occurred');
+      }
+    } finally {
+      setIsSubmitting(false);
     }
   };
   return <div className="min-h-screen bg-background">
@@ -91,11 +155,38 @@ const WaitlistPage = () => {
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="relative">
                     <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-                    <Input type="email" placeholder="Enter your email address" value={email} onChange={e => setEmail(e.target.value)} className="pl-12 h-12 text-base rounded-xl border-2 focus:border-primary" required />
+                    <Input 
+                      type="email" 
+                      placeholder="Enter your email address" 
+                      value={email} 
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                        setValidationError(''); // Clear error on input change
+                      }}
+                      className={`pl-12 h-12 text-base rounded-xl border-2 focus:border-primary ${
+                        validationError ? 'border-destructive focus:border-destructive' : ''
+                      }`}
+                      disabled={isSubmitting}
+                      required 
+                      autoComplete="email"
+                      maxLength={254}
+                    />
                   </div>
                   
-                  <Button type="submit" size="lg" className="w-full h-12 text-base magnetic-button shadow-lg hover:shadow-glow">
-                    Unlock Your Metabolic Code - 50% Off
+                  {validationError && (
+                    <div className="flex items-center gap-2 text-destructive text-sm">
+                      <AlertCircle className="w-4 h-4" />
+                      <span>{validationError}</span>
+                    </div>
+                  )}
+                  
+                  <Button 
+                    type="submit" 
+                    size="lg" 
+                    className="w-full h-12 text-base magnetic-button shadow-lg hover:shadow-glow"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? 'Joining...' : 'Unlock Your Metabolic Code - 50% Off'}
                   </Button>
                 </form>
 
