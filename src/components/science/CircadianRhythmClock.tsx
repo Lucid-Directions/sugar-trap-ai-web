@@ -304,63 +304,188 @@ const CircadianRhythmClock = () => {
         </CardContent>
       </Card>
 
-      {/* 24-Hour Visualization */}
+      {/* Analog Clock Visualization */}
       <Card>
         <CardHeader>
-          <CardTitle>24-Hour Glucose Tolerance Curve</CardTitle>
+          <CardTitle>Circadian Clock</CardTitle>
+          <CardDescription>Visual representation of metabolic changes throughout the day</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="h-48 relative bg-muted/20 rounded-lg overflow-hidden">
-            <svg viewBox="0 0 480 180" className="w-full h-full">
-              {/* Grid lines */}
-              <defs>
-                <pattern id="circadian-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-                  <path d="M 20 0 L 0 0 0 20" fill="none" stroke="currentColor" strokeWidth="0.5" opacity="0.1"/>
-                </pattern>
-              </defs>
-              <rect width="480" height="180" fill="url(#circadian-grid)" />
-              
-              {/* Glucose tolerance curve */}
-              <motion.path
-                d="M 20,90 Q 80,60 140,70 Q 200,80 260,100 Q 320,120 380,140 Q 420,150 460,90"
-                fill="none"
-                stroke="#10b981"
-                strokeWidth="3"
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ pathLength: 1, opacity: 1 }}
-                transition={{ duration: 2, ease: "easeInOut" }}
-              />
-              
-              {/* Current time indicator */}
-              <motion.line
-                x1={20 + (circadianState.time / 24) * 440}
-                y1="20"
-                x2={20 + (circadianState.time / 24) * 440}
-                y2="160"
-                stroke="#ef4444"
-                strokeWidth="2"
-                strokeDasharray="5,5"
-                animate={{ opacity: [0.5, 1, 0.5] }}
-                transition={{ duration: 1, repeat: Infinity }}
-              />
-              
-              {/* Current time marker */}
-              <motion.circle
-                cx={20 + (circadianState.time / 24) * 440}
-                cy={180 - (circadianState.glucoseTolerance / 100) * 140 - 20}
-                r="6"
-                fill="#ef4444"
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 1, repeat: Infinity }}
-              />
-              
-              {/* Time labels */}
-              <text x="20" y="175" className="text-xs fill-muted-foreground">12 AM</text>
-              <text x="140" y="175" className="text-xs fill-muted-foreground">6 AM</text>
-              <text x="260" y="175" className="text-xs fill-muted-foreground">12 PM</text>
-              <text x="380" y="175" className="text-xs fill-muted-foreground">6 PM</text>
-              <text x="460" y="175" className="text-xs fill-muted-foreground">12 AM</text>
-            </svg>
+          <div className="flex flex-col lg:flex-row gap-6">
+            {/* Analog Clock */}
+            <div className="flex-1 flex justify-center">
+              <div className="relative w-64 h-64">
+                <svg viewBox="0 0 200 200" className="w-full h-full">
+                  {/* Clock face background */}
+                  <circle
+                    cx="100"
+                    cy="100"
+                    r="95"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    className="text-border"
+                  />
+                  
+                  {/* Hour markers */}
+                  {Array.from({ length: 24 }, (_, i) => {
+                    const angle = (i * 15) - 90; // 360/24 = 15 degrees per hour, -90 to start at top
+                    const isQuarterHour = i % 6 === 0;
+                    const radius = isQuarterHour ? 85 : 90;
+                    const endRadius = 95;
+                    const x1 = 100 + radius * Math.cos(angle * Math.PI / 180);
+                    const y1 = 100 + radius * Math.sin(angle * Math.PI / 180);
+                    const x2 = 100 + endRadius * Math.cos(angle * Math.PI / 180);
+                    const y2 = 100 + endRadius * Math.sin(angle * Math.PI / 180);
+                    
+                    return (
+                      <line
+                        key={i}
+                        x1={x1}
+                        y1={y1}
+                        x2={x2}
+                        y2={y2}
+                        stroke="currentColor"
+                        strokeWidth={isQuarterHour ? 3 : 1}
+                        className="text-muted-foreground"
+                      />
+                    );
+                  })}
+                  
+                  {/* Hour numbers */}
+                  {[12, 3, 6, 9, 15, 18, 21].map((hour, index) => {
+                    const displayHour = hour === 0 ? 12 : hour > 12 ? hour - 12 : hour;
+                    const angle = (hour * 15) - 90;
+                    const radius = 75;
+                    const x = 100 + radius * Math.cos(angle * Math.PI / 180);
+                    const y = 100 + radius * Math.sin(angle * Math.PI / 180);
+                    
+                    return (
+                      <text
+                        key={hour}
+                        x={x}
+                        y={y + 5}
+                        textAnchor="middle"
+                        className="text-sm font-medium fill-current"
+                      >
+                        {hour === 0 ? '12' : hour === 12 ? '12' : hour > 12 ? hour - 12 : hour}
+                      </text>
+                    );
+                  })}
+                  
+                  {/* AM/PM indicators */}
+                  <text x="100" y="40" textAnchor="middle" className="text-xs fill-muted-foreground">AM</text>
+                  <text x="100" y="170" textAnchor="middle" className="text-xs fill-muted-foreground">PM</text>
+                  
+                  {/* Metabolic zones background */}
+                  <defs>
+                    <radialGradient id="metabolic-gradient" cx="50%" cy="50%">
+                      <stop offset="0%" stopColor="transparent" />
+                      <stop offset="70%" stopColor="transparent" />
+                      <stop offset="100%" stopColor={circadianState.phase === 'morning' ? '#10b981' : 
+                                                  circadianState.phase === 'midday' ? '#f59e0b' :
+                                                  circadianState.phase === 'evening' ? '#f97316' : '#6366f1'} 
+                            stopOpacity="0.1" />
+                    </radialGradient>
+                  </defs>
+                  <circle cx="100" cy="100" r="70" fill="url(#metabolic-gradient)" />
+                  
+                  {/* Clock hands */}
+                  {/* Hour hand (12-hour format) */}
+                  <motion.line
+                    x1="100"
+                    y1="100"
+                    x2={100 + 40 * Math.cos(((circadianState.time % 12) * 30 - 90) * Math.PI / 180)}
+                    y2={100 + 40 * Math.sin(((circadianState.time % 12) * 30 - 90) * Math.PI / 180)}
+                    stroke="currentColor"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                    className="text-foreground"
+                    animate={{
+                      x2: 100 + 40 * Math.cos(((circadianState.time % 12) * 30 - 90) * Math.PI / 180),
+                      y2: 100 + 40 * Math.sin(((circadianState.time % 12) * 30 - 90) * Math.PI / 180)
+                    }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  
+                  {/* Minute hand */}
+                  <motion.line
+                    x1="100"
+                    y1="100"
+                    x2={100 + 60 * Math.cos((((circadianState.time % 1) * 60) * 6 - 90) * Math.PI / 180)}
+                    y2={100 + 60 * Math.sin((((circadianState.time % 1) * 60) * 6 - 90) * Math.PI / 180)}
+                    stroke="#ef4444"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    animate={{
+                      x2: 100 + 60 * Math.cos((((circadianState.time % 1) * 60) * 6 - 90) * Math.PI / 180),
+                      y2: 100 + 60 * Math.sin((((circadianState.time % 1) * 60) * 6 - 90) * Math.PI / 180)
+                    }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  
+                  {/* Center dot */}
+                  <circle cx="100" cy="100" r="4" fill="currentColor" className="text-foreground" />
+                </svg>
+              </div>
+            </div>
+            
+            {/* 24-Hour Glucose Tolerance Curve */}
+            <div className="flex-1">
+              <h4 className="font-medium mb-3">24-Hour Glucose Tolerance</h4>
+              <div className="h-48 relative bg-muted/20 rounded-lg overflow-hidden">
+                <svg viewBox="0 0 480 180" className="w-full h-full">
+                  {/* Grid lines */}
+                  <defs>
+                    <pattern id="circadian-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="currentColor" strokeWidth="0.5" opacity="0.1"/>
+                    </pattern>
+                  </defs>
+                  <rect width="480" height="180" fill="url(#circadian-grid)" />
+                  
+                  {/* Glucose tolerance curve */}
+                  <motion.path
+                    d="M 20,90 Q 80,60 140,70 Q 200,80 260,100 Q 320,120 380,140 Q 420,150 460,90"
+                    fill="none"
+                    stroke="#10b981"
+                    strokeWidth="3"
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    animate={{ pathLength: 1, opacity: 1 }}
+                    transition={{ duration: 2, ease: "easeInOut" }}
+                  />
+                  
+                  {/* Current time indicator */}
+                  <motion.line
+                    x1={20 + (circadianState.time / 24) * 440}
+                    y1="20"
+                    x2={20 + (circadianState.time / 24) * 440}
+                    y2="160"
+                    stroke="#ef4444"
+                    strokeWidth="2"
+                    strokeDasharray="5,5"
+                    animate={{ opacity: [0.5, 1, 0.5] }}
+                    transition={{ duration: 1, repeat: Infinity }}
+                  />
+                  
+                  {/* Current time marker */}
+                  <motion.circle
+                    cx={20 + (circadianState.time / 24) * 440}
+                    cy={180 - (circadianState.glucoseTolerance / 100) * 140 - 20}
+                    r="6"
+                    fill="#ef4444"
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 1, repeat: Infinity }}
+                  />
+                  
+                  {/* Time labels */}
+                  <text x="20" y="175" className="text-xs fill-muted-foreground">12 AM</text>
+                  <text x="140" y="175" className="text-xs fill-muted-foreground">6 AM</text>
+                  <text x="260" y="175" className="text-xs fill-muted-foreground">12 PM</text>
+                  <text x="380" y="175" className="text-xs fill-muted-foreground">6 PM</text>
+                  <text x="460" y="175" className="text-xs fill-muted-foreground">12 AM</text>
+                </svg>
+              </div>
+            </div>
           </div>
         </CardContent>
       </Card>
