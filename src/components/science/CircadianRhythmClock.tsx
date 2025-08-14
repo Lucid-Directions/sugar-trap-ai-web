@@ -394,15 +394,15 @@ const CircadianRhythmClock = () => {
                   <motion.line
                     x1="100"
                     y1="100"
-                    x2={100 + 40 * Math.cos(((circadianState.time % 12 === 0 ? 0 : circadianState.time % 12) * 30 - 90) * Math.PI / 180)}
-                    y2={100 + 40 * Math.sin(((circadianState.time % 12 === 0 ? 0 : circadianState.time % 12) * 30 - 90) * Math.PI / 180)}
+                    x2={100 + 40 * Math.cos(((circadianState.time % 12 === 0 ? 12 : circadianState.time % 12) * 30 - 90) * Math.PI / 180)}
+                    y2={100 + 40 * Math.sin(((circadianState.time % 12 === 0 ? 12 : circadianState.time % 12) * 30 - 90) * Math.PI / 180)}
                     stroke="currentColor"
                     strokeWidth="4"
                     strokeLinecap="round"
                     className="text-foreground"
                     animate={{
-                      x2: 100 + 40 * Math.cos(((circadianState.time % 12 === 0 ? 0 : circadianState.time % 12) * 30 - 90) * Math.PI / 180),
-                      y2: 100 + 40 * Math.sin(((circadianState.time % 12 === 0 ? 0 : circadianState.time % 12) * 30 - 90) * Math.PI / 180)
+                      x2: 100 + 40 * Math.cos(((circadianState.time % 12 === 0 ? 12 : circadianState.time % 12) * 30 - 90) * Math.PI / 180),
+                      y2: 100 + 40 * Math.sin(((circadianState.time % 12 === 0 ? 12 : circadianState.time % 12) * 30 - 90) * Math.PI / 180)
                     }}
                     transition={{ duration: 0.3 }}
                   />
