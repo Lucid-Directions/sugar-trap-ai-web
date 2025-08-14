@@ -353,9 +353,8 @@ const CircadianRhythmClock = () => {
                   })}
                   
                   {/* Hour numbers */}
-                  {[12, 3, 6, 9, 15, 18, 21].map((hour, index) => {
-                    const displayHour = hour === 0 ? 12 : hour > 12 ? hour - 12 : hour;
-                    const angle = (hour * 15) - 90;
+                  {[12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((hour, index) => {
+                    const angle = (hour === 12 ? 0 : hour * 30) - 90; // 12 is at top (0 degrees), then 30 degrees per hour
                     const radius = 75;
                     const x = 100 + radius * Math.cos(angle * Math.PI / 180);
                     const y = 100 + radius * Math.sin(angle * Math.PI / 180);
@@ -368,7 +367,7 @@ const CircadianRhythmClock = () => {
                         textAnchor="middle"
                         className="text-sm font-medium fill-current"
                       >
-                        {hour === 0 ? '12' : hour === 12 ? '12' : hour > 12 ? hour - 12 : hour}
+                        {hour}
                       </text>
                     );
                   })}
