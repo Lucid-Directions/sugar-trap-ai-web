@@ -207,10 +207,10 @@ const InteractiveGlucoseVisualization = () => {
           <CardTitle>Pancreatic Beta-Cell Activity</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid gap-4 md:gap-6 sm:grid-cols-3">
             {/* Beta-Cell Health */}
             <motion.div 
-              className="text-center p-4 rounded-lg bg-muted/50"
+              className="text-center p-3 md:p-4 rounded-lg bg-muted/50"
               animate={{ scale: isAnimating ? [1, 1.05, 1] : 1 }}
               transition={{ duration: 0.8, repeat: isAnimating ? Infinity : 0 }}
             >
@@ -238,7 +238,7 @@ const InteractiveGlucoseVisualization = () => {
 
             {/* Insulin Production */}
             <motion.div 
-              className="text-center p-4 rounded-lg bg-muted/50"
+              className="text-center p-3 md:p-4 rounded-lg bg-muted/50"
               animate={{ scale: isAnimating ? [1, 1.05, 1] : 1 }}
               transition={{ duration: 0.8, delay: 0.2, repeat: isAnimating ? Infinity : 0 }}
             >
@@ -269,7 +269,7 @@ const InteractiveGlucoseVisualization = () => {
 
             {/* Glucose Level */}
             <motion.div 
-              className="text-center p-4 rounded-lg bg-muted/50"
+              className="text-center p-3 md:p-4 rounded-lg bg-muted/50"
               animate={{ scale: isAnimating ? [1, 1.05, 1] : 1 }}
               transition={{ duration: 0.8, delay: 0.4, repeat: isAnimating ? Infinity : 0 }}
             >

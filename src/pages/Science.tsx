@@ -106,17 +106,17 @@ const InteractiveScienceDemo = () => {
           </div>
           
           {/* Real-time metrics */}
-          <div className="grid grid-cols-3 gap-4 text-center">
-            <div className="p-3 rounded-lg bg-gradient-to-br from-gray-50 to-gray-100 border">
-              <div className="text-lg font-bold">{Math.max(70, Math.min(140, 110 - (sensitivityLevel[0] - 50) * 0.8)).toFixed(0)}</div>
+          <div className="grid grid-cols-3 gap-2 md:gap-4 text-center">
+            <div className="p-2 md:p-3 rounded-lg bg-gradient-to-br from-gray-50 to-gray-100 border">
+              <div className="text-base md:text-lg font-bold">{Math.max(70, Math.min(140, 110 - (sensitivityLevel[0] - 50) * 0.8)).toFixed(0)}</div>
               <div className="text-xs text-muted-foreground">Glucose (mg/dL)</div>
             </div>
-            <div className="p-3 rounded-lg bg-gradient-to-br from-gray-50 to-gray-100 border">
-              <div className="text-lg font-bold">{Math.max(10, Math.min(100, 100 - sensitivityLevel[0])).toFixed(0)}%</div>
+            <div className="p-2 md:p-3 rounded-lg bg-gradient-to-br from-gray-50 to-gray-100 border">
+              <div className="text-base md:text-lg font-bold">{Math.max(10, Math.min(100, 100 - sensitivityLevel[0])).toFixed(0)}%</div>
               <div className="text-xs text-muted-foreground">Insulin Needed</div>
             </div>
-            <div className="p-3 rounded-lg bg-gradient-to-br from-gray-50 to-gray-100 border">
-              <div className="text-lg font-bold">{Math.max(30, Math.min(100, sensitivityLevel[0] + 10)).toFixed(0)}%</div>
+            <div className="p-2 md:p-3 rounded-lg bg-gradient-to-br from-gray-50 to-gray-100 border">
+              <div className="text-base md:text-lg font-bold">{Math.max(30, Math.min(100, sensitivityLevel[0] + 10)).toFixed(0)}%</div>
               <div className="text-xs text-muted-foreground">Energy Level</div>
             </div>
           </div>
@@ -205,16 +205,16 @@ const InteractiveScienceDemo = () => {
           </div>
           
           {/* Metabolism metrics based on time */}
-          <div className="grid grid-cols-2 gap-4 text-center">
-            <div className="p-3 rounded-lg bg-gradient-to-br from-gray-50 to-gray-100 border">
-              <div className="text-lg font-bold">
+          <div className="grid grid-cols-2 gap-2 md:gap-4 text-center">
+            <div className="p-2 md:p-3 rounded-lg bg-gradient-to-br from-gray-50 to-gray-100 border">
+              <div className="text-base md:text-lg font-bold">
                 {timeOfDay[0] >= 6 && timeOfDay[0] <= 10 ? '90%' :
                  timeOfDay[0] >= 10 && timeOfDay[0] <= 18 ? '75%' : '45%'}
               </div>
               <div className="text-xs text-muted-foreground">Glucose Tolerance</div>
             </div>
-            <div className="p-3 rounded-lg bg-gradient-to-br from-gray-50 to-gray-100 border">
-              <div className="text-lg font-bold">
+            <div className="p-2 md:p-3 rounded-lg bg-gradient-to-br from-gray-50 to-gray-100 border">
+              <div className="text-base md:text-lg font-bold">
                 {timeOfDay[0] >= 6 && timeOfDay[0] <= 10 ? '85%' :
                  timeOfDay[0] >= 10 && timeOfDay[0] <= 18 ? '70%' : '40%'}
               </div>
@@ -227,25 +227,25 @@ const InteractiveScienceDemo = () => {
   };
 
   return (
-    <div className="grid lg:grid-cols-2 gap-8 items-start">
+    <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-start">
       {/* Demo Selection */}
       <div className="space-y-4">
-        <h3 className="text-2xl font-bold">Interactive Science Demos</h3>
-        <p className="text-muted-foreground">
+        <h3 className="text-xl md:text-2xl font-bold">Interactive Science Demos</h3>
+        <p className="text-sm md:text-base text-muted-foreground">
           Experience the science through real-time simulations based on actual research data.
         </p>
         
-        <div className="space-y-3">
+        <div className="space-y-2 md:space-y-3">
           {Object.entries(demos).map(([key, demo]) => (
             <Button
               key={key}
               variant={selectedDemo === key ? "default" : "outline"}
-              className="w-full justify-start h-auto p-4"
+              className="w-full justify-start h-auto p-3 md:p-4"
               onClick={() => setSelectedDemo(key)}
             >
               <div className="text-left">
-                <div className="font-semibold">{demo.title}</div>
-                <div className="text-sm text-muted-foreground">{demo.description}</div>
+                <div className="text-sm md:text-base font-semibold">{demo.title}</div>
+                <div className="text-xs md:text-sm text-muted-foreground">{demo.description}</div>
               </div>
             </Button>
           ))}
@@ -253,16 +253,16 @@ const InteractiveScienceDemo = () => {
       </div>
       
       {/* Demo Display */}
-      <div className="sticky top-4">
+      <div className="lg:sticky lg:top-4">
         <Card className="border-2 border-primary/20">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Play className="w-5 h-5 text-primary" />
+          <CardHeader className="p-4 md:p-6">
+            <CardTitle className="flex items-center gap-2 text-lg md:text-xl">
+              <Play className="w-4 h-4 md:w-5 md:h-5 text-primary" />
               {demos[selectedDemo].title}
             </CardTitle>
-            <CardDescription>{demos[selectedDemo].explanation}</CardDescription>
+            <CardDescription className="text-sm md:text-base">{demos[selectedDemo].explanation}</CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className="p-4 md:p-6">
             <AnimatePresence mode="wait">
               <motion.div
                 key={selectedDemo}
@@ -294,7 +294,7 @@ const SciencePage = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 md:pt-20">
+      <section className="relative min-h-[80vh] md:min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-8 md:pt-20 md:pb-0">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-secondary/10"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,theme(colors.primary/8),transparent_50%)]"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,theme(colors.secondary/10),transparent_50%)]"></div>
@@ -342,7 +342,7 @@ const SciencePage = () => {
               </div>
             </motion.div>
             
-            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold leading-tight mb-8">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold leading-tight mb-6 md:mb-8 px-4">
               The Science of{" "}
               <span className="text-gradient bg-gradient-to-r from-primary via-primary/80 to-secondary bg-clip-text text-transparent block lg:inline">
                 Personal Nutrition
@@ -350,7 +350,7 @@ const SciencePage = () => {
             </h1>
             
             <motion.p 
-              className="text-base sm:text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-4xl mx-auto mb-12"
+              className="text-sm sm:text-base lg:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto mb-8 md:mb-12 px-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
@@ -360,7 +360,7 @@ const SciencePage = () => {
 
             {/* Quick Facts Ticker */}
             <motion.div
-              className="mb-12"
+              className="mb-8 md:mb-12 px-4"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
