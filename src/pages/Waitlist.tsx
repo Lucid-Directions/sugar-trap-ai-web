@@ -55,7 +55,7 @@ const WaitlistPage = () => {
   }, {
     icon: Crown,
     title: "Shape the Future",
-    description: "Your feedback helps create the ultimate metabolic optimization tool"
+    description: "Your feedback helps create the ultimate metabolic optimisation tool"
   }];
   const discoveries = ["Why glucose spikes predict heart disease better than cholesterol levels (even in healthy people)", "How your gut microbiome contributes up to 10% of your daily energy extraction from food", "The shocking truth: 69% of people have 'social jet lag' destroying their metabolism without knowing it", "Why your endothelial cells can't protect themselves from glucose damage, making spikes extra harmful", "How short-chain fatty acids from fiber act like natural insulin sensitizers in your body", "The incretin system collapse: why Type 2 diabetics lose 70% of their natural glucose control mechanism"];
   const handleSubmit = async (e: React.FormEvent) => {
@@ -294,7 +294,7 @@ const WaitlistPage = () => {
               </h2>
               
               <p className="text-base md:text-lg text-muted-foreground text-center mb-8 max-w-3xl mx-auto">
-                Beyond calories lies a hidden world of metabolic optimization. Discover the science that elite athletes, 
+                Beyond calories lies a hidden world of metabolic optimisation. Discover the science that elite athletes, 
                 biohackers, and longevity researchers have been using, now accessible to everyone.
               </p>
 

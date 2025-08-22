@@ -429,7 +429,7 @@ export default function ScienceHub() {
           >
             <h3 className="text-3xl font-bold">Interactive Science Demos</h3>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Experience the science through interactive visualizations and hands-on demonstrations
+              Experience the science through interactive visualisations and hands-on demonstrations
             </p>
           </motion.div>
           

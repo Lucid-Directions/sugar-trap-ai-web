@@ -195,7 +195,7 @@ const InsulinSensitivityDemo = () => {
       {/* Visual Glucose Curve */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-lg">Glucose Response Visualization</CardTitle>
+          <CardTitle className="text-lg">Glucose Response Visualisation</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="h-32 relative bg-muted/20 rounded-lg overflow-hidden">
@@ -274,14 +274,14 @@ const InsulinSensitivityDemo = () => {
                     <>
                       <p>• Your cells respond efficiently to insulin - excellent metabolic health</p>
                       <p>• Stable energy throughout the day with minimal glucose spikes</p>
-                      <p>• Cognitive function optimized with steady brain fuel supply</p>
+                      <p>• Cognitive function optimised with steady brain fuel supply</p>
                     </>
                   )}
                   {currentState.sensitivity >= 60 && currentState.sensitivity < 80 && (
                     <>
                       <p>• Good insulin response with room for improvement</p>
                       <p>• Mild glucose fluctuations may cause occasional energy dips</p>
-                      <p>• Consider optimizing meal timing and composition</p>
+                      <p>• Consider optimising meal timing and composition</p>
                     </>
                   )}
                   {currentState.sensitivity >= 40 && currentState.sensitivity < 60 && (

@@ -355,7 +355,7 @@ const SciencePage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
             >
-              Everyone's glucose response is as unique as their fingerprint. Modern research reveals why traditional one-size-fits-all approaches fail, and how personalized nutrition science is revolutionizing health.
+              Everyone's glucose response is as unique as their fingerprint. Modern research reveals why traditional one-size-fits-all approaches fail, and how personalised nutrition science is revolutionising health.
             </motion.p>
 
             {/* Quick Facts Ticker */}
@@ -555,7 +555,7 @@ const SciencePage = () => {
                           <strong>Personal Variation:</strong> Incretin response varies 5-fold between individuals, with some people's systems barely responding to natural signals.
                         </div>
                         <div>
-                          <strong>Optimization Strategy:</strong> Sugar Trap AI identifies foods that maximize your incretin response, naturally stabilizing glucose without drugs.
+                          <strong>Optimisation Strategy:</strong> Sugar Trap AI identifies foods that maximise your incretin response, naturally stabilising glucose without drugs.
                         </div>
                       </div>
                     </Card>
@@ -641,7 +641,7 @@ const SciencePage = () => {
               </span>
             </h2>
             <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Dive deep into the science with interactive visualizations, real-time demonstrations, 
+              Dive deep into the science with interactive visualisations, real-time demonstrations, 
               and comprehensive research that adapts to your curiosity level.
             </p>
           </motion.div>

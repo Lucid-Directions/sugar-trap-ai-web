@@ -152,7 +152,7 @@ const allTopics: ScienceTopic[] = [
     category: 'nutrition',
     complexity: 'Advanced',
     tags: ['genetics', 'biomarkers', 'precision'],
-    preview: 'Why one-size-fits-all diets fail and how precision nutrition is revolutionizing health.',
+    preview: 'Why one-size-fits-all diets fail and how precision nutrition is revolutionising health.',
     isNew: true
   },
   {

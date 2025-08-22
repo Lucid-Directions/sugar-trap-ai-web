@@ -66,7 +66,7 @@ const PricingPage = () => {
       name: "Max",
       price: "£18.99", 
       period: "/month",
-      description: "For the ultimate optimization",
+      description: "For the ultimate optimisation",
       icon: Brain,
       color: "from-purple-500 to-purple-600",
       popular: false,
@@ -235,7 +235,7 @@ const PricingPage = () => {
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Understanding your glucose response isn't just about nutrition, it's about 
-              optimizing every aspect of your health and performance.
+              optimising every aspect of your health and performance.
             </p>
           </motion.div>
 
@@ -320,7 +320,7 @@ const PricingPage = () => {
               Ready to <span className="text-gradient">Transform</span> Your Nutrition?
             </h2>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Join thousands who are revolutionizing their health with science-backed glucose insights.
+              Join thousands who are revolutionising their health with science-backed glucose insights.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -40,7 +40,7 @@ const HowItWorksSection = () => {
       details: [
         "Beyond basic macros, we track 30+ micronutrients including vitamins, minerals, and phytonutrients often missing from other apps.",
         "Our analysis includes bioavailability factors - understanding that 100mg of iron from spinach affects your body differently than 100mg from red meat.",
-        "Fiber analysis breaks down soluble vs insoluble fiber, crucial for glucose prediction and digestive health optimization.",
+        "Fibre analysis breaks down soluble vs insoluble fibre, crucial for glucose prediction and digestive health optimisation.",
         "We track food timing and combinations that affect nutrient absorption and metabolic response."
       ],
       benefits: [
@@ -77,10 +77,10 @@ const HowItWorksSection = () => {
     features: ["Meal optimisation", "Personalised tips", "Long-term patterns"],
     color: "from-amber-500 to-amber-600",
     expandedContent: {
-      subtitle: "Intelligent Meal Optimization Engine",
+      subtitle: "Intelligent Meal Optimisation Engine",
       details: [
         "Our recommendation engine suggests simple swaps that can reduce glucose spikes by 40-70% while maintaining taste and satisfaction.",
-        "We provide sequence optimization - the order you eat foods in a meal can significantly impact your glucose response.",
+        "We provide sequence optimisation - the order you eat foods in a meal can significantly impact your glucose response.",
         "Timing recommendations help you understand when your body is most insulin sensitive for optimal meal timing.",
         "Pattern recognition identifies your personal 'glucose triggers' and suggests alternatives that work better for your metabolism."
       ],
@@ -103,12 +103,12 @@ const HowItWorksSection = () => {
       details: [
         "Seamlessly connect popular CGM devices (Dexcom, FreeStyle Libre, Medtronic) to compare predictions with actual glucose data.",
         "Our machine learning algorithm continuously improves predictions based on your real-world responses, achieving 90%+ accuracy.",
-        "Advanced analytics include glucose variability scores, time-in-range optimization, and dawn phenomenon analysis.",
+        "Advanced analytics include glucose variability scores, time-in-range optimisation, and dawn phenomenon analysis.",
         "Healthcare provider integration allows you to share comprehensive reports with your doctor, including meal-glucose correlations and pattern insights."
       ],
       benefits: [
         "Validate and improve prediction accuracy over time",
-        "Professional-grade analytics for health optimization",
+        "Professional-grade analytics for health optimisation",
         "Share meaningful data with healthcare providers"
       ]
     }
