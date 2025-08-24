@@ -120,10 +120,19 @@ const CircadianRhythmClock = () => {
   };
 
   const formatTime = (time: number) => {
-    const hours = Math.floor(time);
-    const minutes = Math.round((time - hours) * 60);
-    const period = hours >= 12 ? 'PM' : 'AM';
-    const displayHours = hours === 0 ? 12 : hours > 12 ? hours - 12 : hours;
+    // Normalize to 0–24 range
+    const t24 = ((time % 24) + 24) % 24;
+    let hours24 = Math.floor(t24);
+    let minutes = Math.round((t24 - hours24) * 60);
+
+    // Handle 60-minute rounding overflow
+    if (minutes === 60) {
+      minutes = 0;
+      hours24 = (hours24 + 1) % 24;
+    }
+
+    const period = hours24 >= 12 ? 'PM' : 'AM';
+    const displayHours = hours24 % 12 === 0 ? 12 : hours24 % 12;
     return `${displayHours}:${minutes.toString().padStart(2, '0')} ${period}`;
   };
 
@@ -394,15 +403,15 @@ const CircadianRhythmClock = () => {
                   <motion.line
                     x1="100"
                     y1="100"
-                    x2={100 + 40 * Math.cos(((circadianState.time % 12) * 30 - 90) * Math.PI / 180)}
-                    y2={100 + 40 * Math.sin(((circadianState.time % 12) * 30 - 90) * Math.PI / 180)}
+                    x2={100 + 40 * Math.cos(((Math.floor(circadianState.time % 12) * 30 + ((circadianState.time % 1) * 60) * 0.5 - 90) * Math.PI / 180))}
+                    y2={100 + 40 * Math.sin(((Math.floor(circadianState.time % 12) * 30 + ((circadianState.time % 1) * 60) * 0.5 - 90) * Math.PI / 180))}
                     stroke="currentColor"
                     strokeWidth="4"
                     strokeLinecap="round"
                     className="text-foreground"
                     animate={{
-                      x2: 100 + 40 * Math.cos(((circadianState.time % 12) * 30 - 90) * Math.PI / 180),
-                      y2: 100 + 40 * Math.sin(((circadianState.time % 12) * 30 - 90) * Math.PI / 180)
+                      x2: 100 + 40 * Math.cos(((Math.floor(circadianState.time % 12) * 30 + ((circadianState.time % 1) * 60) * 0.5 - 90) * Math.PI / 180)),
+                      y2: 100 + 40 * Math.sin(((Math.floor(circadianState.time % 12) * 30 + ((circadianState.time % 1) * 60) * 0.5 - 90) * Math.PI / 180))
                     }}
                     transition={{ duration: 0.3 }}
                   />
