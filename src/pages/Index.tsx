@@ -3,6 +3,7 @@ import HeroSection from '@/components/HeroSection';
 import ProblemSection from '@/components/ProblemSection';
 import GlucoseCurveDemo from '@/components/GlucoseCurveDemo';
 import HowItWorksSection from '@/components/HowItWorksSection';
+import Footer from '@/components/Footer';
 
 const Index = () => {
   return (
@@ -12,6 +13,7 @@ const Index = () => {
       <ProblemSection />
       <GlucoseCurveDemo />
       <HowItWorksSection />
+      <Footer />
     </div>
   );
 };

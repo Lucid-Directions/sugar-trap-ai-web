@@ -5,6 +5,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/component
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -1165,6 +1166,7 @@ const SciencePage = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 };

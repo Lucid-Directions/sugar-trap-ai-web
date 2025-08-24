@@ -4,6 +4,7 @@ import { Check, Star, Zap, BarChart3, Brain, Heart, TrendingUp } from 'lucide-re
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
 
 const PricingPage = () => {
   const ref = useRef(null);
@@ -338,6 +339,7 @@ const PricingPage = () => {
           </motion.div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 };

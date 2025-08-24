@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
 import { z } from 'zod';
 // Zod schema for email validation
 const emailSchema = z.object({
@@ -418,6 +419,7 @@ const WaitlistPage = () => {
             </motion.div>
           </div>
         </section>}
+      <Footer />
     </div>;
 };
 export default WaitlistPage;
