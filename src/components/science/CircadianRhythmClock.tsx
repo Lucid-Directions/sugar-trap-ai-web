@@ -403,17 +403,17 @@ const CircadianRhythmClock = () => {
                   <motion.line
                     x1="100"
                     y1="100"
-                    x2={100 + 40 * Math.cos(((Math.floor(circadianState.time % 12) * 30 + ((circadianState.time % 1) * 60) * 0.5 - 90) * Math.PI / 180))}
-                    y2={100 + 40 * Math.sin(((Math.floor(circadianState.time % 12) * 30 + ((circadianState.time % 1) * 60) * 0.5 - 90) * Math.PI / 180))}
+                    x2={100 + 40 * Math.cos((((circadianState.time % 12) * 30 - 90) * Math.PI / 180))}
+                    y2={100 + 40 * Math.sin((((circadianState.time % 12) * 30 - 90) * Math.PI / 180))}
                     stroke="currentColor"
                     strokeWidth="4"
                     strokeLinecap="round"
                     className="text-foreground"
                     animate={{
-                      x2: 100 + 40 * Math.cos(((Math.floor(circadianState.time % 12) * 30 + ((circadianState.time % 1) * 60) * 0.5 - 90) * Math.PI / 180)),
-                      y2: 100 + 40 * Math.sin(((Math.floor(circadianState.time % 12) * 30 + ((circadianState.time % 1) * 60) * 0.5 - 90) * Math.PI / 180))
+                      x2: 100 + 40 * Math.cos((((circadianState.time % 12) * 30 - 90) * Math.PI / 180)),
+                      y2: 100 + 40 * Math.sin((((circadianState.time % 12) * 30 - 90) * Math.PI / 180))
                     }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.2 }}
                   />
                   
                   {/* Minute hand */}
