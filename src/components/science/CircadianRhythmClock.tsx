@@ -324,117 +324,23 @@ const CircadianRhythmClock = () => {
             {/* Analog Clock */}
             <div className="flex-1 flex justify-center">
               <div className="relative w-64 h-64">
-                <svg viewBox="0 0 200 200" className="w-full h-full">
-                  {/* Clock face background */}
-                  <circle
-                    cx="100"
-                    cy="100"
-                    r="95"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    className="text-border"
-                  />
-                  
-                  {/* Hour markers */}
-                  {Array.from({ length: 24 }, (_, i) => {
-                    const angle = (i * 15) - 90; // 360/24 = 15 degrees per hour, -90 to start at top
-                    const isQuarterHour = i % 6 === 0;
-                    const radius = isQuarterHour ? 85 : 90;
-                    const endRadius = 95;
-                    const x1 = 100 + radius * Math.cos(angle * Math.PI / 180);
-                    const y1 = 100 + radius * Math.sin(angle * Math.PI / 180);
-                    const x2 = 100 + endRadius * Math.cos(angle * Math.PI / 180);
-                    const y2 = 100 + endRadius * Math.sin(angle * Math.PI / 180);
-                    
-                    return (
-                      <line
-                        key={i}
-                        x1={x1}
-                        y1={y1}
-                        x2={x2}
-                        y2={y2}
-                        stroke="currentColor"
-                        strokeWidth={isQuarterHour ? 3 : 1}
-                        className="text-muted-foreground"
-                      />
-                    );
-                  })}
-                  
-                  {/* Hour numbers */}
-                  {[12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((hour, index) => {
-                    const angle = (hour === 12 ? 0 : hour * 30) - 90; // 12 is at top (0 degrees), then 30 degrees per hour
-                    const radius = 75;
-                    const x = 100 + radius * Math.cos(angle * Math.PI / 180);
-                    const y = 100 + radius * Math.sin(angle * Math.PI / 180);
-                    
-                    return (
-                      <text
-                        key={hour}
-                        x={x}
-                        y={y + 5}
-                        textAnchor="middle"
-                        className="text-sm font-medium fill-current"
-                      >
-                        {hour}
-                      </text>
-                    );
-                  })}
-                  
-                  {/* AM/PM indicators */}
-                  <text x="100" y="40" textAnchor="middle" className="text-xs fill-muted-foreground">AM</text>
-                  <text x="100" y="170" textAnchor="middle" className="text-xs fill-muted-foreground">PM</text>
-                  
-                  {/* Metabolic zones background */}
-                  <defs>
-                    <radialGradient id="metabolic-gradient" cx="50%" cy="50%">
-                      <stop offset="0%" stopColor="transparent" />
-                      <stop offset="70%" stopColor="transparent" />
-                      <stop offset="100%" stopColor={circadianState.phase === 'morning' ? '#10b981' : 
-                                                  circadianState.phase === 'midday' ? '#f59e0b' :
-                                                  circadianState.phase === 'evening' ? '#f97316' : '#6366f1'} 
-                            stopOpacity="0.1" />
-                    </radialGradient>
-                  </defs>
-                  <circle cx="100" cy="100" r="70" fill="url(#metabolic-gradient)" />
-                  
-                  {/* Clock hands */}
-                  {/* Hour hand (12-hour format) */}
-                  <motion.line
-                    x1="100"
-                    y1="100"
-                    x2={100 + 40 * Math.cos((((circadianState.time % 12) * 30 - 90) * Math.PI / 180))}
-                    y2={100 + 40 * Math.sin((((circadianState.time % 12) * 30 - 90) * Math.PI / 180))}
-                    stroke="currentColor"
-                    strokeWidth="4"
-                    strokeLinecap="round"
-                    className="text-foreground"
-                    animate={{
-                      x2: 100 + 40 * Math.cos((((circadianState.time % 12) * 30 - 90) * Math.PI / 180)),
-                      y2: 100 + 40 * Math.sin((((circadianState.time % 12) * 30 - 90) * Math.PI / 180))
-                    }}
-                    transition={{ duration: 0.2 }}
-                  />
-                  
-                  {/* Minute hand */}
-                  <motion.line
-                    x1="100"
-                    y1="100"
-                    x2={100 + 60 * Math.cos((((circadianState.time % 1) * 60) * 6 - 90) * Math.PI / 180)}
-                    y2={100 + 60 * Math.sin((((circadianState.time % 1) * 60) * 6 - 90) * Math.PI / 180)}
-                    stroke="#ef4444"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    animate={{
-                      x2: 100 + 60 * Math.cos((((circadianState.time % 1) * 60) * 6 - 90) * Math.PI / 180),
-                      y2: 100 + 60 * Math.sin((((circadianState.time % 1) * 60) * 6 - 90) * Math.PI / 180)
-                    }}
-                    transition={{ duration: 0.3 }}
-                  />
-                  
-                  {/* Center dot */}
-                  <circle cx="100" cy="100" r="4" fill="currentColor" className="text-foreground" />
-                </svg>
+                <div className="w-full h-full flex items-center justify-center">
+                  <div className="text-center">
+                    <motion.div
+                      key={circadianState.time}
+                      initial={{ opacity: 0, y: 4 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.15 }}
+                      className="text-5xl font-extrabold tracking-tight"
+                    >
+                      {formatTime(circadianState.time)}
+                    </motion.div>
+                    <div className="mt-2 text-sm text-muted-foreground">Aligned with slider</div>
+                    <div className="mt-3">
+                      <Badge variant="secondary" className="capitalize">{circadianState.phase}</Badge>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             
