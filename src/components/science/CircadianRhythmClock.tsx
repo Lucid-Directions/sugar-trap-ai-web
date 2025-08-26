@@ -313,11 +313,11 @@ const CircadianRhythmClock = () => {
         </CardContent>
       </Card>
 
-      {/* Analog Clock Visualization */}
+      {/* Digital Clock Visualization */}
       <Card>
         <CardHeader>
-          <CardTitle>Circadian Clock</CardTitle>
-          <CardDescription>Visual representation of metabolic changes throughout the day</CardDescription>
+          <CardTitle>Digital Clock</CardTitle>
+          <CardDescription>Digital clock synced with the time slider</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="flex flex-col lg:flex-row gap-6">
@@ -333,7 +333,7 @@ const CircadianRhythmClock = () => {
                       transition={{ duration: 0.15 }}
                       className="text-5xl font-extrabold tracking-tight"
                     >
-                      {formatTime(circadianState.time)}
+                      {formatTime(currentTime[0])}
                     </motion.div>
                     <div className="mt-2 text-sm text-muted-foreground">Aligned with slider</div>
                     <div className="mt-3">
