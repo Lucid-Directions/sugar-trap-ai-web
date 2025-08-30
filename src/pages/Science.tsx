@@ -159,50 +159,20 @@ const InteractiveScienceDemo = () => {
             className="w-full"
           />
           
-          {/* 24-hour visualization */}
-          <div className="h-48 bg-gradient-to-b from-gray-50 to-white rounded-lg p-4 border">
-            <svg viewBox="0 0 400 160" className="w-full h-full">
-              {/* Clock face background */}
-              <circle cx="200" cy="80" r="60" fill="none" stroke="#e2e8f0" strokeWidth="2"/>
-              <circle cx="200" cy="80" r="50" fill="rgba(248, 250, 252, 0.5)"/>
-              
-              {/* Hour markers */}
-              {Array.from({ length: 12 }, (_, i) => {
-                const angle = (i * 30 - 90) * (Math.PI / 180);
-                const x1 = 200 + 50 * Math.cos(angle);
-                const y1 = 80 + 50 * Math.sin(angle);
-                const x2 = 200 + 55 * Math.cos(angle);
-                const y2 = 80 + 55 * Math.sin(angle);
-                return (
-                  <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#94a3b8" strokeWidth="2"/>
-                );
-              })}
-              
-              {/* Current time indicator */}
-              <motion.line
-                x1="200"
-                y1="80"
-                x2={200 + 45 * Math.cos((timeOfDay[0] * 15 - 90) * (Math.PI / 180))}
-                y2={80 + 45 * Math.sin((timeOfDay[0] * 15 - 90) * (Math.PI / 180))}
-                stroke="#ef4444"
-                strokeWidth="3"
-                strokeLinecap="round"
-                animate={{ 
-                  x2: 200 + 45 * Math.cos((timeOfDay[0] * 15 - 90) * (Math.PI / 180)),
-                  y2: 80 + 45 * Math.sin((timeOfDay[0] * 15 - 90) * (Math.PI / 180))
-                }}
-                transition={{ duration: 0.3 }}
-              />
-              
-              {/* Center dot */}
-              <circle cx="200" cy="80" r="4" fill="#ef4444"/>
-              
-              {/* Time labels */}
-              <text x="200" y="35" className="text-xs fill-muted-foreground" textAnchor="middle">12</text>
-              <text x="245" y="85" className="text-xs fill-muted-foreground" textAnchor="middle">3</text>
-              <text x="200" y="130" className="text-xs fill-muted-foreground" textAnchor="middle">6</text>
-              <text x="155" y="85" className="text-xs fill-muted-foreground" textAnchor="middle">9</text>
-            </svg>
+          {/* Digital clock visualization (synced with slider) */}
+          <div className="h-48 bg-gradient-to-b from-gray-50 to-white rounded-lg p-4 border flex items-center justify-center">
+            <div className="text-4xl md:text-5xl font-extrabold tracking-tight">
+              {(() => {
+                const t24 = ((timeOfDay[0] % 24) + 24) % 24;
+                let hours24 = Math.floor(t24);
+                let minutes = Math.round((t24 - hours24) * 60);
+                if (minutes === 60) { minutes = 0; hours24 = (hours24 + 1) % 24; }
+                const period = hours24 >= 12 ? 'PM' : 'AM';
+                const displayHours = hours24 % 12 === 0 ? 12 : hours24 % 12;
+                const mm = minutes.toString().padStart(2, '0');
+                return `${displayHours}:${mm} ${period}`;
+              })()}
+            </div>
           </div>
           
           {/* Metabolism metrics based on time */}
