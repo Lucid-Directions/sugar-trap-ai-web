@@ -159,21 +159,118 @@ const InteractiveScienceDemo = () => {
             className="w-full"
           />
           
-          {/* Digital clock visualization (synced with slider) */}
-          <div className="h-48 bg-gradient-to-b from-gray-50 to-white rounded-lg p-4 border flex items-center justify-center">
-            <div className="text-4xl md:text-5xl font-extrabold tracking-tight">
-              {(() => {
-                const t24 = ((timeOfDay[0] % 24) + 24) % 24;
-                let hours24 = Math.floor(t24);
-                let minutes = Math.round((t24 - hours24) * 60);
-                if (minutes === 60) { minutes = 0; hours24 = (hours24 + 1) % 24; }
-                const period = hours24 >= 12 ? 'PM' : 'AM';
-                const displayHours = hours24 % 12 === 0 ? 12 : hours24 % 12;
-                const mm = minutes.toString().padStart(2, '0');
-                return `${displayHours}:${mm} ${period}`;
-              })()}
+          {/* Enhanced Digital Clock with Dynamic Sky Background */}
+          <motion.div 
+            className="relative h-48 rounded-xl p-6 border overflow-hidden flex items-center justify-center"
+            style={{
+              background: (() => {
+                const t = ((timeOfDay[0] % 24) + 24) % 24;
+                if (t >= 5 && t < 7) {
+                  // Dawn (5-7am)
+                  return 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%)';
+                } else if (t >= 7 && t < 17) {
+                  // Day (7am-5pm)
+                  return 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)';
+                } else if (t >= 17 && t < 20) {
+                  // Dusk (5-8pm)
+                  return 'linear-gradient(135deg, #d299c2 0%, #fef9d7 100%)';
+                } else {
+                  // Night (8pm-5am)
+                  return 'linear-gradient(135deg, #2c3e50 0%, #3498db 100%)';
+                }
+              })()
+            }}
+            animate={{
+              background: (() => {
+                const t = ((timeOfDay[0] % 24) + 24) % 24;
+                if (t >= 5 && t < 7) {
+                  return 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%)';
+                } else if (t >= 7 && t < 17) {
+                  return 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)';
+                } else if (t >= 17 && t < 20) {
+                  return 'linear-gradient(135deg, #d299c2 0%, #fef9d7 100%)';
+                } else {
+                  return 'linear-gradient(135deg, #2c3e50 0%, #3498db 100%)';
+                }
+              })()
+            }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+          >
+            {/* Subtle overlay for depth */}
+            <div className="absolute inset-0 bg-black/10 backdrop-blur-sm" />
+            
+            {/* Floating particles for ambiance */}
+            <div className="absolute inset-0">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute w-1 h-1 bg-white/30 rounded-full"
+                  style={{
+                    left: `${20 + i * 15}%`,
+                    top: `${30 + (i % 2) * 40}%`,
+                  }}
+                  animate={{
+                    y: [-10, 10, -10],
+                    opacity: [0.3, 0.7, 0.3],
+                  }}
+                  transition={{
+                    duration: 3 + i,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+              ))}
             </div>
-          </div>
+            
+            {/* Main clock display */}
+            <motion.div 
+              className="relative z-10 text-center"
+              animate={{ scale: [0.98, 1.02, 0.98] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <motion.div 
+                className="text-5xl md:text-6xl font-black tracking-tight text-white drop-shadow-2xl"
+                style={{
+                  textShadow: '0 0 20px rgba(0,0,0,0.5), 0 0 40px rgba(255,255,255,0.3)',
+                }}
+                animate={{ 
+                  textShadow: [
+                    '0 0 20px rgba(0,0,0,0.5), 0 0 40px rgba(255,255,255,0.3)',
+                    '0 0 25px rgba(0,0,0,0.6), 0 0 50px rgba(255,255,255,0.4)',
+                    '0 0 20px rgba(0,0,0,0.5), 0 0 40px rgba(255,255,255,0.3)',
+                  ]
+                }}
+                transition={{ duration: 3, repeat: Infinity }}
+              >
+                {(() => {
+                  const t24 = ((timeOfDay[0] % 24) + 24) % 24;
+                  let hours24 = Math.floor(t24);
+                  let minutes = Math.round((t24 - hours24) * 60);
+                  if (minutes === 60) { minutes = 0; hours24 = (hours24 + 1) % 24; }
+                  const period = hours24 >= 12 ? 'PM' : 'AM';
+                  const displayHours = hours24 % 12 === 0 ? 12 : hours24 % 12;
+                  const mm = minutes.toString().padStart(2, '0');
+                  return `${displayHours}:${mm} ${period}`;
+                })()}
+              </motion.div>
+              
+              {/* Time period indicator */}
+              <motion.div 
+                className="mt-2 text-sm font-semibold text-white/90 uppercase tracking-widest"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                {(() => {
+                  const t = ((timeOfDay[0] % 24) + 24) % 24;
+                  if (t >= 5 && t < 7) return '🌅 Dawn';
+                  else if (t >= 7 && t < 17) return '☀️ Daylight';
+                  else if (t >= 17 && t < 20) return '🌇 Dusk';
+                  else return '🌙 Night';
+                })()}
+              </motion.div>
+            </motion.div>
+          </motion.div>
           
           {/* Metabolism metrics based on time */}
           <div className="grid grid-cols-2 gap-2 md:gap-4 text-center">
