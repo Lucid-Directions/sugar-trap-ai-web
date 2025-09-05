@@ -61,7 +61,7 @@ const PricingPage = () => {
         "Priority support"
       ],
       limitations: [],
-      cta: "Start 7-Day Free Trial",
+      cta: "Get Pro",
       ctaVariant: "default" as const
     },
     {
@@ -81,7 +81,7 @@ const PricingPage = () => {
         "White-glove support"
       ],
       limitations: [],
-      cta: "Contact Sales",
+      cta: "Get Max",
       ctaVariant: "outline" as const
     }
   ];
