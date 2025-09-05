@@ -21,24 +21,26 @@ const PricingPage = () => {
 
   const plans = [
     {
-      name: "Free",
-      price: "£0",
-      period: "forever",
-      description: "Perfect for traditional tracking",
+      name: "7-Day Trial",
+      price: "Free",
+      period: "7 days",
+      description: "Experience all Pro features risk-free",
       icon: BarChart3,
-      color: "from-gray-500 to-gray-600",
+      color: "from-emerald-500 to-emerald-600",
       popular: false,
       features: [
-        "Photo-based food logging",
-        "Barcode scanning", 
-        "Calorie tracking",
-        "Macro/micronutrient breakdown",
-        "5 meal logs per day",
-        "Basic food journal",
-        "Community access"
+        "Full Pro access for 7 days",
+        "Unlimited meal logging",
+        "AI Glucose Predictions for every meal",
+        "Personalised meal optimisation tips",
+        "Weekly trends and patterns",
+        "Detailed progress tracking",
+        "Export your data",
+        "Priority support",
+        "Auto-upgrades to Pro after trial"
       ],
       limitations: [],
-      cta: "Start Free",
+      cta: "Start 7-Day Trial",
       ctaVariant: "outline" as const
     },
     {
@@ -50,7 +52,6 @@ const PricingPage = () => {
       color: "from-primary to-primary-glow",
       popular: true,
       features: [
-        "Everything in Free, plus:",
         "Unlimited meal logging",
         "AI Glucose Predictions for every meal",
         "Personalised meal optimisation tips",
@@ -281,11 +282,11 @@ const PricingPage = () => {
                 },
                 {
                   question: "Do I need a continuous glucose monitor?",
-                  answer: "No! The Free and Pro plans work entirely through photo-based food logging. Only the Max plan offers optional CGM integration for users who already have devices."
+                  answer: "No! The 7-Day Trial and Pro plans work entirely through photo-based food logging. Only the Max plan offers optional CGM integration for users who already have devices."
                 },
                 {
                   question: "Can I cancel anytime?",
-                  answer: "Absolutely. All paid plans can be cancelled at any time with no cancellation fees. Your data remains accessible even if you downgrade to the Free plan."
+                  answer: "Absolutely. All paid plans can be cancelled at any time with no cancellation fees. You can cancel your trial before it ends to avoid being charged for Pro."
                 },
                 {
                   question: "How is this different from other nutrition apps?",
