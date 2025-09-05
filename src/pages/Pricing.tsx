@@ -37,7 +37,7 @@ const PricingPage = () => {
         "Detailed progress tracking",
         "Export your data",
         "Priority support",
-        "Auto-upgrades to Pro after trial (not Max)"
+        "Auto-upgrades to Pro after trial"
       ],
       limitations: [],
       cta: "Start 7-Day Trial",
@@ -78,7 +78,7 @@ const PricingPage = () => {
         "Compare predictions to actual glucose data",
         "Advanced analytics dashboard",
         "Meal timing recommendations",
-        "White-glove support (dedicated account manager)"
+        "White-glove support"
       ],
       limitations: [],
       cta: "Contact Sales",
