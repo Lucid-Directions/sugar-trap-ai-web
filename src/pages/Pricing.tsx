@@ -26,7 +26,7 @@ const PricingPage = () => {
       period: "7 days",
       description: "Experience all Pro features risk-free",
       icon: BarChart3,
-      color: "from-emerald-500 to-emerald-600",
+      color: "from-blue-500 to-blue-600",
       popular: false,
       features: [
         "Full Pro access for 7 days",
