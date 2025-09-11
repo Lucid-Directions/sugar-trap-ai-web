@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, LogOut, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import OrbitingSugarCube from './OrbitingSugarCube';
+import { useAuth } from '@/hooks/useAuth';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { user, signOut } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,7 +25,7 @@ const Navigation = () => {
     { label: 'Science', href: '/science' },
     { label: 'Pricing', href: '/pricing' },
     { label: 'Waitlist', href: '/waitlist' },
-    { label: 'Admin', href: '/waitlist-admin' }
+    ...(user ? [{ label: 'Admin', href: '/waitlist-admin' }] : [])
   ];
 
   return (
@@ -88,15 +90,34 @@ const Navigation = () => {
             ))}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
-            <Button
-              className="magnetic-button shadow-md hover:shadow-lg"
-              size="sm"
-              asChild
-            >
-              <Link to="/waitlist">Join Waitlist</Link>
-            </Button>
+          {/* Auth Buttons / User Menu */}
+          <div className="hidden md:flex items-center gap-4">
+            {user ? (
+              <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 text-sm">
+                  <User className="w-4 h-4" />
+                  <span className="text-muted-foreground">{user.email}</span>
+                </div>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={signOut}
+                  className="flex items-center gap-2"
+                >
+                  <LogOut className="w-4 h-4" />
+                  Sign Out
+                </Button>
+              </div>
+            ) : (
+              <div className="flex items-center gap-2">
+                <Button variant="outline" size="sm" asChild>
+                  <Link to="/auth">Sign In</Link>
+                </Button>
+                <Button size="sm" asChild>
+                  <Link to="/waitlist">Join Waitlist</Link>
+                </Button>
+              </div>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -168,9 +189,36 @@ const Navigation = () => {
                     </Link>
                   )
                 ))}
-                <Button className="w-full mt-4" asChild>
-                  <Link to="/waitlist">Join Waitlist</Link>
-                </Button>
+                <div className="border-t pt-4 mt-4 space-y-2">
+                  {user ? (
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground px-2">
+                        <User className="w-4 h-4" />
+                        <span className="truncate">{user.email}</span>
+                      </div>
+                      <Button
+                        variant="outline" 
+                        className="w-full flex items-center gap-2"
+                        onClick={() => {
+                          setIsOpen(false);
+                          signOut();
+                        }}
+                      >
+                        <LogOut className="w-4 h-4" />
+                        Sign Out
+                      </Button>
+                    </div>
+                  ) : (
+                    <div className="space-y-2">
+                      <Button variant="outline" className="w-full" asChild>
+                        <Link to="/auth" onClick={() => setIsOpen(false)}>Sign In</Link>
+                      </Button>
+                      <Button className="w-full" asChild>
+                        <Link to="/waitlist" onClick={() => setIsOpen(false)}>Join Waitlist</Link>
+                      </Button>
+                    </div>
+                  )}
+                </div>
               </div>
             </motion.div>
           )}
