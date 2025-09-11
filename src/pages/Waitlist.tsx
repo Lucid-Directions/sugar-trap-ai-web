@@ -77,7 +77,7 @@ const WaitlistPage = () => {
 
       // Submit to waitlist via Supabase Edge Function
       try {
-        const response = await fetch('/functions/v1/waitlist', {
+        const response = await fetch('https://xgvhvkusufpzgjlipdpl.supabase.co/functions/v1/waitlist', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
