@@ -38,10 +38,11 @@ serve(async (req) => {
       );
     }
 
-    // Get client IP for basic rate limiting tracking
-    const clientIP = req.headers.get('x-forwarded-for') || 
-                    req.headers.get('x-real-ip') || 
-                    'unknown';
+    // Get client IP (extract first IP) for inet column; fall back to null
+    const fwdFor = req.headers.get('x-forwarded-for') || '';
+    const realIp = req.headers.get('x-real-ip') || '';
+    const rawIp = (fwdFor || realIp).toString();
+    const clientIPForDb = rawIp ? rawIp.split(',')[0].trim() : null;
 
     // Check if email already exists
     const { data: existing } = await supabaseClient
@@ -67,7 +68,7 @@ serve(async (req) => {
         {
           email: email.toLowerCase().trim(),
           user_agent: userAgent,
-          ip_address: clientIP,
+          ip_address: clientIPForDb,
           source: 'website'
         }
       ])
