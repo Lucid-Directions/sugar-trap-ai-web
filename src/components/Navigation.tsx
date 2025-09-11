@@ -22,7 +22,8 @@ const Navigation = () => {
     { label: 'Home', href: '/' },
     { label: 'Science', href: '/science' },
     { label: 'Pricing', href: '/pricing' },
-    { label: 'Waitlist', href: '/waitlist' }
+    { label: 'Waitlist', href: '/waitlist' },
+    { label: 'Admin', href: '/waitlist-admin' }
   ];
 
   return (
