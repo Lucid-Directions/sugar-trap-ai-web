@@ -75,12 +75,25 @@ const WaitlistPage = () => {
       const validatedData = emailSchema.parse({ email: email.trim() });
       setIsSubmitting(true);
 
-      // Simulate API call with proper error handling
+      // Submit to waitlist via Supabase Edge Function
       try {
-        // Here you would typically send the email to your backend
-        await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate network delay
+        const response = await fetch('/functions/v1/waitlist', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: validatedData.email,
+            userAgent: navigator.userAgent,
+          }),
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+          throw new Error(result.error || 'Failed to join waitlist');
+        }
         
-        // Email submitted successfully - track in analytics if needed
         setIsSubmitted(true);
         setLastSubmissionTime(now);
         
@@ -89,10 +102,10 @@ const WaitlistPage = () => {
           description: "Welcome to the metabolic revolution! Check your email for confirmation.",
         });
       } catch (error) {
-        // Track submission errors in production analytics if needed
+        const errorMessage = error instanceof Error ? error.message : 'Failed to join waitlist';
         toast({
           title: "Submission failed",
-          description: "Please try again. If the problem persists, contact support.",
+          description: errorMessage,
           variant: "destructive",
         });
       }
