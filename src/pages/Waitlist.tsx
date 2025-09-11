@@ -7,6 +7,7 @@ import { useToast } from '@/hooks/use-toast';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { z } from 'zod';
+import { supabase } from '@/integrations/supabase/client';
 // Zod schema for email validation
 const emailSchema = z.object({
   email: z
@@ -77,21 +78,15 @@ const WaitlistPage = () => {
 
       // Submit to waitlist via Supabase Edge Function
       try {
-        const response = await fetch('https://xgvhvkusufpzgjlipdpl.supabase.co/functions/v1/waitlist', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
+        const { data, error } = await supabase.functions.invoke('waitlist', {
+          body: {
             email: validatedData.email,
             userAgent: navigator.userAgent,
-          }),
+          },
         });
 
-        const result = await response.json();
-
-        if (!response.ok) {
-          throw new Error(result.error || 'Failed to join waitlist');
+        if (error) {
+          throw new Error(error.message || 'Failed to join waitlist');
         }
         
         setIsSubmitted(true);
