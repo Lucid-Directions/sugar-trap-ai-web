@@ -99,7 +99,7 @@ const WaitlistPage = () => {
         
         toast({
           title: "Successfully joined!",
-          description: "Welcome to the metabolic revolution! Check your email for confirmation.",
+          description: "Welcome to the metabolic revolution! You're now on the waitlist.",
         });
       } catch (error) {
         const errorMessage = error instanceof Error ? error.message : 'Failed to join waitlist';
@@ -205,7 +205,7 @@ const WaitlistPage = () => {
                 </form>
 
                 <p className="text-xs text-muted-foreground text-center mt-4">
-                  We respect your privacy. Unsubscribe anytime. No spam, just science.
+                  We respect your privacy. Your email is securely stored and will only be used for launch notifications.
                 </p>
               </div> : <motion.div className="gradient-card rounded-3xl p-6 md:p-8 text-center" initial={{
             opacity: 0,
@@ -233,7 +233,7 @@ const WaitlistPage = () => {
                   You're now part of an exclusive group pioneering personalized nutrition science.
                 </p>
                 <p className="text-sm text-muted-foreground">
-                  Check your email for confirmation and your first metabolic insights!
+                  We'll reach out to you when we're ready to launch with early access!
                 </p>
               </motion.div>}
           </motion.div>
