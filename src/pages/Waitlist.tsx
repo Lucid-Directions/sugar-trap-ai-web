@@ -80,7 +80,7 @@ const WaitlistPage = () => {
         // Here you would typically send the email to your backend
         await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate network delay
         
-        console.log('Email submitted:', validatedData.email);
+        // Email submitted successfully - track in analytics if needed
         setIsSubmitted(true);
         setLastSubmissionTime(now);
         
@@ -89,7 +89,7 @@ const WaitlistPage = () => {
           description: "Welcome to the metabolic revolution! Check your email for confirmation.",
         });
       } catch (error) {
-        console.error('Submission error:', error);
+        // Track submission errors in production analytics if needed
         toast({
           title: "Submission failed",
           description: "Please try again. If the problem persists, contact support.",
