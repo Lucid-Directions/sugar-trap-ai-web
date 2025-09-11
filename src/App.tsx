@@ -10,6 +10,7 @@ import Pricing from "./pages/Pricing";
 import Waitlist from "./pages/Waitlist";
 import WaitlistAdmin from "./pages/WaitlistAdmin";
 import Auth from "./pages/Auth";
+import GrantAdmin from "./pages/GrantAdmin";
 import NotFound from "./pages/NotFound";
 import { AuthProvider } from "./hooks/useAuth";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -47,6 +48,7 @@ const App = () => {
               <Route path="/pricing" element={<Pricing />} />
               <Route path="/waitlist" element={<Waitlist />} />
               <Route path="/auth" element={<Auth />} />
+              <Route path="/grant-admin" element={<GrantAdmin />} />
               <Route path="/waitlist-admin" element={
                 <ProtectedRoute>
                   <WaitlistAdmin />
