@@ -77,10 +77,6 @@ export type Database = {
         Args: { email_param: string }
         Returns: boolean
       }
-      grant_admin_role: {
-        Args: { _email: string }
-        Returns: string
-      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]

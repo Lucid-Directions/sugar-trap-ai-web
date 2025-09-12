@@ -32,7 +32,7 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
           <p className="text-muted-foreground mb-6">
             You need administrator privileges to access this page.
           </p>
-          <Link to="/grant-admin" className="underline text-primary">Grant admin access</Link>
+          <Link to="/" className="underline text-primary">Go to home</Link>
         </div>
       </div>
     );
