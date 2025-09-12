@@ -29,8 +29,8 @@ const Auth = () => {
   const loginCaptchaRef = useRef<any>(null);
   const signupCaptchaRef = useRef<any>(null);
 
-  // Replace with your actual Turnstile site key from Cloudflare
-  const TURNSTILE_SITE_KEY = "0x4AAAAAAAkz4O_7WhWBC-QT";
+  // Turnstile site key (public, safe to expose in frontend)
+  const TURNSTILE_SITE_KEY = "0x4AAAAAAB0yj55l4US_4WM7";
 
   // Check if user is already logged in
   useEffect(() => {
