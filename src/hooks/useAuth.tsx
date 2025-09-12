@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState, useCallback } from 'react';
 import { User, Session } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from '@/hooks/use-toast';
@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [checkingAdmin, setCheckingAdmin] = useState(false);
 
-  const checkAdminStatus = async () => {
+  const checkAdminStatus = useCallback(async () => {
     if (!user) {
       setIsAdmin(false);
       return;
@@ -30,11 +30,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     try {
       setCheckingAdmin(true);
+      console.log('Checking admin status for user:', user.id);
       const { data, error } = await supabase.rpc('has_role', {
         _user_id: user.id,
         _role: 'admin'
       });
 
+      console.log('Admin check result:', { data, error });
       if (error) {
         console.error('Error checking admin status:', error);
         setIsAdmin(false);
@@ -47,7 +49,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     } finally {
       setCheckingAdmin(false);
     }
-  };
+  }, [user]);
 
   useEffect(() => {
     // Set up auth state listener FIRST
@@ -59,9 +61,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         
         // Check admin status when auth state changes
         if (session?.user) {
-          setTimeout(() => {
-            checkAdminStatus();
-          }, 0);
+          setIsAdmin(false); // Reset admin status while checking
         } else {
           setIsAdmin(false);
         }
@@ -76,14 +76,19 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       
       // Check admin status for existing session
       if (session?.user) {
-        setTimeout(() => {
-          checkAdminStatus();
-        }, 0);
+        setIsAdmin(false); // Reset admin status while checking
       }
     });
 
     return () => subscription.unsubscribe();
   }, []);
+
+  // Check admin status whenever user changes
+  useEffect(() => {
+    if (user) {
+      checkAdminStatus();
+    }
+  }, [user, checkAdminStatus]);
 
   const signOut = async () => {
     try {
