@@ -1,4 +1,4 @@
-import { Navigate } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 import { Loader2 } from 'lucide-react';
 
@@ -32,7 +32,7 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
           <p className="text-muted-foreground mb-6">
             You need administrator privileges to access this page.
           </p>
-          <Navigate to="/" replace />
+          <Link to="/grant-admin" className="underline text-primary">Grant admin access</Link>
         </div>
       </div>
     );
