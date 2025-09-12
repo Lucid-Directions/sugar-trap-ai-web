@@ -29,8 +29,8 @@ const Auth = () => {
   const loginCaptchaRef = useRef<any>(null);
   const signupCaptchaRef = useRef<any>(null);
 
-  // Replace with your actual Turnstile site key
-  const TURNSTILE_SITE_KEY = "your-turnstile-site-key";
+  // Replace with your actual Turnstile site key from Cloudflare
+  const TURNSTILE_SITE_KEY = "0x4AAAAAAAkz4O_7WhWBC-QT";
 
   // Check if user is already logged in
   useEffect(() => {
@@ -166,6 +166,7 @@ const Auth = () => {
             <CardTitle className="text-2xl font-bold">
               <span className="text-foreground">Sugar</span>
               <span className="text-muted-foreground">Trap</span>
+              <span className="text-primary"> AI</span>
             </CardTitle>
             <CardDescription>
               Sign in to access the admin dashboard
