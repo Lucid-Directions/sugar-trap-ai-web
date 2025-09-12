@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import HCaptcha from '@hcaptcha/react-hcaptcha';
+import { Turnstile } from '@marsidev/react-turnstile';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -26,11 +26,11 @@ const Auth = () => {
   // CAPTCHA states and refs
   const [loginCaptchaToken, setLoginCaptchaToken] = useState<string | null>(null);
   const [signupCaptchaToken, setSignupCaptchaToken] = useState<string | null>(null);
-  const loginCaptchaRef = useRef<HCaptcha>(null);
-  const signupCaptchaRef = useRef<HCaptcha>(null);
+  const loginCaptchaRef = useRef<any>(null);
+  const signupCaptchaRef = useRef<any>(null);
 
-  // Replace with your actual hCaptcha site key
-  const HCAPTCHA_SITE_KEY = "your-hcaptcha-site-key";
+  // Replace with your actual Turnstile site key
+  const TURNSTILE_SITE_KEY = "your-turnstile-site-key";
 
   // Check if user is already logged in
   useEffect(() => {
@@ -84,7 +84,7 @@ const Auth = () => {
       setIsLoading(false);
       // Reset captcha
       if (loginCaptchaRef.current) {
-        loginCaptchaRef.current.resetCaptcha();
+        loginCaptchaRef.current.reset();
         setLoginCaptchaToken(null);
       }
     }
@@ -137,7 +137,7 @@ const Auth = () => {
       setIsLoading(false);
       // Reset captcha
       if (signupCaptchaRef.current) {
-        signupCaptchaRef.current.resetCaptcha();
+        signupCaptchaRef.current.reset();
         setSignupCaptchaToken(null);
       }
     }
@@ -223,10 +223,10 @@ const Auth = () => {
 
                   <div className="space-y-2">
                     <Label>Security Verification</Label>
-                    <HCaptcha
+                    <Turnstile
                       ref={loginCaptchaRef}
-                      sitekey={HCAPTCHA_SITE_KEY}
-                      onVerify={(token) => setLoginCaptchaToken(token)}
+                      siteKey={TURNSTILE_SITE_KEY}
+                      onSuccess={(token) => setLoginCaptchaToken(token)}
                       onExpire={() => setLoginCaptchaToken(null)}
                       onError={() => setLoginCaptchaToken(null)}
                     />
@@ -293,10 +293,10 @@ const Auth = () => {
 
                   <div className="space-y-2">
                     <Label>Security Verification</Label>
-                    <HCaptcha
+                    <Turnstile
                       ref={signupCaptchaRef}
-                      sitekey={HCAPTCHA_SITE_KEY}
-                      onVerify={(token) => setSignupCaptchaToken(token)}
+                      siteKey={TURNSTILE_SITE_KEY}
+                      onSuccess={(token) => setSignupCaptchaToken(token)}
                       onExpire={() => setSignupCaptchaToken(null)}
                       onError={() => setSignupCaptchaToken(null)}
                     />
