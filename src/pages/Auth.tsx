@@ -29,8 +29,23 @@ const Auth = () => {
   const loginCaptchaRef = useRef<any>(null);
   const signupCaptchaRef = useRef<any>(null);
 
-  // Turnstile site key (public, safe to expose in frontend)
-  const TURNSTILE_SITE_KEY = "0x4AAAAAAB0yj55l4US_4WM7";
+  // Turnstile site keys
+  const PROD_TURNSTILE_SITE_KEY = "0x4AAAAAAB0yj55l4US_4WM7";
+  const TEST_TURNSTILE_SITE_KEY = "1x00000000000000000000AA";
+  const allowedHosts = new Set([
+    "sugartrapai.com",
+    "www.sugartrapai.com",
+    "sugar-trap-ai-web.lovable.app",
+    "localhost",
+    "127.0.0.1",
+  ]);
+  const searchParams = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : new URLSearchParams();
+  const forceTest = searchParams.get("turnstile") === "test";
+  const hostnameAllowed = typeof window !== 'undefined' ? allowedHosts.has(window.location.hostname) : false;
+  const TURNSTILE_SITE_KEY = (forceTest || !hostnameAllowed) ? TEST_TURNSTILE_SITE_KEY : PROD_TURNSTILE_SITE_KEY;
+  if (forceTest || !hostnameAllowed) {
+    console.warn("[Turnstile] Using TEST site key. Hostname:", typeof window !== 'undefined' ? window.location.hostname : "unknown");
+  }
 
   // Check if user is already logged in
   useEffect(() => {
