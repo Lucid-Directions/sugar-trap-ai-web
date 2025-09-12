@@ -24,8 +24,7 @@ const Navigation = () => {
     { label: 'Home', href: '/' },
     { label: 'Science', href: '/science' },
     { label: 'Pricing', href: '/pricing' },
-    { label: 'Waitlist', href: '/waitlist' },
-    ...(user ? [{ label: 'Admin', href: '/waitlist-admin' }] : [])
+    { label: 'Waitlist', href: '/waitlist' }
   ];
 
   return (
@@ -94,10 +93,16 @@ const Navigation = () => {
           <div className="hidden md:flex items-center gap-4">
             {user ? (
               <div className="flex items-center gap-2">
-                <div className="flex items-center gap-2 text-sm">
-                  <User className="w-4 h-4" />
-                  <span className="text-muted-foreground">{user.email}</span>
-                </div>
+                <Link to="/waitlist-admin">
+                  <motion.div 
+                    className="flex items-center gap-2 text-sm hover:text-primary transition-colors cursor-pointer"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <User className="w-4 h-4" />
+                    <span className="text-muted-foreground hover:text-primary transition-colors">{user.email}</span>
+                  </motion.div>
+                </Link>
                 <Button
                   variant="outline"
                   size="sm"
@@ -192,10 +197,12 @@ const Navigation = () => {
                 <div className="border-t pt-4 mt-4 space-y-2">
                   {user ? (
                     <div className="space-y-3">
-                      <div className="flex items-center gap-2 text-sm text-muted-foreground px-2">
-                        <User className="w-4 h-4" />
-                        <span className="truncate">{user.email}</span>
-                      </div>
+                      <Link to="/waitlist-admin" onClick={() => setIsOpen(false)}>
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors px-2 py-1 rounded cursor-pointer">
+                          <User className="w-4 h-4" />
+                          <span className="truncate">{user.email}</span>
+                        </div>
+                      </Link>
                       <Button
                         variant="outline" 
                         className="w-full flex items-center gap-2"
