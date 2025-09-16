@@ -33,7 +33,6 @@ const PricingPage = () => {
         "Unlimited meal logging",
         "AI Glucose Predictions for every meal",
         "Personalised meal optimisation tips",
-        "Weekly trends and patterns",
         "Detailed progress tracking",
         "Export your data",
         "Priority support",
@@ -55,7 +54,6 @@ const PricingPage = () => {
         "Unlimited meal logging",
         "AI Glucose Predictions for every meal",
         "Personalised meal optimisation tips",
-        "Weekly trends and patterns",
         "Detailed progress tracking",
         "Export your data",
         "Priority support"
@@ -74,6 +72,7 @@ const PricingPage = () => {
       popular: false,
       features: [
         "Everything in Pro, plus:",
+        "Weekly trends and patterns",
         "CGM Integration (connect your own device)",
         "Compare predictions to actual glucose data",
         "Advanced analytics dashboard",
