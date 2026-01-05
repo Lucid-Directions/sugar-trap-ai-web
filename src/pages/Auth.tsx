@@ -26,6 +26,7 @@ const Auth = () => {
   // CAPTCHA states and refs
   const [loginCaptchaToken, setLoginCaptchaToken] = useState<string | null>(null);
   const [signupCaptchaToken, setSignupCaptchaToken] = useState<string | null>(null);
+  const [turnstileErrorCode, setTurnstileErrorCode] = useState<string | null>(null);
   const loginCaptchaRef = useRef<any>(null);
   const signupCaptchaRef = useRef<any>(null);
 
@@ -34,7 +35,8 @@ const Auth = () => {
   const TEST_TURNSTILE_SITE_KEY = "1x00000000000000000000AA";
 
   const hostname = typeof window !== 'undefined' ? window.location.hostname : '';
-  const isLovablePreview = hostname.includes('lovable.app') && hostname.startsWith('id-preview--');
+  const isLovableDomain = hostname.endsWith('lovable.app');
+  const isPreviewDomain = isLovableDomain && hostname.includes('preview');
   const publishedAuthUrl = "https://sugar-trap-ai-web.lovable.app/auth";
 
   // Force test mode only when explicitly requested via ?turnstile=test
@@ -256,13 +258,44 @@ const Auth = () => {
                     <Turnstile
                       ref={loginCaptchaRef}
                       siteKey={TURNSTILE_SITE_KEY}
-                      onSuccess={(token) => setLoginCaptchaToken(token)}
+                      onSuccess={(token) => {
+                        setLoginCaptchaToken(token);
+                        setTurnstileErrorCode(null);
+                        if (error?.startsWith('Security verification is blocked')) {
+                          setError(null);
+                        }
+                      }}
                       onExpire={() => setLoginCaptchaToken(null)}
-                      onError={() => setLoginCaptchaToken(null)}
+                      onError={(code) => {
+                        setLoginCaptchaToken(null);
+                        setTurnstileErrorCode(code);
+
+                        if (code === '110200') {
+                          setError(
+                            `Security verification is blocked for this domain (${hostname}). Add this hostname to your Cloudflare Turnstile widget's Allowed Hostnames, then refresh.`
+                          );
+                          return;
+                        }
+
+                        setError('Security verification failed. Please refresh and try again.');
+                      }}
                     />
-                    {isLovablePreview && !forceTest && (
+
+                    {turnstileErrorCode && (
                       <p className="text-xs text-muted-foreground">
-                        If sign-in keeps failing with a captcha error in preview, use the published login page{' '}
+                        Turnstile error code: <span className="font-mono">{turnstileErrorCode}</span>
+                      </p>
+                    )}
+
+                    {isPreviewDomain && !forceTest && (
+                      <p className="text-xs text-muted-foreground">
+                        Preview hostname: <span className="font-mono">{hostname}</span>. If you see “invalid domain”, add it in Turnstile → Allowed Hostnames.
+                      </p>
+                    )}
+
+                    {isPreviewDomain && !forceTest && (
+                      <p className="text-xs text-muted-foreground">
+                        If you just want to test the flow quickly, open the published login page{' '}
                         <a
                           className="underline underline-offset-4 hover:text-foreground"
                           href={publishedAuthUrl}
@@ -274,6 +307,7 @@ const Auth = () => {
                         .
                       </p>
                     )}
+
                     {forceTest && (
                       <p className="text-xs text-muted-foreground">
                         Test captcha mode is enabled (turn it off by removing <span className="font-mono">?turnstile=test</span>).
@@ -345,13 +379,44 @@ const Auth = () => {
                     <Turnstile
                       ref={signupCaptchaRef}
                       siteKey={TURNSTILE_SITE_KEY}
-                      onSuccess={(token) => setSignupCaptchaToken(token)}
+                      onSuccess={(token) => {
+                        setSignupCaptchaToken(token);
+                        setTurnstileErrorCode(null);
+                        if (error?.startsWith('Security verification is blocked')) {
+                          setError(null);
+                        }
+                      }}
                       onExpire={() => setSignupCaptchaToken(null)}
-                      onError={() => setSignupCaptchaToken(null)}
+                      onError={(code) => {
+                        setSignupCaptchaToken(null);
+                        setTurnstileErrorCode(code);
+
+                        if (code === '110200') {
+                          setError(
+                            `Security verification is blocked for this domain (${hostname}). Add this hostname to your Cloudflare Turnstile widget's Allowed Hostnames, then refresh.`
+                          );
+                          return;
+                        }
+
+                        setError('Security verification failed. Please refresh and try again.');
+                      }}
                     />
-                    {isLovablePreview && !forceTest && (
+
+                    {turnstileErrorCode && (
                       <p className="text-xs text-muted-foreground">
-                        If sign-up/sign-in fails with a captcha error in preview, use the published login page{' '}
+                        Turnstile error code: <span className="font-mono">{turnstileErrorCode}</span>
+                      </p>
+                    )}
+
+                    {isPreviewDomain && !forceTest && (
+                      <p className="text-xs text-muted-foreground">
+                        Preview hostname: <span className="font-mono">{hostname}</span>. If you see “invalid domain”, add it in Turnstile → Allowed Hostnames.
+                      </p>
+                    )}
+
+                    {isPreviewDomain && !forceTest && (
+                      <p className="text-xs text-muted-foreground">
+                        If sign-up/sign-in fails in preview, you can also try the published login page{' '}
                         <a
                           className="underline underline-offset-4 hover:text-foreground"
                           href={publishedAuthUrl}
@@ -363,6 +428,7 @@ const Auth = () => {
                         .
                       </p>
                     )}
+
                     {forceTest && (
                       <p className="text-xs text-muted-foreground">
                         Test captcha mode is enabled (turn it off by removing <span className="font-mono">?turnstile=test</span>).
