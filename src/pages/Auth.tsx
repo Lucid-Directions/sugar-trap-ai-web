@@ -23,11 +23,9 @@ const Auth = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  // CAPTCHA states and refs
-  const [loginCaptchaToken, setLoginCaptchaToken] = useState<string | null>(null);
+  // CAPTCHA states and refs (only used for sign-up; sign-in doesn't require CAPTCHA)
   const [signupCaptchaToken, setSignupCaptchaToken] = useState<string | null>(null);
   const [turnstileErrorCode, setTurnstileErrorCode] = useState<string | null>(null);
-  const loginCaptchaRef = useRef<any>(null);
   const signupCaptchaRef = useRef<any>(null);
 
   // Turnstile site keys
@@ -67,19 +65,10 @@ const Auth = () => {
     setIsLoading(true);
     setError(null);
 
-    if (!loginCaptchaToken) {
-      setError('Please complete the CAPTCHA verification.');
-      setIsLoading(false);
-      return;
-    }
-
     try {
       const { error } = await supabase.auth.signInWithPassword({
         email: email.trim(),
         password,
-        options: {
-          captchaToken: loginCaptchaToken
-        }
       });
 
       if (error) {
@@ -87,7 +76,7 @@ const Auth = () => {
 
         if (msg.toLowerCase().includes('captcha')) {
           setError(
-            'Captcha verification failed. If you are in the Lovable preview, open the published login page (it uses the correct Turnstile configuration) or ensure your Turnstile site key matches the secret configured in Supabase.'
+            'Captcha verification failed. If you are in the Lovable preview, open the published login page (it uses the correct Turnstile configuration) or ensure your Turnstile secret is configured correctly in Supabase.'
           );
         } else if (msg === 'Invalid login credentials') {
           setError('Invalid email or password. Please check your credentials.');
@@ -98,20 +87,15 @@ const Auth = () => {
       }
 
       toast({
-        title: "Login successful",
-        description: "Welcome back!",
+        title: 'Login successful',
+        description: 'Welcome back!',
       });
 
       navigate('/');
-    } catch (err: any) {
+    } catch {
       setError('An unexpected error occurred. Please try again.');
     } finally {
       setIsLoading(false);
-      // Reset captcha
-      if (loginCaptchaRef.current) {
-        loginCaptchaRef.current.reset();
-        setLoginCaptchaToken(null);
-      }
     }
   };
 
@@ -204,7 +188,18 @@ const Auth = () => {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+            <Tabs
+              value={activeTab}
+              onValueChange={(next) => {
+                setActiveTab(next);
+                setError(null);
+                setTurnstileErrorCode(null);
+                if (next !== 'signup') {
+                  setSignupCaptchaToken(null);
+                }
+              }}
+              className="w-full"
+            >
               <TabsList className="grid w-full grid-cols-2">
                 <TabsTrigger value="login">Sign In</TabsTrigger>
                 <TabsTrigger value="signup">Sign Up</TabsTrigger>
@@ -253,67 +248,21 @@ const Auth = () => {
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <Label>Security Verification</Label>
-                    <Turnstile
-                      ref={loginCaptchaRef}
-                      siteKey={TURNSTILE_SITE_KEY}
-                      onSuccess={(token) => {
-                        setLoginCaptchaToken(token);
-                        setTurnstileErrorCode(null);
-                        if (error?.startsWith('Security verification is blocked')) {
-                          setError(null);
-                        }
-                      }}
-                      onExpire={() => setLoginCaptchaToken(null)}
-                      onError={(code) => {
-                        setLoginCaptchaToken(null);
-                        setTurnstileErrorCode(code);
-
-                        if (code === '110200') {
-                          setError(
-                            `Security verification is blocked for this domain (${hostname}). Add this hostname to your Cloudflare Turnstile widget's Allowed Hostnames, then refresh.`
-                          );
-                          return;
-                        }
-
-                        setError('Security verification failed. Please refresh and try again.');
-                      }}
-                    />
-
-                    {turnstileErrorCode && (
-                      <p className="text-xs text-muted-foreground">
-                        Turnstile error code: <span className="font-mono">{turnstileErrorCode}</span>
-                      </p>
-                    )}
-
-                    {isPreviewDomain && !forceTest && (
-                      <p className="text-xs text-muted-foreground">
-                        Preview hostname: <span className="font-mono">{hostname}</span>. If you see “invalid domain”, add it in Turnstile → Allowed Hostnames.
-                      </p>
-                    )}
-
-                    {isPreviewDomain && !forceTest && (
-                      <p className="text-xs text-muted-foreground">
-                        If you just want to test the flow quickly, open the published login page{' '}
-                        <a
-                          className="underline underline-offset-4 hover:text-foreground"
-                          href={publishedAuthUrl}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          here
-                        </a>
-                        .
-                      </p>
-                    )}
-
-                    {forceTest && (
-                      <p className="text-xs text-muted-foreground">
-                        Test captcha mode is enabled (turn it off by removing <span className="font-mono">?turnstile=test</span>).
-                      </p>
-                    )}
-                  </div>
+                  {isPreviewDomain && !forceTest && (
+                    <p className="text-xs text-muted-foreground">
+                      If you see “invalid domain” on this preview URL, that only affects sign-up CAPTCHA. For sign-in,
+                      you can continue without it. If you need to test sign-up, open the published /auth page{' '}
+                      <a
+                        className="underline underline-offset-4 hover:text-foreground"
+                        href={publishedAuthUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        here
+                      </a>
+                      .
+                    </p>
+                  )}
 
                   {error && (
                     <Alert variant="destructive">
@@ -321,7 +270,7 @@ const Auth = () => {
                     </Alert>
                   )}
 
-                  <Button type="submit" className="w-full" disabled={isLoading || !loginCaptchaToken}>
+                  <Button type="submit" className="w-full" disabled={isLoading}>
                     {isLoading ? 'Signing in...' : 'Sign In'}
                   </Button>
                 </form>
@@ -374,67 +323,70 @@ const Auth = () => {
                     </p>
                   </div>
 
-                  <div className="space-y-2">
-                    <Label>Security Verification</Label>
-                    <Turnstile
-                      ref={signupCaptchaRef}
-                      siteKey={TURNSTILE_SITE_KEY}
-                      onSuccess={(token) => {
-                        setSignupCaptchaToken(token);
-                        setTurnstileErrorCode(null);
-                        if (error?.startsWith('Security verification is blocked')) {
-                          setError(null);
-                        }
-                      }}
-                      onExpire={() => setSignupCaptchaToken(null)}
-                      onError={(code) => {
-                        setSignupCaptchaToken(null);
-                        setTurnstileErrorCode(code);
+                  {activeTab === 'signup' && (
+                    <div className="space-y-2">
+                      <Label>Security Verification</Label>
+                      <Turnstile
+                        ref={signupCaptchaRef}
+                        siteKey={TURNSTILE_SITE_KEY}
+                        onSuccess={(token) => {
+                          setSignupCaptchaToken(token);
+                          setTurnstileErrorCode(null);
+                          if (error?.startsWith('Security verification is blocked')) {
+                            setError(null);
+                          }
+                        }}
+                        onExpire={() => setSignupCaptchaToken(null)}
+                        onError={(code) => {
+                          setSignupCaptchaToken(null);
+                          setTurnstileErrorCode(code);
 
-                        if (code === '110200') {
-                          setError(
-                            `Security verification is blocked for this domain (${hostname}). Add this hostname to your Cloudflare Turnstile widget's Allowed Hostnames, then refresh.`
-                          );
-                          return;
-                        }
+                          if (code === '110200') {
+                            setError(
+                              `Security verification is blocked for this domain (${hostname}). Add this hostname to your Cloudflare Turnstile widget's Allowed Hostnames, then refresh.`
+                            );
+                            return;
+                          }
 
-                        setError('Security verification failed. Please refresh and try again.');
-                      }}
-                    />
+                          setError('Security verification failed. Please refresh and try again.');
+                        }}
+                      />
 
-                    {turnstileErrorCode && (
-                      <p className="text-xs text-muted-foreground">
-                        Turnstile error code: <span className="font-mono">{turnstileErrorCode}</span>
-                      </p>
-                    )}
+                      {turnstileErrorCode && (
+                        <p className="text-xs text-muted-foreground">
+                          Turnstile error code: <span className="font-mono">{turnstileErrorCode}</span>
+                        </p>
+                      )}
 
-                    {isPreviewDomain && !forceTest && (
-                      <p className="text-xs text-muted-foreground">
-                        Preview hostname: <span className="font-mono">{hostname}</span>. If you see “invalid domain”, add it in Turnstile → Allowed Hostnames.
-                      </p>
-                    )}
+                      {isPreviewDomain && !forceTest && (
+                        <p className="text-xs text-muted-foreground">
+                          Preview hostname: <span className="font-mono">{hostname}</span>. If you see “invalid domain”, add it in Turnstile → Allowed Hostnames.
+                        </p>
+                      )}
 
-                    {isPreviewDomain && !forceTest && (
-                      <p className="text-xs text-muted-foreground">
-                        If sign-up/sign-in fails in preview, you can also try the published login page{' '}
-                        <a
-                          className="underline underline-offset-4 hover:text-foreground"
-                          href={publishedAuthUrl}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          here
-                        </a>
-                        .
-                      </p>
-                    )}
+                      {isPreviewDomain && !forceTest && (
+                        <p className="text-xs text-muted-foreground">
+                          If sign-up/sign-in fails in preview, you can also try the published login page{' '}
+                          <a
+                            className="underline underline-offset-4 hover:text-foreground"
+                            href={publishedAuthUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            here
+                          </a>
+                          .
+                        </p>
+                      )}
 
-                    {forceTest && (
-                      <p className="text-xs text-muted-foreground">
-                        Test captcha mode is enabled (turn it off by removing <span className="font-mono">?turnstile=test</span>).
-                      </p>
-                    )}
-                  </div>
+                      {forceTest && (
+                        <p className="text-xs text-muted-foreground">
+                          Test captcha mode is enabled (turn it off by removing <span className="font-mono">?turnstile=test</span>).
+                        </p>
+                      )}
+                    </div>
+                  )}
+
 
                   {error && (
                     <Alert variant="destructive">
