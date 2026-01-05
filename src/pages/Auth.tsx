@@ -32,19 +32,21 @@ const Auth = () => {
   // Turnstile site keys
   const PROD_TURNSTILE_SITE_KEY = "0x4AAAAAAB0yj55l4US_4WM7";
   const TEST_TURNSTILE_SITE_KEY = "1x00000000000000000000AA";
-  const allowedHosts = new Set([
-    "sugartrapai.com",
-    "www.sugartrapai.com",
-    "sugar-trap-ai-web.lovable.app",
-    "localhost",
-    "127.0.0.1",
-  ]);
+
+  const hostname = typeof window !== 'undefined' ? window.location.hostname : '';
+  const isLovablePreview = hostname.includes('lovable.app') && hostname.startsWith('id-preview--');
+  const publishedAuthUrl = "https://sugar-trap-ai-web.lovable.app/auth";
+
+  // Force test mode only when explicitly requested via ?turnstile=test
   const searchParams = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : new URLSearchParams();
-  const forceTest = searchParams.get("turnstile") === "test";
-  const hostnameAllowed = typeof window !== 'undefined' ? allowedHosts.has(window.location.hostname) : false;
-  const TURNSTILE_SITE_KEY = (forceTest || !hostnameAllowed) ? TEST_TURNSTILE_SITE_KEY : PROD_TURNSTILE_SITE_KEY;
-  if (forceTest || !hostnameAllowed) {
-    console.warn("[Turnstile] Using TEST site key. Hostname:", typeof window !== 'undefined' ? window.location.hostname : "unknown");
+  const forceTest = searchParams.get('turnstile') === 'test';
+
+  // IMPORTANT: Supabase CAPTCHA verification must use the site key that matches the secret configured in Supabase.
+  // Default to PROD; use TEST only when forceTest is enabled.
+  const TURNSTILE_SITE_KEY = forceTest ? TEST_TURNSTILE_SITE_KEY : PROD_TURNSTILE_SITE_KEY;
+
+  if (forceTest) {
+    console.warn('[Turnstile] Test mode enabled via ?turnstile=test. Hostname:', hostname || 'unknown');
   }
 
   // Check if user is already logged in
@@ -79,10 +81,16 @@ const Auth = () => {
       });
 
       if (error) {
-        if (error.message === 'Invalid login credentials') {
+        const msg = error.message || '';
+
+        if (msg.toLowerCase().includes('captcha')) {
+          setError(
+            'Captcha verification failed. If you are in the Lovable preview, open the published login page (it uses the correct Turnstile configuration) or ensure your Turnstile site key matches the secret configured in Supabase.'
+          );
+        } else if (msg === 'Invalid login credentials') {
           setError('Invalid email or password. Please check your credentials.');
         } else {
-          setError(error.message);
+          setError(msg);
         }
         return;
       }
@@ -129,10 +137,16 @@ const Auth = () => {
       });
 
       if (error) {
-        if (error.message === 'User already registered') {
+        const msg = error.message || '';
+
+        if (msg.toLowerCase().includes('captcha')) {
+          setError(
+            'Captcha verification failed. If you are in the Lovable preview, open the published login page (it uses the correct Turnstile configuration) or ensure your Turnstile site key matches the secret configured in Supabase.'
+          );
+        } else if (msg === 'User already registered') {
           setError('An account with this email already exists. Please sign in instead.');
         } else {
-          setError(error.message);
+          setError(msg);
         }
         return;
       }
@@ -246,6 +260,25 @@ const Auth = () => {
                       onExpire={() => setLoginCaptchaToken(null)}
                       onError={() => setLoginCaptchaToken(null)}
                     />
+                    {isLovablePreview && !forceTest && (
+                      <p className="text-xs text-muted-foreground">
+                        If sign-in keeps failing with a captcha error in preview, use the published login page{' '}
+                        <a
+                          className="underline underline-offset-4 hover:text-foreground"
+                          href={publishedAuthUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          here
+                        </a>
+                        .
+                      </p>
+                    )}
+                    {forceTest && (
+                      <p className="text-xs text-muted-foreground">
+                        Test captcha mode is enabled (turn it off by removing <span className="font-mono">?turnstile=test</span>).
+                      </p>
+                    )}
                   </div>
 
                   {error && (
@@ -316,6 +349,25 @@ const Auth = () => {
                       onExpire={() => setSignupCaptchaToken(null)}
                       onError={() => setSignupCaptchaToken(null)}
                     />
+                    {isLovablePreview && !forceTest && (
+                      <p className="text-xs text-muted-foreground">
+                        If sign-up/sign-in fails with a captcha error in preview, use the published login page{' '}
+                        <a
+                          className="underline underline-offset-4 hover:text-foreground"
+                          href={publishedAuthUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          here
+                        </a>
+                        .
+                      </p>
+                    )}
+                    {forceTest && (
+                      <p className="text-xs text-muted-foreground">
+                        Test captcha mode is enabled (turn it off by removing <span className="font-mono">?turnstile=test</span>).
+                      </p>
+                    )}
                   </div>
 
                   {error && (
